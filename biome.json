@@ -18,6 +18,16 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "nursery": {
+        "useSortedClasses": {
+          "level": "warn",
+          "fix": "safe",
+          "options": {
+            "attributes": ["className"],
+            "functions": ["cn", "clsx", "twMerge"]
+          }
+        }
+      },
       "suspicious": {
         "noUnknownAtRules": "off"
       }
