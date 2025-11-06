@@ -1,4 +1,6 @@
 /** biome-ignore-all lint/a11y/noSvgWithoutTitle: not needed */
+"use client";
+
 import { motion } from "framer-motion";
 
 const ButtonSpinner = () => (
