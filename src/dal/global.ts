@@ -1,8 +1,9 @@
-import { cacheLife } from "next/cache";
+// import { cacheLife } from "next/cache";
+import { fetchQuery } from "@/dal";
 
-export async function globalData() {
-  "use cache";
-  cacheLife("minutes");
+export async function fetchGlobalPagesData() {
+  // "use cache";
+  // cacheLife("seconds");
 
   const query = `{
     global {
@@ -32,11 +33,7 @@ export async function globalData() {
     }
   }`;
 
-  const res = await fetch("http://localhost:1337/graphql", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ query }),
-  });
-
-  console.log(await res.json());
+  return fetchQuery<{ global: prettify<GlobalPagesData> }>(query).then(
+    (res) => res?.global ?? null,
+  );
 }
