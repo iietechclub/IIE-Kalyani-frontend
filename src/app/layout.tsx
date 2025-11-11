@@ -1,48 +1,26 @@
+/** biome-ignore-all lint/correctness/noChildrenProp: Takes short space */
 import type { Metadata } from "next";
 import "./globals.css";
 
-import Navbar from "@/components/Navbar";
-import ServerError from "@/components/ServerError";
+import { Suspense } from "react";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
 
 import { fetchGlobalPagesData } from "@/dal/global";
 
-// export const metadata: Metadata = {
-//   title: "IIE Kalyani | Top Engineering College in West Bengal",
-//   description: `IIE Kalyani is a premier engineering college in West Bengal,
-//     offering Makaut programs in CSE, ECE, ME & CE. Apply now for quality education!`,
-// };
-
 export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "IIE Kalyani | Top Engineering College in West Bengal",
-    description: `IIE Kalyani is a premier engineering college in West Bengal,
-     offering Makaut programs in CSE, ECE, ME & CE. Apply now for quality education!`,
-  };
+  const globalData = await fetchGlobalPagesData();
+  return globalData?.metadata ?? {};
 }
 
-type ReadonlyChildren = Readonly<{ children: React.ReactNode }>;
-
-const Document = ({ children }: ReadonlyChildren) => (
-  <html lang="en">
-    <body className="antialiased md:subpixel-antialiased">{children}</body>
-  </html>
-);
-
-export default async function RootLayout({ children }: ReadonlyChildren) {
-  const globalData = await fetchGlobalPagesData().catch(() => null);
-
-  if (!globalData) {
-    return (
-      <Document>
-        <ServerError />
-      </Document>
-    );
-  }
-
+export default function RootLayout({ children }: ReadonlyChildren) {
   return (
-    <Document>
-      <Navbar data={globalData} />
-      {children}
-    </Document>
+    <html lang="en">
+      <body className="antialiased md:subpixel-antialiased">
+        <Suspense children={<Navbar />} />
+        {children}
+        <Suspense children={<Footer />} />
+      </body>
+    </html>
   );
 }

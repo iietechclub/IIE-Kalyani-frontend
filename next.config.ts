@@ -4,7 +4,7 @@ import "./src/lib/env";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  // cacheComponents: true,
+  cacheComponents: true,
 };
 
 export default nextConfig;

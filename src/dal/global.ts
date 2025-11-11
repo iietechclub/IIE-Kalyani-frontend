@@ -1,39 +1,46 @@
-// import { cacheLife } from "next/cache";
-import { fetchQuery } from "@/dal";
+import { cacheLife } from "next/cache";
+import { cache } from "react";
 
-export async function fetchGlobalPagesData() {
-  // "use cache";
-  // cacheLife("seconds");
+import { gql, graphqlQuery } from "@/lib/graphql";
 
-  const query = `{
+export const fetchGlobalPagesData = cache(async () => {
+  "use cache";
+  cacheLife("minutes");
+  const query = gql`{
     global {
-        contactNo contactEmail locationTitle
-        topLinks { id label url { url newTab download } }
-        
-        logoTitle logoSubtitle
-        logoImage { url alternativeText }
-        menus {
-            documentId title contains
-            link { variant url { url newTab } }
+      metadata {
+        title description
+      }
+
+      contactNo contactEmail locationTitle
+      topLinks { id label url { url newTab download } }
+
+      logoTitle logoSubtitle
+      logoImage { url alternativeText }
+      menus {
+        documentId title contains
+        link { variant url { url newTab } }
         menuItems { id label url { url newTab } }
         submenus {
-            id title
-            children { id label url { url newTab } }
+          id title
+          children { id label url { url newTab } }
         }
-        }
+      }
 
-        socialLinks {
+      socialLinks {
         documentId platform url { url newTab }
-        }
-        footerDescription
-        footerColumns {
+      }
+      footerDescription
+      footerColumns {
         documentId title
         items { id label url { url newTab } }
-        }
+      }
     }
-  }`;
+  }
+  `;
 
-  return fetchQuery<{ global: prettify<GlobalPagesData> }>(query).then(
-    (res) => res?.global ?? null,
-  );
-}
+  const data = await graphqlQuery<{ global: prettify<GlobalPagesData> }>({
+    query,
+  }).then((res) => res?.global ?? null);
+  return data;
+});

@@ -6,6 +6,8 @@ type UrlWithDownload = prettify<Url & { download: boolean }>;
 
 type Image = { url: string; alternativeText: string };
 
+type SEOMetadata = { title: string; description: string };
+
 type MenuItem = {
   id: string;
   label: string;
@@ -52,6 +54,8 @@ type FooterColumn = {
 
 // biome-ignore lint/correctness/noUnusedVariables: Globally used type
 type GlobalPagesData = {
+  metadata: SEOMetadata;
+
   contactNo: string;
   contactEmail: string;
   locationTitle: string;
