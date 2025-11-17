@@ -10,12 +10,13 @@ type SEOMetadata = { title: string; description: string };
 
 type MenuItem = {
   id: string;
+  icon?: string;
   label: string;
-  url: Url;
+  url?: Url;
 };
 
 type MenuItemWithUrlDownload = prettify<
-  Omits<MenuItem, "url"> & { url: UrlWithDownload }
+  Omits<MenuItem, "url"> & { url?: UrlWithDownload }
 >;
 
 type Submenu = {
@@ -24,11 +25,13 @@ type Submenu = {
   children: MenuItem[];
 };
 
+type MenuContains = "Links" | "MenuItems" | "SubMenus";
+
 type Menu = {
   documentId: string;
   title: string;
-  contains: string;
-  link: { variant: string; url: Url };
+  contains: MenuContains;
+  link: { variant: string; url?: Url };
   menuItems: MenuItem[];
   submenus: Submenu[];
 };
@@ -43,7 +46,7 @@ type SocialPlatform =
 type SocialLink = {
   documentId: string;
   platform: SocialPlatform;
-  url: Url;
+  url?: Url;
 };
 
 type FooterColumn = {
@@ -53,7 +56,7 @@ type FooterColumn = {
 };
 
 // biome-ignore lint/correctness/noUnusedVariables: Globally used type
-type GlobalPagesData = {
+type GlobalPageData = {
   metadata: SEOMetadata;
 
   contactNo: string;

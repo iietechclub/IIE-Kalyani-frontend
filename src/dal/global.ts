@@ -3,9 +3,10 @@ import { cache } from "react";
 
 import { gql, graphqlQuery } from "@/lib/graphql";
 
-export const fetchGlobalPagesData = cache(async () => {
+export const fetchGlobalPageData = cache(async () => {
   "use cache";
   cacheLife("minutes");
+
   const query = gql`{
     global {
       metadata {
@@ -23,7 +24,7 @@ export const fetchGlobalPagesData = cache(async () => {
         menuItems { id label url { url newTab } }
         submenus {
           id title
-          children { id label url { url newTab } }
+          children { id icon label url { url newTab } }
         }
       }
 
@@ -39,8 +40,10 @@ export const fetchGlobalPagesData = cache(async () => {
   }
   `;
 
-  const data = await graphqlQuery<{ global: prettify<GlobalPagesData> }>({
+  const data = await graphqlQuery<{ global: prettify<GlobalPageData> }>({
     query,
   }).then((res) => res?.global ?? null);
+
+  if (!data) throw Error("The global page data must always remain available.");
   return data;
 });

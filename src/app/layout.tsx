@@ -1,26 +1,43 @@
 /** biome-ignore-all lint/correctness/noChildrenProp: Takes short space */
 import type { Metadata } from "next";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
 import { Suspense } from "react";
 import Footer from "@/components/layout/Footer";
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "@/components/layout/navbar";
 
-import { fetchGlobalPagesData } from "@/dal/global";
+import { fetchGlobalPageData } from "@/dal/global";
+import { cn } from "@/lib/utils";
+
+const nunito = Nunito({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const globalData = await fetchGlobalPagesData();
-  return globalData?.metadata ?? {};
+  const globalData = await fetchGlobalPageData();
+  return {
+    ...globalData.metadata,
+    title: {
+      template: `%s | ${globalData.metadata.title}`,
+      default: globalData.metadata.title,
+    },
+  };
 }
 
-export default function RootLayout({ children }: ReadonlyChildren) {
+export default async function RootLayout({ children }: ReadonlyChildren) {
   return (
-    <html lang="en">
-      <body className="antialiased md:subpixel-antialiased">
-        <Suspense children={<Navbar />} />
-        {children}
-        <Suspense children={<Footer />} />
-      </body>
-    </html>
+    <Suspense>
+      <html lang="en">
+        <body
+          className={cn(
+            "bg-neutral-600 antialiased md:subpixel-antialiased",
+            nunito.className,
+          )}
+        >
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </Suspense>
   );
 }

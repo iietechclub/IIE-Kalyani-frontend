@@ -13,7 +13,8 @@ export async function graphqlQuery<T>(
   options: ApolloClient.QueryOptions<T, OperationVariables>,
 ): Promise<T | null> {
   return await client
-    .query<T>(options)
+    .query<T>({ ...options, fetchPolicy: "no-cache" })
     .then((res) => res.data ?? null)
-    .catch(() => null);
+    // biome-ignore lint/complexity/noCommaOperator: not needed
+    .catch((e) => (env.NODE_ENV === "development" && console.error(e), null));
 }
