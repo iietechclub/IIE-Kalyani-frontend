@@ -4,22 +4,24 @@ import {
   Linkedin,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   Twitter,
   Youtube,
 } from "lucide-react";
+import Image from "next/image";
 import { fetchGlobalPageData } from "@/dal/global";
 
 export default async function Footer() {
-  const dataGiven = await fetchGlobalPageData();
+  const data = await fetchGlobalPageData();
 
   const socialIcons = {
     Facebook: Facebook,
     YouTube: Youtube,
-    Youtube: Youtube,
     Linkedin: Linkedin,
     Instagram: Instagram,
     Twitter: Twitter,
+    WhatsApp: MessageCircle,
   };
 
   const fallbackImg = "/favicon.png";
@@ -39,13 +41,9 @@ export default async function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-white/20 md:h-20 md:w-20">
-                <img
-                  src={
-                    dataGiven.data.global.logoImage.url
-                      ? dataGiven.data.global.logoImage.url
-                      : fallbackImg
-                  }
-                  alt={dataGiven.data.global.logoImage.alternativeText}
+                <Image
+                  src={data.logoImage.url ? data.logoImage.url : fallbackImg}
+                  alt={data.logoImage.alternativeText}
                   className="h-16 w-16 object-contain md:h-20 md:w-20"
                 />
               </div>
@@ -54,34 +52,34 @@ export default async function Footer() {
                   className="text-white"
                   style={{ fontSize: "1.7rem", lineHeight: "1.2" }}
                 >
-                  {dataGiven.data.global.logoTitle}
+                  {data.logoTitle}
                 </h3>
                 <p className="mt-1 text-[#FCBF49] text-sm">
-                  {dataGiven.data.global.logoSubtitle}
+                  {data.logoSubtitle}
                 </p>
               </div>
             </div>
             <p className="mb-6 text-white/80 leading-relaxed">
-              {dataGiven.data.global.footerDescription}
+              {data.footerDescription}
             </p>
             <div className="space-y-3">
               <a
-                href={`tel:${dataGiven.data.global.contactNo}`}
+                href={`tel:${data.contactNo}`}
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-[#F77F00]">
                   <Phone className="h-5 w-5" />
                 </div>
-                <span>{dataGiven.data.global.contactNo}</span>
+                <span>{data.contactNo}</span>
               </a>
               <a
-                href={`mailto:${dataGiven.data.global.contactEmail}`}
+                href={`mailto:${data.contactEmail}`}
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-[#F77F00]">
                   <Mail className="h-5 w-5" />
                 </div>
-                <span>{dataGiven.data.global.contactEmail}</span>
+                <span>{data.contactEmail}</span>
               </a>
               <a
                 href="https://maps.app.goo.gl/4UTi7mvbz5NhgV2f9"
@@ -90,23 +88,23 @@ export default async function Footer() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-[#F77F00]">
                   <MapPin className="h-5 w-5" />
                 </div>
-                <span>{dataGiven.data.global.locationTitle}</span>
+                <span>{data.locationTitle}</span>
               </a>
             </div>
           </div>
 
-          {dataGiven.data.global.footerColumns.map((m, i) => (
-            <div className="menu" key={m.documentID | i}>
+          {data.footerColumns.map((m) => (
+            <div className="menu" key={m.documentId}>
               <div>
                 <h4 className="mb-6 border-[#FCBF49]/30 border-b pb-3 text-white">
                   {m.title}
                 </h4>
                 <ul className="space-y-3">
-                  {m.items.map((item, index) => (
-                    <li key={item.id | index}>
+                  {m.items.map((item) => (
+                    <li key={item.id}>
                       <a
-                        href={item.url.url}
-                        target={item.url.newTab ? "_blank" : "_self"}
+                        href={item.url?.url}
+                        target={item.url?.newTab ? "_blank" : "_self"}
                         className="group flex items-center gap-2 text-white/80 transition-colors hover:text-[#FCBF49]"
                       >
                         {item.label}
@@ -138,12 +136,12 @@ export default async function Footer() {
         <div className="border-white/10 border-t py-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-4">
-              {dataGiven.data.global.socialLinks.map((item, index) => {
+              {data.socialLinks.map((item) => {
                 const Icon = socialIcons[item.platform];
                 return (
                   <a
-                    key={index}
-                    href={item.url.url}
+                    key={item.documentId}
+                    href={item.url?.url}
                     className="group flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
                   >
                     <Icon className="h-5 w-5 text-white/80 transition-colors group-hover:text-white" />
