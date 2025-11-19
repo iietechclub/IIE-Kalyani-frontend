@@ -13,7 +13,7 @@ export const fetchGlobalPageData = cache(async () => {
         title description
       }
 
-      contactNo contactEmail locationTitle
+      contactNo contactEmail location
       topLinks { id label url { url newTab download } }
 
       logoTitle logoSubtitle

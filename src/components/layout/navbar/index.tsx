@@ -1,8 +1,9 @@
-import { ChevronDown, Mail, Phone } from "lucide-react";
 import Link from "next/link";
+import { LuChevronDown, LuMail, LuPhone } from "react-icons/lu";
 
 import BackendImage from "@/components/BackendImage";
 import MobileNavbar from "@/components/layout/navbar/MobileNavbar";
+
 import { Button } from "@/components/ui/button";
 import DynamicIcon from "@/components/ui/dynamic-icon";
 
@@ -25,14 +26,14 @@ export default async function Navbar() {
                 href={`tel:${data.contactNo}`}
                 className="flex items-center gap-2 text-white transition-colors hover:text-[#FFB627]"
               >
-                <Phone className="h-4 w-4" />
+                <LuPhone className="size-4" />
                 <span className="text-xs lg:text-sm">{data.contactNo}</span>
               </a>
               <a
                 href={`mailto:${data.contactEmail}`}
                 className="flex items-center gap-2 text-white transition-colors hover:text-[#FFB627]"
               >
-                <Mail className="h-4 w-4" />
+                <LuMail className="size-4" />
                 <span className="text-xs lg:text-sm">{data.contactEmail}</span>
               </a>
             </div>
@@ -68,7 +69,7 @@ export default async function Navbar() {
                 alt={data.logoImage.alternativeText}
                 width="64"
                 height="64"
-                className="h-12 w-12 object-contain md:h-16 md:w-16"
+                className="size-12 object-contain md:size-16"
               />
               <div>
                 <h1 className="tracking-tight transition-all duration-500 group-hover:opacity-80">
@@ -91,7 +92,7 @@ export default async function Navbar() {
                         className="group/menu-guide relative flex items-center gap-1 rounded-lg px-4 py-2 transition-colors hover:bg-white/5"
                       >
                         {title}
-                        <ChevronDown className="h-4 w-4" />
+                        <LuChevronDown className="h-4 w-4" />
 
                         <div className="absolute inset-x-0 bottom-0 hidden h-5 translate-y-full group-hover/menu-guide:block" />
                       </button>
@@ -140,13 +141,13 @@ export default async function Navbar() {
 type DropdownProps = {
   submenus: Submenu[];
   columns?: number;
-  image?: Image;
+  image?: Media;
   context: { title: string; subtitle: string };
 };
 const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
   <div className="-translate-x-1/2 absolute top-22 left-1/2 z-50 max-h-0 w-full max-w-7xl overflow-hidden opacity-0 transition-all duration-500 ease-in-[cubic-bezier(0.4,0,0.2,1)] group-hover/menu:max-h-[1000px] group-hover/menu:opacity-100">
     <div
-      className="rounded-2xl bg-white shadow-lg transition-all duration-250 dark:bg-gray-800"
+      className="rounded-2xl bg-white shadow-lg transition-all duration-250"
       style={{ boxShadow: "0 6px 25px rgba(0,0,0,0.12)" }}
     >
       <div className="mx-auto max-w-7xl px-6 py-8">
@@ -155,14 +156,14 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
           <div className="shrink-0 grow basis-[65%]">
             <div
               className={cn(
-                "grid h-full grid-cols-1 gap-5 divide-x divide-neutral-100 dark:divide-gray-700",
+                "grid h-full grid-cols-1 gap-5 divide-x divide-neutral-100",
                 columns === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2",
               )}
             >
               {submenus.map(({ id, title, children }, idx) => (
                 <div key={id} className={cn(!idx ? "px-5" : "pr-5")}>
                   <h3
-                    className="mb-2 border-neutral-100 border-b px-4 pb-3 font-medium text-gray-800 text-sm uppercase dark:border-gray-700 dark:text-gray-200"
+                    className="mb-2 border-neutral-100 border-b px-4 pb-3 font-medium text-gray-800 text-sm uppercase"
                     style={{
                       fontSize: "14px",
                       letterSpacing: "1.2px",
@@ -175,7 +176,7 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
                       <Link
                         key={id}
                         href={url?.url ?? "#"}
-                        className="flex items-center gap-2.5 rounded-xl px-4 py-2.5 text-gray-600 transition-colors duration-150 hover:bg-red-50 hover:text-red-700 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-red-500"
+                        className="flex items-center gap-2.5 rounded-xl px-4 py-2.5 text-gray-600 transition-colors duration-150 hover:bg-red-50 hover:text-red-700"
                       >
                         {icon && (
                           <DynamicIcon

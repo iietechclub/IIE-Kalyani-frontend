@@ -1,7 +1,7 @@
 "use client";
-import { ChevronDown, ExternalLink, LinkIcon, Menu } from "lucide-react";
 import Link from "next/link";
 import { Activity, useState } from "react";
+import { LuChevronDown, LuExternalLink, LuLink, LuMenu } from "react-icons/lu";
 
 import DynamicIcon from "@/components/ui/dynamic-icon";
 import {
@@ -26,7 +26,7 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
           className="-mr-2 min-h-11 min-w-11 rounded-lg p-3 transition-colors active:bg-white/10"
           aria-label="Open menu"
         >
-          <Menu className="h-7 w-7" />
+          <LuMenu className="size-7" />
         </button>
       </SheetTrigger>
       <SheetContent side="right" className="w-72 overflow-y-auto">
@@ -46,7 +46,7 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
                   }
                 >
                   <span className="text-lg">{title}</span>
-                  <ChevronDown
+                  <LuChevronDown
                     className={cn(
                       "size-5 transition-transform",
                       activeMenu === documentId && "rotate-180",
@@ -99,9 +99,9 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
               >
                 {title}
                 {link.url?.newTab ? (
-                  <ExternalLink className="ml-3 size-4" />
+                  <LuExternalLink className="ml-3 size-4" />
                 ) : (
-                  <LinkIcon className="ml-3 size-4" />
+                  <LuLink className="ml-3 size-4" />
                 )}
               </Link>
             ),

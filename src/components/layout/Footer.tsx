@@ -1,36 +1,39 @@
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-  Twitter,
-  Youtube,
-} from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+
+import { LuMail, LuMapPin, LuPhone } from "react-icons/lu";
+import {
+  SiFacebook,
+  SiInstagram,
+  SiLinkedin,
+  SiWhatsapp,
+  SiX,
+  SiYoutube,
+} from "react-icons/si";
+import BackendImage from "@/components/BackendImage";
+
 import { fetchGlobalPageData } from "@/dal/global";
+
+const socialIcons = {
+  Facebook: SiFacebook,
+  Twitter: SiX,
+  LinkedIn: SiLinkedin,
+  Instagram: SiInstagram,
+  YouTube: SiYoutube,
+  WhatsApp: SiWhatsapp,
+};
+
+async function getCurrentYear() {
+  "use cache";
+  return new Date().getFullYear();
+}
 
 export default async function Footer() {
   const data = await fetchGlobalPageData();
+  const currentYear = getCurrentYear();
 
-  const socialIcons = {
-    Facebook: Facebook,
-    YouTube: Youtube,
-    Linkedin: Linkedin,
-    Instagram: Instagram,
-    Twitter: Twitter,
-    WhatsApp: MessageCircle,
-  };
-
-  const fallbackImg = "/favicon.png";
-  const currentYear = "2025";
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-[#E63946] via-[#E63946] to-[#FF6B35] text-white">
+    <footer className="relative overflow-hidden bg-linear-to-br from-[#E63946] via-[#E63946] to-[#FF6B35] text-white">
       {/* Background decoration */}
-
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-[#FFB627] blur-3xl" />
         <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-white blur-3xl" />
@@ -38,38 +41,35 @@ export default async function Footer() {
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 gap-8 py-12 md:grid-cols-2 md:gap-12 md:py-16 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-8 py-12 md:gap-12 md:py-16 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-white/20 md:h-20 md:w-20">
-                <Image
-                  src={data.logoImage.url ? data.logoImage.url : fallbackImg}
-                  alt={data.logoImage.alternativeText}
-                  className="h-16 w-16 object-contain md:h-20 md:w-20"
-                />
-              </div>
+              <BackendImage
+                width="80"
+                height="80"
+                src={data.logoImage.url}
+                alt={data.logoImage.alternativeText}
+                className="size-14 shrink-0 object-contain md:size-16"
+              />
               <div>
-                <h3
-                  className="text-white"
-                  style={{ fontSize: "1.7rem", lineHeight: "1.2" }}
-                >
+                <h3 className="font-semibold text-white text-xl sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl">
                   {data.logoTitle}
                 </h3>
-                <p className="mt-1 text-[#FCBF49] text-sm">
+                <p className="mt-1 text-[#FCBF49] text-xs md:text-sm">
                   {data.logoSubtitle}
                 </p>
               </div>
             </div>
-            <p className="mb-6 text-white/80 leading-relaxed">
+            <p className="mb-6 text-sm text-white/80 leading-relaxed sm:text-base">
               {data.footerDescription}
             </p>
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 gap-y-3 lg:grid-cols-1 lg:gap-x-3 xl:grid-cols-2 [@media(31.5rem<=width<64rem)]:grid-cols-2">
               <Link
                 href={`tel:${data.contactNo}`}
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-[#F77F00]">
-                  <Phone className="h-5 w-5" />
+                <div className="shrink-0 rounded-lg bg-white/10 p-2.5 transition-colors group-hover:bg-[#f77f00]">
+                  <LuPhone className="size-5" />
                 </div>
                 <span>{data.contactNo}</span>
               </Link>
@@ -77,51 +77,52 @@ export default async function Footer() {
                 href={`mailto:${data.contactEmail}`}
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-[#F77F00]">
-                  <Mail className="h-5 w-5" />
+                <div className="shrink-0 rounded-lg bg-white/10 p-2.5 transition-colors group-hover:bg-[#f77f00]">
+                  <LuMail className="size-5" />
                 </div>
                 <span>{data.contactEmail}</span>
-              </Link>
-              <Link
-                href="https://maps.app.goo.gl/4UTi7mvbz5NhgV2f9"
-                className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-[#F77F00]">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <span>{data.locationTitle}</span>
               </Link>
             </div>
           </div>
 
-          {data.footerColumns.map((m) => (
-            <div className="menu" key={m.documentId}>
-              <div>
-                <h4 className="mb-6 border-[#FCBF49]/30 border-b pb-3 text-white">
-                  {m.title}
-                </h4>
-                <ul className="space-y-3">
-                  {m.items.map((item) => (
-                    <li key={item.id}>
-                      <Link
-                        href={item.url?.url ? item.url.url : ""}
-                        target={item.url?.newTab ? "_blank" : "_self"}
-                        className="group flex items-center gap-2 text-white/80 transition-colors hover:text-[#FCBF49]"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:col-span-3">
+            {data.footerColumns.map(({ documentId, title, items }) => (
+              <div key={documentId}>
+                <div>
+                  <h4 className="mb-6 border-[#FCBF49]/30 border-b pb-3 text-white">
+                    {title}
+                  </h4>
+                  <ul className="space-y-3">
+                    {items.map(({ id, label, url }) => (
+                      <li key={id}>
+                        <Link
+                          href={url?.url ?? "#"}
+                          target={url?.newTab ? "_blank" : undefined}
+                          rel={url?.newTab ? "noopener noreferrer" : undefined}
+                          className="group flex items-center gap-2 text-white/80 transition-colors hover:text-[#FCBF49]"
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <div
-          id="location"
-          className="col-span-1 mt-6 md:col-span-2 lg:col-span-5"
-        >
+        <div className="col-span-1 mt-6 flex-col items-end space-y-2 md:col-span-2 md:flex lg:col-span-5">
+          <Link
+            href="https://maps.app.goo.gl/4UTi7mvbz5NhgV2f9"
+            target="_blank"
+            className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49] md:flex-row-reverse"
+          >
+            <div className="shrink-0 rounded-lg bg-white/10 p-2.5 transition-colors group-hover:bg-[#f77f00]">
+              <LuMapPin className="size-5" />
+            </div>
+            <span>{data.location}</span>
+          </Link>
           <div className="w-full overflow-hidden rounded-lg border border-white/10">
             <iframe
               title="Ideal Institute of Engineering - Map"
@@ -137,22 +138,22 @@ export default async function Footer() {
         <div className="border-white/10 border-t py-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-4">
-              {data.socialLinks.map((item) => {
-                const Icon = socialIcons[item.platform];
-                return (
+              {data.socialLinks
+                .map((v) => ({ ...v, Icon: socialIcons[v.platform] }))
+                .map(({ documentId, platform, url, Icon }) => (
                   <Link
-                    key={item.documentId}
-                    href={item.url?.url ? item.url.url : ""}
-                    className="group flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
+                    key={documentId}
+                    target="_blank"
+                    title={platform}
+                    href={url?.url ?? "#"}
+                    className="group rounded-lg bg-white/10 p-2.5 backdrop-blur-sm transition-colors hover:bg-white/20"
                   >
-                    <Icon className="h-5 w-5 text-white/80 transition-colors group-hover:text-white" />
+                    <Icon className="size-5 text-white/80 transition-colors group-hover:text-white" />
                   </Link>
-                );
-              })}
+                ))}
             </div>
             <p className="text-sm text-white/70">
-              ©{currentYear} Ideal Institute of Engineering. All rights
-              reserved.
+              © {currentYear} {data.logoTitle}. All rights reserved.
             </p>
           </div>
         </div>
