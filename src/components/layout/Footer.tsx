@@ -10,6 +10,7 @@ import {
   Youtube,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { fetchGlobalPageData } from "@/dal/global";
 
 export default async function Footer() {
@@ -63,7 +64,7 @@ export default async function Footer() {
               {data.footerDescription}
             </p>
             <div className="space-y-3">
-              <a
+              <Link
                 href={`tel:${data.contactNo}`}
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
@@ -71,8 +72,8 @@ export default async function Footer() {
                   <Phone className="h-5 w-5" />
                 </div>
                 <span>{data.contactNo}</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href={`mailto:${data.contactEmail}`}
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
@@ -80,8 +81,8 @@ export default async function Footer() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <span>{data.contactEmail}</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://maps.app.goo.gl/4UTi7mvbz5NhgV2f9"
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
@@ -89,7 +90,7 @@ export default async function Footer() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <span>{data.locationTitle}</span>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -102,13 +103,13 @@ export default async function Footer() {
                 <ul className="space-y-3">
                   {m.items.map((item) => (
                     <li key={item.id}>
-                      <a
-                        href={item.url?.url}
+                      <Link
+                        href={item.url?.url ? item.url.url : ""}
                         target={item.url?.newTab ? "_blank" : "_self"}
                         className="group flex items-center gap-2 text-white/80 transition-colors hover:text-[#FCBF49]"
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -139,13 +140,13 @@ export default async function Footer() {
               {data.socialLinks.map((item) => {
                 const Icon = socialIcons[item.platform];
                 return (
-                  <a
+                  <Link
                     key={item.documentId}
-                    href={item.url?.url}
+                    href={item.url?.url ? item.url.url : ""}
                     className="group flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
                   >
                     <Icon className="h-5 w-5 text-white/80 transition-colors group-hover:text-white" />
-                  </a>
+                  </Link>
                 );
               })}
             </div>
