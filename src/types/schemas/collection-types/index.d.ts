@@ -32,3 +32,31 @@ type SocialLink = {
 
 type Url = { url: string; newTab: boolean };
 type UrlWithDownload = prettify<Url & { download: boolean }>;
+ 
+type GalleryItem = {
+    title: string;
+    tag: string;
+    image?: Media;
+    videoPreview?: Media;
+    youtubeUrl?: string;
+}
+
+type Facility = {
+    image: Media;
+    title: string;
+    description: string;
+}
+
+type Department = {
+    name: string;
+    tagline: string;
+    previewImage: Media;
+    bannerImage: Media;
+    icon: string;
+}
+
+type WhyChoose = {
+    image: Media;
+    title: string;
+    description: string;
+}
