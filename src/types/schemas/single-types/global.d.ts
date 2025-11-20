@@ -21,11 +21,3 @@ type GlobalPageData = {
   footerDescription: string;
   footerColumns: FooterColumn[];
 };
- 
-type Home = {
-    banners: Banner[];
-    why_choose_cards: WhyChoose[];
-    departments: Department[];
-    facilities: Facility[];
-    gallery_items: GalleryItem[];
-}

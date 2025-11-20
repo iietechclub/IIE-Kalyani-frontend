@@ -60,3 +60,10 @@ type WhyChoose = {
     title: string;
     description: string;
 }
+
+type Banner = {
+    title: string;
+    tag: string;
+    subtitle: string;
+    ctabuttons?: CTAButtons[];
+}
