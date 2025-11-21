@@ -1,8 +1,19 @@
-// biome-ignore-all lint/correctness/noUnusedVariables: Globally used type
+// biome-ignore-all lint/correctness/noUnusedVariables: Globally used
 
-type CTAButtons = {
+type ButtonVariant = "Primary" | "Secondary" | "Ghost";
+
+type CTAButton = prettify<
+  ComponentType & {
     name: string;
-    variant: "Primary" | "Secondary" | "Ghost";
+    variant: ButtonVariant;
     containsLink: boolean;
-    url?: Url;    
-}
+    url?: Url;
+  }
+>;
+
+type LinkButton = prettify<
+  ComponentType & {
+    variant: ButtonVariant;
+    url?: Url;
+  }
+>;

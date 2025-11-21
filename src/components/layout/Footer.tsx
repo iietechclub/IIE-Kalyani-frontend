@@ -35,8 +35,8 @@ export default async function Footer() {
     <footer className="relative overflow-hidden bg-linear-to-br from-[#E63946] via-[#E63946] to-[#FF6B35] text-white">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-[#FFB627] blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-white blur-3xl" />
+        <div className="absolute top-0 right-0 size-96 rounded-full bg-[#FFB627] blur-3xl" />
+        <div className="absolute bottom-0 left-0 size-96 rounded-full bg-white blur-3xl" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
@@ -47,16 +47,16 @@ export default async function Footer() {
               <BackendImage
                 width="80"
                 height="80"
-                src={data.logoImage.url}
-                alt={data.logoImage.alternativeText}
+                src={data.organizationLogo.url}
+                alt={data.organizationLogo.alternativeText}
                 className="size-14 shrink-0 object-contain md:size-16"
               />
               <div>
                 <h3 className="font-semibold text-white text-xl sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl">
-                  {data.logoTitle}
+                  {data.organizationName}
                 </h3>
                 <p className="mt-1 text-[#FCBF49] text-xs md:text-sm">
-                  {data.logoSubtitle}
+                  {data.organizationSubtitle}
                 </p>
               </div>
             </div>
@@ -153,7 +153,7 @@ export default async function Footer() {
                 ))}
             </div>
             <p className="text-sm text-white/70">
-              © {currentYear} {data.logoTitle}. All rights reserved.
+              © {currentYear} {data.organizationName}. All rights reserved.
             </p>
           </div>
         </div>

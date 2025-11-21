@@ -32,7 +32,7 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
       <SheetContent side="right" className="w-72 overflow-y-auto">
         <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
         <SheetDescription className="sr-only">
-          Navigate through {data.logoTitle} website sections
+          Navigate through {data.organizationName} website sections
         </SheetDescription>
         <div className="mt-8 flex flex-col space-y-2 px-4">
           {data.menus.map(({ documentId, title, contains, link, submenus }) =>

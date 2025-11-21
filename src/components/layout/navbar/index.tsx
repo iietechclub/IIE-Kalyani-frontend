@@ -38,7 +38,7 @@ export default async function Navbar() {
               </a>
             </div>
             <div className="flex items-center gap-3 lg:gap-6">
-              {data.topLinks.map((link) => (
+              {data.quickLinks.map((link) => (
                 <Link
                   key={link.id}
                   href={link.url?.url ?? "#"}
@@ -65,18 +65,18 @@ export default async function Navbar() {
             >
               <BackendImage
                 preload
-                src={data.logoImage.url}
-                alt={data.logoImage.alternativeText}
+                src={data.organizationLogo.url}
+                alt={data.organizationLogo.alternativeText}
                 width="64"
                 height="64"
                 className="size-12 object-contain md:size-16"
               />
               <div>
                 <h1 className="tracking-tight transition-all duration-500 group-hover:opacity-80">
-                  {data.logoTitle}
+                  {data.organizationName}
                 </h1>
                 <p className="text-xs transition-colors duration-500 md:text-sm">
-                  {data.logoSubtitle}
+                  {data.organizationSubtitle}
                 </p>
               </div>
             </Link>
@@ -92,7 +92,7 @@ export default async function Navbar() {
                         className="group/menu-guide relative flex items-center gap-1 rounded-lg px-4 py-2 transition-colors hover:bg-white/5"
                       >
                         {title}
-                        <LuChevronDown className="h-4 w-4" />
+                        <LuChevronDown className="size-4" />
 
                         <div className="absolute inset-x-0 bottom-0 hidden h-5 translate-y-full group-hover/menu-guide:block" />
                       </button>
@@ -181,7 +181,7 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
                         {icon && (
                           <DynamicIcon
                             name={icon}
-                            className="h-4 w-4 shrink-0 text-red-500"
+                            className="size-4 shrink-0 text-red-500"
                           />
                         )}
                         <span className="text-sm">{label}</span>
@@ -200,7 +200,7 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
             {/* <ImageWithFallback
                   src={imageUrl}
                   alt={altText}
-                  className="h-full w-full object-cover transition-all duration-300"
+                  className="size-full object-cover transition-all duration-300"
                 /> */}
 
             <div className="absolute right-0 bottom-0 left-0 z-20 p-6">

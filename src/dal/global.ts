@@ -14,10 +14,10 @@ export const fetchGlobalPageData = cache(async () => {
       }
 
       contactNo contactEmail location
-      topLinks { id label url { url newTab download } }
+      quickLinks { id label url { url newTab download } }
 
-      logoTitle logoSubtitle
-      logoImage { url alternativeText }
+      organizationName organizationShortName
+      organizationSubtitle organizationLogo { url alternativeText }
       menus {
         documentId title contains
         link { variant url { url newTab } }
