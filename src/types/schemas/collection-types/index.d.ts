@@ -25,6 +25,8 @@ type Facility = prettify<
   CollectionType & {
     image: Media;
     title: string;
+    tag?: string;
+    icon?: string;
     description: string;
   }
 >;

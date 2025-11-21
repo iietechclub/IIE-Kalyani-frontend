@@ -1,6 +1,6 @@
 /** biome-ignore-all lint/correctness/noUnusedVariables: Globally used */
 
-type Home = {
+type HomePageData = {
   banners: Banner[];
   why_choose_cards: WhyChoose[];
   departments: Department[];
