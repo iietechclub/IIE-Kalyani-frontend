@@ -11,9 +11,9 @@ type CTAButton = prettify<
   }
 >;
 
-type LinkButton = prettify<
-  ComponentType & {
-    variant: ButtonVariant;
-    url?: Url;
-  }
->;
+type LinkButton = {
+  variant: ButtonVariant;
+  url?: Url;
+};
+
+type LinkButtonWithId = prettify<ComponentType & LinkButton>;

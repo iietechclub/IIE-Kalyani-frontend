@@ -53,7 +53,7 @@ type Menu = prettify<
   CollectionType & {
     title: string;
     contains: MenuContains;
-    link: { variant: string; url?: Url };
+    link: LinkButton;
     menuItems: MenuItem[];
     submenus: Submenu[];
   }
