@@ -5,7 +5,7 @@ import { gql, graphqlQuery } from "@/lib/graphql";
 
 export const fetchHomePageData = cache(async () => {
   "use cache";
-  cacheLife("minutes");
+  cacheLife("hours");
 
   const query = gql`{
     home {

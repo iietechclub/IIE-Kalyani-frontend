@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: ReadonlyChildren) {
       <html lang="en">
         <body
           className={cn(
-            "min-h-dvh antialiased md:subpixel-antialiased",
+            "antialiased md:subpixel-antialiased",
             nunito.className,
           )}
         >

@@ -1,11 +1,9 @@
-import { cacheLife } from "next/cache";
 import { cache } from "react";
 
 import { gql, graphqlQuery } from "@/lib/graphql";
 
 export const fetchGlobalPageData = cache(async () => {
   "use cache";
-  cacheLife("minutes");
 
   const query = gql`{
     global {

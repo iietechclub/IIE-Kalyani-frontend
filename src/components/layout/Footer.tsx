@@ -44,17 +44,19 @@ export default async function Footer() {
         <div className="grid grid-cols-1 gap-8 py-12 md:gap-12 md:py-16 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-4">
-              <BackendImage
-                width="80"
-                height="80"
-                src={data.organizationLogo.url}
-                alt={data.organizationLogo.alternativeText}
-                className="size-14 shrink-0 object-contain md:size-16"
-              />
+              <div className="rounded-lg bg-white/15 p-0.5">
+                <BackendImage
+                  width="80"
+                  height="80"
+                  src={data.organizationLogo.url}
+                  alt={data.organizationLogo.alternativeText}
+                  className="size-10 shrink-0 object-contain sm:size-12 md:size-16"
+                />
+              </div>
               <div>
-                <h3 className="font-semibold text-white text-xl sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl">
+                <p className="text-pretty font-semibold text-white text-xl sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl">
                   {data.organizationName}
-                </h3>
+                </p>
                 <p className="mt-1 text-[#FCBF49] text-xs md:text-sm">
                   {data.organizationSubtitle}
                 </p>
@@ -63,13 +65,13 @@ export default async function Footer() {
             <p className="mb-6 text-sm text-white/80 leading-relaxed sm:text-base">
               {data.footerDescription}
             </p>
-            <div className="grid grid-cols-1 gap-y-3 lg:grid-cols-1 lg:gap-x-3 xl:grid-cols-2 [@media(31.5rem<=width<64rem)]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-y-3 text-sm sm:text-base lg:grid-cols-1 lg:gap-x-3 xl:grid-cols-2 [@media(31.5rem<=width<64rem)]:grid-cols-2">
               <Link
                 href={`tel:${data.contactNo}`}
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
                 <div className="shrink-0 rounded-lg bg-white/10 p-2.5 transition-colors group-hover:bg-[#f77f00]">
-                  <LuPhone className="size-5" />
+                  <LuPhone className="size-4 sm:size-5" />
                 </div>
                 <span>{data.contactNo}</span>
               </Link>
@@ -78,20 +80,20 @@ export default async function Footer() {
                 className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49]"
               >
                 <div className="shrink-0 rounded-lg bg-white/10 p-2.5 transition-colors group-hover:bg-[#f77f00]">
-                  <LuMail className="size-5" />
+                  <LuMail className="size-4 sm:size-5" />
                 </div>
                 <span>{data.contactEmail}</span>
               </Link>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:col-span-3">
-            {data.footerColumns.map(({ documentId, title, items }) => (
-              <div key={documentId}>
-                <div>
-                  <h4 className="mb-6 border-[#FCBF49]/30 border-b pb-3 text-white">
+          <nav className="lg:col-span-3">
+            <ul className="grid grid-cols-2 gap-y-8 sm:grid-cols-3">
+              {data.footerColumns.map(({ documentId, title, items }) => (
+                <li key={documentId}>
+                  <p className="mb-6 border-[#FCBF49]/30 border-b pb-3 text-sm text-white sm:text-base">
                     {title}
-                  </h4>
+                  </p>
                   <ul className="space-y-3">
                     {items.map(({ id, label, url }) => (
                       <li key={id}>
@@ -99,27 +101,27 @@ export default async function Footer() {
                           href={url?.url ?? "#"}
                           target={url?.newTab ? "_blank" : undefined}
                           rel={url?.newTab ? "noopener noreferrer" : undefined}
-                          className="group flex items-center gap-2 text-white/80 transition-colors hover:text-[#FCBF49]"
+                          className="group flex items-center gap-2 text-white/80 text-xs transition-colors hover:text-[#FCBF49] sm:text-sm"
                         >
                           {label}
                         </Link>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-            ))}
-          </div>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
         <div className="col-span-1 mt-6 flex-col items-end space-y-2 md:col-span-2 md:flex lg:col-span-5">
           <Link
             href="https://maps.app.goo.gl/4UTi7mvbz5NhgV2f9"
             target="_blank"
-            className="group flex items-center gap-3 text-white/80 transition-colors hover:text-[#FCBF49] md:flex-row-reverse"
+            className="group flex items-center gap-3 text-sm text-white/80 transition-colors hover:text-[#FCBF49] sm:text-base md:flex-row-reverse"
           >
             <div className="shrink-0 rounded-lg bg-white/10 p-2.5 transition-colors group-hover:bg-[#f77f00]">
-              <LuMapPin className="size-5" />
+              <LuMapPin className="size-4 sm:size-5" />
             </div>
             <span>{data.location}</span>
           </Link>
