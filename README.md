@@ -1,16 +1,16 @@
 ## Getting Started
 
-Prerequisites [Bun](https://bun.com/docs/installation#windows), [Node.js 22+](https://nodejs.org/dist/v24.11.1/node-v24.11.1-x64.msi).
+Prerequisites [Pnpm](https://pnpm.io/installation#using-winget), [Node.js 22+](https://nodejs.org/dist/v24.11.1/node-v24.11.1-x64.msi).
 
-Install Dependencies using bun:
+Install Dependencies using pnpm:
 ```bash
-bun i
+pnpm i
 ```
 
 First, run the development server:
 
 ```bash
-bun dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
