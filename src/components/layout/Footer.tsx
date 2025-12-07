@@ -9,6 +9,7 @@ import {
   SiX,
   SiYoutube,
 } from "react-icons/si";
+
 import BackendImage from "@/components/BackendImage";
 
 import { fetchGlobalPageData } from "@/dal/global";

@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   cacheComponents: true,
+  experimental: { turbopackFileSystemCacheForDev: true },
   images: {
     remotePatterns: [
       {
@@ -12,6 +13,11 @@ const nextConfig: NextConfig = {
         hostname: "localhost",
         port: "1337",
         pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
       },
     ],
     dangerouslyAllowLocalIP: env.NODE_ENV === "development",

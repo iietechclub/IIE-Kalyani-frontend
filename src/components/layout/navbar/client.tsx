@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 
 export default function NavbarClient({ data }: { data: GlobalPageData }) {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const isHomePage = pathname === "/";
   const bgTransparent = isHomePage && !isScrolled;
@@ -33,8 +33,8 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 shadow-lg transition-all duration-500",
-        bgTransparent && "shadow-none",
+        "sticky top-0 z-50 shadow-primary/10 transition-all duration-500",
+        !bgTransparent && "shadow-xs",
       )}
     >
       {/* Upper Utility Bar - Hidden on mobile */}
@@ -203,7 +203,7 @@ type DropdownProps = {
 };
 const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
   <div className="-translate-x-1/2 absolute top-22 left-1/2 z-50 max-h-0 w-full max-w-7xl overflow-hidden rounded-2xl bg-transparent opacity-0 shadow-lg transition-all duration-500 group-hover/menu:max-h-250 group-hover/menu:opacity-100">
-    <div className="border-neutral-100 border-t bg-white transition-all duration-250">
+    <div className="border-neutral-100 border-t-2 bg-white transition-all duration-250">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <div className="flex">
           {/* Left Section (65%) - Submenus */}
@@ -224,7 +224,7 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
                       <li key={id}>
                         <Link
                           href={url?.url ?? "#"}
-                          className="flex items-center gap-2.5 rounded-xl px-4 py-2.5 text-gray-600 transition-colors duration-150 hover:bg-red-50 hover:text-red-700"
+                          className="flex items-center gap-3.5 rounded-md px-4 py-3 text-gray-600 transition-colors duration-150 hover:bg-red-50 hover:text-red-700"
                         >
                           {icon && (
                             <DynamicIcon
@@ -232,7 +232,7 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
                               className="size-4 shrink-0 text-red-500"
                             />
                           )}
-                          <span className="text-sm">{label}</span>
+                          <span className="text-sm leading-4">{label}</span>
                         </Link>
                       </li>
                     ))}
