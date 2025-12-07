@@ -1,11 +1,9 @@
-import { cacheLife } from "next/cache";
 import { cache } from "react";
 
 import { gql, graphqlQuery } from "@/lib/graphql";
 
 export const fetchGlobalPageData = cache(async () => {
   "use cache";
-  cacheLife("minutes");
 
   const query = gql`{
     global {
@@ -13,11 +11,11 @@ export const fetchGlobalPageData = cache(async () => {
         title description
       }
 
-      contactNo contactEmail locationTitle
-      topLinks { id label url { url newTab download } }
+      contactNo contactEmail location
+      quickLinks { id label url { url newTab download } }
 
-      logoTitle logoSubtitle
-      logoImage { url alternativeText }
+      organizationName organizationShortName
+      organizationSubtitle organizationLogo { url alternativeText }
       menus {
         documentId title contains
         link { variant url { url newTab } }

@@ -1,0 +1,104 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.mjs text eol=lf
+*.mts text eol=lf
+*.cjs text eol=lf
+*.cts text eol=lf
+
+# Web files
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.sass text eol=lf
+*.less text eol=lf
+
+# Configuration files
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.xml text eol=lf
+*.graphql text eol=lf
+*.md text eol=lf
+*.mdx text eol=lf
+
+# Environment & config
+.env* text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+.npmrc text eol=lf
+.nvmrc text eol=lf
+biome.json text eol=lf
+tsconfig*.json text eol=lf
+next.config.* text eol=lf
+postcss.config.* text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# Documentation
+LICENSE text eol=lf
+README* text eol=lf
+CHANGELOG* text eol=lf
+
+# Graphics
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text eol=lf
+*.webp binary
+*.avif binary
+
+# Fonts
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+
+# Archives
+*.zip binary
+*.tar binary
+*.gz binary
+*.7z binary
+*.rar binary
+
+# Videos
+*.mp4 binary
+*.mov binary
+*.avi binary
+*.webm binary
+
+# Audio
+*.mp3 binary
+*.wav binary
+*.ogg binary
+
+# Exclude from exports
+.github export-ignore
+.vscode export-ignore
+.next export-ignore
+node_modules export-ignore
+.env* export-ignore
+*.log export-ignore
+
+# Mark generated files
+package-lock.json -diff
+bun.lockb binary -diff
+yarn.lock -diff
+pnpm-lock.yaml -diff
+
+# Linguist language detection
+*.tsx linguist-language=TypeScript
+*.ts linguist-language=TypeScript
+*.d.ts linguist-detectable=false
+schema.graphql linguist-generated=true
