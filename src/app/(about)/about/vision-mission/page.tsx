@@ -225,7 +225,7 @@ export default function VisionMission() {
               "To nurture entrepreneurial mindset and innovation",
             ].map((text, idx) => (
               <div key={idx} className="flex items-start gap-3">
-                <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[11px] text-white sm:h-8 sm:w-8 sm:text-xs">
+                <div className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] text-white sm:size-8 sm:text-xs">
                   ✓
                 </div>
                 <p className="text-muted-foreground text-xs leading-relaxed sm:text-sm md:text-base">
@@ -237,8 +237,8 @@ export default function VisionMission() {
         </section>
 
         {/* Quote */}
-        <section className="mt-6 mb-10 px-4 text-center sm:mt-8 sm:mb-12">
-          <blockquote className="mx-auto max-w-3xl font-bold text-[24px] text-base text-gray-600 italic sm:text-lg md:text-xl">
+        <section className="mt-10 mb-1 px-4 text-center sm:mt-12 sm:mb-6 md:mt-14 md:mb-7">
+          <blockquote className="text mx-auto max-w-3xl font-bold text-base text-gray-600 italic sm:text-lg md:text-xl xl:text-2xl">
             “Empowering students with knowledge, values, and innovation to shape
             a better tomorrow.”
           </blockquote>

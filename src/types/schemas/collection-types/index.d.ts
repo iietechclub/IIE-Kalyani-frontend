@@ -17,7 +17,7 @@ type Department = prettify<
     tagline: string;
     previewImage: Media;
     bannerImage: Media;
-    icon?: string;
+    icon?: IconField;
   }
 >;
 
@@ -26,7 +26,7 @@ type Facility = prettify<
     image: Media;
     title: string;
     tag?: string;
-    icon?: string;
+    icon?: IconField;
     description: string;
   }
 >;
@@ -47,6 +47,16 @@ type GalleryItem = prettify<
     image?: Media;
     videoPreview?: Media;
     youtubeUrl?: string;
+  }
+>;
+
+type Leadership = prettify<
+  CollectionType & {
+    type: string;
+    name: string;
+    image: Media;
+    message: RichTextBlocks;
+    quote?: string;
   }
 >;
 

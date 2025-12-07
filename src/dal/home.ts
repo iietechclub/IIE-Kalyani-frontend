@@ -22,21 +22,37 @@ export const fetchHomePageData = cache(async () => {
         image { url alternativeText }
       }
 
+      departments_tagline
       departments {
         documentId name tagline
         previewImage { url alternativeText } 
       }
 
+      facilities_tagline
       facilities {
         documentId title tag description
         image { url alternativeText }
       }
 
+      gallery_tagline
       gallery_items {
         documentId title tag type
         image { url alternativeText }
         youtubeUrl videoPreview { url alternativeText }
       }
+
+      our_recruiters_tagline
+      our_recruiters_avg_offers
+      our_recruiters_internship_offers
+      our_recruiters_avg_ctc
+      our_recruiters_recruiting_sectors {
+        id name icon
+      }
+
+      our_creative_team_tagline
+      our_creative_team_youtube_video_link
+      our_creative_team_image { url alternativeText }
+      our_creative_team_quotation
     }
   }
   `;

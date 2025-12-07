@@ -1,3 +1,4 @@
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import {
   LuAward,
@@ -10,9 +11,12 @@ import {
 import { CheckmarkIcon } from "@/components/checkmark-icon";
 import { Card, CardContent } from "@/components/ui/card";
 
+import { fetchAboutPageData } from "@/dal/about";
 import WelfareHubSection from "./welfare-hub-section";
 
-export default function Overview() {
+export default async function Overview() {
+  const data = await fetchAboutPageData();
+
   const keyPoints = [
     {
       icon: LuAward,
@@ -79,7 +83,7 @@ export default function Overview() {
             About IIE Kalyani
           </h1>
           <p className="mx-auto max-w-2xl text-muted-foreground text-sm sm:text-base md:text-lg">
-            A Premier Institution for Technical Education and Innovation
+            {data.subtitle}
           </p>
         </div>
 
@@ -128,7 +132,8 @@ export default function Overview() {
               Welcome to Ideal Institute of Engineering
             </h2>
             <div className="space-y-3 text-muted-foreground text-xs leading-relaxed sm:space-y-4 sm:text-sm md:text-base">
-              <p>
+              <BlocksRenderer content={data.welcome_description} />
+              {/* <p>
                 Ideal Institute of Engineering (IIE), Kalyani is a premier
                 institution dedicated to providing quality technical education
                 and fostering innovation. Established with a vision to create
@@ -148,7 +153,7 @@ export default function Overview() {
                 extracurricular activities, sports, cultural events, and
                 technical competitions to develop well-rounded professionals
                 ready for the challenges of the modern world.
-              </p>
+              </p> */}
             </div>
           </div>
 

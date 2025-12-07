@@ -4,7 +4,7 @@ type MenuItem<U = Url> = prettify<
   ComponentType & {
     label: string;
     url?: prettify<U>;
-    icon?: string;
+    icon?: IconField;
   }
 >;
 
