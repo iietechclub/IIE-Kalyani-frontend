@@ -103,9 +103,9 @@ export default async function Overview() {
 
         {/* Key Stats */}
         <div className="mb-12 grid grid-cols-2 gap-4 sm:mb-16 sm:grid-cols-2 sm:gap-6 md:grid-cols-4">
-          {keyPoints.map((point, idx) => (
+          {keyPoints.map((point) => (
             <Card
-              key={idx}
+              key={point.title}
               className="border border-white/20 bg-white/70 backdrop-blur-lg transition-all duration-300 hover:shadow-lg"
             >
               <CardContent className="p-4 text-center sm:p-6">
@@ -157,8 +157,11 @@ export default async function Overview() {
               Why Choose IIE Kalyani?
             </h2>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-              {highlights.map((highlight, idx) => (
-                <div key={idx} className="flex items-start gap-2 sm:gap-3">
+              {highlights.map((highlight) => (
+                <div
+                  key={highlight}
+                  className="flex items-start gap-2 sm:gap-3"
+                >
                   <CheckmarkIcon className="mt-0.5 h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
                   <span className="text-muted-foreground text-xs leading-snug sm:text-sm md:text-base">
                     {highlight}
@@ -180,8 +183,8 @@ export default async function Overview() {
               { number: "100+", label: "Student Projects" },
               { number: "25+", label: "Awards Won" },
               { number: "15+", label: "Publications" },
-            ].map((item, idx) => (
-              <div key={idx} className="text-center">
+            ].map((item) => (
+              <div key={item.label} className="text-center">
                 <div className="mb-1 text-2xl text-primary sm:mb-2 sm:text-3xl md:text-4xl">
                   {item.number}
                 </div>
