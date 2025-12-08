@@ -25,6 +25,13 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
   });
 
   useEffect(() => {
+    // Scroll to top on route change except for hash links
+    if (!pathname.split("/").reverse()[0].startsWith("#")) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
+
+  useEffect(() => {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -104,7 +111,7 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
               <div>
                 <h1
                   className={cn(
-                    "font-medium text-black text-xl tracking-tight transition-all duration-500 group-hover:opacity-80 sm:text-2xl md:text-3xl",
+                    "font-medium text-black text-xl tracking-tight transition-colors duration-500 group-hover:opacity-80 sm:text-2xl md:text-3xl",
                     bgTransparent && "text-white",
                   )}
                 >

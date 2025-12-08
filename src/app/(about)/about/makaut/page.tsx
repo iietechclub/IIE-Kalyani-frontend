@@ -12,16 +12,97 @@ import {
   LuUsers,
 } from "react-icons/lu";
 
+import { cn } from "@/lib/utils";
+
 export default function Makaut() {
+  const recognitionAndAccreditation = [
+    {
+      title: "UGC Recognition",
+      desc: "Recognized by the University Grants Commission (UGC), Government of India",
+    },
+    {
+      title: "State University",
+      desc: "Approved by the Government of West Bengal under Act 2001",
+    },
+    {
+      title: "AICTE Approved",
+      desc: "All programs comply with AICTE standards and guidelines",
+    },
+    {
+      title: "NBA Accreditation",
+      desc: "Several programs accredited by the National Board of Accreditation",
+    },
+  ];
+
+  const universityDetails = [
+    ["Location:", "Kolkata, West Bengal"],
+    ["Type:", "Public State University"],
+    ["Chancellor:", "Hon'ble Governor of WB"],
+  ];
+
+  const programsOffered = [
+    {
+      icon: LuBookOpen,
+      title: "Engineering & Technology",
+      programs: ["B.Tech", "M.Tech", "Integrated M.Tech"],
+      className: "from-blue-500 to-blue-600",
+    },
+    {
+      icon: LuBuilding2,
+      title: "Management Studies",
+      programs: ["MBA", "PGDM", "Executive MBA"],
+      className: "from-green-500 to-green-600",
+    },
+    {
+      icon: LuGraduationCap,
+      title: "Computer Applications",
+      programs: ["MCA", "BCA", "Diploma Programs"],
+      className: "from-purple-500 to-purple-600",
+    },
+    {
+      icon: LuFileText,
+      title: "Pharmacy",
+      programs: ["B.Pharm", "M.Pharm", "Pharm.D"],
+      className: "from-orange-500 to-orange-600",
+    },
+    {
+      icon: LuTrendingUp,
+      title: "Architecture",
+      programs: ["B.Arch", "M.Arch", "Urban Planning"],
+      className: "from-red-500 to-red-600",
+    },
+    {
+      icon: LuAward,
+      title: "Hotel Management",
+      programs: ["BHM", "Diploma in HM", "Advanced Courses"],
+      color: "from-pink-500 to-pink-600",
+    },
+  ];
+
+  const affiliationKeyPoints = [
+    { title: "Updated Curriculum", icon: LuFileText },
+    { title: "Recognized Degrees", icon: LuAward },
+    { title: "Quality Assurance", icon: LuTrendingUp },
+  ];
+
+  const affiliationBenefits = [
+    "National Recognition",
+    "Standardized Education",
+    "Research Opportunities",
+    "Higher Education",
+    "Enhanced Employability",
+    "Network & Resources",
+  ];
+
   return (
-    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
+    <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <div className="relative bg-linear-to-r from-red-600 to-red-700 py-12 text-white sm:py-16 md:py-20">
-        <div className="absolute inset-0 bg-black/8"></div>
+        <div className="absolute inset-0 bg-black/8" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
             <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">
-              <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
+              <LuGraduationCap className="size-9 text-white sm:size-11" />
             </div>
 
             <div className="min-w-0">
@@ -78,33 +159,14 @@ export default function Makaut() {
               </h3>
 
               <div className="space-y-3 sm:space-y-4">
-                {[
-                  {
-                    title: "UGC Recognition",
-                    desc: "Recognized by the University Grants Commission (UGC), Government of India",
-                  },
-                  {
-                    title: "State University",
-                    desc: "Approved by the Government of West Bengal under Act 2001",
-                  },
-                  {
-                    title: "AICTE Approved",
-                    desc: "All programs comply with AICTE standards and guidelines",
-                  },
-                  {
-                    title: "NBA Accreditation",
-                    desc: "Several programs accredited by the National Board of Accreditation",
-                  },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3 sm:gap-4">
+                {recognitionAndAccreditation.map(({ title, desc }) => (
+                  <div key={title} className="flex items-start gap-3 sm:gap-4">
                     <LuCheck className="mt-0.5 h-4 w-4 shrink-0 text-green-600 sm:h-5 sm:w-5" />
                     <div className="min-w-0">
                       <h4 className="mb-0.5 text-gray-900 text-sm sm:text-base">
-                        {item.title}
+                        {title}
                       </h4>
-                      <p className="text-gray-600 text-xs sm:text-sm">
-                        {item.desc}
-                      </p>
+                      <p className="text-gray-600 text-xs sm:text-sm">{desc}</p>
                     </div>
                   </div>
                 ))}
@@ -115,22 +177,16 @@ export default function Makaut() {
           {/* Right Column */}
           <div className="space-y-6 sm:space-y-8">
             <div className="relative overflow-hidden rounded-2xl shadow-lg">
-              <div className="h-56 w-full object-cover sm:h-64 md:h-72 lg:h-80">
+              <div className="h-56 w-full sm:h-64 md:h-72 lg:h-80">
                 <Image
                   fill
-                  src="https://images.unsplash.com/photo-1562774053-701939374585?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  src="https://images.shiksha.com/mediadata/images/articles/1661339417phpsZb9hC.jpeg"
                   alt="MAKAUT University"
-                  className="h-56 w-full object-cover sm:h-64 md:h-72 lg:h-80"
+                  className="object-cover"
                   loading="lazy"
                 />
               </div>
-              {/* <ImageWithFallback
-                src="https://images.unsplash.com/photo-1562774053-701939374585?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                alt="MAKAUT University"
-                className="h-56 w-full object-cover sm:h-64 md:h-72 lg:h-80"
-                loading="lazy"
-              /> */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+              <div className="absolute inset-x-0 top-1/2 bottom-0 bg-linear-to-t from-black/90 to-transparent" />
               <div className="absolute right-0 bottom-0 left-0 p-4 text-white sm:p-6">
                 <h3 className="mb-1 font-semibold text-base sm:mb-2 sm:text-lg md:text-xl">
                   Excellence in Technical Education
@@ -171,11 +227,7 @@ export default function Makaut() {
                 University Details
               </h3>
               <div className="space-y-2 text-xs sm:space-y-3 sm:text-sm">
-                {[
-                  ["Location:", "Kolkata, West Bengal"],
-                  ["Type:", "Public State University"],
-                  ["Chancellor:", "Hon'ble Governor of WB"],
-                ].map(([label, value]) => (
+                {universityDetails.map(([label, value]) => (
                   <div
                     key={label}
                     className="flex justify-between border-gray-100 border-b pb-1 sm:pb-2"
@@ -209,62 +261,27 @@ export default function Makaut() {
           </h2>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-            {[
-              {
-                icon: LuBookOpen,
-                title: "Engineering & Technology",
-                programs: ["B.Tech", "M.Tech", "Integrated M.Tech"],
-                color: "from-blue-500 to-blue-600",
-              },
-              {
-                icon: LuBuilding2,
-                title: "Management Studies",
-                programs: ["MBA", "PGDM", "Executive MBA"],
-                color: "from-green-500 to-green-600",
-              },
-              {
-                icon: LuGraduationCap,
-                title: "Computer Applications",
-                programs: ["MCA", "BCA", "Diploma Programs"],
-                color: "from-purple-500 to-purple-600",
-              },
-              {
-                icon: LuFileText,
-                title: "Pharmacy",
-                programs: ["B.Pharm", "M.Pharm", "Pharm.D"],
-                color: "from-orange-500 to-orange-600",
-              },
-              {
-                icon: LuTrendingUp,
-                title: "Architecture",
-                programs: ["B.Arch", "M.Arch", "Urban Planning"],
-                color: "from-red-500 to-red-600",
-              },
-              {
-                icon: LuAward,
-                title: "Hotel Management",
-                programs: ["BHM", "Diploma in HM", "Advanced Courses"],
-                color: "from-pink-500 to-pink-600",
-              },
-            ].map((category, idx) => {
-              const Icon = category.icon;
-              return (
+            {programsOffered.map(
+              ({ icon: Icon, title, programs, className }) => (
                 <div
-                  key={idx}
+                  key={title}
                   className="rounded-xl border border-gray-100 bg-white p-4 transition-all hover:shadow-md sm:p-5"
                 >
                   <div
-                    className={`h-10 w-10 rounded-lg bg-linear-to-br sm:h-12 sm:w-12 ${category.color} mb-3 flex items-center justify-center`}
+                    className={cn(
+                      "mb-3 flex size-10 items-center justify-center rounded-lg bg-linear-to-br sm:size-12",
+                      className,
+                    )}
                   >
-                    <Icon className="h-5 w-5 text-white sm:h-6 sm:w-6" />
+                    <Icon className="size-5 text-white sm:size-6" />
                   </div>
                   <h3 className="mb-2 font-semibold text-gray-900 text-sm sm:text-base">
-                    {category.title}
+                    {title}
                   </h3>
                   <ul className="space-y-1">
-                    {category.programs.map((program, idx) => (
+                    {programs.map((program) => (
                       <li
-                        key={idx}
+                        key={program}
                         className="flex items-start gap-2 text-gray-600 text-xs sm:text-sm"
                       >
                         <span className="text-red-600">•</span>
@@ -273,8 +290,8 @@ export default function Makaut() {
                     ))}
                   </ul>
                 </div>
-              );
-            })}
+              ),
+            )}
           </div>
         </div>
 
@@ -290,13 +307,9 @@ export default function Makaut() {
           </p>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-6">
-            {[
-              ["Updated Curriculum", LuFileText],
-              ["Recognized Degrees", LuAward],
-              ["Quality Assurance", LuTrendingUp],
-            ].map(([title, Icon], i) => (
+            {affiliationKeyPoints.map(({ title, icon: Icon }) => (
               <div
-                key={i}
+                key={title}
                 className="rounded-lg bg-white p-3 text-center shadow-sm sm:p-4"
               >
                 <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 sm:mb-3 sm:h-12 sm:w-12">
@@ -321,15 +334,8 @@ export default function Makaut() {
           </h2>
 
           <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
-            {[
-              "National Recognition",
-              "Standardized Education",
-              "Research Opportunities",
-              "Higher Education",
-              "Enhanced Employability",
-              "Network & Resources",
-            ].map((title, i) => (
-              <div key={i} className="flex items-start gap-3 sm:gap-4">
+            {affiliationBenefits.map((title) => (
+              <div key={title} className="flex items-start gap-3 sm:gap-4">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-100 sm:h-10 sm:w-10">
                   <LuCheck className="size-4 text-green-600 sm:h-5 sm:w-5" />
                 </div>
@@ -347,16 +353,6 @@ export default function Makaut() {
           </div>
         </div>
       </div>
-
-      {/* small utility styles */}
-      <style>{`
-        /* Ensure hero text wraps nicely on very small screens */
-        @media (max-width: 420px) {
-          .truncate {
-            white-space: normal;
-          }
-        }
-      `}</style>
-    </div>
+    </main>
   );
 }
