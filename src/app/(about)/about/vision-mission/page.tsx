@@ -1,15 +1,4 @@
-// Full updated VisionMission component with new hero header and reduced spacing
-
-import {
-  LuAward,
-  LuEye,
-  LuHeart,
-  LuLightbulb,
-  LuShield,
-  LuSparkles,
-  LuTarget,
-  LuUsers,
-} from "react-icons/lu";
+import { LuEye, LuTarget } from "react-icons/lu";
 
 import { MotionDiv } from "@/components/animated/motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
