@@ -8,10 +8,13 @@ import {
   LuUsers,
 } from "react-icons/lu";
 
+import BackendImage from "@/components/BackendImage";
 import { CheckmarkIcon } from "@/components/checkmark-icon";
 import { Card, CardContent } from "@/components/ui/card";
 
 import { fetchAboutPageData } from "@/dal/about";
+import { cn } from "@/lib/utils";
+
 import WelfareHubSection from "./welfare-hub-section";
 
 export default async function Overview() {
@@ -78,10 +81,10 @@ export default async function Overview() {
         {/* Hero Image */}
         <div className="mb-10 overflow-hidden rounded-2xl shadow-2xl sm:mb-14">
           <div className="relative h-48 w-full sm:h-72 md:h-96">
-            <Image
+            <BackendImage
               fill
-              src="https://images.unsplash.com/photo-1724436781032-c1645c5783ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
-              alt="IIE Kalyani Campus"
+              src={data.mainImage.url}
+              alt={data.mainImage.alternativeText}
               className="object-cover"
             />
           </div>
@@ -89,18 +92,19 @@ export default async function Overview() {
 
         {/* Key Stats */}
         <div className="mb-12 grid grid-cols-2 gap-4 sm:mb-16 sm:grid-cols-2 sm:gap-6 md:grid-cols-4">
-          {keyPoints.map((point, idx) => (
+          {keyPoints.map((point) => (
             <Card
-              key={idx}
+              key={point.title}
               className="border border-white/20 bg-white/70 backdrop-blur-lg transition-all duration-300 hover:shadow-lg"
             >
               <CardContent className="p-4 text-center sm:p-6">
                 <div
-                  className={`h-10 w-10 sm:h-12 sm:w-12 ${point.bgColor} mx-auto mb-3 flex items-center justify-center rounded-xl`}
+                  className={cn(
+                    "mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl sm:h-12 sm:w-12",
+                    point.bgColor,
+                  )}
                 >
-                  <point.icon
-                    className={`h-5 w-5 sm:h-6 sm:w-6 ${point.color}`}
-                  />
+                  <point.icon className={cn("size-5 sm:size-6", point.color)} />
                 </div>
                 <h3 className="mb-1 font-semibold text-foreground text-sm sm:text-base md:text-lg">
                   {point.title}
@@ -114,46 +118,23 @@ export default async function Overview() {
         </div>
 
         {/* Main Content */}
-        <div className="mb-12 grid gap-8 sm:mb-16 sm:gap-12 lg:grid-cols-2">
+        <div className="mb-12 grid grid-cols-1 items-center gap-x-2 gap-y-8 sm:mb-16 sm:gap-12 lg:grid-cols-2">
           <div>
             <h2 className="mb-4 font-semibold text-foreground text-xl sm:mb-6 sm:text-2xl md:text-3xl">
               Welcome to Ideal Institute of Engineering
             </h2>
             <div className="space-y-3 text-muted-foreground text-xs leading-relaxed sm:space-y-4 sm:text-sm md:text-base">
               <BlocksRenderer content={data.welcome_description} />
-              {/* <p>
-                Ideal Institute of Engineering (IIE), Kalyani is a premier
-                institution dedicated to providing quality technical education
-                and fostering innovation. Established with a vision to create
-                future leaders and innovators, we have been at the forefront of
-                engineering education for over 15 years.
-              </p>
-              <p>
-                We are an AICTE approved institution offering undergraduate
-                programs in various engineering disciplines. Our commitment to
-                academic excellence, combined with state-of-the-art
-                infrastructure and experienced faculty, creates an environment
-                conducive to learning and growth.
-              </p>
-              <p>
-                At IIE Kalyani, we believe in holistic development of our
-                students. Beyond academics, we encourage participation in
-                extracurricular activities, sports, cultural events, and
-                technical competitions to develop well-rounded professionals
-                ready for the challenges of the modern world.
-              </p> */}
             </div>
           </div>
 
-          <div>
-            <div className="relative h-56 w-full overflow-hidden rounded-2xl shadow-xl sm:h-72 md:h-full">
-              <Image
-                fill
-                src="https://images.unsplash.com/photo-1686213011624-8578b598ef0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                alt="IIE Kalyani Students"
-                className="object-cover"
-              />
-            </div>
+          <div className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl shadow-xl sm:h-72 sm:w-auto md:h-80 lg:h-64 xl:h-80">
+            <iframe
+              className="size-full rounded-2xl object-cover"
+              src={`${data.welcome_video_youtube_link}?autoplay=1&mute=1&controls=1&playsinline=1&loop=1&playlist=nGXb2P9oF6k&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&disablekb=1`}
+              title="IIE Kalyani"
+              allow="autoplay; fullscreen"
+            />
           </div>
         </div>
 
@@ -188,8 +169,8 @@ export default async function Overview() {
               { number: "100+", label: "Student Projects" },
               { number: "25+", label: "Awards Won" },
               { number: "15+", label: "Publications" },
-            ].map((item, idx) => (
-              <div key={idx} className="text-center">
+            ].map((item) => (
+              <div key={item.label} className="text-center">
                 <div className="mb-1 text-2xl text-primary sm:mb-2 sm:text-3xl md:text-4xl">
                   {item.number}
                 </div>

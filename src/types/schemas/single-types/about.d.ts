@@ -8,7 +8,7 @@ type AboutPageData = {
   placement_percentage: number;
 
   welcome_description: RichTextBlocks;
-  welcome_image: Media;
+  welcome_video_youtube_link: string;
 
   why_choose_points: ShortText[];
 

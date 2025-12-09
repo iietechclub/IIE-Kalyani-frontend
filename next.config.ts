@@ -8,12 +8,9 @@ const nextConfig: NextConfig = {
   experimental: { turbopackFileSystemCacheForDev: true },
   images: {
     remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
-        pathname: "/uploads/**",
-      },
+      new URL("http://localhost:1337/uploads/**"),
+      new URL("https://images.shiksha.com/mediadata/images/articles/*"),
+      new URL("https://content.jdmagicbox.com/v2/comp/delhi/**"),
       {
         protocol: "https",
         hostname: "images.unsplash.com",

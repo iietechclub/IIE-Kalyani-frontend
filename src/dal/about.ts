@@ -14,7 +14,7 @@ export const fetchAboutPageData = cache(async () => {
     alumni placement_percentage
 
     welcome_description
-    welcome_image { url alternativeText }
+    welcome_video_youtube_link
 
     why_choose_points { id text }
 
@@ -30,6 +30,6 @@ export const fetchAboutPageData = cache(async () => {
     query,
   }).then((res) => res?.about ?? null);
 
-  if (!data) throw Error("The global page data must always remain available.");
+  if (!data) throw Error("The about page data must always remain available.");
   return data;
 });

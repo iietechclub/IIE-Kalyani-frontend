@@ -12,11 +12,57 @@ import {
   LuUsers,
 } from "react-icons/lu";
 
+import { cn } from "@/lib/utils";
+
 export default function Aicte() {
+  const coreFunctions = [
+    [
+      "Planning & Coordination",
+      "Systematic planning and development of technical education",
+    ],
+    ["Quality Assurance", "Maintaining high standards nationwide"],
+    ["Approval & Accreditation", "Granting approval and accrediting programs"],
+    ["Policy Development", "Formulating progressive education policies"],
+    ["Monitoring & Evaluation", "Regular assessment of institutions"],
+  ];
+
+  const details = [
+    ["Headquarters:", "New Delhi"],
+    ["Type:", "Statutory Body"],
+    ["Under:", "Ministry of Education"],
+  ];
+
+  const programsCovered = [
+    {
+      icon: LuBookOpen,
+      title: "Engineering & Technology",
+      desc: "B.Tech, M.Tech, B.E., M.E., and Integrated Programs",
+      className: "from-blue-500 to-blue-600",
+    },
+    {
+      icon: LuBuilding2,
+      title: "Management",
+      desc: "MBA, PGDM, Executive MBA, and Specialized Programs",
+      className: "from-green-500 to-green-600",
+    },
+    {
+      icon: LuLightbulb,
+      title: "Computer Applications",
+      desc: "MCA, BCA, and Advanced Computing Programs",
+      className: "from-purple-500 to-purple-600",
+    },
+    {
+      icon: LuFileText,
+      title: "Architecture & Pharmacy",
+      desc: "B.Arch, M.Arch, B.Pharm, M.Pharm, and related courses",
+      className: "from-orange-500 to-orange-600",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white pb-12">
+    <main className="min-h-screen bg-linear-to-b from-gray-50 to-white pb-12">
       {/* Hero Section */}
-      <header className="relative bg-linear-to-r from-blue-600 to-red-600 py-10 text-white sm:py-14 md:py-18">
+      <div className="relative bg-linear-to-r from-blue-600 to-red-600 py-10 text-white sm:py-14 md:py-18">
         <div className="absolute inset-0 bg-black/8"></div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-3 flex flex-col items-start gap-3 sm:mb-4 sm:flex-row sm:items-center sm:gap-4">
@@ -39,10 +85,10 @@ export default function Aicte() {
             of academic delivery and infrastructure.
           </p>
         </div>
-      </header>
+      </div>
 
       {/* Content Section */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 md:py-12 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 md:py-12 lg:px-8">
         <div className="mb-8 grid grid-cols-1 gap-6 sm:mb-12 sm:gap-8 lg:grid-cols-2">
           {/* Left Column */}
           <section className="space-y-5">
@@ -75,29 +121,8 @@ export default function Aicte() {
               </h3>
 
               <div className="space-y-3">
-                {[
-                  [
-                    "Planning & Coordination",
-                    "Systematic planning and development of technical education",
-                  ],
-                  [
-                    "Quality Assurance",
-                    "Maintaining high standards nationwide",
-                  ],
-                  [
-                    "Approval & Accreditation",
-                    "Granting approval and accrediting programs",
-                  ],
-                  [
-                    "Policy Development",
-                    "Formulating progressive education policies",
-                  ],
-                  [
-                    "Monitoring & Evaluation",
-                    "Regular assessment of institutions",
-                  ],
-                ].map(([title, desc], idx) => (
-                  <div key={idx} className="flex items-start gap-2 sm:gap-3">
+                {coreFunctions.map(([title, desc]) => (
+                  <div key={title} className="flex items-start gap-2 sm:gap-3">
                     <LuCheck className="mt-0.5 h-4 w-4 shrink-0 text-green-600 sm:h-5 sm:w-5" />
                     <div>
                       <h4 className="mb-0.5 text-gray-900 text-sm sm:text-base">
@@ -127,19 +152,13 @@ export default function Aicte() {
               <div className="h-48 w-full sm:h-64 md:h-72 lg:h-80">
                 <Image
                   fill
-                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  src="https://content.jdmagicbox.com/v2/comp/delhi/l2/011pxx11.xx11.170919220015.u9l2/catalogue/aicte-office-vasant-vihar-delhi-schools-2mpw1ridwr.jpg"
                   alt="AICTE Approved Institution"
                   className="object-cover"
                   loading="lazy"
                 />
               </div>
-              {/* <ImageWithFallback
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                alt="AICTE Approved Institution"
-                className="h-48 w-full object-cover sm:h-64 md:h-72 lg:h-80"
-                loading="lazy"
-              /> */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+              <div className="absolute inset-x-0 top-1/2 bottom-0 bg-linear-to-t from-black/90 to-transparent" />
               <div className="absolute right-0 bottom-0 left-0 p-3 text-white sm:p-4">
                 <h3 className="mb-0.5 font-semibold text-sm sm:text-lg">
                   National Standards of Excellence
@@ -176,11 +195,7 @@ export default function Aicte() {
                 AICTE Details
               </h3>
               <div className="space-y-2 text-xs sm:text-sm">
-                {[
-                  ["Headquarters:", "New Delhi"],
-                  ["Type:", "Statutory Body"],
-                  ["Under:", "Ministry of Education"],
-                ].map(([label, value]) => (
+                {details.map(([label, value]) => (
                   <div
                     key={label}
                     className="flex justify-between border-gray-100 border-b pb-1"
@@ -200,7 +215,7 @@ export default function Aicte() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 text-blue-600 text-xs hover:underline sm:text-sm"
                   >
-                    aicte-india.org <LuExternalLink className="h-3 w-3" />
+                    aicte-india.org <LuExternalLink className="size-3" />
                   </a>
                 </div>
               </div>
@@ -216,51 +231,28 @@ export default function Aicte() {
             Programs Covered Under AICTE
           </h2>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-            {[
-              [
-                LuBookOpen,
-                "Engineering & Technology",
-                "B.Tech, M.Tech, B.E., M.E., and Integrated Programs",
-                "from-blue-500 to-blue-600",
-              ],
-              [
-                LuBuilding2,
-                "Management",
-                "MBA, PGDM, Executive MBA, and Specialized Programs",
-                "from-green-500 to-green-600",
-              ],
-              [
-                LuLightbulb,
-                "Computer Applications",
-                "MCA, BCA, and Advanced Computing Programs",
-                "from-purple-500 to-purple-600",
-              ],
-              [
-                LuFileText,
-                "Architecture & Pharmacy",
-                "B.Arch, M.Arch, B.Pharm, M.Pharm, and related courses",
-                "from-orange-500 to-orange-600",
-              ],
-            ].map(([Icon, title, desc, color], idx) => {
-              return (
+            {programsCovered.map(({ icon: Icon, title, desc, className }) => (
+              <div
+                key={title}
+                className="rounded-xl border border-gray-100 bg-white p-3 transition-all hover:shadow-md sm:p-4"
+              >
                 <div
-                  key={idx}
-                  className="rounded-xl border border-gray-100 bg-white p-3 transition-all hover:shadow-md sm:p-4"
+                  className={cn(
+                    "mb-2 flex size-9 items-center justify-center rounded-lg bg-linear-to-br sm:h-10 sm:w-10",
+                    className,
+                  )}
                 >
-                  <div
-                    className={`h-9 w-9 rounded-lg bg-linear-to-br sm:h-10 sm:w-10 ${color} mb-2 flex items-center justify-center`}
-                  >
-                    <Icon className="h-4 w-4 text-white sm:h-5 sm:w-5" />
-                  </div>
-                  <h3 className="mb-1 font-semibold text-gray-900 text-sm sm:text-base">
-                    {title}
-                  </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm">{desc}</p>
+                  <Icon className="size-4 text-white sm:size-5" />
                 </div>
-              );
-            })}
+                <h3 className="mb-1 font-semibold text-gray-900 text-sm sm:text-base">
+                  {title}
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm">{desc}</p>
+              </div>
+            ))}
           </div>
         </section>
+
         <section className="mt-12 rounded-2xl border border-blue-500/20 bg-linear-to-r from-blue-600/10 via-red-600/10 to-blue-600/10 p-6 text-center sm:p-8">
           <h2 className="mb-3 font-semibold text-gray-900 text-xl sm:text-2xl">
             IIE Kalyani – Under AICTE Approval
@@ -272,14 +264,7 @@ export default function Aicte() {
             guidelines.
           </p>
         </section>
-      </main>
-
-      {/* utility styles */}
-      <style>{`
-        @media (max-width: 420px) {
-          .truncate { white-space: normal; }
-        }
-      `}</style>
-    </div>
+      </div>
+    </main>
   );
 }
