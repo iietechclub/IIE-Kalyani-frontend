@@ -19,6 +19,7 @@ import WelfareHubSection from "./welfare-hub-section";
 
 export default async function Overview() {
   const data = await fetchAboutPageData();
+  
 
   const keyPoints = [
     {
@@ -51,21 +52,8 @@ export default async function Overview() {
     },
   ];
 
-  const highlights = [
-    "AICTE approved institution offering quality technical education",
-    "Highly qualified and experienced faculty with industry expertise",
-    "Modern infrastructure with state-of-the-art laboratories",
-    "Strong industry partnerships and collaborations",
-    "Comprehensive placement assistance and career guidance",
-    "Regular workshops, seminars, and guest lectures by industry experts",
-    "Active student clubs and technical societies",
-    "Focus on practical learning and hands-on experience",
-    "Digital library with extensive collection of books and e-resources",
-    "Sports facilities and cultural activities for holistic development",
-    "Affordable fee structure with scholarship opportunities",
-    "Excellent connectivity and transportation facilities",
-  ];
-
+  const highlights = data.why_choose_points || [];
+  
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-white pt-6">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
@@ -158,14 +146,11 @@ export default async function Overview() {
               Why Choose IIE Kalyani?
             </h2>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-              {highlights.map((highlight) => (
-                <div
-                  key={highlight}
-                  className="flex items-start gap-2 sm:gap-3"
-                >
+              {highlights.map((highlight: any) => (
+                <div key={highlight.id} className="flex items-start gap-2 sm:gap-3">
                   <CheckmarkIcon className="mt-0.5 h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
                   <span className="text-muted-foreground text-xs leading-snug sm:text-sm md:text-base">
-                    {highlight}
+                    {highlight.text}
                   </span>
                 </div>
               ))}
