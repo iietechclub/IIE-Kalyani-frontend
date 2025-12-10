@@ -26,15 +26,15 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
           className="-mr-2 min-h-11 min-w-11 rounded-lg p-3 transition-colors active:bg-white/10"
           aria-label="Open menu"
         >
-          <LuMenu className="size-7" />
+          <LuMenu className="size-5 sm:size-7" />
         </button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-72 overflow-y-auto">
+      <SheetContent side="right" className="w-64 overflow-y-auto sm:w-72">
         <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
         <SheetDescription className="sr-only">
-          Navigate through {data.logoTitle} website sections
+          Navigate through {data.organizationName} website sections
         </SheetDescription>
-        <div className="mt-8 flex flex-col space-y-2 px-4">
+        <div className="mt-8 flex flex-col px-4">
           {data.menus.map(({ documentId, title, contains, link, submenus }) =>
             contains === "SubMenus" ? (
               <div key={documentId}>
@@ -45,7 +45,7 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
                     setActiveMenu((v) => (v !== documentId ? documentId : null))
                   }
                 >
-                  <span className="text-lg">{title}</span>
+                  <span className="font-semibold">{title}</span>
                   <LuChevronDown
                     className={cn(
                       "size-5 transition-transform",
@@ -56,10 +56,10 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
                 <Activity
                   mode={activeMenu === documentId ? "visible" : "hidden"}
                 >
-                  <div className="space-y-4 pl-4">
-                    {submenus.map(({ title, children }) => (
-                      <div key={title}>
-                        <h3 className="mb-2 text-[#FF6B35]">{title}</h3>
+                  <div className="mb-2 space-y-2 pl-4">
+                    {submenus.map(({ id, title, children }) => (
+                      <div key={id}>
+                        <p className="mb-1.5 text-[#FF6B35]">{title}</p>
                         <ul className="space-y-2">
                           {children.map(({ id, label, url, icon }) => (
                             <li key={id}>
@@ -95,7 +95,7 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
                 href={link.url?.url ?? "#"}
                 target={link.url?.newTab ? "_blank" : undefined}
                 rel={link.url?.newTab ? "noopener noreferrer" : undefined}
-                className="flex items-center py-2 text-lg text-primary/90"
+                className="flex items-center py-2 font-semibold text-primary/90"
               >
                 {title}
                 {link.url?.newTab ? (

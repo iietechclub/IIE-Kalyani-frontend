@@ -5,13 +5,16 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   cacheComponents: true,
+  experimental: { turbopackFileSystemCacheForDev: true },
   images: {
     remotePatterns: [
+      new URL("http://localhost:1337/uploads/**"),
+      new URL("https://images.shiksha.com/mediadata/images/articles/*"),
+      new URL("https://content.jdmagicbox.com/v2/comp/delhi/**"),
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
-        pathname: "/uploads/**",
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
       },
     ],
     dangerouslyAllowLocalIP: env.NODE_ENV === "development",

@@ -1,20 +1,75 @@
-// biome-ignore-all lint/correctness/noUnusedVariables: Globally used type
+// biome-ignore-all lint/correctness/noUnusedVariables: Globally used
 
-type FooterColumn = {
-  documentId: string;
-  title: string;
-  items: MenuItem[];
-};
+type CollectionType = { documentId: string };
+
+type Banner = prettify<
+  CollectionType & {
+    title: string;
+    tag: string;
+    subtitle: string;
+    ctaButtons: CTAButton[];
+  }
+>;
+
+type Department = prettify<
+  CollectionType & {
+    name: string;
+    tagline: string;
+    previewImage: Media;
+    bannerImage: Media;
+    icon?: IconField;
+  }
+>;
+
+type Facility = prettify<
+  CollectionType & {
+    image: Media;
+    title: string;
+    tag?: string;
+    icon?: IconField;
+    description: string;
+  }
+>;
+
+type FooterColumn = prettify<
+  CollectionType & {
+    title: string;
+    items: MenuItem[];
+  }
+>;
+
+type GalleryItemType = "Image" | "Video";
+type GalleryItem = prettify<
+  CollectionType & {
+    title: string;
+    tag: string;
+    type: GalleryItemType;
+    image?: Media;
+    videoPreview?: Media;
+    youtubeUrl?: string;
+  }
+>;
+
+type Leadership = prettify<
+  CollectionType & {
+    type: string;
+    name: string;
+    image: Media;
+    message: RichTextBlocks;
+    quote?: string;
+  }
+>;
 
 type MenuContains = "Links" | "MenuItems" | "SubMenus";
-type Menu = {
-  documentId: string;
-  title: string;
-  contains: MenuContains;
-  link: { variant: string; url?: Url };
-  menuItems: MenuItem[];
-  submenus: Submenu[];
-};
+type Menu = prettify<
+  CollectionType & {
+    title: string;
+    contains: MenuContains;
+    link: LinkButton;
+    menuItems: MenuItem[];
+    submenus: Submenu[];
+  }
+>;
 
 type SocialPlatform =
   | "Facebook"
@@ -24,46 +79,20 @@ type SocialPlatform =
   | "YouTube"
   | "WhatsApp";
 
-type SocialLink = {
-  documentId: string;
-  platform: SocialPlatform;
-  url?: Url;
-};
+type SocialLink = prettify<
+  CollectionType & {
+    platform: SocialPlatform;
+    url?: Url;
+  }
+>;
 
-type Url = { url: string; newTab: boolean };
-type UrlWithDownload = prettify<Url & { download: boolean }>;
- 
-type GalleryItem = {
-    title: string;
-    tag: string;
-    image?: Media;
-    videoPreview?: Media;
-    youtubeUrl?: string;
-}
+type Url = { url: string; newTab?: boolean };
+type UrlWithDownload = prettify<Url & { download?: boolean }>;
 
-type Facility = {
+type WhyChoose = prettify<
+  CollectionType & {
     image: Media;
     title: string;
     description: string;
-}
-
-type Department = {
-    name: string;
-    tagline: string;
-    previewImage: Media;
-    bannerImage: Media;
-    icon: string;
-}
-
-type WhyChoose = {
-    image: Media;
-    title: string;
-    description: string;
-}
-
-type Banner = {
-    title: string;
-    tag: string;
-    subtitle: string;
-    ctabuttons?: CTAButtons[];
-}
+  }
+>;

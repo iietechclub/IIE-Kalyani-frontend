@@ -1,8 +1,4 @@
-// biome-ignore-all lint/correctness/noUnusedVariables: Globally used type
-
-type MenuItemWithUrlDownload = prettify<
-  Omits<MenuItem, "url"> & { url?: UrlWithDownload }
->;
+// biome-ignore-all lint/correctness/noUnusedVariables: Globally used
 
 type GlobalPageData = {
   metadata: SEOMetadata;
@@ -10,11 +6,12 @@ type GlobalPageData = {
   contactNo: string;
   contactEmail: string;
   location: string;
-  topLinks: MenuItemWithUrlDownload[];
+  quickLinks: MenuItem<UrlWithDownload>[];
 
-  logoTitle: string;
-  logoSubtitle: string;
-  logoImage: Media;
+  organizationLogo: Media;
+  organizationName: string;
+  organizationShortName: string;
+  organizationSubtitle: string;
   menus: Menu[];
 
   socialLinks: SocialLink[];

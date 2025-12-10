@@ -1,10 +1,7 @@
-/** biome-ignore-all lint/a11y/noSvgWithoutTitle: not needed */
-"use client";
-
-import { motion } from "framer-motion";
+import { MotionSvg } from "./motion";
 
 const ButtonSpinner = () => (
-  <motion.svg
+  <MotionSvg
     width="16"
     height="16"
     viewBox="0 0 16 16"
@@ -28,7 +25,7 @@ const ButtonSpinner = () => (
       strokeLinecap="round"
       vectorEffect="non-scaling-stroke"
     />
-  </motion.svg>
+  </MotionSvg>
 );
 
 export default ButtonSpinner;
