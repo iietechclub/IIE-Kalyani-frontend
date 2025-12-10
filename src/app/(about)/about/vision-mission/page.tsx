@@ -1,5 +1,3 @@
-// Full updated VisionMission component with new hero header and reduced spacing
-
 import {
   LuEye,
   LuTarget,
@@ -187,7 +185,9 @@ export default async function VisionMission() {
         {/* Quote */}
         <section className="mt-10 mb-1 px-4 text-center sm:mt-12 sm:mb-6 md:mt-14 md:mb-7">
           <blockquote className="relative mx-auto max-w-3xl px-8 text-base sm:text-lg md:py-4 md:text-xl xl:text-2xl">
-            {data.quote}
+            <p>
+              {data.quote}
+            </p>
           </blockquote>
         </section>
       </div>
