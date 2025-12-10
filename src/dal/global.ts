@@ -8,7 +8,8 @@ export const fetchGlobalPageData = cache(async () => {
   const query = gql`{
     global {
       metadata {
-        title description
+        title 
+        description
       }
 
       contactNo contactEmail location

@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function RootLayout({ children }: ReadonlyChildren) {
+export default async function RootLayout({ children, }: ReadonlyChildren) {
   return (
     <Suspense>
       <html lang="en">
