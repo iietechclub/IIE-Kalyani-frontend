@@ -3,8 +3,8 @@ import Image from "next/image";
 import { LuTarget } from "react-icons/lu";
 
 import BackendImage from "@/components/BackendImage";
-import { CheckmarkIcon } from "@/components/checkmark-icon";
 import { Card, CardContent } from "@/components/ui/card";
+import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
 import DynamicIcon from "@/components/ui/dynamic-icon";
 
 import { fetchAboutPageData } from "@/dal/about";
@@ -21,6 +21,7 @@ export default async function Overview() {
         {/* Logo */}
         <div className="mb-6 flex justify-center sm:mb-8">
           <Image
+            priority
             width="128"
             height="128"
             src="/logo.png"
@@ -44,6 +45,7 @@ export default async function Overview() {
           <div className="relative h-48 w-full sm:h-72 md:h-96">
             <BackendImage
               fill
+              preload
               src={data.mainImage.url}
               alt={data.mainImage.alternativeText}
               className="object-cover"
