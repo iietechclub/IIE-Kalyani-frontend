@@ -1,24 +1,11 @@
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
-<<<<<<< HEAD
-import {
-  LuAward,
-  LuGraduationCap,
-  LuTarget,
-  LuTrendingUp,
-  LuUsers,
-} from "react-icons/lu";
-
-import { CheckmarkIcon } from "@/components/checkmark-icon";
-import { Card, CardContent } from "@/components/ui/card";
-=======
 import { LuTarget } from "react-icons/lu";
 
 import BackendImage from "@/components/BackendImage";
 import { CheckmarkIcon } from "@/components/checkmark-icon";
 import { Card, CardContent } from "@/components/ui/card";
 import DynamicIcon from "@/components/ui/dynamic-icon";
->>>>>>> origin/development
 
 import { fetchAboutPageData } from "@/dal/about";
 import { cn } from "@/lib/utils";
@@ -28,40 +15,6 @@ import WelfareHubSection from "./welfare-hub-section";
 export default async function Overview() {
   const data = await fetchAboutPageData();
 
-<<<<<<< HEAD
-  const keyPoints = [
-    {
-      icon: LuAward,
-      title: "AICTE Approved",
-      description: "Recognized institution with quality education standards",
-      color: "text-blue-500",
-      bgColor: "bg-blue-500/10",
-    },
-    {
-      icon: LuGraduationCap,
-      title: "15+ Years of Excellence",
-      description: "Proven track record in engineering education",
-      color: "text-green-500",
-      bgColor: "bg-green-500/10",
-    },
-    {
-      icon: LuUsers,
-      title: "2000+ Alumni",
-      description: "Successful graduates across the globe",
-      color: "text-purple-500",
-      bgColor: "bg-purple-500/10",
-    },
-    {
-      icon: LuTrendingUp,
-      title: "95% Placement",
-      description: "Excellent placement record with top companies",
-      color: "text-orange-500",
-      bgColor: "bg-orange-500/10",
-    },
-  ];
-
-=======
->>>>>>> origin/development
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-white pt-6">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
@@ -89,17 +42,10 @@ export default async function Overview() {
         {/* Hero Image */}
         <div className="mb-10 overflow-hidden rounded-2xl shadow-2xl sm:mb-14">
           <div className="relative h-48 w-full sm:h-72 md:h-96">
-<<<<<<< HEAD
-            <Image
-              fill
-              src="https://images.unsplash.com/photo-1724436781032-c1645c5783ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
-              alt="IIE Kalyani Campus"
-=======
             <BackendImage
               fill
               src={data.mainImage.url}
               alt={data.mainImage.alternativeText}
->>>>>>> origin/development
               className="object-cover"
             />
           </div>
@@ -107,31 +53,6 @@ export default async function Overview() {
 
         {/* Key Stats */}
         <div className="mb-12 grid grid-cols-2 gap-4 sm:mb-16 sm:grid-cols-2 sm:gap-6 md:grid-cols-4">
-<<<<<<< HEAD
-          {keyPoints.map((point, idx) => (
-            <Card
-              key={idx}
-              className="border border-white/20 bg-white/70 backdrop-blur-lg transition-all duration-300 hover:shadow-lg"
-            >
-              <CardContent className="p-4 text-center sm:p-6">
-                <div
-                  className={cn(
-                    "mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl sm:h-12 sm:w-12",
-                    point.bgColor,
-                  )}
-                >
-                  <point.icon className={cn("size-5 sm:size-6", point.color)} />
-                </div>
-                <h3 className="mb-1 font-semibold text-foreground text-sm sm:text-base md:text-lg">
-                  {point.title}
-                </h3>
-                <p className="text-muted-foreground text-xs sm:text-sm">
-                  {point.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-=======
           <KeyPoint
             icon="LuAward"
             title="AICTE Approved"
@@ -160,7 +81,6 @@ export default async function Overview() {
             bgColor="bg-orange-500/10"
             color="text-orange-500"
           />
->>>>>>> origin/development
         </div>
 
         {/* Main Content */}
@@ -192,14 +112,8 @@ export default async function Overview() {
               Why Choose IIE Kalyani?
             </h2>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-<<<<<<< HEAD
-              {/* What is the meaning of idx here?? */}
-              {data.why_choose_points.map(({id, text}, idx) => (
-                <div key={idx} className="flex items-start gap-2 sm:gap-3">
-=======
               {data.why_choose_points.map(({ id, text }) => (
                 <div key={id} className="flex items-start gap-2 sm:gap-3">
->>>>>>> origin/development
                   <CheckmarkIcon className="mt-0.5 h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
                   <span className="text-muted-foreground text-xs leading-snug sm:text-sm md:text-base">
                     {text}
@@ -209,39 +123,6 @@ export default async function Overview() {
             </div>
           </CardContent>
         </Card>
-<<<<<<< HEAD
-
-        {/* Achievements */}
-        <div className="mb-8 rounded-2xl border border-primary/20 bg-linear-to-r from-primary/10 via-red-500/10 to-primary/10 p-4 backdrop-blur-sm sm:mb-12 sm:p-6 md:p-8">
-          <h2 className="mb-4 text-center font-semibold text-foreground text-xl sm:mb-6 sm:text-2xl md:text-3xl">
-            Our Achievements
-          </h2>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-4">
-            {[
-              { number: "50+", label: "Industry Partners" },
-              { number: "100+", label: "Student Projects" },
-              { number: "25+", label: "Awards Won" },
-              { number: "15+", label: "Publications" },
-            ].map((item, idx) => (
-              <div key={idx} className="text-center">
-                <div className="mb-1 text-2xl text-primary sm:mb-2 sm:text-3xl md:text-4xl">
-                  {item.number}
-                </div>
-                <div className="text-[10px] text-muted-foreground sm:text-xs md:text-sm">
-                  {item.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Welfare Hub Section */}
-      <WelfareHubSection />
-    </div>
-  );
-}
-=======
       </div>
 
       {/* Welfare Hub Section */}
@@ -290,4 +171,3 @@ const KeyPoint = (props: KeyPointProps) => (
     </CardContent>
   </Card>
 );
->>>>>>> origin/development

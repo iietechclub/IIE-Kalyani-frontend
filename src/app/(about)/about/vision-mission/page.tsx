@@ -1,13 +1,9 @@
-<<<<<<< HEAD
 // Full updated VisionMission component with new hero header and reduced spacing
 
 import {
   LuEye,
   LuTarget,
 } from "react-icons/lu";
-=======
-import { LuEye, LuTarget } from "react-icons/lu";
->>>>>>> origin/development
 
 import { MotionDiv } from "@/components/animated/motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,26 +11,11 @@ import DynamicIcon from "@/components/ui/dynamic-icon";
 
 import { fetchVisionAndMissionPageData } from "@/dal/vision-and-mission";
 import { cn } from "@/lib/utils";
-<<<<<<< HEAD
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-=======
->>>>>>> origin/development
 
 export default async function VisionMission() {
   const data = await fetchVisionAndMissionPageData();
 
-<<<<<<< HEAD
-=======
-  const mission = [
-    "Provide quality education with industry-relevant curriculum",
-    "Foster research, innovation, and entrepreneurship",
-    "Develop well-rounded professionals with strong ethics",
-    "Build partnerships with industry, academia, and research bodies",
-    "Promote sustainability and social responsibility",
-    "Focus on holistic personality and skill development",
-  ];
-
->>>>>>> origin/development
   const coreValueColors = [
     { color: "text-blue-500", bgColor: "bg-blue-500/10" },
     { color: "text-green-500", bgColor: "bg-green-500/10" },
@@ -44,16 +25,6 @@ export default async function VisionMission() {
     { color: "text-cyan-500", bgColor: "bg-cyan-500/10" },
   ];
 
-<<<<<<< HEAD
-=======
-  const objectives = [
-    "To impart quality technical education and develop industry-ready engineers",
-    "To encourage research and development activities",
-    "To build strong industry-institute partnerships",
-    "To nurture entrepreneurial mindset and innovation",
-  ];
-
->>>>>>> origin/development
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-white pb-12">
       {/* Hero Banner */}
@@ -118,18 +89,7 @@ export default async function VisionMission() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 sm:space-y-4">
-<<<<<<< HEAD
               <BlocksRenderer content={data.vision}/>
-=======
-              <p className="text-muted-foreground text-sm leading-relaxed sm:text-base md:text-lg">
-                To be a globally recognized center of excellence in technical
-                education, research, and innovation.
-              </p>
-              <p className="text-muted-foreground text-sm leading-relaxed sm:text-base">
-                We aspire to nurture leaders and innovators who contribute
-                positively to the world.
-              </p>
->>>>>>> origin/development
             </CardContent>
           </Card>
 
@@ -144,7 +104,6 @@ export default async function VisionMission() {
             </CardHeader>
             <CardContent>
               <ul className="list-inside space-y-2 text-muted-foreground text-xs sm:space-y-3 sm:text-sm md:text-base">
-<<<<<<< HEAD
                 {data.missions.map(({id, text}) => (
                     <li key={id} className="flex items-start gap-3">
                       <span className="mt-0.5 text-primary">•</span>
@@ -152,14 +111,6 @@ export default async function VisionMission() {
                     </li>
                   )
                 )}
-=======
-                {mission.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 text-primary">•</span>
-                    <span className="leading-relaxed">{item}</span>
-                  </li>
-                ))}
->>>>>>> origin/development
               </ul>
             </CardContent>
           </Card>
@@ -172,10 +123,6 @@ export default async function VisionMission() {
           </h2>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-<<<<<<< HEAD
-            {/* What is the meaning of idx and id?? */}
-=======
->>>>>>> origin/development
             {data.core_values.map(({ id, title, icon, description }, idx) => {
               const { color, bgColor } =
                 coreValueColors[idx % coreValueColors.length];
@@ -222,7 +169,6 @@ export default async function VisionMission() {
           </h2>
 
           <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-<<<<<<< HEAD
             {data.objectives.map(({id, text}) => {
               return(
                 <div key={id} className="flex items-start gap-3">
@@ -235,32 +181,13 @@ export default async function VisionMission() {
                 </div>
               );
             })}
-=======
-            {objectives.map((text) => (
-              <div key={text} className="flex items-start gap-3">
-                <div className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] text-white sm:size-8 sm:text-xs">
-                  ✓
-                </div>
-                <p className="text-muted-foreground text-xs leading-relaxed sm:text-sm md:text-base">
-                  {text}
-                </p>
-              </div>
-            ))}
->>>>>>> origin/development
           </div>
         </section>
 
         {/* Quote */}
         <section className="mt-10 mb-1 px-4 text-center sm:mt-12 sm:mb-6 md:mt-14 md:mb-7">
           <blockquote className="relative mx-auto max-w-3xl px-8 text-base sm:text-lg md:py-4 md:text-xl xl:text-2xl">
-<<<<<<< HEAD
             {data.quote}
-=======
-            <p className="inspiring-quote">
-              Empowering students with knowledge, values, and innovation to
-              shape a better tomorrow.
-            </p>
->>>>>>> origin/development
           </blockquote>
         </section>
       </div>
