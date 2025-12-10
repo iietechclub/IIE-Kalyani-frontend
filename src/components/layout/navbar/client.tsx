@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 
 // import { ImageWithFallback } from "./figma/ImageWithFallback";
 
+let initialMount = true;
+
 export default function NavbarClient({ data }: { data: GlobalPageData }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,9 +28,9 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
 
   useEffect(() => {
     // Scroll to top on route change except for hash links
-    if (!pathname.split("/").reverse()[0].startsWith("#")) {
+    if (!initialMount && !pathname.split("/").reverse()[0].startsWith("#")) {
       window.scrollTo(0, 0);
-    }
+    } else initialMount = false;
   }, [pathname]);
 
   useEffect(() => {
@@ -102,10 +104,10 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
             >
               <BackendImage
                 preload
-                src={data.organizationLogo.url}
-                alt={data.organizationLogo.alternativeText}
                 width="64"
                 height="64"
+                src={data.organizationLogo.url}
+                alt={data.organizationLogo.alternativeText}
                 className="size-10 object-contain sm:size-12 md:size-16"
               />
               <div>

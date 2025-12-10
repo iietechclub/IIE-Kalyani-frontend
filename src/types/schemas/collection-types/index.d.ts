@@ -6,19 +6,34 @@ type Banner = prettify<
   CollectionType & {
     title: string;
     tag: string;
+    image: Media;
     subtitle: string;
     ctaButtons: CTAButton[];
   }
 >;
 
-type Department = prettify<
+type Company = prettify<
   CollectionType & {
     name: string;
-    tagline: string;
-    previewImage: Media;
-    bannerImage: Media;
-    icon?: IconField;
+    short_name: string;
+    image: Media;
+    domain: string;
   }
+>;
+
+type CompanyWithoutName = Omits<Company, "name">;
+
+type DepartmentNameOnly = { name: string };
+type Department = prettify<
+  CollectionType &
+    DepartmentNameOnly & {
+      slug: string;
+      short_name: string;
+      tagline: string;
+      previewImage: Media;
+      bannerImage: Media;
+      icon?: IconField;
+    }
 >;
 
 type Facility = prettify<
@@ -72,6 +87,7 @@ type Menu = prettify<
 >;
 
 type SocialPlatform =
+  | "GitHub"
   | "Facebook"
   | "Twitter"
   | "LinkedIn"
@@ -83,6 +99,17 @@ type SocialLink = prettify<
   CollectionType & {
     platform: SocialPlatform;
     url?: Url;
+  }
+>;
+
+type StudentDeveloper = prettify<
+  CollectionType & {
+    name: string;
+    image: Media;
+    contribution: string;
+    department: { name: string };
+    github: string;
+    linkedin: string;
   }
 >;
 

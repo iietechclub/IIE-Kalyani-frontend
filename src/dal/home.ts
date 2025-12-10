@@ -11,6 +11,7 @@ export const fetchHomePageData = cache(async () => {
     home {
       banners {
         documentId tag title subtitle
+        image { url alternativeText }
         ctaButtons {
           id name variant containsLink
           url { url newTab }
@@ -24,14 +25,15 @@ export const fetchHomePageData = cache(async () => {
 
       departments_tagline
       departments {
-        documentId name tagline
+        documentId name slug
+        icon short_name tagline
         previewImage { url alternativeText } 
       }
 
       facilities_tagline
       facilities {
         documentId title tag description
-        image { url alternativeText }
+        icon image { url alternativeText }
       }
 
       gallery_tagline
@@ -52,14 +54,27 @@ export const fetchHomePageData = cache(async () => {
       our_creative_team_tagline
       our_creative_team_youtube_video_link
       our_creative_team_image { url alternativeText }
+      student_developers {
+        documentId name contribution 
+        image { url alternativeText }
+        department { name } github linkedin
+      }
       our_creative_team_quotation
+    }
+
+    placementRecord {
+      companies {
+        documentId short_name domain
+        image { url alternativeText }
+      }
     }
   }
   `;
 
-  const data = await graphqlQuery<{ home: prettify<HomePageData> }>({
-    query,
-  }).then((res) => res?.home ?? null);
+  const data = await graphqlQuery<{
+    home: prettify<HomePageData>;
+    placementRecord: { companies: CompanyWithoutName[] };
+  }>({ query }).then((res) => res ?? null);
 
   if (!data) throw Error("The home page data must always remain available.");
   return data;

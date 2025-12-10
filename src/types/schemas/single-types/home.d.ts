@@ -17,10 +17,11 @@ type HomePageData = {
   our_recruiters_avg_offers: number;
   our_recruiters_internship_offers: number;
   our_recruiters_avg_ctc: number;
-  our_recruiters_recruiting_sectors: QuickCard[];
+  our_recruiters_recruiting_sectors: IconBadge[];
 
   our_creative_team_tagline: string;
   our_creative_team_youtube_video_link: string;
   our_creative_team_image: Media;
+  student_developers: StudentDeveloper[];
   our_creative_team_quotation: string;
 };
