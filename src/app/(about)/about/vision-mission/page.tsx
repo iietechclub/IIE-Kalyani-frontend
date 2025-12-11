@@ -1,15 +1,10 @@
-import {
-  LuEye,
-  LuTarget,
-} from "react-icons/lu";
-
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import { LuEye, LuTarget } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import DynamicIcon from "@/components/ui/dynamic-icon";
-
 import { fetchVisionAndMissionPageData } from "@/dal/vision-and-mission";
 import { cn } from "@/lib/utils";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 export default async function VisionMission() {
   const data = await fetchVisionAndMissionPageData();
@@ -87,7 +82,7 @@ export default async function VisionMission() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 sm:space-y-4">
-              <BlocksRenderer content={data.vision}/>
+              <BlocksRenderer content={data.vision} />
             </CardContent>
           </Card>
 
@@ -102,13 +97,12 @@ export default async function VisionMission() {
             </CardHeader>
             <CardContent>
               <ul className="list-inside space-y-2 text-muted-foreground text-xs sm:space-y-3 sm:text-sm md:text-base">
-                {data.missions.map(({id, text}) => (
-                    <li key={id} className="flex items-start gap-3">
-                      <span className="mt-0.5 text-primary">•</span>
-                      <span className="leading-relaxed">{text}</span>
-                    </li>
-                  )
-                )}
+                {data.missions.map(({ id, text }) => (
+                  <li key={id} className="flex items-start gap-3">
+                    <span className="mt-0.5 text-primary">•</span>
+                    <span className="leading-relaxed">{text}</span>
+                  </li>
+                ))}
               </ul>
             </CardContent>
           </Card>
@@ -167,8 +161,8 @@ export default async function VisionMission() {
           </h2>
 
           <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-            {data.objectives.map(({id, text}) => {
-              return(
+            {data.objectives.map(({ id, text }) => {
+              return (
                 <div key={id} className="flex items-start gap-3">
                   <div className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] text-white sm:size-8 sm:text-xs">
                     ✓
@@ -185,9 +179,7 @@ export default async function VisionMission() {
         {/* Quote */}
         <section className="mt-10 mb-1 px-4 text-center sm:mt-12 sm:mb-6 md:mt-14 md:mb-7">
           <blockquote className="relative mx-auto max-w-3xl px-8 text-base sm:text-lg md:py-4 md:text-xl xl:text-2xl">
-            <p>
-              {data.quote}
-            </p>
+            <p className="inspiring-quote">{data.quote}</p>
           </blockquote>
         </section>
       </div>
