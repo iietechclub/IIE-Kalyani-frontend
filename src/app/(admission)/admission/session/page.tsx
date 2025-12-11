@@ -102,7 +102,7 @@ export default function Session2025() {
   ];
 
   return (
-    <div className="mt-40 min-h-screen bg-linear-to-br from-white via-red-50/20 to-white">
+    <div className="mt-10 min-h-screen bg-linear-to-br from-white via-red-50/20 to-white">
       {/* Hero */}
       <MotionSection
         ref={heroRef}
@@ -119,12 +119,15 @@ export default function Session2025() {
               </div>
             </div>
 
-            <h1 className="mb-3 font-extrabold text-2xl text-gray-900 leading-tight sm:text-3xl md:text-4xl lg:text-5xl dark:text-white">
+            <h1 className="mb-1 font-extrabold text-2xl text-black leading-tight sm:text-3xl md:text-4xl lg:text-5xl dark:text-black">
               Admissions Open — Session{" "}
-              <span className="text-red-600">2025-2026</span>
+              <span className="ml-2 text-red-600">2025-2026</span>
             </h1>
 
-            <p className="mx-auto mb-5 max-w-xl text-gray-700 text-sm sm:text-base dark:text-gray-300">
+            <p
+              className="mx-auto mt-4 mb-7 max-w-xl text-xs sm:text-base dark:text-300"
+              style={{ color: "#4a5568" }}
+            >
               Join Ideal Institute of Engineering and start your engineering
               journey with accredited programs, industry-aligned curriculum and
               hands-on learning.
@@ -177,7 +180,7 @@ export default function Session2025() {
               {programs.map((program) => (
                 <motion.div
                   key={program.name}
-                  className="w-full shrink-0 snap-center rounded-2xl border border-gray-200 bg-white/90 p-4 shadow-xl transition sm:w-96 sm:p-6 md:w-80 lg:w-96 dark:border-gray-700 dark:bg-gray-800/80"
+                  className="w-full shrink-0 snap-center rounded-2xl border border-gray-200 bg-white/90 p-4 shadow-xl transition sm:w-96 sm:p-6 md:w-80 lg:w-96"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45 }}
@@ -190,7 +193,20 @@ export default function Session2025() {
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-semibold text-lg">{program.name}</h3>
+                      {/* header row: title + Available badge */}
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="min-w-0 font-semibold text-lg">
+                          {program.name}
+                        </h3>
+
+                        {/* Available badge (matches Figma look) */}
+                        <div className="ml-4 flex-shrink-0">
+                          <span className="inline-flex items-center rounded-full bg-green-50 px-3 py-1 font-medium text-green-800 text-xs shadow-sm">
+                            {program.seats}
+                          </span>
+                        </div>
+                      </div>
+
                       <div className="mt-2 mb-3 text-sm">
                         {program.branches.length} branch
                         {program.branches.length > 1 ? "es" : ""} available
@@ -200,7 +216,7 @@ export default function Session2025() {
                         {program.branches.map((b) => (
                           <div
                             key={b}
-                            className="flex items-center gap-2 rounded-md bg-gray-50 p-2 text-gray-700 text-xs sm:text-sm dark:bg-gray-900/50 dark:text-gray-300"
+                            className="flex items-center gap-2 rounded-md bg-gray-50 p-2 text-gray-700 text-xs sm:text-sm"
                           >
                             <CheckmarkIcon className="h-4 w-4" />
                             {b}
@@ -226,19 +242,36 @@ export default function Session2025() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="relative z-10 space-y-6 sm:space-y-8">
+              {/* Headings Row */}
+              <div className="mb-10 grid grid-cols-1 items-center md:grid-cols-3">
+                <h2 className="font-semibold text-2xl md:col-span-1 md:text-right">
+                  Timeline
+                </h2>
+
+                <div className="hidden md:block"></div>
+
+                <h2 className="font-semibold text-2xl md:text-left">
+                  Important Dates
+                </h2>
+              </div>
               {importantDates.map((d) => (
                 <div
                   key={d.event}
-                  className="grid items-center gap-6 md:grid-cols-3"
+                  className="grid items-center gap-5 md:grid-cols-[19fr_auto_19fr]"
                 >
                   <div className="font-semibold text-lg md:text-right">
                     {d.event}
                   </div>
-                  <div className="hidden items-center justify-center md:flex">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-red-200 bg-white shadow-sm dark:border-red-800 dark:bg-gray-900">
+
+                  <div className="-translate-x-1/2 absolute top-19 bottom-8 left-1/2 w-[2px] bg-gradient-to-b from-red-200 via-red-300 to-red-500"></div>
+
+                  <div className="relative hidden items-center justify-center md:flex">
+                    {/* Circle (front) */}
+                    <div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full border border-red-200 bg-white shadow-sm">
                       <div className="h-3.5 w-3.5 rounded-full bg-red-600" />
                     </div>
                   </div>
+
                   <div className="font-semibold text-muted-foreground text-sm md:text-left">
                     {d.date}
                   </div>
@@ -263,10 +296,8 @@ function StatCard({
   value: string | number;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white/90 p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800/80">
-      <div className="shrink-0 rounded-md bg-gray-50 p-2 dark:bg-gray-900/50">
-        {icon}
-      </div>
+    <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-3 shadow-sm">
+      <div className="shrink-0 rounded-md bg-gray-50 p-2">{icon}</div>
       <div>
         <div className="text-muted-foreground text-xs">{label}</div>
         <div className="mt-1 font-semibold text-lg">{value}</div>
