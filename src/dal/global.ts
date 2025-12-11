@@ -24,6 +24,9 @@ export const fetchGlobalPageData = cache(async () => {
           id title
           children { id icon label url { url newTab } }
         }
+
+        image_title image_subtitle
+        image { url alternativeText }
       }
 
       socialLinks {
