@@ -14,6 +14,13 @@ export const MotionH3 = ({ children, ...props }: HTMLMotionProps<"h3">) => (
   <motion.h3 {...props}>{children}</motion.h3>
 );
 
+export const MotionSection = ({
+  children,
+  ...props
+}: HTMLMotionProps<"section">) => (
+  <motion.section {...props}>{children}</motion.section>
+);
+
 export const MotionButton = ({
   children,
   ...props
