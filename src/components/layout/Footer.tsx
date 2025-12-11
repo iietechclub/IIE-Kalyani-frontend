@@ -1,8 +1,10 @@
 import Link from "next/link";
+import type { IconType } from "react-icons";
 
 import { LuMail, LuMapPin, LuPhone } from "react-icons/lu";
 import {
   SiFacebook,
+  SiGithub,
   SiInstagram,
   SiLinkedin,
   SiWhatsapp,
@@ -14,13 +16,14 @@ import BackendImage from "@/components/BackendImage";
 
 import { fetchGlobalPageData } from "@/dal/global";
 
-const socialIcons = {
+export const socialIcons: { [k in SocialPlatform]: IconType } = {
   Facebook: SiFacebook,
   Twitter: SiX,
   LinkedIn: SiLinkedin,
   Instagram: SiInstagram,
   YouTube: SiYoutube,
   WhatsApp: SiWhatsapp,
+  GitHub: SiGithub,
 };
 
 async function getCurrentYear() {

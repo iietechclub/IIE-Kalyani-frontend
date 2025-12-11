@@ -95,13 +95,18 @@ body {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply scheme-only-light border-border outline-ring/50;
     font-family: "Nunito", sans-serif;
   }
 
   body {
     @apply bg-background text-foreground;
     font-family: "Nunito", sans-serif;
+  }
+
+  html {
+    @apply scheme-only-light scroll-smooth;
+    font-size: var(--font-size);
   }
 }
 
@@ -158,12 +163,6 @@ body {
       line-height: 1.5;
     }
   }
-}
-
-html {
-  color-scheme: light;
-  font-size: var(--font-size);
-  scroll-behavior: smooth;
 }
 
 /* Glass effect utilities */
