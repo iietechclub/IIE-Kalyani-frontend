@@ -12,7 +12,6 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { Camera } from 'lucide-react';
-import client from '@/components/layout/navbar/client';
 
 export default function GalleryPageWithHero() {
   const [activeCategory, setActiveCategory] = useState<'all' | 'campus' | 'events' | 'academics' | 'sports'>('all');
@@ -59,7 +58,7 @@ export default function GalleryPageWithHero() {
     : galleryImages.filter(i => i.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white via-indigo-50/30 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-white via-indigo-50/30 to-white">
       {/* Breadcrumb */}
       <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200 py-4">
         <div className="container mx-auto px-4">
@@ -77,8 +76,8 @@ export default function GalleryPageWithHero() {
 
       {/* HERO BANNER */}
       <header className="relative">
-        <div className="h-64 sm:h-96 w-full relative  bg-linear-to-r from-orange-600 via-pink-600 to-purple-600 overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-black/30"></div>
+        <div className="h-64 sm:h-96 w-full relative  bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30"></div>
 
           <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-white max-w-3xl">
@@ -120,7 +119,7 @@ export default function GalleryPageWithHero() {
           {galleryCategories.map(cat => (
             <button
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id as any)}
+              onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-full text-sm transition-shadow ${activeCategory === cat.id ? 'bg-red-600 text-white shadow-lg' : 'bg-white text-gray-700 border'}`}
               aria-pressed={activeCategory === cat.id}
               aria-label={cat.aria}
