@@ -180,10 +180,10 @@ export default function Session2025() {
               {programs.map((program) => (
                 <motion.div
                   key={program.name}
-                  className="w-full shrink-0 snap-center rounded-2xl border border-gray-200 bg-white/90 p-4 shadow-xl transition sm:w-96 sm:p-6 md:w-80 lg:w-96"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45 }}
+                  className="hover:-translate-y-2 w-full shrink-0 snap-center rounded-2xl border border-gray-200 bg-white/90 p-4 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl sm:w-96 sm:p-6 md:w-80 lg:w-96"
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   <div className="flex items-start gap-4">
                     <div
@@ -257,7 +257,7 @@ export default function Session2025() {
               {importantDates.map((d) => (
                 <div
                   key={d.event}
-                  className="grid items-center gap-5 md:grid-cols-[19fr_auto_19fr]"
+                  className="grid items-center gap-18 md:grid-cols-[80fr_auto_80fr]"
                 >
                   <div className="font-semibold text-lg md:text-right">
                     {d.event}
