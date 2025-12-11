@@ -1,27 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
+import type React from "react";
 import { useEffect, useRef, useState } from "react";
-import {
-  LuAward,
-  LuCalendar,
-  // LuClock,
-  // LuDownload,
-  // LuFileText,
-  LuGlobe,
-  LuGraduationCap,
-  // LuUsers,
-} from "react-icons/lu";
+import { LuAward, LuCalendar, LuGlobe, LuGraduationCap } from "react-icons/lu";
 import { MotionDiv, MotionSection } from "@/components/animated/motion";
 import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
-// import {
-//   Breadcrumb,
-//   BreadcrumbItem,
-//   BreadcrumbLink,
-//   BreadcrumbList,
-//   BreadcrumbPage,
-//   BreadcrumbSeparator,
-// } from "@/components/ui/breadcrumb";
 
 /**
  * Session2025 — responsive, mobile-first
@@ -200,7 +184,7 @@ export default function Session2025() {
                         </h3>
 
                         {/* Available badge (matches Figma look) */}
-                        <div className="ml-4 flex-shrink-0">
+                        <div className="ml-4 shrink-0">
                           <span className="inline-flex items-center rounded-full bg-green-50 px-3 py-1 font-medium text-green-800 text-xs shadow-sm">
                             {program.seats}
                           </span>
@@ -263,7 +247,7 @@ export default function Session2025() {
                     {d.event}
                   </div>
 
-                  <div className="-translate-x-1/2 absolute top-19 bottom-8 left-1/2 w-[2px] bg-gradient-to-b from-red-200 via-red-300 to-red-500"></div>
+                  <div className="-translate-x-1/2 absolute top-19 bottom-8 left-1/2 w-0.5 bg-linear-to-b from-red-200 via-red-300 to-red-500"></div>
 
                   <div className="relative hidden items-center justify-center md:flex">
                     {/* Circle (front) */}
@@ -286,15 +270,12 @@ export default function Session2025() {
 }
 
 /* ---------------- Helper Component ---------------- */
-function StatCard({
-  icon,
-  label,
-  value,
-}: {
-  icon: any;
+type StatCardProps = {
+  icon: React.ReactNode;
   label: string;
   value: string | number;
-}) {
+};
+function StatCard({ icon, label, value }: StatCardProps) {
   return (
     <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-3 shadow-sm">
       <div className="shrink-0 rounded-md bg-gray-50 p-2">{icon}</div>
