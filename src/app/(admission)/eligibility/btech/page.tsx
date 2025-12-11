@@ -58,7 +58,7 @@ export default function EligibilityBTech() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="min-h-screen bg-slate-50 text-slate-900">
       {/* ===== HERO (full width, your style) ===== */}
       <header className="relative bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20">
         <div className="absolute inset-0 bg-black/10" />
@@ -87,16 +87,16 @@ export default function EligibilityBTech() {
       </header>
 
       {/* ===== MAIN CONTENT (full-page feel, simple & modern) ===== */}
-      <main className="border-red-100/60 border-red-900/40 border-t">
+      <div className="border-red-100/60 border-t">
         <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-12 md:py-14 lg:px-8">
           {/* Quick summary strip */}
           <section className="mb-10">
             <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm">
-              <span className="inline-flex items-center rounded-full border border-red-100/70 bg-gray-900 bg-white px-3 py-1">
+              <span className="inline-flex items-center rounded-full border border-red-100/70 bg-white px-3 py-1">
                 <span className="mr-2 h-2 w-2 rounded-full bg-green-500" />
                 MAKAUT, West Bengal – B.Tech
               </span>
-              <span className="inline-flex items-center rounded-full border border-gray-200 border-gray-800 bg-gray-900 bg-white/80 px-3 py-1">
+              <span className="inline-flex items-center rounded-full border border-gray-200 bg-white/80 px-3 py-1">
                 Duration: 4 years (8 semesters)
               </span>
             </div>
@@ -126,7 +126,7 @@ export default function EligibilityBTech() {
                         key={point}
                         className="flex gap-3 text-slate-700 text-sm sm:text-base"
                       >
-                        <CheckmarkIcon className="h-5 w-5 shrink-0 text-red-600" />
+                        <CheckmarkIcon className="size-5 shrink-0 text-red-600" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -142,39 +142,39 @@ export default function EligibilityBTech() {
               <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
                 B.Tech Programs Offered
               </h2>
-              <p className="mt-1 text-slate-300 text-slate-600 text-sm sm:text-base">
+              <p className="mt-1 text-slate-600 text-sm sm:text-base">
                 Following undergraduate engineering branches are available at
                 IIE Kalyani.
               </p>
             </div>
 
-            <div className="grid gap-x-10 gap-y-3 text-sm sm:grid-cols-2 sm:text-base">
+            <ul className="grid gap-x-10 gap-y-3 text-sm sm:grid-cols-2 sm:text-base">
               {branchesOffered.map((branch) => (
-                <div key={branch} className="flex items-start gap-2">
-                  <span className="mt-1 text-red-600">•</span>
+                <li key={branch} className="flex items-start gap-2">
+                  <span className="text-red-600">•</span>
                   <span>{branch}</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           {/* ===== Documents Required ===== */}
           <section className="mb-12 sm:mb-14">
             <div className="mb-4 flex items-center gap-2 border-red-600 border-l-4 pl-4">
-              <LuFileText className="h-5 w-5 text-red-600" />
+              <LuFileText className="size-5 text-red-600" />
               <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
                 Documents Required at the Time of Admission
               </h2>
             </div>
 
-            <div className="grid gap-x-10 gap-y-2 text-sm sm:grid-cols-2 sm:text-base">
+            <ul className="grid gap-x-10 gap-y-2 text-sm sm:grid-cols-2 sm:text-base">
               {documentsRequired.map((doc) => (
-                <div key={doc} className="flex items-start gap-2">
+                <li key={doc} className="flex items-start gap-2">
                   <span className="mt-1 text-red-600">•</span>
                   <span>{doc}</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           {/* ===== Important Notes ===== */}
@@ -184,10 +184,11 @@ export default function EligibilityBTech() {
                 Important Notes
               </h2>
             </div>
-            <ul className="space-y-2 text-slate-300 text-slate-700 text-sm sm:text-base">
+
+            <ul className="space-y-2 text-slate-700 text-sm sm:text-base">
               {notes.map((note) => (
                 <li key={note} className="flex gap-2">
-                  <span className="mt-1 text-red-600">•</span>
+                  <span className="text-red-600">•</span>
                   <span>{note}</span>
                 </li>
               ))}
@@ -195,13 +196,13 @@ export default function EligibilityBTech() {
           </section>
 
           {/* Bottom info line */}
-          <section className="border-gray-200 border-t pt-6 pb-10 text-slate-400 text-slate-500 text-xs sm:text-sm">
+          <section className="border-gray-200 border-t pt-6 pb-10 text-slate-500 text-xs sm:text-sm">
             For latest updates, counseling schedules and admission notices,
             candidates are advised to follow official WBJEE, JEE Main and MAKAUT
             notifications.
           </section>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

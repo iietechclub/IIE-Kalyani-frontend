@@ -25,72 +25,6 @@ export default function ContributorsSection({
   student_developers,
   our_creative_team_quotation,
 }: Props) {
-  // const students = [
-  //   {
-  //     name: "Rahul",
-  //     role: "FullStack Developer",
-  //     department: "Computer Science Engineering",
-  //     image:
-  //       "https://images.unsplash.com/photo-1631731194068-82d8e4c5f194?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-  //     github: "https://github.com",
-  //     linkedin: "https://linkedin.com",
-  //   },
-  //   {
-  //     name: "Rahidul",
-  //     role: "UI/UX & Frontend Developer",
-  //     department: "Computer Science Engineering",
-  //     image:
-  //       "https://images.unsplash.com/photo-1665360793113-32928e6e7a65?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-  //     github: "https://github.com",
-  //     linkedin: "https://linkedin.com",
-  //   },
-  //   {
-  //     name: "Gourab",
-  //     role: "UI/UX Designer & Guide",
-  //     department: "Computer Science Engineering",
-  //     image:
-  //       "https://images.unsplash.com/photo-1533142215-a17cdfb95243?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-  //     github: "https://github.com",
-  //     linkedin: "https://linkedin.com",
-  //   },
-  //   {
-  //     name: "Abanti",
-  //     role: "Designer & Content Manager",
-  //     department: "Computer Science Engineering",
-  //     image:
-  //       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-  //     github: "https://github.com",
-  //     linkedin: "https://linkedin.com",
-  //   },
-  //   {
-  //     name: "Sakil",
-  //     role: "Frontend Developer",
-  //     department: "Computer Science Engineering",
-  //     image:
-  //       "https://images.unsplash.com/photo-1671726203454-5d7a5370a9f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-  //     github: "https://github.com",
-  //     linkedin: "https://linkedin.com",
-  //   },
-  //   {
-  //     name: "Supriyo",
-  //     role: "Content Manager",
-  //     department: "Computer Science Engineering",
-  //     image:
-  //       "https://images.unsplash.com/photo-1620829813947-ef4246827355?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-  //     github: "https://github.com",
-  //     linkedin: "https://linkedin.com",
-  //   },
-  //   {
-  //     name: "Ayush",
-  //     role: "Backend Developer ",
-  //     department: "Computer Science Engineering",
-  //     image:
-  //       "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-  //     github: "https://github.com",
-  //     linkedin: "https://linkedin.com",
-  //   },
-  // ];
-
   return (
     <section className="bg-linear-to-br from-white to-gray-50 py-12 pt-6 pr-0 pb-16 pl-0 sm:py-16">
       {/* Header */}
@@ -292,9 +226,9 @@ export default function ContributorsSection({
 
         {/* Quote Section */}
         <ScrollReveal direction="up" delay={0.4}>
-          <div className="mx-auto mt-6 max-w-4xl">
+          <div className="mx-auto mt-6">
             <section className="-mb-5 sm:-mb-3 md:-mb-1 mt-16 text-center sm:mt-20 md:mt-24 lg:mb-1">
-              <blockquote className="relative mx-auto max-w-3xl px-8 text-base sm:text-lg md:py-4 md:text-xl xl:text-2xl">
+              <blockquote className="relative mx-auto max-w-4xl text-balance px-8 text-base sm:text-lg md:py-4 md:text-xl xl:text-2xl">
                 <p className="inspiring-quote">{our_creative_team_quotation}</p>
               </blockquote>
             </section>

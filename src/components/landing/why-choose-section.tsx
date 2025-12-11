@@ -66,16 +66,17 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
           {/* Right Section - Content Cards */}
           <div className="relative w-full lg:w-2/3">
             <div className="scrollbar-hide flex items-stretch justify-center gap-4 overflow-x-auto pb-4 md:gap-6 lg:overflow-visible lg:pb-0">
-              <AnimatePresence mode="wait">
-                {[0, 1, 2].map((offset) => {
-                  const itemIndex = currentView + offset;
-                  if (itemIndex >= contentItems.length) return null;
+              {[0, 1, 2].map((offset) => {
+                const itemIndex = currentView + offset;
+                if (itemIndex >= contentItems.length) return null;
 
-                  const item = contentItems[itemIndex];
-
-                  return (
+                const item = contentItems[itemIndex];
+                return (
+                  <AnimatePresence
+                    key={`${item.documentId}-${currentView}`}
+                    mode="wait"
+                  >
                     <MotionDiv
-                      key={`${item.documentId}-${currentView}`}
                       className="flex w-64 shrink-0 md:w-80"
                       initial={{ opacity: 0, x: 100 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -121,9 +122,9 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
                         </div>
                       </div>
                     </MotionDiv>
-                  );
-                })}
-              </AnimatePresence>
+                  </AnimatePresence>
+                );
+              })}
             </div>
 
             {/* Navigation Arrows - Hidden on mobile */}
@@ -154,11 +155,11 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
               type="button"
               key={idx}
               // onClick={() => handleDotClick(idx)}
-              className={`rounded-full transition-all duration-300 ${
-                idx === currentView
+              className={cn("rounded-full transition-all duration-300 ${
+                idx === currentView",
                   ? "h-3 w-12 bg-linear-to-r from-[#E63946] to-[#FF6B35]"
                   : "size-3 bg-gray-300 hover:bg-gray-400"
-              }`}
+              )}
               aria-label={`Go to view ${idx + 1}`}
             />
           ))} */}

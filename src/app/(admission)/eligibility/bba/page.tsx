@@ -1,13 +1,4 @@
-import { LuGraduationCap, LuFileText } from "react-icons/lu";;
-
-// import {
-//   Breadcrumb,
-//   BreadcrumbItem,
-//   BreadcrumbLink,
-//   BreadcrumbList,
-//   BreadcrumbPage,
-//   BreadcrumbSeparator,
-// } from "../../components/ui/breadcrumb";
+import { LuFileText, LuGraduationCap } from "react-icons/lu";
 import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
 
 export default function EligibilityBBA() {
@@ -79,49 +70,49 @@ export default function EligibilityBBA() {
   ];
 
   return (
-    
     <main className="min-h-screen bg-slate-50 text-slate-900">
-
       {/* HEADER – same pattern as your MAKAUT header */}
-      <header className="relative bg-gradient-to-r from-red-600 to-red-400 text-white py-12 sm:py-16 md:py-20">
+      <header className="relative bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20">
         <div className="absolute inset-0 bg-black/8" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 mb-4 sm:mb-6">
-            <div className="bg-white/10 backdrop-blur-sm p-2.5 sm:p-4 rounded-2xl flex-shrink-0">
-              <LuGraduationCap className="h-9 w-9 sm:h-11 sm:w-11 text-white" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
+            <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">
+              <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
             </div>
 
             <div className="min-w-0">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-1 sm:mb-2">
+              <h1 className="mb-1 font-semibold text-2xl leading-tight sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="block">BBA Eligibility Criteria</span>
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-white/90 truncate">
-                Bachelor of Business Administration at IIE Kalyani — eligibility, documents and career scope.
+              <p className="truncate text-sm text-white/90 sm:text-base md:text-lg">
+                Bachelor of Business Administration at IIE Kalyani —
+                eligibility, documents and career scope.
               </p>
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm md:text-base text-white/85 max-w-3xl leading-relaxed">
-            Check whether you meet the academic and documentation requirements for admission to the
-            BBA programme, as per the institute and university norms.
+          <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
+            Check whether you meet the academic and documentation requirements
+            for admission to the BBA programme, as per the institute and
+            university norms.
           </p>
         </div>
       </header>
 
       {/* MAIN CONTENT */}
-      <div className="border-t border-red-100/60 dark:border-red-900/40">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-14">
+      <div className="border-red-100/60 border-t">
+        <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-12 md:py-14 lg:px-8">
           {/* Quick info strip */}
           <section className="mb-10">
             <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm">
-              <span className="inline-flex items-center rounded-full border border-red-100/70 bg-gray-900 bg-white px-3 py-1">
+              <span className="inline-flex items-center rounded-full border border-red-100/70 bg-white px-3 py-1">
                 <span className="mr-2 h-2 w-2 rounded-full bg-green-500" />
                 BBA - Bachelor of Business Administration
               </span>
-              <span className="inline-flex items-center rounded-full border border-red-100/70 bg-gray-900 bg-white px-3 py-1">
+              <span className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1">
                 Duration: 3 years (6 semesters)
               </span>
-              <span className="inline-flex items-center rounded-full border border-red-100/70 bg-gray-900 bg-white px-3 py-1">
+              <span className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1">
                 Affiliated to MAKAUT, West Bengal
               </span>
             </div>
@@ -129,28 +120,29 @@ export default function EligibilityBBA() {
 
           {/* Eligibility Criteria */}
           <section className="mb-12 sm:mb-14">
-            <div className="border-l-4 border-red-600 pl-4 mb-4">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">
+            <div className="mb-4 border-red-600 border-l-4 pl-4">
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
                 Eligibility Requirements
               </h2>
               <p className="mt-1 text-slate-600 text-sm sm:text-base">
-                The following conditions must be satisfied for admission to the BBA programme.
+                The following conditions must be satisfied for admission to the
+                BBA programme.
               </p>
             </div>
 
             <div className="space-y-8">
-              {eligibilityCriteria.map((criteria, idx) => (
-                <div key={idx}>
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">
+              {eligibilityCriteria.map((criteria) => (
+                <div key={criteria.title}>
+                  <h3 className="mb-3 font-semibold text-base sm:text-lg">
                     {criteria.title}
                   </h3>
                   <ul className="space-y-2">
-                    {criteria.points.map((point, pIdx) => (
+                    {criteria.points.map((point) => (
                       <li
-                        key={pIdx}
+                        key={point}
                         className="flex gap-3 text-slate-700 text-sm sm:text-base"
                       >
-                        <CheckmarkIcon className="w-5 h-5 flex-shrink-0 text-red-600" />
+                        <CheckmarkIcon className="h-5 w-5 shrink-0 text-red-600" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -162,60 +154,61 @@ export default function EligibilityBBA() {
 
           {/* Program Highlights */}
           <section className="mb-12 sm:mb-14">
-            <div className="border-l-4 border-red-600 pl-4 mb-4">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">
+            <div className="mb-4 border-red-600 border-l-4 pl-4">
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
                 Program Highlights
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-600 mt-1">
+              <p className="mt-1 text-slate-600 text-sm sm:text-base">
                 Key features of the BBA programme at IIE Kalyani.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-x-10 gap-y-2 text-sm sm:text-base">
-              {programHighlights.map((highlight, idx) => (
-                <div key={idx} className="flex items-start gap-2">
-                  <span className="mt-1 text-red-600">•</span>
+            <ul className="grid gap-x-10 gap-y-2 text-sm sm:grid-cols-2 sm:text-base">
+              {programHighlights.map((highlight) => (
+                <li key={highlight} className="flex items-start gap-2">
+                  <span className="text-red-600">•</span>
                   <span>{highlight}</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           {/* Documents Required */}
           <section className="mb-12 sm:mb-14">
-            <div className="border-l-4 border-red-600 pl-4 mb-4 flex items-center gap-2">
-              <LuFileText className="w-5 h-5 text-red-600" />
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">
+            <div className="mb-4 flex items-center gap-2 border-red-600 border-l-4 pl-4">
+              <LuFileText className="h-5 w-5 text-red-600" />
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
                 Documents Required at the Time of Admission
               </h2>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-x-10 gap-y-2 text-sm sm:text-base">
-              {documentsRequired.map((doc, idx) => (
-                <div key={idx} className="flex gap-2 items-start">
-                  <span className="mt-1 text-red-600">•</span>
+            <ul className="grid gap-x-10 gap-y-2 text-sm sm:grid-cols-2 sm:text-base">
+              {documentsRequired.map((doc) => (
+                <li key={doc} className="flex items-start gap-2">
+                  <span className="text-red-600">•</span>
                   <span>{doc}</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           {/* Career Opportunities */}
           <section className="mb-12 sm:mb-14">
-            <div className="border-l-4 border-red-600 pl-4 mb-4">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">
+            <div className="mb-4 border-red-600 border-l-4 pl-4">
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
                 Career Opportunities After BBA
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-600 mt-1">
-                BBA graduates can explore diverse roles across management, corporate and entrepreneurial domains.
+              <p className="mt-1 text-slate-600 text-sm sm:text-base">
+                BBA graduates can explore diverse roles across management,
+                corporate and entrepreneurial domains.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {careerOpportunities.map((career, idx) => (
+              {careerOpportunities.map((career) => (
                 <span
-                  key={idx}
-                  className="inline-flex items-center px-3 py-1.5 rounded-full bg-white border border-gray-200 dark:border-gray-200 text-xs sm:text-sm "
+                  key={career}
+                  className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs sm:text-sm"
                 >
                   {career}
                 </span>
@@ -225,16 +218,16 @@ export default function EligibilityBBA() {
 
           {/* Important Notes */}
           <section className="mb-10 sm:mb-14">
-            <div className="border-l-4 border-red-600 pl-4 mb-4">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">
+            <div className="mb-4 border-red-600 border-l-4 pl-4">
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
                 Important Notes
               </h2>
             </div>
 
-            <ul className="space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-800">
-              {notes.map((note, idx) => (
-                <li key={idx} className="flex gap-2">
-                  <span className="mt-1 text-red-600">•</span>
+            <ul className="space-y-2 text-slate-700 text-sm sm:text-base">
+              {notes.map((note) => (
+                <li key={note} className="flex items-start gap-2">
+                  <span className="text-red-600">•</span>
                   <span>{note}</span>
                 </li>
               ))}
@@ -242,9 +235,10 @@ export default function EligibilityBBA() {
           </section>
 
           {/* Bottom info line */}
-          <section className="border-t border-gray-200 dark:border-gray-800 pt-6 pb-10 text-s sm:text-sm text-slate-600 dark:text-slate-400">
-           * For the latest admission notifications, important dates and fee details, please refer to
-            the official institute website or contact the Admission Cell. *
+          <section className="border-gray-200 border-t pt-6 pb-10 text-s text-slate-600 sm:text-sm">
+            * For the latest admission notifications, important dates and fee
+            details, please refer to the official institute website or contact
+            the Admission Cell. *
           </section>
         </div>
       </div>

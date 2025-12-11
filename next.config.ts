@@ -8,7 +8,11 @@ const nextConfig: NextConfig = {
   experimental: { turbopackFileSystemCacheForDev: true },
   images: {
     remotePatterns: [
+      // local development
+      new URL("http://localhost:1339/uploads/**"),
       new URL("http://localhost:1337/uploads/**"),
+
+      // remote servers
       new URL("https://images.shiksha.com/mediadata/images/articles/*"),
       new URL("https://content.jdmagicbox.com/v2/comp/delhi/**"),
       {
