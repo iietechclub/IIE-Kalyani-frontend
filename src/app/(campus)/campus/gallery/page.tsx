@@ -1,17 +1,9 @@
 "use client";
 
 import { Camera } from "lucide-react";
-import { motion } from "motion/react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { MotionDiv, MotionFigure } from "@/components/animated/motion";
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<
@@ -137,34 +129,13 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-white via-indigo-50/30 to-white">
-      {/* Breadcrumb */}
-      <div className="border-gray-200 border-b bg-white/80 py-4 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/campus">Campus Life</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Gallery</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-      </div>
-
       {/* HERO BANNER */}
       <header className="relative">
         <div className="relative h-64 w-full overflow-hidden bg-linear-to-r from-orange-600 via-pink-600 to-purple-600 sm:h-96">
           <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-black/30"></div>
 
           <div className="container relative z-10 mx-auto flex h-full items-center px-4">
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -196,7 +167,7 @@ export default function GalleryPage() {
                   View Photos
                 </button>
               </div>
-            </motion.div>
+            </MotionDiv>
           </div>
         </div>
       </header>
@@ -239,7 +210,7 @@ export default function GalleryPage() {
           `}</style>
 
           {filtered.map((img, idx) => (
-            <motion.figure
+            <MotionFigure
               key={img.id}
               className="masonry-item overflow-hidden rounded-lg bg-gray-100 shadow-sm"
               initial={{ opacity: 0, y: 8 }}
@@ -256,9 +227,9 @@ export default function GalleryPage() {
                 className="relative"
               >
                 <Image
+                  fill
                   src={img.src}
                   alt={img.title}
-                  fill
                   className="object-cover transition-transform duration-500 hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
@@ -268,7 +239,7 @@ export default function GalleryPage() {
                 <div className="font-medium">{img.title}</div>
                 <div className="text-xs">{img.date}</div>
               </figcaption>
-            </motion.figure>
+            </MotionFigure>
           ))}
         </div>
 

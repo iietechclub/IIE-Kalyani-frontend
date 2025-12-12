@@ -95,144 +95,146 @@ export default function EligibilityBTechLateral() {
       </header>
 
       {/* Content Section */}
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 md:py-12 lg:px-8">
-        {/* Quick info strip */}
-        <section className="mb-10">
-          <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm">
-            <span className="inline-flex items-center rounded-full border border-red-100/70 bg-white px-3 py-1">
-              <span className="mr-2 size-2 rounded-full bg-green-500" />
-              Lateral Entry – B.Tech (2nd Year)
-            </span>
-            <span className="inline-flex items-center rounded-full border border-gray-200 bg-white/80 px-3 py-1">
-              Duration after entry: 3 years (6 semesters)
-            </span>
-          </div>
-        </section>
+      <div className="border-red-100/60 border-t">
+        <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10 md:py-12 lg:px-8">
+          {/* Quick info strip */}
+          <section className="mb-10">
+            <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm">
+              <span className="inline-flex items-center rounded-full border border-red-100/70 bg-white px-3 py-1">
+                <span className="mr-2 size-2 rounded-full bg-green-500" />
+                Lateral Entry – B.Tech (2nd Year)
+              </span>
+              <span className="inline-flex items-center rounded-full border border-gray-200 bg-white/80 px-3 py-1">
+                Duration after entry: 3 years (6 semesters)
+              </span>
+            </div>
+          </section>
 
-        {/* Eligibility */}
-        <section className="mb-12 sm:mb-14">
-          <div className="mb-4 border-red-600 border-l-4 pl-4">
-            <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
-              Eligibility Requirements
-            </h2>
-            <p className="mt-1 text-slate-600 text-sm sm:text-base">
-              All candidates must satisfy the following academic and examination
-              requirements.
-            </p>
-          </div>
+          {/* Eligibility */}
+          <section className="mb-12 sm:mb-14">
+            <div className="mb-4 border-red-600 border-l-4 pl-4">
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
+                Eligibility Requirements
+              </h2>
+              <p className="mt-1 text-slate-600 text-sm sm:text-base">
+                All candidates must satisfy the following academic and
+                examination requirements.
+              </p>
+            </div>
 
-          <div className="space-y-8">
-            {eligibilityCriteria.map((item) => (
-              <div key={item.title}>
-                <h3 className="mb-3 font-semibold text-base sm:text-lg">
-                  {item.title}
-                </h3>
-                <ul className="space-y-2">
-                  {item.points.map((point) => (
-                    <li
-                      key={point}
-                      className="flex gap-3 text-slate-700 text-sm sm:text-base"
-                    >
-                      <LuCheck className="h-5 w-5 shrink-0 text-red-600" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Branches Available */}
-        <section className="mb-12 sm:mb-14">
-          <div className="mb-4 border-red-600 border-l-4 pl-4">
-            <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
-              Branches Available for Lateral Entry
-            </h2>
-            <p className="mt-1 text-slate-600 text-sm sm:text-base">
-              Lateral entry candidates may be admitted to the following B.Tech
-              branches, subject to seat availability.
-            </p>
-          </div>
-
-          <ul className="grid gap-x-10 gap-y-2 text-sm sm:grid-cols-2 sm:text-base">
-            {lateralEntryBranches.map((branch) => (
-              <li key={branch} className="flex items-start gap-2">
-                <span className="text-red-600">•</span>
-                <span>{branch}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Admission Process */}
-        <section className="mb-12 sm:mb-14">
-          <div className="mb-4 border-red-600 border-l-4 pl-4">
-            <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
-              Admission Process (JELET)
-            </h2>
-          </div>
-
-          <ol className="space-y-4 text-sm sm:text-base">
-            {admissionProcess.map((step, idx) => (
-              <li key={step} className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-red-600 font-semibold text-white text-xs sm:h-8 sm:w-8 sm:text-sm">
-                    {idx + 1}
-                  </div>
-                  {idx + 1 !== admissionProcess.length && (
-                    <div className="mt-1 w-px flex-1 bg-red-100" />
-                  )}
+            <div className="space-y-8">
+              {eligibilityCriteria.map((item) => (
+                <div key={item.title}>
+                  <h3 className="mb-3 font-semibold text-base sm:text-lg">
+                    {item.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {item.points.map((point) => (
+                      <li
+                        key={point}
+                        className="flex gap-3 text-slate-700 text-sm sm:text-base"
+                      >
+                        <LuCheck className="h-5 w-5 shrink-0 text-red-600" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="pt-0.5 text-slate-700">{step}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+              ))}
+            </div>
+          </section>
 
-        {/* Documents Required */}
-        <section className="mb-12 sm:mb-14">
-          <div className="mb-4 flex items-center gap-2 border-red-600 border-l-4 pl-4">
-            <LuFileText className="h-5 w-5 text-red-600" />
-            <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
-              Documents Required at the Time of Admission
-            </h2>
-          </div>
+          {/* Branches Available */}
+          <section className="mb-12 sm:mb-14">
+            <div className="mb-4 border-red-600 border-l-4 pl-4">
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
+                Branches Available for Lateral Entry
+              </h2>
+              <p className="mt-1 text-slate-600 text-sm sm:text-base">
+                Lateral entry candidates may be admitted to the following B.Tech
+                branches, subject to seat availability.
+              </p>
+            </div>
 
-          <ul className="grid gap-x-10 gap-y-2 text-sm sm:grid-cols-2 sm:text-base">
-            {documentsRequired.map((doc) => (
-              <li key={doc} className="flex items-start gap-2">
-                <span className="text-red-600">•</span>
-                <span>{doc}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+            <ul className="grid gap-x-10 gap-y-2 text-sm sm:grid-cols-2 sm:text-base">
+              {lateralEntryBranches.map((branch) => (
+                <li key={branch} className="flex items-start gap-2">
+                  <span className="text-red-600">•</span>
+                  <span>{branch}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        {/* Important Notes */}
-        <section className="mb-10 sm:mb-14">
-          <div className="mb-4 border-red-600 border-l-4 pl-4">
-            <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
-              Important Notes
-            </h2>
-          </div>
+          {/* Admission Process */}
+          <section className="mb-12 sm:mb-14">
+            <div className="mb-4 border-red-600 border-l-4 pl-4">
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
+                Admission Process (JELET)
+              </h2>
+            </div>
 
-          <ul className="space-y-2 text-slate-700 text-sm sm:text-base">
-            {notes.map((note) => (
-              <li key={note} className="flex gap-2">
-                <span className="text-red-600">•</span>
-                <span>{note}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+            <ol className="space-y-4 text-sm sm:text-base">
+              {admissionProcess.map((step, idx) => (
+                <li key={step} className="flex gap-4">
+                  <div className="flex flex-col items-center">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-red-600 font-semibold text-white text-xs sm:h-8 sm:w-8 sm:text-sm">
+                      {idx + 1}
+                    </div>
+                    {idx + 1 !== admissionProcess.length && (
+                      <div className="mt-1 w-px flex-1 bg-red-100" />
+                    )}
+                  </div>
+                  <p className="pt-0.5 text-slate-700">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
 
-        {/* Bottom info line */}
-        <section className="border-gray-200 border-t pt-6 pb-10 text-slate-500 text-xs sm:text-sm">
-          For latest lateral entry notifications, counselling schedules and
-          detailed rules, candidates are advised to follow official WBJEEB and
-          MAKAUT websites.
-        </section>
+          {/* Documents Required */}
+          <section className="mb-12 sm:mb-14">
+            <div className="mb-4 flex items-center gap-2 border-red-600 border-l-4 pl-4">
+              <LuFileText className="h-5 w-5 text-red-600" />
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
+                Documents Required at the Time of Admission
+              </h2>
+            </div>
+
+            <ul className="grid gap-x-10 gap-y-2 text-sm sm:grid-cols-2 sm:text-base">
+              {documentsRequired.map((doc) => (
+                <li key={doc} className="flex items-start gap-2">
+                  <span className="text-red-600">•</span>
+                  <span>{doc}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Important Notes */}
+          <section className="mb-10 sm:mb-14">
+            <div className="mb-4 border-red-600 border-l-4 pl-4">
+              <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
+                Important Notes
+              </h2>
+            </div>
+
+            <ul className="space-y-2 text-slate-700 text-sm sm:text-base">
+              {notes.map((note) => (
+                <li key={note} className="flex gap-2">
+                  <span className="text-red-600">•</span>
+                  <span>{note}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Bottom info line */}
+          <section className="border-gray-200 border-t pt-6 pb-10 text-slate-500 text-xs sm:text-sm">
+            For latest lateral entry notifications, counselling schedules and
+            detailed rules, candidates are advised to follow official WBJEEB and
+            MAKAUT websites.
+          </section>
+        </div>
       </div>
     </main>
   );

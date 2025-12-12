@@ -162,7 +162,7 @@ export default function Session2025() {
               transition={{ duration: 0.5 }}
             >
               {programs.map((program) => (
-                <motion.div
+                <MotionDiv
                   key={program.name}
                   className="hover:-translate-y-2 w-full shrink-0 snap-center rounded-2xl border border-gray-200 bg-white/90 p-4 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl sm:w-96 sm:p-6 md:w-80 lg:w-96"
                   initial={{ opacity: 0, y: 40, scale: 0.95 }}
@@ -209,7 +209,7 @@ export default function Session2025() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </MotionDiv>
               ))}
             </MotionDiv>
           </div>
