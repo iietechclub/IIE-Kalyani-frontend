@@ -8,7 +8,7 @@ import {
   // LuSearch,
   // LuExternalLink
 } from "react-icons/lu";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 // import {
@@ -176,13 +176,16 @@ export default function TechnicalEventsPage() {
       {/* Hero (kept as-is) */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <ImageWithFallback
+          <Image
             src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1800&q=80"
             alt="Technical events hero"
+            fill
             className="h-[500px] w-full scale-105 object-cover object-center md:h-[520px]"
           />
+
           <div className="absolute inset-0 bg-linear-to-r from-blue-900/80 via-purple-900/50 to-transparent" />
         </div>
+
         <div className="container relative z-10 mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -267,11 +270,13 @@ export default function TechnicalEventsPage() {
                   style={{ width: "100%", maxWidth: 360 }}
                 >
                   <div className="relative h-44 overflow-hidden">
-                    <ImageWithFallback
+                    <Image
                       src={ev.image}
                       alt={ev.title}
+                      fill
                       className="h-full w-full object-cover"
                     />
+
                     <div className="absolute top-3 left-3">
                       <Badge className="bg-blue-600 text-white">
                         {ev.category}
@@ -328,11 +333,13 @@ export default function TechnicalEventsPage() {
                 <Card className="overflow-hidden transition-shadow hover:shadow-lg">
                   <div className="grid items-stretch gap-6 md:grid-cols-3">
                     <div className="h-56 w-full overflow-hidden rounded-md md:col-span-1 md:h-64">
-                      <ImageWithFallback
-                        src={pe.image}
-                        alt={pe.title}
-                        className="h-full w-full object-cover"
-                      />
+                      <Image
+                          src={pe.image}
+                          alt={pe.title}
+                          fill
+                          className="h-full w-full object-cover"
+                        />
+
                     </div>
 
                     <div className="flex flex-col justify-between p-6 md:col-span-2">
@@ -388,9 +395,10 @@ export default function TechnicalEventsPage() {
           >
             <div className="flex items-start gap-4">
               <div className="h-24 w-24 shrink-0 overflow-hidden rounded-md">
-                <ImageWithFallback
+                <Image
                   src={selectedEvent.image}
                   alt={selectedEvent.title}
+                  fill
                   className="h-full w-full object-cover"
                 />
               </div>
