@@ -152,13 +152,15 @@ export default function GalleryPageWithHero() {
               title={`${img.title} — ${img.date}`}
               onClick={() => window.open(img.src, '_blank', 'noopener,noreferrer')}
             >
-              <div style={{ height: imageHeights[img.id], overflow: 'hidden' }}>
+            <div style={{ height: imageHeights[img.id], overflow: 'hidden' }} className="relative"> 
                 <Image
                   src={img.src}
                   alt={img.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  fill 
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-              </div>
+            </div>
 
               <figcaption className="p-3 text-sm text-muted-foreground">
                 <div className="font-medium">{img.title}</div>
