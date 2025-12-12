@@ -63,7 +63,7 @@ export default function Departments({ tagline, departments }: Props) {
                 key={department.documentId}
                 className="mx-auto max-w-xs sm:max-w-none"
               >
-                <Link href={`/academics/departments/${department.slug}`}>
+                <Link href={`/department/${department.slug}`}>
                   <Card className="group hover:-translate-y-2 h-full cursor-pointer overflow-hidden border border-accent bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
                     {/* Image Section */}
                     <div className="relative h-36 overflow-hidden sm:h-48">

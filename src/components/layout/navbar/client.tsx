@@ -223,7 +223,7 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
                   <p className="mb-2 border-neutral-100 border-b px-4 pb-3 font-medium text-gray-800 text-sm uppercase tracking-[1.2px]">
                     {title}
                   </p>
-                  <ul className="custom-scrollbar max-h-[280px] space-y-0.5 overflow-y-auto pr-2">
+                  <ul className="custom-scrollbar max-h-73 space-y-0.5 overflow-y-auto pr-2">
                     {children.map(({ id, label, url, icon }) => (
                       <li key={id}>
                         <Link
