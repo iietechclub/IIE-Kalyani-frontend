@@ -61,7 +61,7 @@ export default function Departments({ tagline, departments }: Props) {
             return (
               <StaggerItem
                 key={department.documentId}
-                className="mx-auto max-w-xs"
+                className="mx-auto max-w-xs sm:max-w-none"
               >
                 <Link href={`/academics/departments/${department.slug}`}>
                   <Card className="group hover:-translate-y-2 h-full cursor-pointer overflow-hidden border border-accent bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
@@ -110,7 +110,7 @@ export default function Departments({ tagline, departments }: Props) {
 
                     {/* Content Section */}
                     <CardContent className="space-y-3 p-6 pt-0">
-                      <h3 className="line-clamp-1 font-bold font-sans- text-base text-foreground transition-colors group-hover:text-primary sm:text-lg md:text-xl">
+                      <h3 className="font-bold font-sans- text-base text-foreground transition-colors group-hover:text-primary sm:text-lg md:text-xl">
                         {department.name}
                       </h3>
                       <p className="line-clamp-2 font-sans- text-muted-foreground text-xs leading-relaxed sm:line-clamp-3 sm:text-sm md:text-base">

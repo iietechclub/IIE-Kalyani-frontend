@@ -59,11 +59,14 @@ export default function Facilities({ tagline, facilities }: Props) {
         {/* Main Facilities Grid */}
         <StaggerContainer
           staggerDelay={0.1}
-          className="mb-16 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
+          className="items-stretch- mb-16 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
         >
           {facilities.map((facility) => (
-            <StaggerItem key={facility.documentId} className="mx-auto max-w-xs">
-              <Card className="group hover:-translate-y-2 h-80- overflow-hidden border border-white/20 bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl sm:h-[360px]">
+            <StaggerItem
+              key={facility.documentId}
+              className="mx-auto max-w-xs bg-white sm:max-w-none"
+            >
+              <Card className="group hover:-translate-y-2 h-full overflow-hidden border border-white/20 bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
                 {/* Image */}
                 <div className="relative h-32 overflow-hidden sm:h-40 md:h-48">
                   <BackendImage
