@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
-import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
+import Image from 'next/image';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -153,7 +153,7 @@ export default function GalleryPageWithHero() {
               onClick={() => window.open(img.src, '_blank', 'noopener,noreferrer')}
             >
               <div style={{ height: imageHeights[img.id], overflow: 'hidden' }}>
-                <ImageWithFallback
+                <Image
                   src={img.src}
                   alt={img.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
