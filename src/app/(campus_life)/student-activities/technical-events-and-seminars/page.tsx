@@ -331,16 +331,16 @@ export default function TechnicalEventsPage() {
                 transition={{ delay: i * 0.06 }}
               >
                 <Card className="overflow-hidden transition-shadow hover:shadow-lg">
-                  <div className="grid items-stretch gap-6 md:grid-cols-3">
-                    <div className="h-56 w-full overflow-hidden rounded-md md:col-span-1 md:h-64">
+                  <div className="grid md:grid-cols-3 gap-6 items-stretch">
+                    <div className="md:col-span-1 h-56 md:h-64 w-full overflow-hidden rounded-md relative">
                       <Image
-                          src={pe.image}
-                          alt={pe.title}
-                          fill
-                          className="h-full w-full object-cover"
-                        />
-
+                        src={pe.image}
+                        alt={pe.title}
+                        fill
+                        className="w-full h-full object-cover"
+                      />
                     </div>
+
 
                     <div className="flex flex-col justify-between p-6 md:col-span-2">
                       <div>
@@ -396,11 +396,11 @@ export default function TechnicalEventsPage() {
             <div className="flex items-start gap-4">
               <div className="h-24 w-24 shrink-0 overflow-hidden rounded-md">
                 <Image
-                  src={selectedEvent.image}
-                  alt={selectedEvent.title}
-                  fill
-                  className="h-full w-full object-cover"
-                />
+    src={selectedEvent.image}
+    alt={selectedEvent.title}
+    fill
+    className="h-full w-full object-cover"
+  />
               </div>
 
               <div className="flex-1">
