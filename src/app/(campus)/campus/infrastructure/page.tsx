@@ -214,9 +214,10 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
                 >
                   <div className="relative h-56 md:h-full">
                     <Image
+                      fill
                       src={facility.image}
                       alt={facility.title}
-                      className="h-full w-full object-cover"
+                      className="size-full object-cover"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   </div>
