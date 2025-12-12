@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { LuDollarSign, LuDownload , LuInfo } from "react-icons/lu";
 import { Card } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -15,7 +15,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
  * - Exports both named and default to avoid import errors
  */
 
-export function FeeStructure(): JSX.Element {
+export function FeeStructure(){
   // toggle view state for sections (desktop shows by default; mobile uses stacked cards)
   const [open, setOpen] = useState({
     btech: true,
@@ -231,7 +231,7 @@ export function FeeStructure(): JSX.Element {
 
               <tbody className="bg-white">
                 {btechPrograms.map((p, idx) => (
-                  <tr key={idx} className={idx % 2 === 0 ? "" : "bg-gray-50"}>
+                  <tr key={p.name} className={idx % 2 === 0 ? "" : "bg-gray-50"}>
                     <td className="p-3 align-top">{p.name}</td>
                     <td className="p-3 text-center">{p.s1}</td>
                     <td className="p-3 text-center">{p.s2}</td>
@@ -263,8 +263,8 @@ export function FeeStructure(): JSX.Element {
 
           {/* mobile stacked view */}
           <div className="lg:hidden mt-4 space-y-3">
-            {btechPrograms.map((p, idx) => (
-              <Card key={idx} className="p-3">
+            {btechPrograms.map((p) => (
+              <Card key={p.name} className="p-3">
                 <div className="flex items-center justify-between">
                   <div className="font-medium">{p.name}</div>
                   <div className="font-semibold text-rose-600">{p.total}</div>
@@ -330,7 +330,7 @@ export function FeeStructure(): JSX.Element {
               </thead>
               <tbody className="bg-white">
                 {btechLateralPrograms.map((r, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "" : "bg-gray-50"}>
+                  <tr key={r.name} className={i % 2 === 0 ? "" : "bg-gray-50"}>
                     <td className="p-3">{r.name}</td>
                     <td className="p-3 text-center">{r.s1}</td>
                     <td className="p-3 text-center">{r.s2}</td>
@@ -359,7 +359,7 @@ export function FeeStructure(): JSX.Element {
               </thead>
               <tbody className="bg-white">
                 {makautRows.map((m, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "" : "bg-gray-50"}>
+                  <tr key={m.title} className={i % 2 === 0 ? "" : "bg-gray-50"}>
                     <td className="p-3">{m.title}</td>
                     <td className="p-3 text-center font-medium">{m.fee}</td>
                   </tr>
@@ -389,7 +389,7 @@ export function FeeStructure(): JSX.Element {
               </thead>
               <tbody className="bg-white">
                 {bbaRows.map((r, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "" : "bg-gray-50"}>
+                  <tr key={r.title} className={i % 2 === 0 ? "" : "bg-gray-50"}>
                     <td className="p-3">{r.title}</td>
                     <td className="p-3 text-center">{r.s1}</td>
                     <td className="p-3 text-center">{r.s2}</td>
@@ -421,8 +421,8 @@ export function FeeStructure(): JSX.Element {
           <div className="bg-white border rounded-md p-4">
             <h4 className="font-semibold mb-2">Other Charges</h4>
             <ul className="space-y-2 text-sm">
-              {otherCharges.map((o, i) => (
-                <li key={i} className="flex justify-between">
+              {otherCharges.map((o) => (
+                <li key={o.label} className="flex justify-between">
                   <span>{o.label}</span>
                   <strong className="text-rose-600">{o.amount}</strong>
                 </li>
