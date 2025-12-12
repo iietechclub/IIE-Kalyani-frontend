@@ -164,7 +164,7 @@ export default function ContributorsSection({
         {/* Students Section - Single Row */}
         <div className="mb-12">
           <ScrollReveal direction="up" delay={0.3}>
-            <div className="mb-4 flex items-center justify-center gap-2">
+            <div className="mt-3 mb-7 flex items-center justify-center gap-2">
               <span className="text-base text-primary">👨‍💻</span>
               <h3 className="text-base text-foreground sm:text-lg">
                 Student Developers
@@ -174,10 +174,10 @@ export default function ContributorsSection({
           </ScrollReveal>
           <StaggerContainer
             staggerDelay={0.1}
-            className="mx-auto grid max-w-6xl grid-cols-3 gap-4 sm:grid-cols-4 sm:gap-6 md:grid-cols-7"
+            className="mx-auto flex max-w-6xl flex-wrap items-start justify-center gap-4 sm:gap-6"
           >
             {student_developers.map((student) => (
-              <StaggerItem key={student.documentId}>
+              <StaggerItem key={student.documentId} className="shrink-0">
                 <div className="group flex flex-col items-center">
                   <div className="relative mb-2">
                     <div className="relative size-16 overflow-hidden rounded-full shadow-md ring-2 ring-gray-200 transition-all group-hover:ring-primary/40 sm:size-20 md:size-24">

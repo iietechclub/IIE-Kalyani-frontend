@@ -15,8 +15,8 @@ export default function Session2025() {
   const TARGET_APPLICANTS = 1240;
   const TARGET_SEATS = 420;
 
-  const [applicants, setApplicants] = useState(0);
-  const [seatsFilled, setSeatsFilled] = useState(0);
+  const [_applicants, setApplicants] = useState(0);
+  const [_seatsFilled, setSeatsFilled] = useState(0);
 
   // Removed old state (fixes useEffect warning)
   // const [countersStarted, setCountersStarted] = useState(false);
@@ -103,13 +103,13 @@ export default function Session2025() {
               </div>
             </div>
 
-            <h1 className="mb-1 font-extrabold text-2xl text-black leading-tight sm:text-3xl md:text-4xl lg:text-5xl dark:text-black">
+            <h1 className="mb-1 font-extrabold text-2xl text-black leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
               Admissions Open — Session{" "}
               <span className="ml-2 text-red-600">2025-2026</span>
             </h1>
 
             <p
-              className="mx-auto mt-4 mb-7 max-w-xl text-xs sm:text-base dark:text-300"
+              className="mx-auto mt-4 mb-7 max-w-xl text-xs sm:text-base"
               style={{ color: "#4a5568" }}
             >
               Join Ideal Institute of Engineering and start your engineering

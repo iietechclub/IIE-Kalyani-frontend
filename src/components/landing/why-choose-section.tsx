@@ -9,7 +9,7 @@ import BackendImage from "../BackendImage";
 
 type Props = { why_choose_cards: WhyChoose[] };
 const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
-  const [currentView, setCurrentView] = useState(0);
+  const [currentView, _setCurrentView] = useState(0);
 
   // const totalViews = Math.ceil(contentItems.length / 3); // Show 3 items at a time, so 5 items = 3 views
 

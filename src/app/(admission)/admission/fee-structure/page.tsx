@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { LuDollarSign, LuDownload , LuInfo } from "react-icons/lu";
-import { Card } from "@/components/ui/card";
+import { LuDollarSign, LuDownload, LuInfo } from "react-icons/lu";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Card } from "@/components/ui/card";
 
 /**
  * Full FeeStructure page
@@ -15,7 +15,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
  * - Exports both named and default to avoid import errors
  */
 
-export function FeeStructure(){
+export function FeeStructure() {
   // toggle view state for sections (desktop shows by default; mobile uses stacked cards)
   const [open, setOpen] = useState({
     btech: true,
@@ -160,24 +160,27 @@ export function FeeStructure(){
   // totals at bottom (example)
   const pageTotal = "266,000";
 
-  const toggleSection = (key: keyof typeof open) =>
+  const _toggleSection = (key: keyof typeof open) =>
     setOpen((s) => ({ ...s, [key]: !s[key] }));
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans">
+    <div className="min-h-screen bg-white font-sans text-gray-900">
       {/* Header (keep unchanged) */}
-      <header className="relative bg-gradient-to-r from-red-600 to-rose-600 text-white py-12 sm:py-20">
-        <div className="absolute inset-0 bg-black/8 pointer-events-none" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+      <header className="relative bg-linear-to-r from-red-600 to-rose-600 py-12 text-white sm:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-black/8" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-4">
               <div className="rounded-2xl bg-white/10 p-3">
                 <LuDollarSign className="h-10 w-10" />
               </div>
               <div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Fee Structure</h1>
-                <p className="text-sm sm:text-base text-rose-100 mt-1 max-w-xl">
-                  As per Govt. of West Bengal norms — fee schedule & components for the academic year.
+                <h1 className="font-extrabold text-2xl tracking-tight sm:text-3xl">
+                  Fee Structure
+                </h1>
+                <p className="mt-1 max-w-xl text-rose-100 text-sm sm:text-base">
+                  As per Govt. of West Bengal norms — fee schedule & components
+                  for the academic year.
                 </p>
               </div>
             </div>
@@ -185,10 +188,10 @@ export function FeeStructure(){
             <div className="flex items-center gap-3">
               <a
                 href="/assets/IIE-Kalyani-Fee-Brochure.pdf"
-                className="inline-flex items-center gap-2 bg-white text-rose-600 px-4 py-2 rounded-md shadow hover:shadow-lg transition"
+                className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-rose-600 shadow transition hover:shadow-lg"
                 aria-label="Download Fee Brochure"
               >
-                <LuDownload className="w-4 h-4" />
+                <LuDownload className="h-4 w-4" />
                 View &amp; Download Fees
               </a>
             </div>
@@ -197,26 +200,31 @@ export function FeeStructure(){
       </header>
 
       {/* Important notes */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <Alert className="bg-gray-50 border border-gray-200">
+      <div className="mx-auto mt-8 max-w-6xl px-4 sm:px-6 lg:px-8">
+        <Alert className="border border-gray-200 bg-gray-50">
           <LuInfo className="h-5 w-5 text-red-600" />
-          <AlertDescription className="text-sm text-gray-700">
-            <strong>Important Notes:</strong> Academic fees are to be paid by Demand Draft / Online transfer in favour of "Ideal Institute of Engineering". Hostel & transport charges are extra. Fees are subject to change as per Govt/University directives.
+          <AlertDescription className="text-gray-700 text-sm">
+            <strong>Important Notes:</strong> Academic fees are to be paid by
+            Demand Draft / Online transfer in favour of "Ideal Institute of
+            Engineering". Hostel & transport charges are extra. Fees are subject
+            to change as per Govt/University directives.
           </AlertDescription>
         </Alert>
       </div>
 
       {/* Page content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="mx-auto max-w-6xl space-y-8 px-4 py-8 sm:px-6 lg:px-8">
         {/* === B.Tech (1st sem .. 8th sem) === */}
         <section>
-          <h2 className="text-base font-semibold mb-3">GENERAL STUDENT FEES STRUCTURE — THE ACADEMIC YEAR : (2025 - 2026)</h2>
+          <h2 className="mb-3 font-semibold text-base">
+            GENERAL STUDENT FEES STRUCTURE — THE ACADEMIC YEAR : (2025 - 2026)
+          </h2>
 
-          <div className="overflow-x-auto border border-gray-200 rounded-md">
+          <div className="overflow-x-auto rounded-md border border-gray-200">
             <table className="min-w-full table-fixed text-sm">
               <thead className="bg-red-600 text-white">
                 <tr>
-                  <th className="p-3 text-left w-1/3">COURSES</th>
+                  <th className="w-1/3 p-3 text-left">COURSES</th>
                   <th className="p-3 text-center">1ST SEM</th>
                   <th className="p-3 text-center">2ND SEM</th>
                   <th className="p-3 text-center">3RD SEM</th>
@@ -231,7 +239,10 @@ export function FeeStructure(){
 
               <tbody className="bg-white">
                 {btechPrograms.map((p, idx) => (
-                  <tr key={p.name} className={idx % 2 === 0 ? "" : "bg-gray-50"}>
+                  <tr
+                    key={p.name}
+                    className={idx % 2 === 0 ? "" : "bg-gray-50"}
+                  >
                     <td className="p-3 align-top">{p.name}</td>
                     <td className="p-3 text-center">{p.s1}</td>
                     <td className="p-3 text-center">{p.s2}</td>
@@ -262,14 +273,14 @@ export function FeeStructure(){
           </div>
 
           {/* mobile stacked view */}
-          <div className="lg:hidden mt-4 space-y-3">
+          <div className="mt-4 space-y-3 lg:hidden">
             {btechPrograms.map((p) => (
               <Card key={p.name} className="p-3">
                 <div className="flex items-center justify-between">
                   <div className="font-medium">{p.name}</div>
                   <div className="font-semibold text-rose-600">{p.total}</div>
                 </div>
-                <div className="mt-2 grid grid-cols-3 gap-2 text-xs text-gray-700">
+                <div className="mt-2 grid grid-cols-3 gap-2 text-gray-700 text-xs">
                   <div>
                     <div className="text-muted-foreground">1st</div>
                     <div className="font-medium">{p.s1}</div>
@@ -306,15 +317,17 @@ export function FeeStructure(){
               </Card>
             ))}
 
-            <div className="p-3 bg-red-100 rounded-md text-center font-semibold">TOTAL: {pageTotal}</div>
+            <div className="rounded-md bg-red-100 p-3 text-center font-semibold">
+              TOTAL: {pageTotal}
+            </div>
           </div>
         </section>
 
         {/* === B.Tech Lateral Entry (example: uses 1..6 sem + total) === */}
         <section>
-          <h3 className="text-sm font-semibold mb-3">B.TECH LATERAL ENTRY</h3>
+          <h3 className="mb-3 font-semibold text-sm">B.TECH LATERAL ENTRY</h3>
 
-          <div className="overflow-x-auto border border-gray-200 rounded-md">
+          <div className="overflow-x-auto rounded-md border border-gray-200">
             <table className="min-w-full table-fixed text-sm">
               <thead className="bg-red-600 text-white">
                 <tr>
@@ -348,8 +361,10 @@ export function FeeStructure(){
 
         {/* === MAKAUT FEES === */}
         <section>
-          <h3 className="text-sm font-semibold mb-3">MAKAUT UNIVERSITY FEES - 2025 - 2026</h3>
-          <div className="overflow-x-auto border border-gray-200 rounded-md">
+          <h3 className="mb-3 font-semibold text-sm">
+            MAKAUT UNIVERSITY FEES - 2025 - 2026
+          </h3>
+          <div className="overflow-x-auto rounded-md border border-gray-200">
             <table className="min-w-full text-sm">
               <thead className="bg-red-600 text-white">
                 <tr>
@@ -371,9 +386,11 @@ export function FeeStructure(){
 
         {/* === BBA (6 semesters) === */}
         <section>
-          <h3 className="text-sm font-semibold mb-3">GENERAL STUDENT FEES STRUCTURE — BBA</h3>
+          <h3 className="mb-3 font-semibold text-sm">
+            GENERAL STUDENT FEES STRUCTURE — BBA
+          </h3>
 
-          <div className="overflow-x-auto border border-gray-200 rounded-md">
+          <div className="overflow-x-auto rounded-md border border-gray-200">
             <table className="min-w-full text-sm">
               <thead className="bg-red-600 text-white">
                 <tr>
@@ -417,9 +434,9 @@ export function FeeStructure(){
         </section>
 
         {/* === Other Charges & Important Points === */}
-        <section className="grid md:grid-cols-2 gap-4">
-          <div className="bg-white border rounded-md p-4">
-            <h4 className="font-semibold mb-2">Other Charges</h4>
+        <section className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-md border bg-white p-4">
+            <h4 className="mb-2 font-semibold">Other Charges</h4>
             <ul className="space-y-2 text-sm">
               {otherCharges.map((o) => (
                 <li key={o.label} className="flex justify-between">
@@ -430,9 +447,11 @@ export function FeeStructure(){
             </ul>
           </div>
 
-          <div className="bg-[rgb(255,255,255)] border rounded-[8px] p-4 px-[50px] py-[16px]">
-            <h4 className="font-semibold mb-2 text-[rgb(0,0,0)] text-[20px]">Important Points</h4>
-            <ul className="list-disc pl-5 text-sm space-y-2  marker:text-red-500">
+          <div className="rounded-xl border bg-[rgb(255,255,255)] p-4 px-[50px] py-4">
+            <h4 className="mb-2 font-semibold text-[20px] text-[rgb(0,0,0)]">
+              Important Points
+            </h4>
+            <ul className="list-disc space-y-2 pl-5 text-sm marker:text-red-500">
               <li>Fees once paid will not be refunded except as per policy.</li>
               <li>Hostel and transport charges are extra.</li>
               <li>Institute reserves the right to revise fee structure.</li>
@@ -441,7 +460,7 @@ export function FeeStructure(){
         </section>
 
         {/* === Bottom total band === */}
-        <div className="bg-red-600 text-white p-4 rounded-md text-center font-semibold">
+        <div className="rounded-md bg-red-600 p-4 text-center font-semibold text-white">
           TOTAL: <span className="ml-2">{pageTotal}</span>
         </div>
       </main>
