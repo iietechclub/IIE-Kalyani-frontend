@@ -18,9 +18,10 @@
     "@t3-oss/env-core": "^0.13.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "lucide-react": "^0.559.0",
     "motion": "^12.23.25",
-    "next": "16.0.7",
+    "next": "16.0.10",
     "react": "19.2.1",
     "react-day-picker": "^9.12.0",
     "react-dom": "19.2.1",
@@ -43,5 +44,5 @@
     "node": ">=22",
     "pnpm": ">=10.24.0"
   },
-  "packageManager": "pnpm@10.24.0+"
+  "packageManager": "pnpm@10.25.0"
 }
