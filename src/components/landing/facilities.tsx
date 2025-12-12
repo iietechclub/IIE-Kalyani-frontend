@@ -59,7 +59,7 @@ export default function Facilities({ tagline, facilities }: Props) {
         {/* Main Facilities Grid */}
         <StaggerContainer
           staggerDelay={0.1}
-          className="items-stretch- mb-16 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
+          className="mb-16 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
         >
           {facilities.map((facility) => (
             <StaggerItem

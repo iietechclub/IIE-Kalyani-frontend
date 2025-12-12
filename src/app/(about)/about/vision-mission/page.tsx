@@ -24,7 +24,7 @@ export default async function VisionMission() {
       <div className="relative mb-6 overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="h-60- h-full w-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80')] bg-center bg-cover"
+            className="size-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80')] bg-center bg-cover"
             aria-hidden
           />
           <div className="absolute inset-0 bg-linear-to-r from-black/60 to-transparent" />
@@ -37,7 +37,7 @@ export default async function VisionMission() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-x-8 rounded-xl bg-linear-to-r from-red-600/20- to-transparent p-3">
+              <div className="inline-flex items-center gap-x-8 rounded-xl p-3">
                 <LuEye className="size-8 shrink-0 rounded-lg bg-red-600/90 p-2 text-white md:size-11 md:p-2.5 lg:size-12 lg:p-3 xl:size-14 xl:p-3.5" />
                 <div>
                   <h1 className="font-bold text-3xl leading-tight md:text-4xl xl:text-5xl">

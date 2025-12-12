@@ -110,10 +110,10 @@ export default function Departments({ tagline, departments }: Props) {
 
                     {/* Content Section */}
                     <CardContent className="space-y-3 p-6 pt-0">
-                      <h3 className="font-bold font-sans- text-base text-foreground transition-colors group-hover:text-primary sm:text-lg md:text-xl">
+                      <h3 className="font-bold text-base text-foreground transition-colors group-hover:text-primary sm:text-lg md:text-xl">
                         {department.name}
                       </h3>
-                      <p className="line-clamp-2 font-sans- text-muted-foreground text-xs leading-relaxed sm:line-clamp-3 sm:text-sm md:text-base">
+                      <p className="line-clamp-2 text-muted-foreground text-xs leading-relaxed sm:line-clamp-3 sm:text-sm md:text-base">
                         {department.tagline}
                       </p>
                     </CardContent>
