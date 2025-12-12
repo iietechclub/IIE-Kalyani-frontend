@@ -14,7 +14,11 @@ import {
 
 import { cn } from "@/lib/utils";
 
-export default function MobileNavbar({ data }: { data: GlobalPageData }) {
+type Props = {
+  data: GlobalPageData;
+  bgTransparent: boolean;
+};
+export default function MobileNavbar({ data, bgTransparent }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
@@ -23,7 +27,10 @@ export default function MobileNavbar({ data }: { data: GlobalPageData }) {
       <SheetTrigger asChild className="lg:hidden">
         <button
           type="button"
-          className="-mr-2 min-h-11 min-w-11 rounded-lg p-3 transition-colors active:bg-white/10"
+          className={cn(
+            "-mr-2 min-h-11 min-w-11 rounded-lg p-3 transition-colors active:bg-white/10",
+            bgTransparent && "text-white",
+          )}
           aria-label="Open menu"
         >
           <LuMenu className="size-5 sm:size-7" />

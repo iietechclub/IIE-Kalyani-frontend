@@ -40,7 +40,7 @@ export default function CampusGallery({ tagline, galleryItems }: Props) {
           >
             Campus <span className="text-[#FF6B35]">Life Gallery</span>
           </h2>
-          <p className="mx-auto max-w-2xl px-4 text-base text-gray-600 md:text-xl">
+          <p className="mx-auto max-w-2xl text-pretty px-4 text-base text-gray-600 md:text-xl">
             {tagline}
           </p>
         </MotionDiv>
