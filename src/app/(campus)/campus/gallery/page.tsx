@@ -1,8 +1,8 @@
 "use client";
 
-import { Camera } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { LuCamera } from "react-icons/lu";
 import { MotionDiv, MotionFigure } from "@/components/animated/motion";
 
 export default function GalleryPage() {
@@ -142,7 +142,7 @@ export default function GalleryPage() {
               className="max-w-3xl text-white"
             >
               <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1">
-                <Camera className="h-5 w-5 text-white" />
+                <LuCamera className="size-5 text-white" />
                 <span className="text-sm">Campus Gallery</span>
               </div>
               <h1 className="mb-3 font-semibold text-3xl sm:text-4xl">

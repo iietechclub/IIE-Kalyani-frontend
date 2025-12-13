@@ -31,8 +31,6 @@
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
   },
-  "cSpell.words": [
-    "Makaut"
-  ],
+  "cSpell.words": ["Makaut"],
   "files.eol": "\n"
 }

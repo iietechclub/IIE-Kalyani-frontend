@@ -6,6 +6,13 @@ export const MotionA = ({ children, ...props }: HTMLMotionProps<"a">) => (
   <motion.a {...props}>{children}</motion.a>
 );
 
+export const MotionArticle = ({
+  children,
+  ...props
+}: HTMLMotionProps<"article">) => (
+  <motion.article {...props}>{children}</motion.article>
+);
+
 export const MotionButton = ({
   children,
   ...props
