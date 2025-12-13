@@ -1,24 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
-import { useMemo, useState } from "react";
-import {
-  LuCalendar,
-  LuCpu,
-  // LuSearch,
-  // LuExternalLink
-} from "react-icons/lu";
 import Image from "next/image";
+import { useMemo, useState } from "react";
+import { LuCalendar, LuCpu } from "react-icons/lu";
+import { MotionArticle, MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-// import {
-//   Breadcrumb,
-//   BreadcrumbItem,
-//   BreadcrumbLink,
-//   BreadcrumbList,
-//   BreadcrumbPage,
-//   BreadcrumbSeparator,
-// } from "@/components/ui/breadcrumb";
 import { Card, CardContent } from "@/components/ui/card";
 
 type EventType = {
@@ -169,25 +156,27 @@ export default function TechnicalEventsPage() {
   }, [query, activeCategory]);
 
   const excerpt = (text: string, n: number = 120) =>
-    text.length > n ? text.slice(0, n).trim() + "…" : text;
+    text.length > n ? `${text.slice(0, n).trim()}…` : text;
 
   return (
     <div className="min-h-screen bg-linear-to-br from-white via-blue-50/30 to-white pt-20 md:pt-0">
       {/* Hero (kept as-is) */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1800&q=80"
-            alt="Technical events hero"
-            fill
-            className="h-[500px] w-full scale-105 object-cover object-center md:h-[520px]"
-          />
+          <div className="h-[500px] w-full scale-105 object-center md:h-[520px]">
+            <Image
+              fill
+              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1800&q=80"
+              alt="Technical events hero"
+              className="object-cover"
+            />
+          </div>
 
           <div className="absolute inset-0 bg-linear-to-r from-blue-900/80 via-purple-900/50 to-transparent" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4">
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -222,7 +211,7 @@ export default function TechnicalEventsPage() {
                 <div className="font-semibold text-lg">5k+</div>
               </div>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </header>
 
@@ -241,7 +230,7 @@ export default function TechnicalEventsPage() {
           </div>
 
           {filteredUpcoming.length === 0 ? (
-            <div className="rounded-2xl bg-white p-6 text-center dark:bg-gray-800">
+            <div className="rounded-2xl bg-white p-6 text-center">
               <div className="mb-2 font-medium text-lg">
                 No upcoming events found
               </div>
@@ -260,7 +249,7 @@ export default function TechnicalEventsPage() {
               }}
             >
               {filteredUpcoming.map((ev, idx) => (
-                <motion.article
+                <MotionArticle
                   key={ev.id}
                   initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -309,7 +298,7 @@ export default function TechnicalEventsPage() {
                       </div>
                     </div>
                   </CardContent>
-                </motion.article>
+                </MotionArticle>
               ))}
             </div>
           )}
@@ -323,7 +312,7 @@ export default function TechnicalEventsPage() {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {pastEvents.map((pe, i) => (
-              <motion.div
+              <MotionDiv
                 key={pe.title}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -16 : 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -331,16 +320,15 @@ export default function TechnicalEventsPage() {
                 transition={{ delay: i * 0.06 }}
               >
                 <Card className="overflow-hidden transition-shadow hover:shadow-lg">
-                  <div className="grid md:grid-cols-3 gap-6 items-stretch">
-                    <div className="md:col-span-1 h-56 md:h-64 w-full overflow-hidden rounded-md relative">
+                  <div className="grid items-stretch gap-6 md:grid-cols-3">
+                    <div className="relative h-56 w-full overflow-hidden rounded-md md:col-span-1 md:h-64">
                       <Image
                         src={pe.image}
                         alt={pe.title}
                         fill
-                        className="w-full h-full object-cover"
+                        className="h-full w-full object-cover"
                       />
                     </div>
-
 
                     <div className="flex flex-col justify-between p-6 md:col-span-2">
                       <div>
@@ -370,7 +358,7 @@ export default function TechnicalEventsPage() {
                     </div>
                   </div>
                 </Card>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </section>
@@ -387,20 +375,20 @@ export default function TechnicalEventsPage() {
             onKeyDown={(e) => e.key === "Enter" && setSelectedEvent(null)}
           />
 
-          <motion.div
+          <MotionDiv
             initial={{ scale: 0.98, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.16 }}
-            className="relative z-10 w-full max-w-3xl rounded-2xl bg-white p-6 shadow-2xl dark:bg-gray-800"
+            className="relative z-10 w-full max-w-3xl rounded-2xl bg-white p-6 shadow-2xl"
           >
             <div className="flex items-start gap-4">
               <div className="h-24 w-24 shrink-0 overflow-hidden rounded-md">
                 <Image
-    src={selectedEvent.image}
-    alt={selectedEvent.title}
-    fill
-    className="h-full w-full object-cover"
-  />
+                  src={selectedEvent.image}
+                  alt={selectedEvent.title}
+                  fill
+                  className="h-full w-full object-cover"
+                />
               </div>
 
               <div className="flex-1">
@@ -414,10 +402,7 @@ export default function TechnicalEventsPage() {
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {selectedEvent.tags?.map((t) => (
-                    <Badge
-                      key={t}
-                      className="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200"
-                    >
+                    <Badge key={t} className="bg-gray-100 text-gray-700">
                       {t}
                     </Badge>
                   ))}
@@ -447,7 +432,7 @@ export default function TechnicalEventsPage() {
                 Close
               </button>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       )}
     </div>

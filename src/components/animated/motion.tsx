@@ -2,6 +2,13 @@
 import type { HTMLMotionProps, SVGMotionProps } from "motion/react";
 import { motion } from "motion/react";
 
+export const MotionArticle = ({
+  children,
+  ...props
+}: HTMLMotionProps<"article">) => (
+  <motion.article {...props}>{children}</motion.article>
+);
+
 export const MotionDiv = ({ children, ...props }: HTMLMotionProps<"div">) => (
   <motion.div {...props}>{children}</motion.div>
 );

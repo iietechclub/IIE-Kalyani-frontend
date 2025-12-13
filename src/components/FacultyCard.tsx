@@ -1,6 +1,5 @@
-import { motion } from "motion/react";
-// import { LuArrowRight } from "react-icons/lu";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
+import Image from "next/image";
+import { MotionDiv } from "./animated/motion";
 
 interface FacultyCardProps {
   name: string;
@@ -24,7 +23,7 @@ export function FacultyCard({
   tags = [],
 }: FacultyCardProps) {
   return (
-    <motion.div
+    <MotionDiv
       whileHover={{
         scale: 1.03,
         y: -6,
@@ -49,13 +48,14 @@ export function FacultyCard({
       {/* Faculty Image - Top 40% */}
       <div className="relative h-[40%] overflow-hidden">
         {image ? (
-          <ImageWithFallback
+          <Image
+            fill
             src={image}
             alt={name}
-            className="h-full w-full object-cover"
+            className="size-full object-cover"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-primary to-red-500">
+          <div className="flex size-full items-center justify-center bg-linear-to-br from-primary to-red-500">
             <div
               className="text-6xl text-white"
               style={{ fontFamily: "Nunito, sans-serif", fontWeight: "bold" }}
@@ -157,6 +157,6 @@ export function FacultyCard({
           )}
         </div>
       </div>
-    </motion.div>
+    </MotionDiv>
   );
 }
