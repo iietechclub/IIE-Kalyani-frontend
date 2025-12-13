@@ -15,90 +15,6 @@ import DynamicIcon from "../ui/dynamic-icon";
 type Props = { tagline: string; facilities: Facility[] };
 
 export default function Facilities({ tagline, facilities }: Props) {
-  // const facilities = [
-  //   {
-  //     icon: Microscope,
-  //     title: "Advanced Laboratories",
-  //     description:
-  //       "State-of-the-art labs equipped with the latest technology for hands-on learning.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1582273953509-3972288b909e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2llbmNlJTIwbGFib3JhdG9yeSUyMGVxdWlwbWVudHxlbnwxfHx8fDE3NjAyNzEzMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //     badge: "High-tech",
-  //   },
-  //   {
-  //     icon: BookOpen,
-  //     title: "Digital Library",
-  //     description:
-  //       "Extensive collection of books, journals, and digital resources for comprehensive research.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1731200301762-af6a21e9037a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwbGlicmFyeSUyMGJvb2tzfGVufDF8fHx8MTc2MDI4NzM4OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //     badge: "Research",
-  //   },
-  //   {
-  //     icon: Dumbbell,
-  //     title: "Sports Ground",
-  //     description:
-  //       "Well-maintained sports grounds for cricket, football, athletics, and outdoor recreational activities.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1609134154058-860440f6f609?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3BvcnRzJTIwZmllbGR8ZW58MXx8fHwxNzYwNDE5Mjk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //     badge: "Sports",
-  //   },
-  //   {
-  //     icon: Laptop,
-  //     title: "Computer Labs",
-  //     description:
-  //       "Well-equipped computer labs with high-performance systems, latest software, and high-speed internet connectivity.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1569653402334-2e98fbaa80ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21wdXRlciUyMGxhYiUyMHN0dWRlbnRzfGVufDF8fHx8MTc2MDMzMjQ4NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //     badge: "Technology",
-  //   },
-  //   {
-  //     icon: Users,
-  //     title: "Seminar Halls",
-  //     description:
-  //       "Spacious seminar halls equipped with modern presentation systems for workshops, seminars, and academic events.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1758413350815-7b06dbbfb9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZW1pbmFyJTIwcm9vbSUyMGNsYXNzcm9vbXxlbnwxfHx8fDE3NjA0MjIzNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //     badge: "Events",
-  //   },
-  //   {
-  //     icon: Utensils,
-  //     title: "Canteen",
-  //     description:
-  //       "Hygienic and spacious canteen serving nutritious meals and refreshments at affordable prices.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1567480849447-0ec63ac72a22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBjYW50ZWVuJTIwY2FmZXRlcmlhfGVufDF8fHx8MTc2MDQxOTI5OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //     badge: "Food",
-  //   },
-  //   {
-  //     icon: Briefcase,
-  //     title: "Swimming Pool",
-  //     description:
-  //       "Well-maintained and spacious swimming pool offering a refreshing environment for fitness and recreation.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1730244548329-4ae2f4fcaa7c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //     badge: "Swimming Pool",
-  //   },
-  //   {
-  //     icon: Dumbbell,
-  //     title: "Gym",
-  //     description:
-  //       "Well-equipped and spacious gym offering a motivating environment for fitness and training.",
-  //     image:
-  //       "https://plus.unsplash.com/premium_photo-1685202713512-5442057c5e77?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //     badge: "Gym",
-  //   },
-  //   {
-  //     icon: Brain,
-  //     title: "Smart Classrooms",
-  //     description:
-  //       "Modern and well-equipped smart classroom providing an interactive environment for effective learning and collaboration.",
-  //     image:
-  //       "https://plus.unsplash.com/premium_photo-1724026586485-f26d4ef7abaa?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //     badge: "Smart Classrooms",
-  //   },
-  // ];
-
   const quickFacts = [
     {
       icon: LuWifi,
@@ -143,11 +59,14 @@ export default function Facilities({ tagline, facilities }: Props) {
         {/* Main Facilities Grid */}
         <StaggerContainer
           staggerDelay={0.1}
-          className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+          className="mb-16 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
         >
           {facilities.map((facility) => (
-            <StaggerItem key={facility.documentId}>
-              <Card className="group hover:-translate-y-2 h-80- overflow-hidden border border-white/20 bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl sm:h-[360px]">
+            <StaggerItem
+              key={facility.documentId}
+              className="mx-auto max-w-xs bg-white sm:max-w-none"
+            >
+              <Card className="group hover:-translate-y-2 h-full overflow-hidden border border-white/20 bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
                 {/* Image */}
                 <div className="relative h-32 overflow-hidden sm:h-40 md:h-48">
                   <BackendImage

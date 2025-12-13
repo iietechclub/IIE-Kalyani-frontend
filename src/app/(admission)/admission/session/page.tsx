@@ -1,27 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
+import type React from "react";
 import { useEffect, useRef, useState } from "react";
-import {
-  LuAward,
-  LuCalendar,
-  // LuClock,
-  // LuDownload,
-  // LuFileText,
-  LuGlobe,
-  LuGraduationCap,
-  // LuUsers,
-} from "react-icons/lu";
+import { LuAward, LuCalendar, LuGlobe, LuGraduationCap } from "react-icons/lu";
 import { MotionDiv, MotionSection } from "@/components/animated/motion";
 import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
-// import {
-//   Breadcrumb,
-//   BreadcrumbItem,
-//   BreadcrumbLink,
-//   BreadcrumbList,
-//   BreadcrumbPage,
-//   BreadcrumbSeparator,
-// } from "@/components/ui/breadcrumb";
 
 /**
  * Session2025 — responsive, mobile-first
@@ -31,8 +15,8 @@ export default function Session2025() {
   const TARGET_APPLICANTS = 1240;
   const TARGET_SEATS = 420;
 
-  const [applicants, setApplicants] = useState(0);
-  const [seatsFilled, setSeatsFilled] = useState(0);
+  const [_applicants, setApplicants] = useState(0);
+  const [_seatsFilled, setSeatsFilled] = useState(0);
 
   // Removed old state (fixes useEffect warning)
   // const [countersStarted, setCountersStarted] = useState(false);
@@ -119,13 +103,13 @@ export default function Session2025() {
               </div>
             </div>
 
-            <h1 className="mb-1 font-extrabold text-2xl text-black leading-tight sm:text-3xl md:text-4xl lg:text-5xl dark:text-black">
+            <h1 className="mb-1 font-extrabold text-2xl text-black leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
               Admissions Open — Session{" "}
               <span className="ml-2 text-red-600">2025-2026</span>
             </h1>
 
             <p
-              className="mx-auto mt-4 mb-7 max-w-xl text-xs sm:text-base dark:text-300"
+              className="mx-auto mt-4 mb-7 max-w-xl text-xs sm:text-base"
               style={{ color: "#4a5568" }}
             >
               Join Ideal Institute of Engineering and start your engineering
@@ -178,7 +162,7 @@ export default function Session2025() {
               transition={{ duration: 0.5 }}
             >
               {programs.map((program) => (
-                <motion.div
+                <MotionDiv
                   key={program.name}
                   className="hover:-translate-y-2 w-full shrink-0 snap-center rounded-2xl border border-gray-200 bg-white/90 p-4 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl sm:w-96 sm:p-6 md:w-80 lg:w-96"
                   initial={{ opacity: 0, y: 40, scale: 0.95 }}
@@ -200,7 +184,7 @@ export default function Session2025() {
                         </h3>
 
                         {/* Available badge (matches Figma look) */}
-                        <div className="ml-4 flex-shrink-0">
+                        <div className="ml-4 shrink-0">
                           <span className="inline-flex items-center rounded-full bg-green-50 px-3 py-1 font-medium text-green-800 text-xs shadow-sm">
                             {program.seats}
                           </span>
@@ -225,7 +209,7 @@ export default function Session2025() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </MotionDiv>
               ))}
             </MotionDiv>
           </div>
@@ -263,7 +247,7 @@ export default function Session2025() {
                     {d.event}
                   </div>
 
-                  <div className="-translate-x-1/2 absolute top-19 bottom-8 left-1/2 w-[2px] bg-gradient-to-b from-red-200 via-red-300 to-red-500"></div>
+                  <div className="-translate-x-1/2 absolute top-19 bottom-8 left-1/2 w-0.5 bg-linear-to-b from-red-200 via-red-300 to-red-500"></div>
 
                   <div className="relative hidden items-center justify-center md:flex">
                     {/* Circle (front) */}
@@ -286,15 +270,12 @@ export default function Session2025() {
 }
 
 /* ---------------- Helper Component ---------------- */
-function StatCard({
-  icon,
-  label,
-  value,
-}: {
-  icon: any;
+type StatCardProps = {
+  icon: React.ReactNode;
   label: string;
   value: string | number;
-}) {
+};
+function StatCard({ icon, label, value }: StatCardProps) {
   return (
     <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-3 shadow-sm">
       <div className="shrink-0 rounded-md bg-gray-50 p-2">{icon}</div>

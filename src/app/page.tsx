@@ -21,7 +21,7 @@ export default async function Home() {
       </div>
       <NoticeBar />
 
-      <div className="container mx-auto px-6 py-3">
+      <div className="container mx-auto py-3 sm:px-6">
         <WhyChooseUs why_choose_cards={home.why_choose_cards} />
         <Departments
           tagline={home.departments_tagline}

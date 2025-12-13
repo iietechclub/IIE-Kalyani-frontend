@@ -83,6 +83,9 @@ type Menu = prettify<
     link: LinkButton;
     menuItems: MenuItem[];
     submenus: Submenu[];
+    image?: Media;
+    image_title?: string;
+    image_subtitle?: string;
   }
 >;
 
