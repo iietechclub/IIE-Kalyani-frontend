@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { LuSparkles } from "react-icons/lu";
+
 import {
   ScrollReveal,
   StaggerContainer,
   StaggerItem,
 } from "@/components/animated/scroll-reveal";
-// import { ImageWithFallback } from "figma/ImageWithFallback";
+import BackendImage from "@/components/BackendImage";
 import { Badge } from "@/components/ui/badge";
+
 import { Card, CardContent } from "@/components/ui/card";
+import DynamicIcon from "@/components/ui/dynamic-icon";
+
 import { cn } from "@/lib/utils";
-import BackendImage from "../BackendImage";
-import DynamicIcon from "../ui/dynamic-icon";
 
 type Props = { tagline: string; departments: Department[] };
 export default function Departments({ tagline, departments }: Props) {

@@ -6,7 +6,7 @@ import {
   LuDownload,
   LuMapPin,
 } from "react-icons/lu";
-// import { ImageWithFallback } from "figma/ImageWithFallback";
+
 // import AllEventsPage from "@/pages/AllEventsPage";
 // import AllNoticesPage from "@/pages/AllNoticesPage";
 import { MotionA, MotionButton, MotionDiv, MotionLi } from "../animated/motion";

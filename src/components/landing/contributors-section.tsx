@@ -8,7 +8,6 @@ import {
 import { MotionDiv } from "../animated/motion";
 import BackendImage from "../BackendImage";
 
-// import { ImageWithFallback } from "figma/ImageWithFallback";
 
 type Props = {
   our_creative_team_tagline: string;
