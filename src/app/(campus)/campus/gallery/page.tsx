@@ -51,14 +51,14 @@ export default function GalleryPageWithHero() {
       acc[img.id] = h;
       return acc;
     }, {});
-  }, [galleryImages]);
+  }, []);
 
   const filtered = activeCategory === 'all'
     ? galleryImages
     : galleryImages.filter(i => i.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-indigo-50/30 to-white">
+    <div className="min-h-screen text-black bg-gradient-to-br from-white via-indigo-50/30 to-white">
       {/* Breadcrumb */}
       <div className="
             bg-white/80 backdrop-blur-sm border-b border-gray-200 
@@ -205,9 +205,15 @@ export default function GalleryPageWithHero() {
           overflow-hidden
           bg-gray-100
           shadow-sm
-          ${idx % 7 === 0 ? 'col-span-2 row-span-2' : ''}
-          ${idx % 5 === 0 ? 'row-span-2' : ''}
-          ${idx % 6 === 0 ? 'col-span-2' : ''}
+           ${
+            idx % 7 === 0
+              ? 'col-span-2 row-span-2'
+              : idx % 5 === 0
+              ? 'row-span-2'
+              : idx % 6 === 0
+              ? 'col-span-2'
+              : ''
+          }
         `}
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -218,10 +224,11 @@ export default function GalleryPageWithHero() {
         }
       >
         {/* IMAGE */}
-        <img
+        <Image
           src={img.src}
           alt={img.title}
           loading={idx < 6 ? 'eager' : 'lazy'}
+          fill
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
 
@@ -242,7 +249,6 @@ export default function GalleryPageWithHero() {
     </div>
   )}
 </main>
-``
     </div>
   );
 }
