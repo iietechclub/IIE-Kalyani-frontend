@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { LuSparkles } from "react-icons/lu";
+
 import {
   ScrollReveal,
   StaggerContainer,
   StaggerItem,
 } from "@/components/animated/scroll-reveal";
-// import { ImageWithFallback } from "figma/ImageWithFallback";
+import BackendImage from "@/components/BackendImage";
 import { Badge } from "@/components/ui/badge";
+
 import { Card, CardContent } from "@/components/ui/card";
+import DynamicIcon from "@/components/ui/dynamic-icon";
+
 import { cn } from "@/lib/utils";
-import BackendImage from "../BackendImage";
-import DynamicIcon from "../ui/dynamic-icon";
 
 type Props = { tagline: string; departments: Department[] };
 export default function Departments({ tagline, departments }: Props) {
@@ -45,7 +47,7 @@ export default function Departments({ tagline, departments }: Props) {
             >
               Our <span className="text-[#FF6B35]">Departments</span>
             </h2>
-            <p className="mx-auto max-w-3xl font-sans text-[18px] text-lg text-muted-foreground">
+            <p className="mx-auto max-w-3xl text-pretty font-sans text-[18px] text-lg text-muted-foreground">
               {tagline}
             </p>
           </div>
@@ -54,13 +56,16 @@ export default function Departments({ tagline, departments }: Props) {
         {/* Departments Grid */}
         <StaggerContainer
           staggerDelay={0.1}
-          className="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
         >
           {departments.map((department, idx) => {
             const color = departmentColors[idx % departmentColors.length];
             return (
-              <StaggerItem key={department.documentId}>
-                <Link href={`/academics/departments/${department.slug}`}>
+              <StaggerItem
+                key={department.documentId}
+                className="mx-auto max-w-xs sm:max-w-none"
+              >
+                <Link href={`/department/${department.slug}`}>
                   <Card className="group hover:-translate-y-2 h-full cursor-pointer overflow-hidden border border-accent bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
                     {/* Image Section */}
                     <div className="relative h-36 overflow-hidden sm:h-48">
@@ -88,29 +93,29 @@ export default function Departments({ tagline, departments }: Props) {
                       </div>
 
                       {/* Icon */}
-                      <div className="absolute bottom-4 left-4">
-                        <div
-                          className={cn(
-                            `flex size-12 items-center justify-center rounded-xl bg-linear-to-br shadow-lg`,
-                            color,
-                          )}
-                        >
-                          {department.icon && (
+                      {department.icon && (
+                        <div className="absolute bottom-4 left-4">
+                          <div
+                            className={cn(
+                              "flex size-9 items-center justify-center rounded-xl bg-linear-to-br shadow-lg sm:size-12",
+                              color,
+                            )}
+                          >
                             <DynamicIcon
                               name={department.icon}
-                              className="size-6 text-white"
+                              className="size-5 text-white sm:size-6"
                             />
-                          )}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
 
                     {/* Content Section */}
                     <CardContent className="space-y-3 p-6 pt-0">
-                      <h3 className="line-clamp-1 font-bold font-sans- text-base text-foreground transition-colors group-hover:text-primary sm:text-lg md:text-xl">
+                      <h3 className="font-bold text-base text-foreground transition-colors group-hover:text-primary sm:text-lg md:text-xl">
                         {department.name}
                       </h3>
-                      <p className="line-clamp-2 font-sans- text-muted-foreground text-xs leading-relaxed sm:line-clamp-3 sm:text-sm md:text-base">
+                      <p className="line-clamp-2 text-muted-foreground text-xs leading-relaxed sm:line-clamp-3 sm:text-sm md:text-base">
                         {department.tagline}
                       </p>
                     </CardContent>

@@ -6,14 +6,14 @@ import {
   LuDownload,
   LuMapPin,
 } from "react-icons/lu";
-// import { ImageWithFallback } from "figma/ImageWithFallback";
+
 // import AllEventsPage from "@/pages/AllEventsPage";
 // import AllNoticesPage from "@/pages/AllNoticesPage";
 import { MotionA, MotionButton, MotionDiv, MotionLi } from "../animated/motion";
 
 const EventScheduleNotices = () => {
-  const [showAllEvents, setShowAllEvents] = useState(false);
-  const [showAllNotices, setShowAllNotices] = useState(false);
+  const [_showAllEvents, setShowAllEvents] = useState(false);
+  const [_showAllNotices, setShowAllNotices] = useState(false);
   const upcomingEvents = [
     {
       id: 1,
