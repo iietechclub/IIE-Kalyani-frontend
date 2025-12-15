@@ -83,7 +83,7 @@ export default function InternshipsPage() {
           <div
             className="w-full h-[420px] md:h-[520px] bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImage})` }}
-            aria-hidden
+            aria-hidden="true"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20" />
           <div className="absolute -right-36 -top-28 w-96 h-96 bg-[#FF6B35]/8 rounded-full blur-3xl" />
