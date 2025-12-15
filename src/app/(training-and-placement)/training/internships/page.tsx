@@ -74,7 +74,9 @@ const processSteps = [
   },
 ];
 
-export default function InternshipsPage() {
+export default function InternshipsFocused() {
+  const uniqueBenefits = useMemo(() => benefits, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-white ">
       {/* Focused Hero */}
@@ -83,7 +85,7 @@ export default function InternshipsPage() {
           <div
             className="w-full h-[420px] md:h-[520px] bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImage})` }}
-            aria-hidden="true"
+            aria-hidden
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20" />
           <div className="absolute -right-36 -top-28 w-96 h-96 bg-[#FF6B35]/8 rounded-full blur-3xl" />
@@ -103,9 +105,7 @@ export default function InternshipsPage() {
                 Internships bridge the gap between learning and
                 doing — gain experience, grow your network, and
                 unlock career opportunities.
-              </p>
-
-              
+              </p>       
             </div>
           </motion.div>
         </div>
@@ -165,11 +165,10 @@ export default function InternshipsPage() {
               <div className="relative">
                 <Image
                   src={heroImage}
-                  alt="Internship"
+                  alt="Students collaborating in a professional workplace environment"
                     width={1200}
                     height={600}
-                  className="w-full h-64 object-cover"
-                  
+                  className="w-full h-64 object-cover"      
                 />
               </div>
 
