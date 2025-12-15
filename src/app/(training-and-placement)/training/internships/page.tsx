@@ -74,7 +74,7 @@ const processSteps = [
   },
 ];
 
-export default function InternshipsFocused() {
+export default function InternshipsPage() {
   const uniqueBenefits = useMemo(() => benefits, []);
 
   return (
