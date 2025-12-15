@@ -32,6 +32,13 @@ export const MotionLi = ({ children, ...props }: HTMLMotionProps<"li">) => (
   <motion.li {...props}>{children}</motion.li>
 );
 
+export const MotionFigure = ({
+  children,
+  ...props
+}: HTMLMotionProps<"figure">) => (
+  <motion.figure {...props}>{children}</motion.figure>
+);
+
 export const MotionA = ({ children, ...props }: HTMLMotionProps<"a">) => (
   <motion.a {...props}>{children}</motion.a>
 );
