@@ -159,7 +159,7 @@ export default function TechnicalEventsPage() {
     text.length > n ? `${text.slice(0, n).trim()}…` : text;
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white via-blue-50/30 to-white pt-20 md:pt-0">
+    <main className="min-h-screen bg-linear-to-br from-white via-blue-50/30 to-white">
       {/* Hero (kept as-is) */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
@@ -215,8 +215,8 @@ export default function TechnicalEventsPage() {
         </div>
       </header>
 
-      {/* Main */}
-      <main className="container mx-auto px-4 py-12">
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-12">
         {/* Upcoming Events - fixed card width grid */}
         <section className="mb-12">
           <div className="mb-4 flex items-center justify-between">
@@ -362,7 +362,7 @@ export default function TechnicalEventsPage() {
             ))}
           </div>
         </section>
-      </main>
+      </div>
 
       {/* Event Details Modal */}
       {selectedEvent && (
@@ -435,6 +435,6 @@ export default function TechnicalEventsPage() {
           </MotionDiv>
         </div>
       )}
-    </div>
+    </main>
   );
 }
