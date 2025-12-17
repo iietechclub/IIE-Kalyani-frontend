@@ -1,10 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, { useMemo, useState } from "react";
-import { LuMail, LuMapPin, LuPhone, LuUsers } from "react-icons/lu";
+import { useMemo, useState } from "react";
 import { MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 
 type FacultyMember = {
   name: string;
@@ -433,7 +431,7 @@ export default function Faculty() {
     "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1920";
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white via-red-50/30 to-white pt-20 md:pt-32 dark:from-gray-900 dark:via-red-950/20 dark:to-gray-900">
+    <div className="min-h-screen bg-linear-to-br from-white via-red-50/30 to-white">
       {/* HERO: matches library-style snippet (same sizes, spacing, badge, CTA style) */}
       <header className="relative">
         <div className="relative h-64 overflow-hidden md:h-96">
@@ -512,7 +510,7 @@ export default function Faculty() {
                 <div key={d.id}>
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
                     {facultyForDept.length === 0 && (
-                      <div className="col-span-full rounded-2xl bg-gray-50 p-6 text-center dark:bg-gray-800/50">
+                      <div className="col-span-full rounded-2xl bg-gray-50 p-6 text-center">
                         No faculty match your search for{" "}
                         <strong>{d.name}</strong>.
                       </div>
@@ -527,7 +525,7 @@ export default function Faculty() {
                       >
                         {/* Portrait-style card */}
                         <article
-                          className="hover:-translate-y-2 transform overflow-hidden rounded-2xl bg-white shadow-sm transition hover:shadow-2xl dark:bg-gray-900"
+                          className="hover:-translate-y-2 transform overflow-hidden rounded-2xl bg-white shadow-sm transition hover:shadow-2xl"
                           aria-label={`Profile card for ${member.name}`}
                           style={{ width: "100%" }}
                         >

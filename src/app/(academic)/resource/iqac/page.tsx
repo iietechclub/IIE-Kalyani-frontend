@@ -1,14 +1,5 @@
 "use client";
 import Image from "next/image";
-import {
-  LuAward,
-  LuCalendar,
-  LuFileText,
-  LuMapPin,
-  LuTarget,
-  LuTrendingUp,
-  LuUsers,
-} from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
 
@@ -90,7 +81,7 @@ export default function IQACLite() {
     "https://iiekalyani.com/wp-content/uploads/.../IQAC-brochure.pdf"; // <- replace
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-white via-red-50/30 to-white pt-20 md:pt-28 dark:from-gray-900 dark:via-red-950/20 dark:to-gray-900">
+    <main className="min-h-screen bg-linear-to-br from-white via-red-50/30 to-white">
       {/* Breadcrumb - Removed due to component not available */}
 
       {/* Hero - uses same sizes & spacing you've insisted on; retains badge and CTA */}
@@ -150,7 +141,7 @@ export default function IQACLite() {
       {/* Main content - minimal boxes: subtle separators rather than heavy cards */}
       <div className="mx-auto max-w-7xl space-y-8 px-4 py-10">
         {/* Objectives */}
-        <section id="objectives" className="prose dark:prose-invert max-w-none">
+        <section id="objectives" className="prose max-w-none">
           <h2 className="font-semibold text-2xl">Objectives</h2>
           <ul className="list-disc space-y-2 pl-6">
             {objectives.map((o) => (
@@ -160,16 +151,13 @@ export default function IQACLite() {
         </section>
 
         {/* Proposed functionalities (kept as plain list with light separators) */}
-        <section
-          id="functionalities"
-          className="prose dark:prose-invert max-w-none"
-        >
+        <section id="functionalities" className="prose max-w-none">
           <h2 className="font-semibold text-2xl">Proposed Functionalities</h2>
           <div className="grid gap-4 md:grid-cols-2">
             {functionalities.map((f) => (
               <div
                 key={f}
-                className="rounded-lg border border-gray-100 bg-white/60 p-3 dark:border-gray-800 dark:bg-gray-900/60"
+                className="rounded-lg border border-gray-100 bg-white/60 p-3"
               >
                 <div className="text-sm">{f}</div>
               </div>
@@ -237,7 +225,7 @@ export default function IQACLite() {
         </section>
 
         {/* Footer link area: preserve links / PDFs */}
-        <section className="border-gray-100 border-t pt-6 dark:border-gray-800">
+        <section className="border-gray-100 border-t pt-6">
           <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
             <div>
               <strong>Important documents:</strong>

@@ -130,7 +130,7 @@ export default function Achievements() {
 
   return (
     <div
-      className="mt-10 min-h-screen bg-linear-to-br from-gray-50 via-white to-gray-100 text-gray-900 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 dark:text-gray-100"
+      className="min-h-screen bg-linear-to-br from-gray-50 via-white to-gray-100 text-gray-900"
       // biome-ignore lint/suspicious/noExplicitAny: dynamic property used
       style={{ ["--iie-primary" as any]: "#c53030" }}
     >
@@ -184,7 +184,7 @@ export default function Achievements() {
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Card className="rounded-2xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-lg transition hover:shadow-lg dark:border-gray-700 dark:bg-gray-900/70">
+                  <Card className="h-full rounded-2xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-lg transition hover:shadow-lg">
                     <CardHeader>
                       <div className="flex items-start gap-3">
                         <div
@@ -217,7 +217,7 @@ export default function Achievements() {
                       <p className="text-muted-foreground text-sm">
                         {achievement.date}
                       </p>
-                      <p className="text-gray-600 text-sm dark:text-gray-300">
+                      <p className="text-gray-600 text-sm">
                         {achievement.description}
                       </p>
                     </CardContent>
