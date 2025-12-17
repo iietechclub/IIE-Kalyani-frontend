@@ -77,7 +77,7 @@ export default function InternshipsFocused() {
   const uniqueBenefits = useMemo(() => benefits, []);
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-neutral-50 to-white">
+    <main className="min-h-screen bg-linear-to-b from-neutral-50 to-white">
       {/* Focused Hero */}
       <header className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
@@ -109,7 +109,7 @@ export default function InternshipsFocused() {
         </div>
       </header>
 
-      <main className="mx-auto mt-12 max-w-7xl px-6">
+      <div className="mx-auto mt-12 max-w-7xl px-6">
         {/* Value proposition / Benefits */}
         <section className="-mt-8 p-8 md:p-12">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
@@ -242,7 +242,7 @@ export default function InternshipsFocused() {
             </div>
           </div>
         </section>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

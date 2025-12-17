@@ -10,6 +10,7 @@ import {
   LuUsers,
 } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
+import { cn } from "@/lib/utils";
 
 // IndustryCollaboration.jsx — Examination-style hero + existing content
 export default function IndustryCollaboration() {
@@ -148,11 +149,11 @@ export default function IndustryCollaboration() {
   const _partnerCategories = useMemo(() => ["All", ...partners], []);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: not needed
-  const filteredCollab = useMemo(() => {
+  const filteredCollabs = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return collaborationTypes;
     return collaborationTypes.filter((c) =>
-      (`${c.title} ${c.description} ${c.features.join(" ")}`)
+      `${c.title} ${c.description} ${c.features.join(" ")}`
         .toLowerCase()
         .includes(q),
     );
@@ -205,7 +206,7 @@ export default function IndustryCollaboration() {
             Types of Collaboration
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {filteredCollab.map((type, idx) => {
+            {filteredCollabs.map((type, idx) => {
               const Icon = type.icon;
               return (
                 <MotionArticle
@@ -307,12 +308,18 @@ export default function IndustryCollaboration() {
                     </div>
                   </div>
                   <LuChevronDown
-                    className={`h-5 w-5 text-slate-500 transition-transform ${openIdx === i ? "rotate-180" : ""}`}
+                    className={cn(
+                      "size-5 text-slate-500 transition-transform",
+                      openIdx === i && "rotate-180",
+                    )}
                   />
                 </button>
 
                 <div
-                  className={`${openIdx === i ? "max-h-screen p-5" : "max-h-0 p-0"} bg-white/50 text-slate-700 text-sm transition-[max-height] duration-300`}
+                  className={cn(
+                    openIdx === i ? "max-h-screen p-5" : "max-h-0 p-0",
+                    "bg-white/50 text-slate-700 text-sm transition-[max-height] duration-300",
+                  )}
                 >
                   <p>{it.description}</p>
                 </div>
