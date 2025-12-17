@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { motion } from 'motion/react';
 import { Handshake, Target, Users, Lightbulb, Award, Rocket, Search, ChevronDown, ClipboardCheck, Download } from 'lucide-react';
 import {
   Breadcrumb,
@@ -11,6 +10,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { MotionArticle, MotionDiv } from '@/components/animated/motion';
 
 // IndustryCollaboration.jsx — Examination-style hero + existing content
 export default function IndustryCollaboration() {
@@ -57,7 +57,7 @@ export default function IndustryCollaboration() {
   return (
     <div className="min-h-screen bg-neutral-50 text-black">
       {/* Breadcrumb */}
-      <div className="bg-white/60 backdrop-blur sticky top-0 z-40 border-b border-gray-200 dark:border-gray-700">
+      <div className="sticky top-0 z-40 border-gray-200 border-b bg-white/60 backdrop-blur">
         <div className="container mx-auto px-4 py-3">
           <Breadcrumb>
             <BreadcrumbList>
@@ -81,25 +81,25 @@ export default function IndustryCollaboration() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="w-full h-[360px] bg-cover bg-center "
+            className="h-[360px] w-full bg-center bg-cover"
             style={{ backgroundImage: `url(${heroImage})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-600 to-black/30" />
+          <div className="absolute inset-0 bg-linear-to-b from-gray-600 to-black/30" />
         </div>
 
-        <div className="relative max-w-7xl mt-20 mx-auto px-4 py-20 flex flex-col lg:flex-row gap-8 items-center">
-          <div className="flex-1 text-center lg:text-left text-white z-10">
-            <motion.div initial={{ y: 8, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}>
-              <div className="inline-flex items-center gap-4  p-3 rounded-xl mb-6">
-                <ClipboardCheck className="w-12 h-12 text-white" />
+        <div className="relative mx-auto mt-20 flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
+          <div className="z-10 flex-1 text-center text-white lg:text-left">
+            <MotionDiv initial={{ y: 8, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}>
+              <div className="mb-6 inline-flex items-center gap-4 rounded-xl p-3">
+                <ClipboardCheck className="h-12 w-12 text-white" />
                 <div className="text-left">
                   <h1 className="text-3xl md:text-4xl font-bold">Industry Collaboration</h1>
                   <p className="text-sm md:text-base text-white/90">
-                    Strengthening academia–industry ties — MoUs, sponsored labs, projects, internships and joint research.
+                    Strengthening academia-industry ties — MoUs, sponsored labs, projects, internships and joint research.
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
           </div>
         </div>
       </header>
@@ -112,7 +112,7 @@ export default function IndustryCollaboration() {
             {filteredCollab.map((type, idx) => {
               const Icon = type.icon;
               return (
-                <motion.article key={idx} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.06 * idx }} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
+                <MotionArticle key={idx} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.06 * idx }} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-rose-500 to-rose-600 text-white flex items-center justify-center flex-shrink-0">
                       <Icon className="w-6 h-6" />
@@ -131,7 +131,7 @@ export default function IndustryCollaboration() {
                       </ul>
                     </div>
                   </div>
-                </motion.article>
+                </MotionArticle>
               );
             })}
           </div>
@@ -144,17 +144,17 @@ export default function IndustryCollaboration() {
           <h2 className="text-center text-xl font-semibold mb-8">Benefits of Industry Collaboration</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {benefits.map((b, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.06 * i }} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <MotionDiv key={i} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.06 * i }} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                 <h3 className="text-center text-rose-600 font-semibold mb-4">{b.title}</h3>
                 <ul className="space-y-2 text-sm text-slate-700 ">
-                  {b.points.map((p, pIdx) => (
-                    <li key={pIdx} className="flex items-start gap-2">
+                  {b.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2">
                       <Award className="w-4 h-4 text-rose-600 mt-0.5" />
                       <span>{p}</span>
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>
@@ -166,8 +166,8 @@ export default function IndustryCollaboration() {
           <h2 className="text-center text-xl font-semibold mb-6">Collaboration Initiatives</h2>
           <div className="space-y-3">
             {initiatives.map((it, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.04 * i }} className="border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
-                <button onClick={() => setOpenIdx(openIdx === i ? null : i)} className="w-full text-left px-5 py-4 flex items-center justify-between gap-4">
+              <MotionDiv key={i} initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.04 * i }} className="border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+                <button type="button" onClick={() => setOpenIdx(openIdx === i ? null : i)} className="w-full text-left px-5 py-4 flex items-center justify-between gap-4">
                   <div>
                     <div className="font-semibold">{it.title}</div>
                     <div className="text-xs text-slate-500 mt-1">{it.description.slice(0, 80)}...</div>
@@ -178,7 +178,7 @@ export default function IndustryCollaboration() {
                 <div className={`${openIdx === i ? 'max-h-screen p-5' : 'max-h-0 p-0'} transition-[max-height] duration-300 text-sm text-slate-700 bg-white/50`}>
                   <p>{it.description}</p>
                 </div>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>
