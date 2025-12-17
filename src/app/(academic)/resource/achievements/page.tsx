@@ -1,15 +1,16 @@
-import { motion } from "motion/react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 import {
-  Trophy,
-  Award,
-  Medal,
-  TrendingUp,
-  Users,
-  BookOpen,
-  Star,
-} from "lucide-react";
+  LuAward,
+  LuBookOpen,
+  LuMedal,
+  // LuStar,
+  // LuTrendingUp,
+  LuTrophy,
+  // LuUsers,
+} from "react-icons/lu";
+import { MotionDiv, MotionH2 } from "@/components/animated/motion";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Achievements() {
   const studentAchievements = [
@@ -18,7 +19,7 @@ export default function Achievements() {
       winner: "Team CodeCrafters (CSE Department)",
       date: "November 2024",
       description: "Developed an AI-powered traffic management system.",
-      icon: Trophy,
+      icon: LuTrophy,
       category: "Competition",
     },
     {
@@ -26,7 +27,7 @@ export default function Achievements() {
       winner: "Rahul Kumar & Priya Singh",
       date: "October 2024",
       description: "Research on Machine Learning in Healthcare.",
-      icon: Award,
+      icon: LuAward,
       category: "Research",
     },
     {
@@ -34,7 +35,7 @@ export default function Achievements() {
       winner: "Amit Sharma (ME Department)",
       date: "September 2024",
       description: "Athletics - 100m Sprint.",
-      icon: Medal,
+      icon: LuMedal,
       category: "Sports",
     },
     {
@@ -42,7 +43,7 @@ export default function Achievements() {
       winner: "50+ Students",
       date: "August 2024",
       description: "Highest scorers in various NPTEL courses.",
-      icon: BookOpen,
+      icon: LuBookOpen,
       category: "Academic",
     },
     {
@@ -50,7 +51,7 @@ export default function Achievements() {
       winner: "Neha Patel (ECE Department)",
       date: "July 2024",
       description: "Inter-college technical quiz championship.",
-      icon: Trophy,
+      icon: LuTrophy,
       category: "Competition",
     },
     {
@@ -58,12 +59,12 @@ export default function Achievements() {
       winner: "IoT Team (EE Department)",
       date: "June 2024",
       description: "Smart Energy Management System.",
-      icon: Award,
+      icon: LuAward,
       category: "Project",
     },
   ];
 
-  const institutionalAchievements = [
+  const _institutionalAchievements = [
     {
       title: "NAAC A Grade Accreditation",
       year: "2024",
@@ -87,7 +88,7 @@ export default function Achievements() {
     },
   ];
 
-  const facultyAchievements = [
+  const _facultyAchievements = [
     {
       name: "Dr. Rajesh Kumar",
       achievement: "Published 5 research papers in top-tier journals.",
@@ -129,74 +130,76 @@ export default function Achievements() {
 
   return (
     <div
-      className="min-h-screen mt-10 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 text-gray-900 dark:text-gray-100"
+      className="mt-10 min-h-screen bg-linear-to-br from-gray-50 via-white to-gray-100 text-gray-900 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 dark:text-gray-100"
+      // biome-ignore lint/suspicious/noExplicitAny: dynamic property used
       style={{ ["--iie-primary" as any]: "#c53030" }}
     >
       {/* Hero Section */}
-      <section className="relative h-[320px] md:h-[420px] overflow-hidden flex items-center justify-center text-center">
+      <section className="relative flex h-80 items-center justify-center overflow-hidden text-center md:h-[420px]">
         <div className="absolute inset-0">
-          <img
+          <Image
+            fill
             src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1080"
             alt="Achievement Hero"
-            className="w-full h-full object-cover opacity-40"
+            className="size-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--iie-primary)]/70 to-black/80" />
+          <div className="absolute inset-0 bg-linear-to-b from-(--iie-primary)/70 to-black/80" />
         </div>
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="relative z-10 px-4"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="mb-4 font-bold text-4xl text-white md:text-5xl">
             Achievements & Excellence
           </h1>
-          <p className="text-white/90 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-white/90">
             Celebrating the triumphs of our students, faculty, and the
             institution that make IIE Kalyani proud.
           </p>
-        </motion.div>
+        </MotionDiv>
       </section>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+      <div className="mx-auto max-w-7xl space-y-20 px-4 py-16 sm:px-6 lg:px-8">
         {/* Student Achievements */}
         <section>
-          <motion.h2
+          <MotionH2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-semibold text-center mb-10 text-[var(--iie-primary)]"
+            className="mb-10 text-center font-semibold text-(--iie-primary) text-3xl"
           >
             Student Achievements
-          </motion.h2>
+          </MotionH2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {studentAchievements.map((achievement, i) => {
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {studentAchievements.map((achievement) => {
               const Icon = achievement.icon;
               return (
-                <motion.div
-                  key={i}
+                <MotionDiv
+                  key={achievement.title}
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Card className="bg-white/80 dark:bg-gray-900/70 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-lg transition">
+                  <Card className="rounded-2xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-lg transition hover:shadow-lg dark:border-gray-700 dark:bg-gray-900/70">
                     <CardHeader>
                       <div className="flex items-start gap-3">
                         <div
-                          className={`p-3 rounded-lg ${getCategoryColor(
-                            achievement.category
+                          className={`rounded-lg p-3 ${getCategoryColor(
+                            achievement.category,
                           )} text-white`}
                         >
-                          <Icon className="w-6 h-6" />
+                          <Icon className="h-6 w-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-lg font-semibold">
+                          <CardTitle className="font-semibold text-lg">
                             {achievement.title}
                           </CardTitle>
                           <Badge
-                            className="mt-2 bg-[var(--iie-primary)] text-white"
+                            className="mt-2 bg-(--iie-primary) text-white"
                             variant="outline"
                           >
                             {achievement.category}
@@ -207,24 +210,24 @@ export default function Achievements() {
                     <CardContent className="space-y-2">
                       <p className="text-sm">
                         <span className="text-muted-foreground">Winner:</span>{" "}
-                        <span className="font-medium">{achievement.winner}</span>
+                        <span className="font-medium">
+                          {achievement.winner}
+                        </span>
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         {achievement.date}
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
+                      <p className="text-gray-600 text-sm dark:text-gray-300">
                         {achievement.description}
                       </p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </MotionDiv>
               );
             })}
           </div>
         </section>
       </div>
-
-     
     </div>
   );
 }
