@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
+import type * as React from "react";
+import { DayPicker, type DayPickerProps } from "react-day-picker";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import { DayPicker, DayPickerProps } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "./button";
@@ -12,7 +12,7 @@ import { buttonVariants } from "./button";
 // ------------------------------
 export type CalendarIconProps = {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 export type CustomComponents = {

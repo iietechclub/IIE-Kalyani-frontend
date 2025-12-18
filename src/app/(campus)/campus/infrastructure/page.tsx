@@ -1,84 +1,121 @@
-import Image from 'next/image';
+import Image from "next/image";
 import {
-  LuBuilding2,
-  LuWifi,
-  LuZap,
-  LuWind,
-  LuShield,
-  LuFlaskConical,
   LuBookOpen,
-  LuMonitor,
+  LuBuilding2,
   LuCheck,
-  LuMapPin,
+  LuFlaskConical,
+  LuMonitor,
+  LuShield,
+  LuWifi,
+  LuWind,
+  LuZap,
 } from "react-icons/lu";
 
 export default function InfrastructurePage() {
   const facilities = [
     {
-      title: 'Modern Classrooms',
+      title: "Modern Classrooms",
       description:
-        'Smart classrooms equipped with projectors, audio systems, and comfortable seating for 60-80 students',
+        "Smart classrooms equipped with projectors, audio systems, and comfortable seating for 60-80 students",
       icon: LuBuilding2,
       image:
-        'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80',
-      features: ['Smart Boards', 'AC Rooms', 'Ergonomic Furniture', 'Natural Lighting'],
-      color: 'from-blue-400 to-blue-600',
+        "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1400&q=80",
+      features: [
+        "Smart Boards",
+        "AC Rooms",
+        "Ergonomic Furniture",
+        "Natural Lighting",
+      ],
+      color: "from-blue-400 to-blue-600",
     },
     {
-      title: 'Advanced Laboratories',
-      description: 'State-of-the-art labs for CSE, EE, ME, ECE with latest equipment and software',
+      title: "Advanced Laboratories",
+      description:
+        "State-of-the-art labs for CSE, EE, ME, ECE with latest equipment and software",
       icon: LuFlaskConical,
       image:
-        'https://images.unsplash.com/photo-1632435499182-e436787ce107?auto=format&fit=crop&w=1400&q=80',
-      features: ['Latest Equipment', 'Safety Measures', 'High-Speed Internet', 'Research Support'],
-      color: 'from-purple-400 to-purple-600',
+        "https://images.unsplash.com/photo-1632435499182-e436787ce107?auto=format&fit=crop&w=1400&q=80",
+      features: [
+        "Latest Equipment",
+        "Safety Measures",
+        "High-Speed Internet",
+        "Research Support",
+      ],
+      color: "from-purple-400 to-purple-600",
     },
     {
-      title: 'Central Library',
+      title: "Central Library",
       description:
-        'Extensive collection of 50,000+ books, journals, e-resources, and digital library access',
+        "Extensive collection of 50,000+ books, journals, e-resources, and digital library access",
       icon: LuBookOpen,
       image:
-        'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1400&q=80',
-      features: ['Digital Library', 'Reading Rooms', 'Research Journals', 'Study Spaces'],
-      color: 'from-green-400 to-green-600',
+        "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1400&q=80",
+      features: [
+        "Digital Library",
+        "Reading Rooms",
+        "Research Journals",
+        "Study Spaces",
+      ],
+      color: "from-green-400 to-green-600",
     },
     {
-      title: 'Computer Centers',
-      description: '300+ high-performance computers with licensed software and 24/7 internet connectivity',
+      title: "Computer Centers",
+      description:
+        "300+ high-performance computers with licensed software and 24/7 internet connectivity",
       icon: LuMonitor,
       image:
-        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1400&q=80',
-      features: ['Licensed Software', 'Latest Hardware', '24/7 Access', 'Tech Support'],
-      color: 'from-orange-400 to-orange-600',
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1400&q=80",
+      features: [
+        "Licensed Software",
+        "Latest Hardware",
+        "24/7 Access",
+        "Tech Support",
+      ],
+      color: "from-orange-400 to-orange-600",
     },
   ];
 
   const amenities = [
-    { icon: LuWifi, title: 'Campus-Wide WiFi', description: 'High-speed internet across entire campus' },
-    { icon: LuZap, title: '24/7 Power Backup', description: 'Uninterrupted power supply with generators' },
-    { icon: LuWind, title: 'Climate Control', description: 'AC and ventilation in all major buildings' },
-    { icon: LuShield, title: 'Security & Safety', description: 'CCTV surveillance and 24/7 security' },
+    {
+      icon: LuWifi,
+      title: "Campus-Wide WiFi",
+      description: "High-speed internet across entire campus",
+    },
+    {
+      icon: LuZap,
+      title: "24/7 Power Backup",
+      description: "Uninterrupted power supply with generators",
+    },
+    {
+      icon: LuWind,
+      title: "Climate Control",
+      description: "AC and ventilation in all major buildings",
+    },
+    {
+      icon: LuShield,
+      title: "Security & Safety",
+      description: "CCTV surveillance and 24/7 security",
+    },
   ];
 
   const buildingSpecs = [
-    { label: 'Total Campus Area', value: '15 Acres' },
-    { label: 'Academic Blocks', value: '4 Blocks' },
-    { label: 'Laboratory Halls', value: '25+ Labs' },
-    { label: 'Smart Classrooms', value: '50+ Rooms' },
-    { label: 'Auditorium Capacity', value: '500 Seats' },
-    { label: 'Seminar Halls', value: '8 Halls' },
+    { label: "Total Campus Area", value: "15 Acres" },
+    { label: "Academic Blocks", value: "4 Blocks" },
+    { label: "Laboratory Halls", value: "25+ Labs" },
+    { label: "Smart Classrooms", value: "50+ Rooms" },
+    { label: "Auditorium Capacity", value: "500 Seats" },
+    { label: "Seminar Halls", value: "8 Halls" },
   ];
 
   const keyFeatures = [
-    'Earthquake-resistant building structure',
-    'Ramp and lift facilities for differently-abled',
-    'Fire safety equipment and emergency exits',
-    'Rainwater harvesting systems',
-    'Solar panels for sustainable energy',
-    'Eco-friendly waste management',
-    'Green spaces and landscaped gardens',
-    'Parking facilities for students and staff',
+    "Earthquake-resistant building structure",
+    "Ramp and lift facilities for differently-abled",
+    "Fire safety equipment and emergency exits",
+    "Rainwater harvesting systems",
+    "Solar panels for sustainable energy",
+    "Eco-friendly waste management",
+    "Green spaces and landscaped gardens",
+    "Parking facilities for students and staff",
   ];
 
   const campusDescription = `The Ideal Institute of Engineering (IIE), located in the heart of Kalyani, a zestful town of West Bengal, offers a well-structured campus designed to foster academic excellence and holistic development. Strategically located opposite Kalyani Shil Panchal Station, the campus enjoys seamless connectivity, with Kalyani Main Station just a few minutes away by train or bus, ensuring easy access for students and faculty alike.
@@ -109,7 +146,9 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
           </div>
 
           <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
-            Experience modern classrooms, advanced labs, a comprehensive library and student-first amenities — all designed to support your academic journey at IIE Kalyani.
+            Experience modern classrooms, advanced labs, a comprehensive library
+            and student-first amenities — all designed to support your academic
+            journey at IIE Kalyani.
           </p>
         </div>
       </header>
@@ -144,7 +183,7 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
                 key={spec.label}
                 className="rounded-lg bg-white p-4 shadow-sm"
               >
-                <div className="font-semibold text-red-600 text-lg">
+                <div className="font-semibold text-lg text-red-600">
                   {spec.value}
                 </div>
                 <div className="text-slate-600 text-sm">{spec.label}</div>
@@ -160,7 +199,8 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
               Our Key Facilities
             </h2>
             <p className="mt-1 text-slate-600 text-sm sm:text-base">
-              Designed to support academic excellence, research and student wellbeing
+              Designed to support academic excellence, research and student
+              wellbeing
             </p>
           </div>
 
@@ -173,17 +213,20 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
                   className="grid grid-cols-1 overflow-hidden rounded-2xl bg-white shadow-lg md:grid-cols-2"
                 >
                   <div className="relative h-56 md:h-full">
-                    <img 
-                      src={facility.image} 
-                      alt={facility.title} 
-                      className="h-full w-full object-cover" 
+                    <Image
+                      fill
+                      src={facility.image}
+                      alt={facility.title}
+                      className="size-full object-cover"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   </div>
 
                   <div className="flex flex-col justify-between p-6">
                     <div>
-                      <div className={`mb-3 inline-flex items-center gap-3 rounded-md bg-linear-to-r ${facility.color} px-3 py-1 text-white shadow-sm`}>
+                      <div
+                        className={`mb-3 inline-flex items-center gap-3 rounded-md bg-linear-to-r ${facility.color} px-3 py-1 text-white shadow-sm`}
+                      >
                         <Icon className="h-5 w-5" />
                         <span className="font-medium">{facility.title}</span>
                       </div>
@@ -203,7 +246,7 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
 
                     <div className="mt-4 flex gap-3">
                       <a
-                        href={`/facilities/${facility.title.replace(/\s+/g, '-').toLowerCase()}`}
+                        href={`/facilities/${facility.title.replace(/\s+/g, "-").toLowerCase()}`}
                         className="text-blue-600 text-sm hover:underline"
                       >
                         Learn more
@@ -274,7 +317,9 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
 
         {/* Bottom info line */}
         <section className="border-gray-200 border-t pt-6 pb-10 text-slate-500 text-xs sm:text-sm">
-          For campus tours, facility access inquiries, or accommodation details, please contact the administration office or visit during working hours.
+          For campus tours, facility access inquiries, or accommodation details,
+          please contact the administration office or visit during working
+          hours.
         </section>
       </div>
     </main>

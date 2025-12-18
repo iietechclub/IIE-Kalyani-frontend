@@ -51,7 +51,7 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
           bgTransparent && "bg-transparent",
         )}
       >
-        <div className="container mx-auto px-4 py-2 md:px-6">
+        <div className="mx-auto max-w-380 px-4 py-2 md:px-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4 lg:gap-6">
               <a
@@ -93,7 +93,7 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
           bgTransparent && "bg-transparent",
         )}
       >
-        <div className="container relative mx-auto px-4 md:px-6">
+        <div className="relative mx-auto max-w-380 px-4 md:px-6">
           <div className="flex items-center justify-between py-3 md:py-4">
             {/* Logo */}
             <Link
@@ -106,12 +106,12 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
                 height="64"
                 src={data.organizationLogo.url}
                 alt={data.organizationLogo.alternativeText}
-                className="size-10 object-contain sm:size-12 md:size-16"
+                className="size-10 object-contain sm:size-12 xl:size-16"
               />
-              <div>
+              <div className="shrink-0">
                 <h1
                   className={cn(
-                    "font-medium text-black text-xl tracking-tight transition-colors duration-500 group-hover:opacity-80 sm:text-2xl md:text-3xl",
+                    "font-medium text-black text-xl tracking-tight transition-colors duration-500 group-hover:opacity-80 sm:text-2xl lg:text-[1.68rem] xl:text-3xl [@media(64rem<=width<69.5rem)]:text-[1.5rem]",
                     bgTransparent && "text-white",
                   )}
                 >
@@ -133,11 +133,11 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
               <ul className="flex items-center gap-1">
                 {data.menus.map((menu, idx) =>
                   menu.contains === "SubMenus" ? (
-                    <li key={menu.documentId} className="group/menu">
+                    <li key={menu.documentId} className="group/menu shrink-0">
                       <button
                         type="button"
                         className={cn(
-                          "relative flex items-center gap-1 rounded-lg px-4 py-2 text-primary transition-colors hover:bg-white/5",
+                          "relative flex items-center gap-1 rounded-lg py-1.5 text-primary text-sm transition-colors hover:bg-white/5 lg:px-2 xl:px-3 xl:text-base 2xl:px-4",
                           bgTransparent && "text-white",
                         )}
                       >
@@ -162,7 +162,7 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
                         href={menu.link.url?.url ?? "#"}
                         target={menu.link.url?.newTab ? "_blank" : undefined}
                         className={cn(
-                          "mx-4 flex items-center gap-1 rounded-lg px-4 py-2 font-medium text-primary transition-colors",
+                          "mx-4 flex items-center gap-1 rounded-lg px-1.5 py-2 font-medium text-primary text-sm transition-colors lg:px-2 xl:px-3 xl:text-base 2xl:px-4",
                           idx + 1 === data.menus.length && "mr-0",
 
                           menu.link.variant === "Primary" &&
@@ -191,7 +191,7 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
             </nav>
 
             {/* Mobile Menu Button */}
-            <MobileNavbar data={data} />
+            <MobileNavbar data={data} bgTransparent={bgTransparent} />
           </div>
         </div>
       </div>
@@ -223,7 +223,7 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
                   <p className="mb-2 border-neutral-100 border-b px-4 pb-3 font-medium text-gray-800 text-sm uppercase tracking-[1.2px]">
                     {title}
                   </p>
-                  <ul className="custom-scrollbar max-h-[280px] space-y-0.5 overflow-y-auto pr-2">
+                  <ul className="custom-scrollbar max-h-73 space-y-0.5 overflow-y-auto pr-2">
                     {children.map(({ id, label, url, icon }) => (
                       <li key={id}>
                         <Link

@@ -8,8 +8,6 @@ import {
 import { MotionDiv } from "../animated/motion";
 import BackendImage from "../BackendImage";
 
-// import { ImageWithFallback } from "figma/ImageWithFallback";
-
 type Props = {
   our_creative_team_tagline: string;
   our_creative_team_youtube_video_link: string;
@@ -26,7 +24,7 @@ export default function ContributorsSection({
   our_creative_team_quotation,
 }: Props) {
   return (
-    <section className="bg-linear-to-br from-white to-gray-50 py-12 pt-6 pr-0 pb-16 pl-0 sm:py-16">
+    <section className="mx-4 bg-linear-to-br from-white to-gray-50 py-12 pt-6 pr-0 pb-16 pl-0 sm:mx-0 sm:py-16">
       {/* Header */}
       <ScrollReveal direction="up">
         <div className="mb-8 text-center">
@@ -34,7 +32,7 @@ export default function ContributorsSection({
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
               <LuUsers className="h-4 w-4 text-primary" />
             </div>
-            <h2 className="font-bold text-[36px] text-[rgb(230,57,70)] text-xl sm:text-2xl">
+            <h2 className="font-bold text-[36px]- text-[rgb(230,57,70)] text-xl sm:text-2xl md:text-3xl xl:text-4xl">
               Our Creative Team
             </h2>
           </div>
@@ -43,12 +41,13 @@ export default function ContributorsSection({
           </p>
         </div>
       </ScrollReveal>
+
       {/* <-- 3D hero inserted at the top of the section --> */}
       <MotionDiv
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative mx-auto mb-12 h-[420px] max-w-5xl"
+        className="relative mx-auto mb-12 aspect-16/7 max-w-5xl"
         style={{ perspective: "2000px" }}
       >
         {/* Large Group Photo Box - Left */}
@@ -59,7 +58,7 @@ export default function ContributorsSection({
             scale: 1.02,
             transition: { duration: 0.3 },
           }}
-          className="absolute top-0 left-0 z-10 h-[85%] w-[65%] overflow-hidden rounded-3xl shadow-2xl"
+          className="absolute top-0 left-0 z-10 aspect-video max-h-[85%] w-[65%] overflow-hidden rounded-2xl shadow-2xl md:rounded-3xl"
           style={{
             transform: "rotateY(-5deg) rotateX(2deg)",
             transformStyle: "preserve-3d",
@@ -75,9 +74,11 @@ export default function ContributorsSection({
             className="size-full object-cover"
           />
           {/* 3D Border Effect */}
-          <div className="absolute inset-0 rounded-3xl border-4 border-white/30" />
+          <div className="absolute inset-0 rounded-2xl border-4 border-white/30 md:rounded-3xl" />
           <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-red-600/90 to-transparent p-6">
-            <h3 className="text-white">The IIE Kalyani Team</h3>
+            <h3 className="text-sm text-white sm:text-base">
+              The IIE Kalyani Team
+            </h3>
           </div>
         </MotionDiv>
 
@@ -89,7 +90,7 @@ export default function ContributorsSection({
             scale: 1.05,
             transition: { duration: 0.3 },
           }}
-          className="group absolute right-0 bottom-0 z-20 h-[70%] w-[50%] cursor-pointer overflow-hidden rounded-3xl shadow-2xl"
+          className="group absolute right-0 bottom-0 z-20 aspect-video max-h-[70%] w-[50%] cursor-pointer overflow-hidden rounded-2xl shadow-2xl md:rounded-3xl"
           style={{
             transform: "rotateY(8deg) rotateX(-3deg)",
             transformStyle: "preserve-3d",
@@ -108,15 +109,15 @@ export default function ContributorsSection({
           <div className="absolute inset-0 z-20 flex items-center justify-center">
             <MotionDiv
               whileHover={{ scale: 1.2 }}
-              className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-white/50 bg-red-600 shadow-xl"
+              className="flex aspect-square w-[15%] items-center justify-center rounded-full border-4 border-white/50 bg-red-600 shadow-xl"
             >
-              <LuPlay className="ml-1 h-10 w-10 fill-white text-white" />
+              <LuPlay className="ml-[5%] size-1/2 fill-white text-white" />
             </MotionDiv>
           </div>
           {/* 3D Border Effect */}
-          <div className="absolute inset-0 rounded-3xl border-4 border-white/40" />
+          <div className="absolute inset-0 rounded-2xl border-4 border-white/40 md:rounded-3xl" />
           <div className="absolute top-0 right-0 left-0 z-15 bg-linear-to-b from-black/50 to-transparent p-4">
-            <p className="text-sm text-white">Behind the Scenes</p>
+            <p className="text-white text-xs sm:text-sm">Behind the Scenes</p>
           </div>
         </MotionDiv>
 
@@ -128,7 +129,7 @@ export default function ContributorsSection({
         />
       </MotionDiv>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4- sm:px-6 lg:px-8">
         {/* Mentors Section */}
         {/* <ScrollReveal direction="up" delay={0.2}>
           <div className="mb-8">
@@ -164,7 +165,7 @@ export default function ContributorsSection({
         {/* Students Section - Single Row */}
         <div className="mb-12">
           <ScrollReveal direction="up" delay={0.3}>
-            <div className="mb-4 flex items-center justify-center gap-2">
+            <div className="mt-3 mb-7 flex items-center justify-center gap-2">
               <span className="text-base text-primary">👨‍💻</span>
               <h3 className="text-base text-foreground sm:text-lg">
                 Student Developers
@@ -174,10 +175,10 @@ export default function ContributorsSection({
           </ScrollReveal>
           <StaggerContainer
             staggerDelay={0.1}
-            className="mx-auto grid max-w-6xl grid-cols-3 gap-4 sm:grid-cols-4 sm:gap-6 md:grid-cols-7"
+            className="mx-auto flex max-w-6xl flex-wrap items-start justify-center gap-4 sm:gap-6"
           >
             {student_developers.map((student) => (
-              <StaggerItem key={student.documentId}>
+              <StaggerItem key={student.documentId} className="shrink-0">
                 <div className="group flex flex-col items-center">
                   <div className="relative mb-2">
                     <div className="relative size-16 overflow-hidden rounded-full shadow-md ring-2 ring-gray-200 transition-all group-hover:ring-primary/40 sm:size-20 md:size-24">
