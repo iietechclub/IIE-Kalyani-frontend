@@ -1,28 +1,17 @@
 "use client"
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence } from "motion/react";
 import {
-  Users,
-  TrendingUp,
-  Handshake,
-  Calendar,
-  Mail,
-  Linkedin,
-  Search,
-  ChevronsLeft,
-  ChevronsRight,
-  Download,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+  LuUsers,
+  LuTrendingUp,
+  LuHandshake,
+  LuCalendar,
+  LuLinkedin,
+  LuChevronLeft,
+  LuChevronRight,
+} from "react-icons/lu";
+import { MotionDiv } from "@/components/animated/motion";
+import Image from "next/image";
 
 /**
  * AlumniRelationFullModern.tsx
@@ -45,10 +34,10 @@ const heroImage = "/assets/alumni-hero.jpg";
 const pdfHref = "/assets/alumni-brochure.pdf";
 
 const objectives = [
-  { icon: Users, title: "Network Building", description: "Create a strong alumni network to foster connections and professional relationships." },
-  { icon: TrendingUp, title: "Career Guidance", description: "Provide mentorship and career guidance to current students from successful alumni." },
-  { icon: Handshake, title: "Industry Connect", description: "Bridge academia and industry through alumni expertise, internships and hiring." },
-  { icon: Calendar, title: "Events & Reunions", description: "Organize alumni meets, reunions and knowledge-sharing events." },
+  { icon: LuUsers, title: "Network Building", description: "Create a strong alumni network to foster connections and professional relationships." },
+  { icon: LuTrendingUp, title: "Career Guidance", description: "Provide mentorship and career guidance to current students from successful alumni." },
+  { icon: LuHandshake, title: "Industry Connect", description: "Bridge academia and industry through alumni expertise, internships and hiring." },
+  { icon: LuCalendar, title: "Events & Reunions", description: "Organize alumni meets, reunions and knowledge-sharing events." },
 ];
 
 const testimonials = [
@@ -94,13 +83,6 @@ const testimonials = [
   },
 ];
 
-/* Minimal ImageWithFallback so carousel images never break */
-function ImageWithFallback({ src, alt, className }: { src?: string; alt?: string; className?: string }) {
-  const fallback = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=1200&q=60";
-  const [s, setS] = useState(src ?? fallback);
-  return <img src={s} alt={alt ?? ""} className={className} onError={() => setS(fallback)} />;
-}
-
 /* CSV export from earlier */
 function exportToCsv(filename: string, rows: Record<string, any>[]) {
   if (!rows || rows.length === 0) return;
@@ -143,7 +125,7 @@ function TestimonialsCarousel() {
   const resume = () => { if (!autoplayRef.current) autoplayRef.current = window.setInterval(() => setCurrentView((p) => (p + 1) % totalViews), 6000); };
 
   return (
-    <section className="relative bg-gradient-to-b from-white to-rose-500/30 rounded-3xl p-6 md:p-10  overflow-hidden">
+    <section className="relative bg-linear-to-b from-white to-rose-500/30 rounded-3xl p-6 md:p-10  overflow-hidden">
       {/* Decorative floating blobs */}
       <div className="absolute -right-40 -top-24 w-80 h-80 bg-[#FF6B35]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -left-40 -bottom-24 w-72 h-72 bg-[#E63946]/8 rounded-full blur-3xl pointer-events-none" />
@@ -157,36 +139,36 @@ function TestimonialsCarousel() {
         {/* Desktop arrows */}
         <div className="hidden lg:flex gap-3 items-center">
           <button onClick={handlePrev} aria-label="Previous" className="w-11 h-11 rounded-full bg-white shadow hover:scale-105 transition-transform">
-            <ChevronLeft className="w-5 h-5 text-rose-500" />
+            <LuChevronLeft className="w-5 h-5 text-rose-500" />
           </button>
           <button onClick={handleNext} aria-label="Next" className="w-11 h-11 rounded-full bg-white shadow hover:scale-105 transition-transform">
-            <ChevronRight className="w-5 h-5 text-rose-500" />
+            <LuChevronRight className="w-5 h-5 text-rose-500" />
           </button>
         </div>
       </div>
 
       <div onMouseEnter={pause} onMouseLeave={resume} className="overflow-hidden">
         <div className="flex gap-4 md:gap-6 items-stretch justify-center">
-          <AnimatePresence mode="wait">
             {[0, 1, 2].map((offset) => {
               const idx = currentView + offset;
               if (idx >= testimonials.length) return null;
               const t = testimonials[idx];
 
               return (
-                <motion.div
+                <AnimatePresence mode="wait">
+                <MotionDiv
                   layout
                   key={`${t.id}-${currentView}`}
                   initial={{ opacity: 0, x: 60 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -60 }}
                   transition={{ duration: 0.4, ease: "easeInOut", delay: offset * 0.06 }}
-                  className="w-72 md:w-80 flex-shrink-0"
+                  className="w-72 md:w-80 shrink-0"
                 >
                   <article className="h-full bg-white rounded-2xl shadow-xl overflow-hidden group">
                     <div className="relative h-40 md:h-44 overflow-hidden">
-                      <ImageWithFallback src={t.image} alt={t.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <Image fill src={t.image} alt={t.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                     </div>
 
                     <div className="p-4 md:p-5 flex flex-col h-[220px] md:h-[220px]">
@@ -200,7 +182,7 @@ function TestimonialsCarousel() {
                         </div>
                       </div>
 
-                      <p className="mt-3 text-sm text-slate-600 flex-grow">{t.quote}</p>
+                      <p className="mt-3 text-sm text-slate-600 grow">{t.quote}</p>
 
                       <div className="mt-3 flex items-center justify-between">
                         {/* <a className="text-xs text-rose-600 font-medium" href="#">Read profile</a> */}
@@ -208,13 +190,13 @@ function TestimonialsCarousel() {
                       </div>
 
                       {/* animated accent bar */}
-                      <div className="mt-3 h-1 w-full bg-gradient-to-r from-rose-300 to-rose-600 rounded-full scale-x-95 group-hover:scale-x-100 transition-transform duration-300" />
+                      <div className="mt-3 h-1 w-full bg-linear-to-r from-rose-300 to-rose-600 rounded-full scale-x-95 group-hover:scale-x-100 transition-transform duration-300" />
                     </div>
                   </article>
-                </motion.div>
+                </MotionDiv>
+          </AnimatePresence>
               );
             })}
-          </AnimatePresence>
         </div>
       </div>
 
@@ -226,7 +208,7 @@ function TestimonialsCarousel() {
             onClick={() => handleDot(i)}
             aria-label={`Go to view ${i + 1}`}
             className={`rounded-full transition-all duration-300 ${
-              i === currentView ? "w-12 h-3 bg-gradient-to-r from-rose-500 to-rose-700" : "w-3 h-3 "
+              i === currentView ? "w-12 h-3 bg-linear-to-r from-rose-500 to-rose-700" : "w-3 h-3 "
             }`}
           />
         ))}
@@ -272,17 +254,17 @@ export default function AlumniRelationFullModern() {
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="w-full h-[320px] md:h-[420px] bg-cover bg-center opacity-90 " style={{ backgroundImage: `url(${heroImage})` }} aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-b from-rose-700/60 to-black/30" />
+          <div className="w-full h-80 md:h-[420px] bg-cover bg-center opacity-90 " style={{ backgroundImage: `url(${heroImage})` }} aria-hidden />
+          <div className="absolute inset-0 bg-linear-to-b from-rose-700/60 to-black/30" />
         </div>
 
         <div className="container mx-auto px-4 py-20">
-          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <MotionDiv initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-6">
               <div className="flex-1 text-center lg:text-left z-10">
                 <div className="inline-flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-rose-500 to-rose-600 text-white flex items-center justify-center shadow">
-                    <Users className="w-7 h-7" />
+                  <div className="w-14 h-14 rounded-lg bg-linear-to-br from-rose-500 to-rose-600 text-white flex items-center justify-center shadow">
+                    <LuUsers className="w-7 h-7" />
                   </div>
                   <div className="text-white">
                     <h1 className="text-3xl md:text-4xl font-bold leading-tight">Alumni Relations</h1>
@@ -323,7 +305,7 @@ export default function AlumniRelationFullModern() {
               </div> */}
 
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </header>
 
@@ -343,7 +325,7 @@ export default function AlumniRelationFullModern() {
             {objectives.map((o, i) => {
               const Icon = o.icon;
               return (
-                <motion.article key={o.title} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 * i }} className="bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-100 dark:border-gray-700">
+                <MotionArticle key={o.title} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 * i }} className="bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-100 dark:border-gray-700">
                   <div className="inline-flex items-center gap-3">
                     <div className="w-12 h-12 rounded-md bg-rose-50 text-rose-600 flex items-center justify-center"><Icon className="w-5 h-5" /></div>
                     <div>
@@ -351,7 +333,7 @@ export default function AlumniRelationFullModern() {
                       <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">{o.description}</p>
                     </div>
                   </div>
-                </motion.article>
+                </MotionArticle>
               );
             })}
           </div>
@@ -409,7 +391,7 @@ export default function AlumniRelationFullModern() {
                       <td className="px-4 py-3">{a.batch}</td>
                       <td className="px-4 py-3">{a.dept}</td>
                       <td className="px-4 py-3">{a.city}</td>
-                      <td className="px-4 py-3"><a href={a.linkedin} className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-rose-100 text-rose-600"><Linkedin className="w-4 h-4" /> View</a></td>
+                      <td className="px-4 py-3"><a href={a.linkedin} className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-rose-100 text-rose-600"><LuLinkedin className="w-4 h-4" /> View</a></td>
                     </tr>
                   ))}
                 </tbody>

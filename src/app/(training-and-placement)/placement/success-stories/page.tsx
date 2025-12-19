@@ -1,16 +1,8 @@
 "use client"
-import React, { useState, useMemo } from 'react';
-import { motion } from 'motion/react';
-import { ExternalLink, ClipboardCheck } from 'lucide-react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
+import { useState } from 'react';
+import { LuExternalLink, LuClipboardCheck } from 'react-icons/lu';
+import Image from 'next/image';
+import { MotionArticle, MotionDiv } from '@/components/animated/motion';
 
 // White background - 3 column responsive layout
 export default function SuccessStories() {
@@ -29,40 +21,25 @@ export default function SuccessStories() {
 
   return (
     <div className="min-h-screen pt-13 bg-gray-50 text-slate-900">
-      {/* Breadcrumb */}
-      <div className="bg-white backdrop-blur sticky top-0 z-40 border-b border-gray-200">
-        <div className="container mx-auto px-4 py-3">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbLink href="/placement">Training & Placement</BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbPage>Success Stories</BreadcrumbPage></BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-      </div>
-
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="w-full h-[260px] md:h-[320px] lg:h-[360px] bg-cover bg-center opacity-70"
+            className="w-full h-[260px] md:h-80 lg:h-[360px] bg-cover bg-center opacity-70"
             style={{ backgroundImage: `url(${heroImage})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-rose-700/70 to-black/40" />
+          <div className="absolute inset-0 bg-linear-to-b from-rose-700/70 to-black/40" />
         </div>
 
         <div className="relative max-w-7xl mx-auto mt-16 px-4 py-16 flex flex-col lg:flex-row gap-8 items-center">
           <div className="flex-1 text-center lg:text-left text-white z-10">
-            <motion.div
+            <MotionDiv
               initial={{ y: 8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
               <div className="inline-flex items-center gap-4 p-3 rounded-xl mb-6">
-                <ClipboardCheck className="w-12 h-12 text-white" />
+                <LuClipboardCheck className="w-12 h-12 text-white" />
                 <div className="text-left">
                   <h1 className="text-3xl md:text-4xl font-bold">Success Stories</h1>
                   <p className="text-sm md:text-base text-white/90 max-w-xl">
@@ -70,7 +47,7 @@ export default function SuccessStories() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
           </div>
         </div>
       </header>
@@ -79,7 +56,7 @@ export default function SuccessStories() {
       <section className="container mx-auto px-4 py-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
           {initialStories.map((s, i) => (
-            <motion.article
+            <MotionArticle
               key={i}
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +67,8 @@ export default function SuccessStories() {
               <div className="flex flex-col md:flex-row h-full">
                 {/* LEFT visual */}
                 <div className="md:w-1/2 w-full relative h-48 md:h-auto bg-gray-200">
-                  <ImageWithFallback
+                  <Image
+                    fill
                     src={s.avatar || demoLeftImage}
                     alt={`${s.name} visual`}
                     className="absolute inset-0 w-full h-full object-cover brightness-95"
@@ -100,7 +78,7 @@ export default function SuccessStories() {
                       href="#"
                       className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-3 py-1.5 text-xs text-gray-700 bg-white/80 hover:bg-white transition"
                     >
-                      Watch YouTube Video <ExternalLink className="w-3 h-5" />
+                      Watch YouTube Video <LuExternalLink className="w-3 h-5" />
                     </a>
                   </div>
                 </div>
@@ -122,7 +100,7 @@ export default function SuccessStories() {
                   
                 </div>
               </div>
-            </motion.article>
+            </MotionArticle>
           ))}
         </div>
       </section>
@@ -131,15 +109,16 @@ export default function SuccessStories() {
       {active && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="absolute inset-0 bg-black/50" onClick={() => setActive(null)} />
-          <motion.div
+          <MotionDiv
             initial={{ scale: 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.2 }}
             className="relative max-w-2xl w-full bg-white rounded-2xl p-6 z-10 shadow-2xl"
           >
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 rounded-full overflow-hidden">
-                <ImageWithFallback
+              <div className="w-16 h-16 relative rounded-full overflow-hidden">
+                <Image
+                  fill
                   src={active.avatar || demoLeftImage}
                   alt={active.name}
                   className="w-full h-full object-cover"
@@ -159,7 +138,7 @@ export default function SuccessStories() {
                 Contact Placement Cell
               </a>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       )}
     </div>

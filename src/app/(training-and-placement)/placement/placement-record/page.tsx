@@ -1,13 +1,12 @@
 "use client"
-import React, {
+import {
   useEffect,
   useRef,
   useMemo,
   useState,
 } from "react";
-import { motion } from "motion/react";
-import { ClipboardCheck } from "lucide-react";
-// import { data } from "motion/react-m";
+import { LuClipboardCheck } from "react-icons/lu";
+import { MotionDiv } from "@/components/animated/motion";
 
 // -------------------------
 // DepartmentBarChart
@@ -988,18 +987,18 @@ export default function PlacementStatistics() {
             style={{ backgroundImage: `url(${heroImage})` }}
             aria-hidden
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-rose-600/70 to-black/10" />
+          <div className="absolute inset-0 bg-linear-to-b from-rose-600/70 to-black/10" />
         </div>
 
         <div className="relative max-w-7xl mt-20 mx-auto px-4 py-20 flex flex-col lg:flex-row gap-8 items-center">
           <div className="flex-1 text-center lg:text-left text-white z-10">
-            <motion.div
+            <MotionDiv
               initial={{ y: 8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
               <div className="inline-flex items-center gap-4 p-3 rounded-xl mb-6">
-                <ClipboardCheck className="w-12 h-12 text-white" />
+                <LuClipboardCheck className="w-12 h-12 text-white" />
                 <div className="text-left">
                   <h1 className="text-3xl md:text-4xl">
                     Placement Statistics
@@ -1010,7 +1009,7 @@ export default function PlacementStatistics() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
           </div>
         </div>
       </header>
@@ -1057,7 +1056,7 @@ export default function PlacementStatistics() {
                           : "bg-rose-50 text-rose-700/90"
                       }`}
                   >
-                    <span className="truncate max-w-[160px]">
+                    <span className="truncate max-w-40">
                       {d.dept}
                     </span>
                     <span className="inline-flex items-center justify-center w-6 h-6 text-xs rounded-full bg-white/90 text-rose-600 border border-rose-100">
@@ -1135,7 +1134,7 @@ export default function PlacementStatistics() {
             className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6`}
           >
             {visibleItems.map((c: typeof companies[0], idx: number) => (
-              <motion.div
+              <MotionDiv
                 key={`${c.name}-${idx}`}
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1175,7 +1174,7 @@ export default function PlacementStatistics() {
                     Visit
                   </a>
                 </div> */}
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
 
