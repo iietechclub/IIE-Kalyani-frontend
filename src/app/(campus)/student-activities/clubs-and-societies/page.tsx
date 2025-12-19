@@ -156,7 +156,7 @@ export default function ClubsTwoRowGrid() {
   }, [tab, query]);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white via-blue-50/20">
+    <main className="min-h-screen bg-linear-to-br from-white via-blue-50/20">
       {/* Hero Section */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
@@ -194,7 +194,7 @@ export default function ClubsTwoRowGrid() {
       </header>
 
       {/* Controls */}
-      <main className="container mx-auto px-4 pt-8">
+      <div className="container mx-auto px-4 pt-8">
         {/* 4-column Grid */}
         <section className="mx-auto mb-12 max-w-7xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -250,7 +250,7 @@ export default function ClubsTwoRowGrid() {
             </div>
           )}
         </section>
-      </main>
+      </div>
 
       {/* Club Modal */}
       {activeClub && (
@@ -299,6 +299,6 @@ export default function ClubsTwoRowGrid() {
           </MotionDiv>
         </div>
       )}
-    </div>
+    </main>
   );
 }

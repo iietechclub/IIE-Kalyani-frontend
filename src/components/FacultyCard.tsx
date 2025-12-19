@@ -6,8 +6,6 @@ interface FacultyCardProps {
   designation: string;
   department: string;
   specialization: string;
-  email: string;
-  phone: string;
   image?: string;
   tags?: string[];
 }
@@ -17,8 +15,6 @@ export function FacultyCard({
   designation,
   department,
   specialization,
-  //   email,
-  //   phone,
   image,
   tags = [],
 }: FacultyCardProps) {

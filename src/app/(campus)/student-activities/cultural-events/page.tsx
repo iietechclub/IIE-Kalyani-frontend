@@ -273,7 +273,7 @@ export default function CulturalEventsPage() {
   <BentoGallery gallery={gallery} removeMiddleSmall />;
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white via-orange-50/30 to-white">
+    <main className="min-h-screen bg-linear-to-br from-white via-orange-50/30 to-white">
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
@@ -466,7 +466,7 @@ export default function CulturalEventsPage() {
                   transition={{ duration: 0.4 }}
                   className="overflow-hidden rounded-2xl bg-white shadow transition hover:shadow-lg"
                 >
-                  <div className="grid grid-cols-4 items-stretch gap-0">
+                  <div className="grid h-full grid-cols-4 items-stretch gap-0">
                     {/* thumbnail */}
                     <div className="col-span-1">
                       <div className="relative h-full w-full">
@@ -535,6 +535,6 @@ export default function CulturalEventsPage() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
