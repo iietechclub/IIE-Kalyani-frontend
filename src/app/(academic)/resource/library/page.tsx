@@ -1,5 +1,5 @@
 import WorkInProgress from "@/components/WorkInProgress";
 
-export default function LibraryPage() {
+export function LibraryPage() {
   return <WorkInProgress />;
 }
