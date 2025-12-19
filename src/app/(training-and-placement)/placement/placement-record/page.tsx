@@ -1,10 +1,6 @@
-"use client"
-import {
-  useEffect,
-  useRef,
-  useMemo,
-  useState,
-} from "react";
+"use client";
+import Image from "next/image";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { LuClipboardCheck } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
 
@@ -28,20 +24,19 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
   const fullWidth = svgWidth - padding.left - padding.right;
   const barWidth = Math.max(
     34,
-    Math.floor(
-      (fullWidth - (barCount - 1) * barGap) / barCount,
-    ),
+    Math.floor((fullWidth - (barCount - 1) * barGap) / barCount),
   );
   const [progress, setProgress] = useState(0);
   const rafRef = useRef<number | null>(null);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: needed
   useEffect(() => {
     let start: number | null = null;
     const duration = 900;
     const step = (timestamp: number) => {
       if (!start) start = timestamp;
       const t = Math.min(1, (timestamp - start) / duration);
-      const eased = 1 - Math.pow(1 - t, 3);
+      const eased = 1 - (1 - t) ** 3;
       setProgress(eased);
       if (t < 1) rafRef.current = requestAnimationFrame(step);
     };
@@ -70,42 +65,18 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
         preserveAspectRatio="xMidYMid meet"
-        className="w-full h-[380px] md:h-[420px]"
+        className="h-[380px] w-full md:h-[420px]"
         role="img"
         aria-label="Department placement percentage chart"
       >
         <defs>
-          <linearGradient
-            id={gradientId}
-            x1="0"
-            x2="0"
-            y1="0"
-            y2="1"
-          >
-            <stop
-              offset="0%"
-              stopColor="#fb7185"
-              stopOpacity="1"
-            />
-            <stop
-              offset="70%"
-              stopColor="#f43f5e"
-              stopOpacity="1"
-            />
-            <stop
-              offset="100%"
-              stopColor="#ef4444"
-              stopOpacity="1"
-            />
+          <linearGradient id={gradientId} x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="#fb7185" stopOpacity="1" />
+            <stop offset="70%" stopColor="#f43f5e" stopOpacity="1" />
+            <stop offset="100%" stopColor="#ef4444" stopOpacity="1" />
           </linearGradient>
 
-          <filter
-            id="barShadow"
-            x="-50%"
-            y="-50%"
-            width="200%"
-            height="200%"
-          >
+          <filter id="barShadow" x="-50%" y="-50%" width="200%" height="200%">
             <feDropShadow
               dx="0"
               dy="6"
@@ -117,9 +88,7 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
         </defs>
 
         {/* grid and left axis */}
-        <g
-          transform={`translate(${padding.left}, ${padding.top})`}
-        >
+        <g transform={`translate(${padding.left}, ${padding.top})`}>
           {gridVals.map((gv, idx) => {
             const y = chartHeight - (gv / 100) * chartHeight;
             return (
@@ -147,29 +116,24 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
         </g>
 
         {/* bars */}
-        <g
-          transform={`translate(${padding.left}, ${padding.top})`}
-        >
+        <g transform={`translate(${padding.left}, ${padding.top})`}>
           {data.map((d: DepartmentData, i: number) => {
             const x = i * (barWidth + barGap);
-            const targetHeight =
-              (d.percentage / 100) * chartHeight;
-            const barHeight = Math.max(
-              3,
-              targetHeight * progress,
-            );
+            const targetHeight = (d.percentage / 100) * chartHeight;
+            const barHeight = Math.max(3, targetHeight * progress);
             const y = chartHeight - barHeight;
             const rx = 8;
 
             return (
               <g key={d.dept} transform={`translate(${x}, 0)`}>
+                {/** biome-ignore lint/a11y/noStaticElementInteractions: needed */}
                 <rect
                   x={-8}
                   y={0}
                   width={barWidth + 16}
                   height={chartHeight}
                   fill="transparent"
-                  onMouseEnter={(e) =>
+                  onMouseEnter={() =>
                     setHover({
                       idx: i,
                       x: x + barWidth / 2 + padding.left,
@@ -205,8 +169,7 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
                   fill={`url(#${gradientId})`}
                   filter="url(#barShadow)"
                   style={{
-                    transition:
-                      "height 350ms ease, y 350ms ease",
+                    transition: "height 350ms ease, y 350ms ease",
                   }}
                 />
 
@@ -228,9 +191,7 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
                   fill="#374151"
                   textAnchor="middle"
                 >
-                  {d.dept.length > 20
-                    ? d.dept.slice(0, 20) + "…"
-                    : d.dept}
+                  {d.dept.length > 20 ? d.dept.slice(0, 20) + "…" : d.dept}
                 </text>
               </g>
             );
@@ -258,17 +219,14 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
         >
           <div
             style={{ minWidth: 140 }}
-            className="bg-white rounded-lg shadow-lg border border-gray-200 px-3 py-2 text-sm text-gray-800"
+            className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-gray-800 text-sm shadow-lg"
           >
-            <div className="font-semibold">
-              {data[hover.idx].dept}
-            </div>
-            <div className="text-rose-600 font-medium">
+            <div className="font-semibold">{data[hover.idx].dept}</div>
+            <div className="font-medium text-rose-600">
               {data[hover.idx].percentage}% placed
             </div>
-            <div className="text-xs text-gray-500 mt-1">
-              Placed: {data[hover.idx].placed} /{" "}
-              {data[hover.idx].total}
+            <div className="mt-1 text-gray-500 text-xs">
+              Placed: {data[hover.idx].placed} / {data[hover.idx].total}
             </div>
           </div>
         </div>
@@ -301,7 +259,7 @@ export default function PlacementStatistics() {
             {
               sl: 1,
               name: "Rahidul Khan",
-              position:"Software developer",
+              position: "Software developer",
               company: "Intern at Google, SDE",
             },
             {
@@ -400,24 +358,18 @@ export default function PlacementStatistics() {
             },
           ],
         },
-        
+
         "Artificial Intelligence & Machine Learning": {
           count: 8,
-          rows: [
-            { sl: 1, name: "Nil", position: "CEO", company: "-" },
-          ],
+          rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
         },
         "Electronics & Communication": {
           count: 6,
-          rows: [
-            { sl: 1, name: "Nil", position: "CEO", company: "-" },
-          ],
+          rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
         },
         "Civil Engineering": {
           count: 6,
-          rows: [
-            { sl: 1, name: "Nil", position: "CEO", company: "-" },
-          ],
+          rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
         },
       },
     },
@@ -794,23 +746,21 @@ export default function PlacementStatistics() {
     "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1800&q=80";
 
   // UI state
-  const [activeYear, setActiveYear] = useState(
-    yearlyStats[0].year,
-  );
-  const [activeDeptByYear, setActiveDeptByYear] = useState<Record<string, string | null>>(
-    () => {
-      const map: Record<string, string | null> = {};
-      yearlyStats.forEach((y) => {
-        const firstDept = Object.keys(y.departments)[0] ?? null;
-        map[y.year] = firstDept;
-      });
-      return map;
-    },
-  );
+  const [activeYear, setActiveYear] = useState(yearlyStats[0].year);
+  const [activeDeptByYear, setActiveDeptByYear] = useState<
+    Record<string, string | null>
+  >(() => {
+    const map: Record<string, string | null> = {};
+    yearlyStats.forEach((y) => {
+      const firstDept = Object.keys(y.departments)[0] ?? null;
+      map[y.year] = firstDept;
+    });
+    return map;
+  });
 
-  const [query, setQuery] = useState("");
+  const [query, _setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [showOnlyTop, setShowOnlyTop] = useState(false);
+  const [showOnlyTop, _setShowOnlyTop] = useState(false);
   const [cols, setCols] = useState(4);
   const [showAll, setShowAll] = useState(false);
   const [badImgs, setBadImgs] = useState(() => new Map());
@@ -825,15 +775,12 @@ export default function PlacementStatistics() {
     }
     updateCols();
     window.addEventListener("resize", updateCols);
-    return () =>
-      window.removeEventListener("resize", updateCols);
+    return () => window.removeEventListener("resize", updateCols);
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: needed
   const categories = useMemo(
-    () => [
-      "All",
-      ...Array.from(new Set(companies.map((c) => c.domain))),
-    ],
+    () => ["All", ...Array.from(new Set(companies.map((c) => c.domain)))],
     [companies],
   );
 
@@ -855,37 +802,28 @@ export default function PlacementStatistics() {
     [],
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: needed
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return companies.filter((c) => {
-      if (
-        activeCategory !== "All" &&
-        c.domain !== activeCategory
-      )
-        return false;
+      if (activeCategory !== "All" && c.domain !== activeCategory) return false;
       if (showOnlyTop && !topList.has(c.name)) return false;
       if (!q) return true;
       return (
-        c.name.toLowerCase().includes(q) ||
-        c.domain.toLowerCase().includes(q)
+        c.name.toLowerCase().includes(q) || c.domain.toLowerCase().includes(q)
       );
     });
   }, [companies, activeCategory, query, showOnlyTop, topList]);
 
   const itemsPerPage = cols * 3;
-  const visibleItems = showAll
-    ? filtered
-    : filtered.slice(0, itemsPerPage);
+  const visibleItems = showAll ? filtered : filtered.slice(0, itemsPerPage);
 
   // Initials fallback generator
   const initials = (name: string) => {
     if (!name) return "";
     const parts = name.split(" ").filter(Boolean);
-    if (parts.length === 1)
-      return parts[0].slice(0, 2).toUpperCase();
-    return (
-      parts[0][0] + (parts[1] ? parts[1][0] : "")
-    ).toUpperCase();
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0][0] + (parts[1] ? parts[1][0] : "")).toUpperCase();
   };
 
   function handleImgError(name: string) {
@@ -898,8 +836,7 @@ export default function PlacementStatistics() {
 
   // Helpers to access current data
   const currentYearObj =
-    yearlyStats.find((y) => y.year === activeYear) ??
-    yearlyStats[0];
+    yearlyStats.find((y) => y.year === activeYear) ?? yearlyStats[0];
   const departmentsForActiveYear = Object.entries(
     currentYearObj.departments,
   ).map(([dept, info]) => ({ dept, ...info }));
@@ -908,15 +845,18 @@ export default function PlacementStatistics() {
   function DepartmentTable({ deptKey }: { deptKey: string | null }) {
     if (!deptKey) {
       return (
-        <div className="p-6 text-sm text-muted-foreground">
+        <div className="p-6 text-muted-foreground text-sm">
           No department selected.
         </div>
       );
     }
-    const deptData = currentYearObj.departments[deptKey as keyof typeof currentYearObj.departments];
+    const deptData =
+      currentYearObj.departments[
+        deptKey as keyof typeof currentYearObj.departments
+      ];
     if (!deptData) {
       return (
-        <div className="p-6 text-sm text-muted-foreground">
+        <div className="p-6 text-muted-foreground text-sm">
           No records available for {deptKey} in {activeYear}.
         </div>
       );
@@ -928,16 +868,16 @@ export default function PlacementStatistics() {
         <table className="min-w-full border-collapse">
           <thead>
             <tr>
-              <th className="bg-rose-500 text-white text-left px-4 py-3 rounded-tl-lg">
+              <th className="rounded-tl-lg bg-rose-500 px-4 py-3 text-left text-white">
                 SL NO.
               </th>
-              <th className="bg-rose-500 text-white text-left px-4 py-3">
+              <th className="bg-rose-500 px-4 py-3 text-left text-white">
                 STUDENT NAME
               </th>
-              <th className="bg-rose-500 text-white text-left px-4 py-3">
+              <th className="bg-rose-500 px-4 py-3 text-left text-white">
                 POSITION
               </th>
-              <th className="bg-rose-500 text-white text-left px-4 py-3 rounded-tr-lg">
+              <th className="rounded-tr-lg bg-rose-500 px-4 py-3 text-left text-white">
                 COMPANY NAME
               </th>
             </tr>
@@ -947,27 +887,22 @@ export default function PlacementStatistics() {
               <tr>
                 <td
                   colSpan={4}
-                  className="px-4 py-6 text-center text-sm text-slate-500"
+                  className="px-4 py-6 text-center text-slate-500 text-sm"
                 >
                   No placement records available.
                 </td>
               </tr>
             ) : (
+              // biome-ignore lint/suspicious/noExplicitAny: needed
               rows.map((r: any) => (
-                <tr
-                  key={r.sl}
-                  className="odd:bg-white even:bg-rose-50"
-                >
-                  <td className="px-4 py-3 border-t">{r.sl}</td>
-                  <td className="px-4 py-3 border-t">
-                    {r.name}
-                  </td>
-                  <td className="px-4 py-3 border-t">
+                <tr key={r.sl} className="odd:bg-white even:bg-rose-50">
+                  <td className="border-t px-4 py-3">{r.sl}</td>
+                  <td className="border-t px-4 py-3">{r.name}</td>
+                  <td className="border-t px-4 py-3">
+                    {/** biome-ignore lint/suspicious/noExplicitAny: needed */}
                     {(r as any).position || (r as any).stream || "-"}
                   </td>
-                  <td className="px-4 py-3 border-t">
-                    {r.company}
-                  </td>
+                  <td className="border-t px-4 py-3">{r.company}</td>
                 </tr>
               ))
             )}
@@ -978,34 +913,32 @@ export default function PlacementStatistics() {
   }
 
   return (
-    <div className="min-h-screen pt-13 bg-neutral-50 text-slate-900">
+    <div className="min-h-screen bg-neutral-50 text-slate-900">
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="w-full h-[360px] md:h-[420px] bg-cover bg-center opacity-75"
+            className="h-[360px] w-full bg-center bg-cover opacity-75 md:h-[420px]"
             style={{ backgroundImage: `url(${heroImage})` }}
             aria-hidden
           />
           <div className="absolute inset-0 bg-linear-to-b from-rose-600/70 to-black/10" />
         </div>
 
-        <div className="relative max-w-7xl mt-20 mx-auto px-4 py-20 flex flex-col lg:flex-row gap-8 items-center">
-          <div className="flex-1 text-center lg:text-left text-white z-10">
+        <div className="relative mx-auto mt-20 flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
+          <div className="z-10 flex-1 text-center text-white lg:text-left">
             <MotionDiv
               initial={{ y: 8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-4 p-3 rounded-xl mb-6">
-                <LuClipboardCheck className="w-12 h-12 text-white" />
+              <div className="mb-6 inline-flex items-center gap-4 rounded-xl p-3">
+                <LuClipboardCheck className="h-12 w-12 text-white" />
                 <div className="text-left">
-                  <h1 className="text-3xl md:text-4xl">
-                    Placement Statistics
-                  </h1>
-                  <p className="text-sm md:text-base text-white/90">
-                    Year-wise records, department performance
-                    and placement highlights
+                  <h1 className="text-3xl md:text-4xl">Placement Statistics</h1>
+                  <p className="text-sm text-white/90 md:text-base">
+                    Year-wise records, department performance and placement
+                    highlights
                   </p>
                 </div>
               </div>
@@ -1016,18 +949,19 @@ export default function PlacementStatistics() {
 
       {/* Year tabs + department pills + table */}
       <section className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-center text-xl mb-6 text-[48px] font-bold text-[rgba(255,0,0,0.8)]">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="mb-6 text-center font-bold text-[48px] text-[rgba(255,0,0,0.8)] text-xl">
             Year-wise Placement Records
           </h2>
 
           {/* Year selectors (tabs look) */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            {yearlyStats.map((y: typeof yearlyStats[0]) => (
+          <div className="mb-6 flex items-center justify-center gap-3">
+            {yearlyStats.map((y: (typeof yearlyStats)[0]) => (
               <button
+                type="button"
                 key={y.year}
                 onClick={() => setActiveYear(y.year)}
-                className={`px-4 py-2 rounded-lg text-sm ${activeYear === y.year ? "bg-white text-rose-600 shadow" : "bg-rose-50 text-rose-700/80"}`}
+                className={`rounded-lg px-4 py-2 text-sm ${activeYear === y.year ? "bg-white text-rose-600 shadow" : "bg-rose-50 text-rose-700/80"}`}
               >
                 {y.year}
               </button>
@@ -1035,105 +969,104 @@ export default function PlacementStatistics() {
           </div>
 
           {/* Department pills row */}
-          <div className="w-full py-3 mb-6">
-            <div className="flex flex-wrap items-center gap-3 w-full">
-              {departmentsForActiveYear.map((d: typeof departmentsForActiveYear[0]) => {
-                const selected =
-                  activeDeptByYear[activeYear] === d.dept;
-                return (
-                  <button
-                    key={d.dept}
-                    onClick={() =>
-                      setActiveDeptByYear((prev: Record<string, string | null>) => ({
-                        ...prev,
-                        [activeYear]: d.dept,
-                      }))
-                    }
-                    className={`flex items-center gap-3 px-4 py-2 rounded-full text-sm transition max-w-full
-                      ${
+          <div className="mb-6 w-full py-3">
+            <div className="flex w-full flex-wrap items-center gap-3">
+              {departmentsForActiveYear.map(
+                (d: (typeof departmentsForActiveYear)[0]) => {
+                  const selected = activeDeptByYear[activeYear] === d.dept;
+                  return (
+                    <button
+                      type="button"
+                      key={d.dept}
+                      onClick={() =>
+                        setActiveDeptByYear(
+                          (prev: Record<string, string | null>) => ({
+                            ...prev,
+                            [activeYear]: d.dept,
+                          }),
+                        )
+                      }
+                      className={`flex max-w-full items-center gap-3 rounded-full px-4 py-2 text-sm transition ${
                         selected
-                          ? "bg-white text-rose-600 ring-1 ring-rose-200 shadow-sm"
+                          ? "bg-white text-rose-600 shadow-sm ring-1 ring-rose-200"
                           : "bg-rose-50 text-rose-700/90"
                       }`}
-                  >
-                    <span className="truncate max-w-40">
-                      {d.dept}
-                    </span>
-                    <span className="inline-flex items-center justify-center w-6 h-6 text-xs rounded-full bg-white/90 text-rose-600 border border-rose-100">
-                      {d.count}
-                    </span>
-                  </button>
-                );
-              })}
+                    >
+                      <span className="max-w-40 truncate">{d.dept}</span>
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-rose-100 bg-white/90 text-rose-600 text-xs">
+                        {d.count}
+                      </span>
+                    </button>
+                  );
+                },
+              )}
             </div>
           </div>
 
           {/* Department table area */}
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
             <div className="mb-4">
-              <div className="text-sm text-slate-600">
-                Department:{" "}
-                <strong>{activeDeptByYear[activeYear]}</strong>
+              <div className="text-slate-600 text-sm">
+                Department: <strong>{activeDeptByYear[activeYear]}</strong>
               </div>
-              <div className="text-xs text-slate-500">
+              <div className="text-slate-500 text-xs">
                 Batch: {activeYear} • Median Salary:{" "}
                 {currentYearObj.stats.medianSalary} • Offers:{" "}
                 {currentYearObj.stats.studentsPlaced}
               </div>
             </div>
 
-            <DepartmentTable
-              deptKey={activeDeptByYear[activeYear]}
-            />
+            <DepartmentTable deptKey={activeDeptByYear[activeYear]} />
           </div>
         </div>
       </section>
 
       {/* Department-wide chart */}
       <section className="container mx-auto px-4 py-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-xl mb-6 text-[36px] font-bold text-[rgba(255,0,0,0.81)]">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="mb-6 text-center font-bold text-[36px] text-[rgba(255,0,0,0.81)] text-xl">
             Department Wise Placement Graph
           </h2>
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
             <DepartmentBarChart data={departmentStats} />
           </div>
         </div>
       </section>
 
       {/* Recruiters section */}
-      <section className="container mt-6 mx-auto px-4 pb-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-center text-xl mb-6 text-[36px] text-[rgb(199,72,15)] font-bold not-italic">
+      <section className="container mx-auto mt-6 px-4 pb-12">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="mb-6 text-center font-bold text-[36px] text-[rgb(199,72,15)] text-xl not-italic">
             Our Recruiters
           </h2>
-          <div className="flex gap-3 flex-wrap items-center mb-6">
+          <div className="mb-6 flex flex-wrap items-center gap-3">
             {categories.map((cat: string) => (
               <button
+                type="button"
                 key={cat}
                 onClick={() => {
                   setActiveCategory(cat);
                   setShowAll(false);
                 }}
-                className={`text-sm px-3 py-1 rounded-full transition-colors ${
+                className={`rounded-full px-3 py-1 text-sm transition-colors ${
                   activeCategory === cat
                     ? "bg-rose-600 text-white"
-                    : "bg-white text-slate-700 border border-gray-100"
+                    : "border border-gray-100 bg-white text-slate-700"
                 }`}
               >
                 {cat}
               </button>
             ))}
-            <div className="ml-auto text-xs text-slate-500">
+            <div className="ml-auto text-slate-500 text-xs">
               Showing {visibleItems.length} of {filtered.length}
             </div>
           </div>
 
           {/* Grid */}
           <div
-            className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6`}
+            className={`grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4`}
           >
-            {visibleItems.map((c: typeof companies[0], idx: number) => (
+            {visibleItems.map((c: (typeof companies)[0], idx: number) => (
               <MotionDiv
                 key={`${c.name}-${idx}`}
                 initial={{ opacity: 0, y: 8 }}
@@ -1145,21 +1078,24 @@ export default function PlacementStatistics() {
                 aria-label={`${c.name} — ${c.domain}`}
               >
                 {/* logo area */}
-                <div className="w-full flex items-center justify-center">
+                <div className="flex w-full items-center justify-center">
                   {badImgs.get(c.name) ? (
-                    <div className="w-28 h-20 flex items-center justify-center bg-transparent border border-gray-200 rounded-md">
+                    <div className="flex h-20 w-28 items-center justify-center rounded-md border border-gray-200 bg-transparent">
                       <span className="text-lg text-slate-700">
                         {initials(c.name)}
                       </span>
                     </div>
                   ) : (
-                    <img
-                      src={c.logo}
-                      alt={c.name}
-                      onError={() => handleImgError(c.name)}
-                      className="max-h-20 object-contain"
-                      style={{ background: "transparent" }}
-                    />
+                    <div className="relative max-h-20">
+                      <Image
+                        fill
+                        src={c.logo}
+                        alt={c.name}
+                        onError={() => handleImgError(c.name)}
+                        className="object-contain"
+                        style={{ background: "transparent" }}
+                      />
+                    </div>
                   )}
                 </div>
 
@@ -1181,20 +1117,18 @@ export default function PlacementStatistics() {
           {filtered.length > itemsPerPage && (
             <div className="mt-8 text-center">
               <button
+                type="button"
                 onClick={() => setShowAll((s: boolean) => !s)}
-                className="px-6 py-2 rounded-full bg-white border border-gray-200 shadow-sm"
+                className="rounded-full border border-gray-200 bg-white px-6 py-2 shadow-sm"
               >
-                {showAll
-                  ? "Show less"
-                  : `View all (${filtered.length})`}
+                {showAll ? "Show less" : `View all (${filtered.length})`}
               </button>
             </div>
           )}
 
           {filtered.length === 0 && (
             <div className="mt-8 text-center text-slate-500">
-              No recruiters found. Try a different search or
-              category.
+              No recruiters found. Try a different search or category.
             </div>
           )}
         </div>
