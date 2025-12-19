@@ -28,13 +28,13 @@ export default function AcademicCalendar() {
 
           <h1 className="mb-3 font-bold text-3xl md:text-4xl">
             Academic Calendar{" "}
-            <span className="text-(--iie-primary)">2024–25</span>
+            <span className="text-(--iie-primary)">2024-25</span>
           </h1>
 
           <p className="mb-5 text-gray-600 text-sm leading-relaxed">
             Stay updated with all important academic events and examination
             schedules. You can preview or download the official academic
-            calendar for 2024–25 directly.
+            calendar for 2024-25 directly.
           </p>
 
           <div className="flex gap-3">

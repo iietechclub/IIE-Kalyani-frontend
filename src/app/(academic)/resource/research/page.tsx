@@ -122,15 +122,15 @@ export default function Research() {
     "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80";
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <main className="min-h-screen bg-linear-to-br from-gray-50 to-white">
       {/* Hero (library design) */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="h-[320px] w-full bg-center bg-cover opacity-40"
+            className="h-80 w-full bg-center bg-cover opacity-40"
             style={{ backgroundImage: `url('${heroImage}')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-red-700/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-red-700/60 to-transparent"></div>
         </div>
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">

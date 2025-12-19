@@ -40,12 +40,12 @@ export default function LibraryPage() {
   const [activeTab, setActiveTab] = useState<"about" | "resources">("about");
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <main className="min-h-screen bg-linear-to-br from-gray-50 to-white">
       {/* Hero */}
-      <header  className="relative overflow-hidden">
+      <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="h-[320px] w-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80')] bg-center bg-cover opacity-40"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-red-700/60 to-transparent"></div>
+          <div className="h-80 w-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80')] bg-center bg-cover opacity-40"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-red-700/60 to-transparent"></div>
         </div>
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
@@ -181,7 +181,7 @@ export default function LibraryPage() {
                 <MotionSvg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="absolute right-[-35px] bottom-[-20px] h-14 w-14 text-red-600"
+                  className="-bottom-5 absolute right-[-35px] h-14 w-14 text-red-600"
                   initial={{ rotate: 0 }}
                   animate={{ rotate: -360 }}
                   transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
