@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { LuArchive, LuBookOpen, LuImage, LuUsers } from "react-icons/lu";
@@ -43,7 +42,7 @@ export default function LibraryPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Hero */}
-      <header className="relative overflow-hidden">
+      <header  className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="h-[320px] w-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80')] bg-center bg-cover opacity-40"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-red-700/60 to-transparent"></div>
@@ -51,7 +50,7 @@ export default function LibraryPage() {
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
           <div className="z-10 flex-1 text-white">
-            <motion.div
+            <MotionDiv
               initial={{ y: 8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
@@ -68,13 +67,13 @@ export default function LibraryPage() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
           </div>
         </div>
       </header>
 
       {/* Tabs */}
-      <main className="mx-auto max-w-7xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-4 py-8">
         <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
           <nav className="mb-6 flex gap-2 border-b pb-4">
             <button
@@ -221,7 +220,7 @@ export default function LibraryPage() {
             </MotionDiv>
           )}
         </div>
-      </main>
+      </div>
     </main>
   );
 }
