@@ -21,27 +21,27 @@ export default function AcademicCalendar() {
       <main className="mx-auto flex h-full max-w-7xl items-start gap-6 px-4 py-12">
         {/* --- LEFT: Hero Section --- */}
         <section className="flex h-full w-1/2 flex-col justify-center rounded-xl bg-white p-6 shadow-sm">
-          <div className="mb-4 inline-flex items-center justify-center gap-3 self-start rounded-full bg-[var(--iie-primary)]/10 px-3 py-1.5 text-[var(--iie-primary)]">
+          <div className="mb-4 inline-flex items-center justify-center gap-3 self-start rounded-full bg-(--iie-primary)/10 px-3 py-1.5 text-(--iie-primary)">
             <LuCalendar className="h-5 w-5" />
             <span className="font-medium text-sm">Official Documents</span>
           </div>
 
           <h1 className="mb-3 font-bold text-3xl md:text-4xl">
             Academic Calendar{" "}
-            <span className="text-[var(--iie-primary)]">2024–25</span>
+            <span className="text-(--iie-primary)">2024-25</span>
           </h1>
 
           <p className="mb-5 text-gray-600 text-sm leading-relaxed">
             Stay updated with all important academic events and examination
             schedules. You can preview or download the official academic
-            calendar for 2024–25 directly.
+            calendar for 2024-25 directly.
           </p>
 
           <div className="flex gap-3">
             <a
               href={pdfHref}
               download
-              className="inline-flex items-center gap-2 rounded-md bg-[var(--iie-primary)] px-4 py-2 text-white shadow hover:bg-[var(--iie-primary)]/90"
+              className="inline-flex items-center gap-2 rounded-md bg-(--iie-primary) px-4 py-2 text-white shadow hover:bg-(--iie-primary)/90"
             >
               <LuDownload className="h-4 w-4" /> Download Calendar
             </a>

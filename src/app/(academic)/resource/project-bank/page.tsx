@@ -317,15 +317,15 @@ export default function ProjectBank() {
     "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80";
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <main className="min-h-screen bg-linear-to-br from-gray-50 to-white">
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="h-[320px] w-full bg-center bg-cover opacity-40"
+            className="h-80 w-full bg-center bg-cover opacity-40"
             style={{ backgroundImage: `url('${heroImage}')` }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-red-700/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-red-700/60 to-transparent"></div>
         </div>
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
@@ -386,7 +386,7 @@ export default function ProjectBank() {
                 <Card className="overflow-hidden rounded-2xl">
                   <div className="relative">
                     {/* gradient header */}
-                    <div className="flex h-40 items-end bg-gradient-to-br from-red-600 to-red-400 p-4">
+                    <div className="flex h-40 items-end bg-linear-to-br from-red-600 to-red-400 p-4">
                       <div className="flex items-center gap-3">
                         <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/20">
                           <Icon className="h-6 w-6 text-white" />
