@@ -1,21 +1,10 @@
 "use client";
-import { motion } from "motion/react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { LuUsers } from "react-icons/lu";
 
-import {
-  // LuSearch as SearchIcon,
-  LuUsers,
-} from "react-icons/lu";
+import { MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 
 // import { Button } from "@/components/ui/button";
 
@@ -181,7 +170,7 @@ export default function ClubsTwoRowGrid() {
         </div>
 
         <div className="container relative z-10 mx-auto px-4">
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -200,7 +189,7 @@ export default function ClubsTwoRowGrid() {
               initiatives. Build skills, lead projects and make lifelong
               friends.
             </p>
-          </motion.div>
+          </MotionDiv>
         </div>
       </header>
 
@@ -210,7 +199,7 @@ export default function ClubsTwoRowGrid() {
         <section className="mx-auto mb-12 max-w-7xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filtered.map((c) => (
-              <motion.div
+              <MotionDiv
                 key={c.id}
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -240,7 +229,7 @@ export default function ClubsTwoRowGrid() {
                     <p className="mb-2 text-muted-foreground text-sm">
                       {c.subtitle}
                     </p>
-                    <p className="line-clamp-3 text-gray-600 text-xs dark:text-gray-400">
+                    <p className="line-clamp-3 text-gray-600 text-xs">
                       {c.description}
                     </p>
                   </div>
@@ -251,7 +240,7 @@ export default function ClubsTwoRowGrid() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
 
@@ -273,11 +262,11 @@ export default function ClubsTwoRowGrid() {
             onClick={() => setActiveClub(null)}
           />
 
-          <motion.div
+          <MotionDiv
             initial={{ scale: 0.98, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.16 }}
-            className="relative z-10 w-full max-w-3xl rounded-2xl bg-white p-6 shadow-2xl dark:bg-gray-800"
+            className="relative z-10 w-full max-w-3xl rounded-2xl bg-white p-6 shadow-2xl"
           >
             <div className="flex gap-4">
               <div className="h-28 w-28 shrink-0 overflow-hidden rounded-md">
@@ -307,7 +296,7 @@ export default function ClubsTwoRowGrid() {
                 Close
               </button>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       )}
     </div>

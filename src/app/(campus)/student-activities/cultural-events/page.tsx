@@ -1,9 +1,5 @@
 "use client";
-
-import { motion } from "motion/react";
 import Image from "next/image";
-// import //React,
-// { useMemo } from "react";
 import {
   // LuCalendar,
   LuCamera,
@@ -17,15 +13,9 @@ import {
   LuTrophy,
   // LuUsers,
 } from "react-icons/lu";
+
+import { MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -126,7 +116,7 @@ function BentoGallery({
                 : undefined;
 
             return (
-              <motion.div
+              <MotionDiv
                 key={src}
                 initial={{ opacity: 0, y: 8, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -146,7 +136,7 @@ function BentoGallery({
                     Image
                   </div>
                 )}
-              </motion.div>
+              </MotionDiv>
             );
           })}
         </div>
@@ -243,7 +233,7 @@ export default function CulturalEventsPage() {
     },
   ];
 
-  const achievements = [
+  const _achievements = [
     {
       title: "First Prize - State Level Dance",
       description:
@@ -284,8 +274,6 @@ export default function CulturalEventsPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-white via-orange-50/30 to-white">
-      {/* Breadcrumb */}
-
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
@@ -300,7 +288,7 @@ export default function CulturalEventsPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 py-20">
           <div className="grid items-center gap-8 lg:grid-cols-2">
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -336,9 +324,9 @@ export default function CulturalEventsPage() {
                   See Upcoming →
                 </a>
               </div>
-            </motion.div>
+            </MotionDiv>
 
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, x: 8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -380,7 +368,7 @@ export default function CulturalEventsPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
           </div>
         </div>
       </header>
@@ -400,7 +388,7 @@ export default function CulturalEventsPage() {
             {culturalActivities.map((a) => {
               const Icon = a.icon;
               return (
-                <motion.div
+                <MotionDiv
                   key={a.title}
                   initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -438,7 +426,7 @@ export default function CulturalEventsPage() {
                       </p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </MotionDiv>
               );
             })}
           </div>
@@ -470,7 +458,7 @@ export default function CulturalEventsPage() {
             {/* grid: 1 col mobile, 2 col md, 3 col lg */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {upcomingEvents.map((ev) => (
-                <motion.div
+                <MotionDiv
                   key={ev.title}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -534,7 +522,7 @@ export default function CulturalEventsPage() {
                     className="sr-only"
                     aria-hidden
                   />
-                </motion.div>
+                </MotionDiv>
               ))}
             </div>
 
