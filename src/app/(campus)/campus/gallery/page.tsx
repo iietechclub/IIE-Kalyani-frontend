@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { LuCamera } from "react-icons/lu";
@@ -106,7 +105,7 @@ export default function GalleryPage() {
   ] as const;
 
   // generate random heights once so layout is 'random' and stable
-  const imageHeights = useMemo(() => {
+  const _imageHeights = useMemo(() => {
     const rng = (seed: number) => {
       let s = seed;
       return () => {
@@ -120,7 +119,7 @@ export default function GalleryPage() {
       acc[img.id] = h;
       return acc;
     }, {});
-  }, [galleryImages]);
+  }, [galleryImages.reduce]);
 
   const filtered =
     activeCategory === "all"
@@ -128,41 +127,57 @@ export default function GalleryPage() {
       : galleryImages.filter((i) => i.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white via-indigo-50/30 to-white">
+    <div className="min-h-screen bg-linear-to-br from-white via-indigo-50/30 to-white text-black">
       {/* HERO BANNER */}
       <header className="relative">
-        <div className="relative h-64 w-full overflow-hidden bg-linear-to-r from-orange-600 via-pink-600 to-purple-600 sm:h-96">
-          <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-black/30"></div>
+        <div
+          className="/* responsive height */ relative h-48 w-full bg-center bg-cover bg-no-repeat sm:h-64 md:h-80 lg:h-96"
+          style={{
+            backgroundImage:
+              "url('https://iiekalyani.com/wp-content/uploads/2025/04/outDoor4.jpg')",
+          }}
+        >
+          {/* dark overlay for contrast */}
+          <div className="absolute inset-0 bg-black/50"></div>
 
-          <div className="container relative z-10 mx-auto flex h-full items-center px-4">
+          {/* subtle decorative shapes (hidden on very small screens) */}
+          <div className="-left-10 -top-10 pointer-events-none absolute hidden h-36 w-36 rounded-full bg-white/8 blur-2xl sm:block"></div>
+          <div className="pointer-events-none absolute right-8 bottom-4 hidden h-44 w-44 rounded-full bg-pink-400/15 blur-2xl sm:block"></div>
+
+          <div className="container relative z-10 mx-auto flex h-full items-center px-3 sm:px-4">
             <MotionDiv
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
               className="max-w-3xl text-white"
             >
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1">
-                <LuCamera className="size-5 text-white" />
-                <span className="text-sm">Campus Gallery</span>
+              {/* badge */}
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-2 py-0.5 sm:mb-4 sm:px-3 sm:py-1">
+                <LuCamera className="h-4 w-4 text-white sm:h-5 sm:w-5" />
+                <span className="text-[0.7rem] sm:text-sm">Campus Gallery</span>
               </div>
-              <h1 className="mb-3 font-semibold text-3xl sm:text-4xl">
+
+              {/* heading — same font, responsive size */}
+              <h1 className="mb-2 font-semibold text-[1rem] sm:mb-3 sm:text-[1.50rem] md:text-[1.75rem]">
                 Memories, Moments & Events — IIE Kalyani
               </h1>
-              <p className="mb-4 text-sm text-white/90 sm:text-base">
+
+              {/* paragraph */}
+              <p className="mb-3 text-[0.50rem] text-white/90 sm:mb-4 sm:text-sm md:text-base">
                 Browse through highlights from past events, campus life and
                 academic moments. Click an image to view the full-sized photo.
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              {/* button */}
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 <button
                   type="button"
-                  onClick={() => {
-                    // jump to gallery grid
+                  onClick={() =>
                     document
                       .getElementById("gallery-grid")
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="rounded-md bg-red-600 px-4 py-2 text-white shadow hover:bg-red-700"
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="rounded-md bg-red-600 px-3 py-1 text-[0.7rem] text-white shadow hover:bg-red-700 sm:px-4 sm:py-2 sm:text-sm"
                 >
                   View Photos
                 </button>
@@ -182,13 +197,18 @@ export default function GalleryPage() {
         </div>
 
         {/* category buttons */}
-        <div className="mb-8 flex flex-wrap justify-center gap-3">
+        <div className="mb-8 flex flex-wrap justify-center gap-2 sm:gap-3">
           {galleryCategories.map((cat) => (
             <button
-              type="button"
               key={cat.id}
+              type="button"
               onClick={() => setActiveCategory(cat.id)}
-              className={`rounded-full px-4 py-2 text-sm transition-shadow ${activeCategory === cat.id ? "bg-red-600 text-white shadow-lg" : "border bg-white text-gray-700"}`}
+              className={`rounded-full px-2 py-1.5 text-[0.70rem] transition-shadow sm:px-3 sm:py-2 sm:text-sm md:px-4 md:text-base ${
+                activeCategory === cat.id
+                  ? "bg-red-600 text-white shadow-lg"
+                  : "border bg-white text-gray-700"
+              }
+              `}
               aria-pressed={activeCategory === cat.id}
               aria-label={cat.aria}
             >
@@ -198,46 +218,44 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Masonry gallery using CSS columns */}
       <main id="gallery-grid" className="container mx-auto px-4 pb-20">
-        <div className="masonry-gallery" style={{ columnGap: "1rem" }}>
-          <style>{`
-            .masonry-gallery { column-count: 1; }
-            @media (min-width: 640px) { .masonry-gallery { column-count: 2; } }
-            @media (min-width: 1024px) { .masonry-gallery { column-count: 3; } }
-            @media (min-width: 1280px) { .masonry-gallery { column-count: 4; } }
-            .masonry-item { break-inside: avoid; -webkit-column-break-inside: avoid; margin-bottom: 1rem; }
-          `}</style>
-
+        <div className="grid auto-rows-[120px] grid-cols-3 gap-3 sm:auto-rows-[150px] sm:grid-cols-4 lg:auto-rows-[180px] lg:grid-cols-5">
           {filtered.map((img, idx) => (
             <MotionFigure
               key={img.id}
-              className="masonry-item overflow-hidden rounded-lg bg-gray-100 shadow-sm"
+              className={`relative overflow-hidden rounded-lg bg-gray-100 shadow-sm ${
+                idx % 7 === 0
+                  ? "col-span-2 row-span-2"
+                  : idx % 5 === 0
+                    ? "row-span-2"
+                    : idx % 6 === 0
+                      ? "col-span-2"
+                      : ""
+              }
+        `}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.04 }}
               style={{ cursor: "pointer" }}
-              title={`${img.title} — ${img.date}`}
               onClick={() =>
                 window.open(img.src, "_blank", "noopener,noreferrer")
               }
             >
-              <div
-                style={{ height: imageHeights[img.id], overflow: "hidden" }}
-                className="relative"
-              >
-                <Image
-                  fill
-                  src={img.src}
-                  alt={img.title}
-                  className="object-cover transition-transform duration-500 hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
+              {/* IMAGE */}
+              <Image
+                src={img.src}
+                alt={img.title}
+                loading={idx < 6 ? "eager" : "lazy"}
+                fill
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
 
-              <figcaption className="p-3 text-muted-foreground text-sm">
+              {/* CAPTION — hidden on mobile */}
+              <figcaption className="absolute inset-x-0 bottom-0 hidden bg-white/80 p-2 text-[0.75rem] text-gray-700 sm:block">
                 <div className="font-medium">{img.title}</div>
-                <div className="text-xs">{img.date}</div>
+                <div className="text-[0.65rem] text-muted-foreground">
+                  {img.date}
+                </div>
               </figcaption>
             </MotionFigure>
           ))}

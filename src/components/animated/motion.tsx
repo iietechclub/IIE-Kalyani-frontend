@@ -31,6 +31,10 @@ export const MotionFigure = ({
   <motion.figure {...props}>{children}</motion.figure>
 );
 
+export const MotionH2 = ({ children, ...props }: HTMLMotionProps<"h2">) => (
+  <motion.h2 {...props}>{children}</motion.h2>
+);
+
 export const MotionH3 = ({ children, ...props }: HTMLMotionProps<"h3">) => (
   <motion.h3 {...props}>{children}</motion.h3>
 );
