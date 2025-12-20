@@ -1,7 +1,6 @@
 "use client";
 import { AnimatePresence } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { MotionDiv } from "../animated/motion";
 import BackendImage from "../BackendImage";
 
@@ -9,6 +8,36 @@ type Props = { why_choose_cards: WhyChoose[] };
 const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const updateActiveIndex = useEffectEvent((itemsCount: number) => {
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const cardWidth = container.querySelector("div")?.offsetWidth || 288;
+    const gap = 24; // gap-6 = 24px
+    const index = Math.round(container.scrollLeft / (cardWidth + gap));
+    setActiveIndex(Math.min(index, itemsCount - 1));
+  });
+
+  const scrollToIndex = (index: number) => {
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const cardWidth = container.querySelector("div")?.offsetWidth || 288;
+    const gap = 24;
+    container.scrollTo({
+      left: index * (cardWidth + gap),
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const fn = () => updateActiveIndex(contentItems.length);
+    container.addEventListener("scroll", fn);
+    return () => container.removeEventListener("scroll", fn);
+  }, [contentItems.length]);
 
   useEffect(() => {
     if (isHovered || !scrollContainerRef.current) return;
@@ -18,10 +47,8 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
       const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
       if (container.scrollLeft >= maxScrollLeft) {
-        // Reset to start when reaching the end
         container.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        // Scroll by the width of one card (approximately)
         const cardWidth = container.querySelector("div")?.offsetWidth || 288;
         container.scrollBy({ left: cardWidth + 24, behavior: "smooth" });
       }
@@ -83,7 +110,6 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
                       ease: "easeInOut",
                     }}
                   >
-                    {/* ...existing code... */}
                     <div className="group flex w-full flex-col overflow-hidden rounded-2xl bg-white shadow-xl transition-shadow duration-300 hover:shadow-2xl">
                       {/* Image */}
                       <div className="relative h-48 shrink-0 overflow-hidden md:h-64">
@@ -122,12 +148,25 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
                 </AnimatePresence>
               ))}
             </div>
-
-            {/* ...existing code... */}
           </div>
         </div>
 
-        {/* ...existing code... */}
+        {/* Pagination Dots */}
+        <div className="mt-8 flex justify-center gap-2 md:mt-12 md:gap-3">
+          {contentItems.map((item, index) => (
+            <button
+              key={item.documentId}
+              type="button"
+              onClick={() => scrollToIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 md:h-3 ${
+                activeIndex === index
+                  ? "w-8 bg-linear-to-r from-[#E63946] to-[#FF6B35] md:w-10"
+                  : "w-2.5 bg-gray-300 hover:bg-gray-400 md:w-3"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
