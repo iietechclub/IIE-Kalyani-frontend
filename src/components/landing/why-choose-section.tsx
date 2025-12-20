@@ -67,7 +67,7 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
         <div className="flex min-h-[600px]- flex-col items-center gap-8 xl:flex-row xl:gap-0">
           {/* Left Section - Title (Always Visible) */}
           <MotionDiv
-            className="w-full text-center lg:pr-12 lg:text-left xl:w-1/3"
+            className="mb-6 w-full text-center lg:pr-12 lg:text-left xl:w-1/3"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -95,7 +95,7 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
           >
             <div
               ref={scrollContainerRef}
-              className="scrollbar-hide flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-4 md:gap-6 lg:pb-0"
+              className="scrollbar-hide flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-4 md:gap-6 lg:pb-6"
             >
               {contentItems.map((item, offset) => (
                 <AnimatePresence key={item.documentId} mode="wait">
