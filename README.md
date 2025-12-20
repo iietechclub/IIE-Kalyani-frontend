@@ -2,7 +2,7 @@
 
 Prerequisites [Pnpm](https://pnpm.io/installation#using-winget), [Node.js 22+](https://nodejs.org/dist/v24.11.1/node-v24.11.1-x64.msi).
 
-Install Dependencies using pnpm:
+Install dependencies using pnpm:
 ```bash
 pnpm i
 ```
