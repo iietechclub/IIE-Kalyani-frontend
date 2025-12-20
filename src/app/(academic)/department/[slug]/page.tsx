@@ -19,7 +19,7 @@ import { FacultyCard } from "@/components/FacultyCard";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function DepartmentPage() {
-  const faculty = [
+  const _faculty = [
     {
       name: "Dr. Saina Khan",
       designation: "Professor & HOD",
@@ -88,16 +88,15 @@ export default function DepartmentPage() {
   return (
     <main className="min-h-screen bg-[#f8f9fa] text-gray-900">
       {/* Hero */}
-      <section className="relative h-[360px] overflow-hidden md:h-[460px]">
+      <section className="relative z-0 h-[360px] overflow-hidden md:h-[460px]">
         <Image
+          fill
           src="https://images.unsplash.com/photo-1654375408506-382720d3e05f?auto=format&fit=crop&w=1800&q=80"
           alt="Computer Science & Engineering"
-          width={1800}
-          height={900}
-          className="object-cover"
+          className="-z-2 object-cover"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-transparent"></div>
-        <div className="relative mx-auto flex h-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
+        <div className="-z-1 absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-transparent" />
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
           <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -140,12 +139,13 @@ export default function DepartmentPage() {
               <Card className="overflow-hidden shadow-xl ring-1 ring-black/5">
                 <div className="relative">
                   {/* HOD photo */}
-                  <div className="relative h-44 w-full overflow-hidden md:h-52">
+                  <div className="relative aspect-4/3 w-full overflow-hidden">
                     <Image
+                      fill
                       src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80"
                       alt="HOD - Priya Sharman"
-                      fill
-                      className="object-cover"
+                      className="object-cover object-top"
+                      style={{ objectPosition: "50% 10%" }}
                     />
                   </div>
 
@@ -497,7 +497,7 @@ export default function DepartmentPage() {
       </section>
 
       {/* Faculty */}
-      <section className="bg-linear-to-br from-gray-50 to-white px-4 py-16 sm:px-6 lg:px-8">
+      {/* <section className="bg-linear-to-br from-gray-50 to-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="up">
             <h2 className="mb-12 text-center font-bold text-3xl md:text-4xl">
@@ -523,7 +523,7 @@ export default function DepartmentPage() {
             ))}
           </StaggerContainer>
         </div>
-      </section>
+      </section> */}
 
       {/* Labs & Facilities */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
