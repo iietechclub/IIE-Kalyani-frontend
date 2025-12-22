@@ -23,12 +23,12 @@ type Company = prettify<
 
 type CompanyWithoutName = Omits<Company, "name">;
 
-type DepartmentNameOnly = { name: string };
+type DepartmentShortNameOnly = { short_name: string };
 type Department = prettify<
   CollectionType &
-    DepartmentNameOnly & {
+    DepartmentShortNameOnly & {
+      name: string;
       slug: string;
-      short_name: string;
       tagline: string;
       previewImage: Media;
       bannerImage: Media;
@@ -105,12 +105,16 @@ type SocialLink = prettify<
   }
 >;
 
+type StudentDeveloperType = "Student" | "Other";
 type StudentDeveloper = prettify<
   CollectionType & {
     name: string;
     image: Media;
+    type: StudentDeveloperType;
+    batch?: string;
+    department?: DepartmentShortNameOnly;
+    otherFrom?: string;
     contribution: string;
-    department: { name: string };
     github: string;
     linkedin: string;
   }

@@ -55,9 +55,11 @@ export const fetchHomePageData = cache(async () => {
       our_creative_team_youtube_video_link
       our_creative_team_image { url alternativeText }
       student_developers {
-        documentId name contribution 
+        documentId name type
         image { url alternativeText }
-        department { name } github linkedin
+        department { short_name } batch
+        otherFrom contribution
+        github linkedin
       }
       our_creative_team_quotation
     }
