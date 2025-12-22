@@ -83,12 +83,22 @@ export default function ContributorsSection({
                   <h4 className="mb-0.5 text-center text-foreground text-xs sm:text-sm">
                     {student.name}
                   </h4>
+                  {student.type === "Student" ? (
+                    <p className="mb-3 text-center text-[10px] text-muted-foreground sm:text-xs">
+                      IIE student, {student.department?.short_name}{" "}
+                      <span className="italic">{student.batch}</span>
+                    </p>
+                  ) : (
+                    <p className="mb-3 text-center text-[10px] text-muted-foreground sm:text-xs">
+                      {student.otherFrom}
+                    </p>
+                  )}
                   {/* <p className="mb-0.5 text-center text-[10px] text-primary sm:text-xs">
                     {student.contribution}
                   </p> */}
-                  <p className="mb-3 text-center text-[9px] text-muted-foreground leading-tight sm:text-[10px]">
+                  {/* <p className="mb-3 text-center text-[9px] text-muted-foreground leading-tight sm:text-[10px]">
                     {student.department.name}
-                  </p>
+                  </p> */}
                   <div className="flex gap-2">
                     <Tooltip>
                       <TooltipTrigger>

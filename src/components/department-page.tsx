@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   LuFlaskConical,
   LuGraduationCap,
@@ -15,49 +14,99 @@ import {
   StaggerItem,
 } from "@/components/animated/scroll-reveal";
 
-import { FacultyCard } from "@/components/FacultyCard";
+// import { FacultyCard } from "@/components/FacultyCard";
+import GithubImage from "@/components/GithubImage";
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function DepartmentPage() {
-  const _faculty = [
-    {
-      name: "Dr. Saina Khan",
-      designation: "Professor & HOD",
-      department: "Computer Science & Engineering",
-      specialization: "Artificial Intelligence, Machine Learning, Data Science",
-      tags: ["PhD", "AI Research", "15+ Years"],
-      image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60",
-    },
-    {
-      name: "Dr. Priya Sharma",
-      designation: "Associate Professor",
-      department: "Computer Science & Engineering",
-      specialization: "Computer Networks, Cybersecurity, Cloud Computing",
-      tags: ["PhD", "Network Security", "10+ Years"],
-      image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60",
-    },
-    {
-      name: "Prof. Amit Patel",
-      designation: "Assistant Professor",
-      department: "Computer Science & Engineering",
-      specialization:
-        "Software Engineering, Web Development, Mobile Applications",
-      tags: ["M.Tech", "Full Stack Dev", "8+ Years"],
-      image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60",
-    },
-    {
-      name: "Dr. Sneha Gupta",
-      designation: "Assistant Professor",
-      department: "Computer Science & Engineering",
-      specialization: "Database Management, Big Data Analytics, IoT",
-      tags: ["PhD", "Data Analytics", "7+ Years"],
-      image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60",
-    },
-  ];
+type Faculty = {
+  name: string;
+  designation: string;
+  department: string;
+  specialization: string;
+  tags: string[];
+  image: string;
+};
+
+type Lab = {
+  name: string;
+  image: string;
+};
+
+type Hod = {
+  name?: string;
+  image?: string;
+  message: string;
+};
+
+type Props = {
+  name: string;
+  subtitle: string;
+  banner: string;
+
+  hod: Hod;
+  labsStrip: string;
+  vision: string;
+  mission: string;
+
+  aboutImage: string;
+  aboutContent: React.ReactNode;
+
+  labs: Lab[];
+  faculties?: Faculty[];
+};
+
+export default function DepartmentPage({
+  name,
+  subtitle,
+  banner,
+  hod,
+  labsStrip,
+  vision,
+  mission,
+  aboutImage,
+  aboutContent,
+  labs,
+  faculties = [],
+}: Props) {
+  // const faculties = [
+  //   {
+  //     name: "Dr. Saina Khan",
+  //     designation: "Professor & HOD",
+  //     department: "Computer Science & Engineering",
+  //     specialization: "Artificial Intelligence, Machine Learning, Data Science",
+  //     tags: ["PhD", "AI Research", "15+ Years"],
+  //     image:
+  //       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60",
+  //   },
+  //   {
+  //     name: "Dr. Priya Sharma",
+  //     designation: "Associate Professor",
+  //     department: "Computer Science & Engineering",
+  //     specialization: "Computer Networks, Cybersecurity, Cloud Computing",
+  //     tags: ["PhD", "Network Security", "10+ Years"],
+  //     image:
+  //       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60",
+  //   },
+  //   {
+  //     name: "Prof. Amit Patel",
+  //     designation: "Assistant Professor",
+  //     department: "Computer Science & Engineering",
+  //     specialization:
+  //       "Software Engineering, Web Development, Mobile Applications",
+  //     tags: ["M.Tech", "Full Stack Dev", "8+ Years"],
+  //     image:
+  //       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60",
+  //   },
+  //   {
+  //     name: "Dr. Sneha Gupta",
+  //     designation: "Assistant Professor",
+  //     department: "Computer Science & Engineering",
+  //     specialization: "Database Management, Big Data Analytics, IoT",
+  //     tags: ["PhD", "Data Analytics", "7+ Years"],
+  //     image:
+  //       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60",
+  //   },
+  // ];
 
   //   const programs = [
   //     {
@@ -67,32 +116,29 @@ export default function DepartmentPage() {
   //     },
   //   ];
 
-  const labs = [
-    {
-      name: "Programming Lab",
-      image:
-        "https://images.unsplash.com/photo-1654375408506-382720d3e05f?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      name: "Data Science Lab",
-      image:
-        "https://images.unsplash.com/photo-1654375408506-382720d3e05f?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      name: "AI & Machine Learning Lab",
-      image:
-        "https://images.unsplash.com/photo-1632435499182-e436787ce107?auto=format&fit=crop&w=1200&q=80",
-    },
-  ];
+  // const labs = [
+  //   {
+  //     name: "AI Research Lab",
+  //     image: "(academic)/department/AI&ML/data-scince_lab(about).JPG",
+  //   },
+  //   {
+  //     name: "Deep Learning Lab",
+  //     image: "(academic)/department/AI&ML/aiml-lab-3.JPG",
+  //   },
+  //   {
+  //     name: "Neural Networks Lab",
+  //     image: "(academic)/department/AI&ML/ai-mal_lab(hero).png",
+  //   },
+  // ];
 
   return (
     <main className="min-h-screen bg-[#f8f9fa] text-gray-900">
       {/* Hero */}
       <section className="relative z-0 h-[360px] overflow-hidden md:h-[460px]">
-        <Image
+        <GithubImage
           fill
-          src="https://images.unsplash.com/photo-1654375408506-382720d3e05f?auto=format&fit=crop&w=1800&q=80"
-          alt="Computer Science & Engineering"
+          src={banner}
+          alt={name}
           className="-z-2 object-cover"
         />
         <div className="-z-1 absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-transparent" />
@@ -110,15 +156,13 @@ export default function DepartmentPage() {
                 textShadow: "0 6px 18px rgba(0,0,0,0.6)",
               }}
             >
-              Computer Science & Engineering
+              {name}
             </h1>
             <p
               className="max-w-2xl text-white/90"
               style={{ fontFamily: "Nunito, sans-serif" }}
             >
-              Empowering future technology leaders through cutting-edge
-              education, multi-disciplinary research, and strong industry
-              collaboration.
+              {subtitle}
             </p>
           </MotionDiv>
         </div>
@@ -136,27 +180,27 @@ export default function DepartmentPage() {
           <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
             {/* HOD Card */}
             <div className="lg:col-span-1">
-              <Card className="overflow-hidden shadow-xl ring-1 ring-black/5">
-                <div className="relative">
-                  {/* HOD photo */}
-                  <div className="relative aspect-4/3 w-full overflow-hidden">
-                    <Image
-                      fill
-                      src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80"
-                      alt="HOD - Priya Sharman"
-                      className="object-cover object-top"
-                      style={{ objectPosition: "50% 10%" }}
-                    />
-                  </div>
+              {hod.name && hod.image && (
+                <Card className="overflow-hidden shadow-xl ring-1 ring-black/5">
+                  <div className="relative">
+                    {/* HOD photo */}
+                    <div className="relative aspect-4/3 w-full overflow-hidden">
+                      <GithubImage
+                        fill
+                        src={hod.image}
+                        alt={`HOD - ${hod.name}`}
+                        className="object-cover object-top"
+                        style={{ objectPosition: "50% 10%" }}
+                      />
+                    </div>
 
-                  <div className="p-6">
-                    <h3 className="font-semibold text-xl">Mrs. Saina Khan</h3>
-                    <p className="mb-3 text-muted-foreground text-sm">
-                      Professor & Head of Department — Computer Science &
-                      Engineering
-                    </p>
+                    <div className="p-6">
+                      <h3 className="font-semibold text-xl">{hod.name}</h3>
+                      <p className="mb-3 text-muted-foreground text-sm">
+                        Professor & Head of Department — {name}
+                      </p>
 
-                    <div className="mb-4 flex items-center gap-3 text-sm">
+                      {/* <div className="mb-4 flex items-center gap-3 text-sm">
                       <div className="ml-auto flex items-center gap-2">
                         <LuMail className="h-4 w-4 text-rose-600" />
                         <a
@@ -166,12 +210,13 @@ export default function DepartmentPage() {
                           iiecse@gmail.com
                         </a>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="flex gap-3"></div>
+                      <div className="flex gap-3"></div>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              )}
             </div>
 
             {/* Long message / highlights */}
@@ -184,13 +229,7 @@ export default function DepartmentPage() {
                         Message from the Head
                       </h4>
                       <p className="mb-4 text-muted-foreground leading-relaxed">
-                        Welcome to the Department of Computer Science &
-                        Engineering at IIE Kalyani. We are committed to
-                        delivering high-quality education and practical training
-                        that bridges theory and industry practice. Our
-                        curriculum, modern labs, and strong industry
-                        partnerships help students convert learning into career
-                        success.
+                        {hod.message}
                       </p>
 
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -203,7 +242,7 @@ export default function DepartmentPage() {
                               Our Vision
                             </div>
                             <div className="text-muted-foreground text-sm">
-                              To nurture innovators and leaders in computing.
+                              {vision}
                             </div>
                           </div>
                         </div>
@@ -217,8 +256,7 @@ export default function DepartmentPage() {
                               Our Mission
                             </div>
                             <div className="text-muted-foreground text-sm">
-                              Practical learning, research and industry-ready
-                              graduates.
+                              {mission}
                             </div>
                           </div>
                         </div>
@@ -238,9 +276,7 @@ export default function DepartmentPage() {
                     <div className="text-muted-foreground text-sm">
                       State-of-the-art Labs
                     </div>
-                    <div className="font-semibold">
-                      AI, DS & Programming Labs
-                    </div>
+                    <div className="font-semibold">{labsStrip}</div>
                   </div>
                 </Card>
 
@@ -266,7 +302,7 @@ export default function DepartmentPage() {
                     <div className="text-muted-foreground text-sm">
                       Student Success
                     </div>
-                    <div className="font-semibold">000% placement record</div>
+                    <div className="font-semibold">86% placement record</div>
                   </div>
                 </Card>
               </div>
@@ -289,34 +325,13 @@ export default function DepartmentPage() {
 
           <div className="grid items-center gap-12 md:grid-cols-2">
             <ScrollReveal direction="left">
-              <div className="prose max-w-none">
-                <p className="mb-4 text-lg text-muted-foreground leading-relaxed">
-                  The Department of Computer Science & Engineering at IIE
-                  Kalyani is committed to providing quality technical education
-                  and fostering innovation in the field of computing.
-                  Established with a vision to create skilled professionals, our
-                  department offers state-of-the-art infrastructure and
-                  experienced faculty.
-                </p>
-                <p className="mb-4 text-lg text-muted-foreground leading-relaxed">
-                  We focus on developing strong fundamentals in computer
-                  science, programming, data structures, algorithms, artificial
-                  intelligence, machine learning, and other emerging
-                  technologies. Our curriculum is designed to meet industry
-                  standards and prepare students for global opportunities.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  The department actively encourages research, innovation, and
-                  entrepreneurship, providing students with hands-on experience
-                  through projects, internships, and industry collaborations.
-                </p>
-              </div>
+              <div className="prose max-w-none">{aboutContent}</div>
             </ScrollReveal>
 
             <ScrollReveal direction="right">
               <div className="relative h-[380px] overflow-hidden rounded-2xl shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1632435499182-e436787ce107?auto=format&fit=crop&w=1400&q=80"
+                <GithubImage
+                  src={aboutImage}
                   fill
                   alt="CSE Department"
                   className="object-cover"
@@ -509,7 +524,7 @@ export default function DepartmentPage() {
             staggerDelay={0.08}
             className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
-            {faculty.map((member) => (
+            {faculties.map((member) => (
               <StaggerItem key={member.name}>
                 <FacultyCard
                   name={member.name}
@@ -526,43 +541,45 @@ export default function DepartmentPage() {
       </section> */}
 
       {/* Labs & Facilities */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="up">
-            <h2 className="mb-12 text-center font-bold text-3xl md:text-4xl">
-              Labs & Facilities
-            </h2>
-          </ScrollReveal>
+      {!!labs.length && (
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <ScrollReveal direction="up">
+              <h2 className="mb-12 text-center font-bold text-3xl md:text-4xl">
+                Labs & Facilities
+              </h2>
+            </ScrollReveal>
 
-          <StaggerContainer
-            staggerDelay={0.12}
-            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {labs.map((lab) => (
-              <StaggerItem key={lab.name}>
-                <MotionDiv
-                  whileHover={{ y: -8 }}
-                  className="group relative h-64 cursor-pointer overflow-hidden rounded-2xl shadow-xl"
-                >
-                  <Image
-                    fill
-                    src={lab.image}
-                    alt={lab.name}
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute right-4 bottom-4 left-4">
-                    <div className="flex items-center gap-2 text-white">
-                      <LuFlaskConical className="h-5 w-5" />
-                      <h3 className="text-xl">{lab.name}</h3>
+            <StaggerContainer
+              staggerDelay={0.12}
+              className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              {labs.map((lab) => (
+                <StaggerItem key={lab.name}>
+                  <MotionDiv
+                    whileHover={{ y: -8 }}
+                    className="group relative h-64 cursor-pointer overflow-hidden rounded-2xl shadow-xl"
+                  >
+                    <GithubImage
+                      fill
+                      src={lab.image}
+                      alt={lab.name}
+                      className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute right-4 bottom-4 left-4">
+                      <div className="flex items-center gap-2 text-white">
+                        <LuFlaskConical className="h-5 w-5" />
+                        <h3 className="text-xl">{lab.name}</h3>
+                      </div>
                     </div>
-                  </div>
-                </MotionDiv>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
+                  </MotionDiv>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
