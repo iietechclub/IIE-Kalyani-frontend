@@ -294,7 +294,10 @@ function TestimonialsCarousel() {
       <div className="mt-6 flex justify-center gap-3">
         {Array.from({ length: totalViews }).map((_, i) => (
           <button
+<<<<<<< Updated upstream
             // biome-ignore lint/suspicious/noArrayIndexKey: not needed
+=======
+>>>>>>> Stashed changes
             key={i}
             type="button"
             onClick={() => handleDot(i)}
