@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import { LuCalendar, LuCpu } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
+import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -31,14 +31,14 @@ export default function TechnicalEventsPage() {
   const upcomingEvents = [
     {
       id: "techfest-2025",
-      title: "National Level Technical Symposium - TECHFEST 2025",
-      date: "March 15-17, 2025",
-      dateLabel: "15-17 March 2025",
+      title: "Hands-on Workshop at Webel Technology Limited (WTL)",
+      date: "April 19, 2024",
+      dateLabel: "19 April 2024",
       description:
         "A 3-day technical extravaganza featuring paper presentations, workshops and industry panels. Students and professionals come together to showcase innovations, attend hands-on workshops and participate in competitions.",
       category: "Symposium",
       image:
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=80",
+        "(campus)/student-activities/technical-events-and-seminars/event_card1.jpg",
       participants: "500+",
       tags: ["Paper Presentations", "Workshops", "Competitions"],
       venue: "Main Auditorium",
@@ -46,14 +46,14 @@ export default function TechnicalEventsPage() {
     },
     {
       id: "ml-ai-2025",
-      title: "Machine Learning & AI Workshop",
-      date: "April 2-4, 2025",
-      dateLabel: "2-4 April 2025",
+      title: "Global Entrepreneurship Summit ’25 at IIT Kharagpur",
+      date: "February 7-9, 2025",
+      dateLabel: "7-9 February 2025",
       description:
         "Applied workshop on ML & AI fundamentals with hands-on model-building, evaluation and deployment. Work on real datasets with industry mentors.",
       category: "Workshop",
       image:
-        "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1400&q=80",
+        "(campus)/student-activities/technical-events-and-seminars/event_card2.jpeg",
       participants: "120",
       tags: ["Hands-on", "ML", "Deep Learning"],
       venue: "Computer Lab 1",
@@ -61,14 +61,14 @@ export default function TechnicalEventsPage() {
     },
     {
       id: "web-bootcamp-2025",
-      title: "Web Development Bootcamp",
+      title: "Tata Social Enterprise Challenge 2025 | IIM Calcutta",
       date: "May 10-12, 2025",
       dateLabel: "10-12 May 2025",
       description:
         "3-day intensive bootcamp covering modern frontend & backend stacks, deployment pipelines and performance best practices.",
       category: "Workshop",
       image:
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1400&q=80",
+        "(campus)/student-activities/technical-events-and-seminars/event_card5.jpg",
       participants: "150",
       tags: ["Full-stack", "React", "Node.js"],
       venue: "Computer Lab 2",
@@ -83,7 +83,7 @@ export default function TechnicalEventsPage() {
         "Hands-on sessions covering sensors, microcontrollers (Arduino/RPi), and cloud integration. Build a prototype during the workshop.",
       category: "Workshop",
       image:
-        "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1400&q=80",
+        "(campus)/student-activities/technical-events-and-seminars/event_card4.jpg",
       participants: "80",
       tags: ["IoT", "Embedded", "Hardware"],
       venue: "Electronics Lab",
@@ -93,22 +93,22 @@ export default function TechnicalEventsPage() {
 
   const pastEvents = [
     {
-      title: "Hackathon 2024 - Code Marathon",
-      date: "December 8-9, 2024",
+      title: "Hands-on Workshop at Webel Technology Limited (WTL)",
+      date: "April 19, 2024",
       description:
         "24-hour coding challenge with teams building innovative solutions across tracks.",
       highlights: ["50+ teams", "3 winners", "Industry mentorship"],
       image:
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80",
+        "(campus)/student-activities/technical-events-and-seminars/event_card1.jpg",
     },
     {
-      title: "Robotics Workshop & Competition",
-      date: "November 15-16, 2024",
+      title: "Global Entrepreneurship Summit ’25 at IIT Kharagpur",
+      date: "February 7-9, 2025",
       description:
         "Students designed and built autonomous robots competing on a defined track.",
       highlights: ["35 teams", "Live demos", "Best innovation award"],
       image:
-        "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=1400&q=80",
+        "(campus)/student-activities/technical-events-and-seminars/event_card2.jpeg",
     },
     {
       title: "Web Development Bootcamp",
@@ -126,7 +126,7 @@ export default function TechnicalEventsPage() {
         "Practical session on sensors, microcontrollers and cloud integration.",
       highlights: ["30+ projects", "Hardware kits provided"],
       image:
-        "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1400&q=80",
+        "(campus)/student-activities/technical-events-and-seminars/event_card4.jpg",
     },
   ];
 
@@ -164,9 +164,9 @@ export default function TechnicalEventsPage() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="h-[500px] w-full scale-105 object-center md:h-[520px]">
-            <Image
+            <GithubImage
               fill
-              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1800&q=80"
+              src="(campus)/student-activities/technical-events-and-seminars/banner.png"
               alt="Technical events hero"
               className="object-cover"
             />
@@ -259,7 +259,7 @@ export default function TechnicalEventsPage() {
                   style={{ width: "100%", maxWidth: 360 }}
                 >
                   <div className="relative h-44 overflow-hidden">
-                    <Image
+                    <GithubImage
                       src={ev.image}
                       alt={ev.title}
                       fill
@@ -322,7 +322,7 @@ export default function TechnicalEventsPage() {
                 <Card className="overflow-hidden transition-shadow hover:shadow-lg">
                   <div className="grid items-stretch gap-6 md:grid-cols-3">
                     <div className="relative h-56 w-full overflow-hidden rounded-md md:col-span-1 md:h-64">
-                      <Image
+                      <GithubImage
                         src={pe.image}
                         alt={pe.title}
                         fill
@@ -383,7 +383,7 @@ export default function TechnicalEventsPage() {
           >
             <div className="flex items-start gap-4">
               <div className="h-24 w-24 shrink-0 overflow-hidden rounded-md">
-                <Image
+                <GithubImage
                   src={selectedEvent.image}
                   alt={selectedEvent.title}
                   fill
