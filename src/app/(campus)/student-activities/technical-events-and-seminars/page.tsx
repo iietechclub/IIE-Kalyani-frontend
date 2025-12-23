@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import { LuCalendar, LuCpu } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
+import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -164,7 +164,7 @@ export default function TechnicalEventsPage() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="h-[500px] w-full scale-105 object-center md:h-[520px]">
-            <Image
+            <GithubImage
               fill
               src="(campus)/student-activities/technical-events-and-seminars/banner.png"
               alt="Technical events hero"
@@ -259,7 +259,7 @@ export default function TechnicalEventsPage() {
                   style={{ width: "100%", maxWidth: 360 }}
                 >
                   <div className="relative h-44 overflow-hidden">
-                    <Image
+                    <GithubImage
                       src={ev.image}
                       alt={ev.title}
                       fill
@@ -322,7 +322,7 @@ export default function TechnicalEventsPage() {
                 <Card className="overflow-hidden transition-shadow hover:shadow-lg">
                   <div className="grid items-stretch gap-6 md:grid-cols-3">
                     <div className="relative h-56 w-full overflow-hidden rounded-md md:col-span-1 md:h-64">
-                      <Image
+                      <GithubImage
                         src={pe.image}
                         alt={pe.title}
                         fill
@@ -383,7 +383,7 @@ export default function TechnicalEventsPage() {
           >
             <div className="flex items-start gap-4">
               <div className="h-24 w-24 shrink-0 overflow-hidden rounded-md">
-                <Image
+                <GithubImage
                   src={selectedEvent.image}
                   alt={selectedEvent.title}
                   fill
