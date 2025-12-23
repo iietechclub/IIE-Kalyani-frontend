@@ -29,48 +29,48 @@ export default function ClubsTwoRowGrid() {
   const clubs: Club[] = [
     {
       id: "coding",
-      name: "Coding Club",
+      name: "Cultural Club",
       category: "tech",
       subtitle: "Code, Create, Innovate",
       description:
         "A community exploring new technologies, hackathons, and practical projects.",
       members: "120+",
       image:
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+        "(campus)/student-activities/clubs-and-societies/cultural.JPG",
     },
 
     {
       id: "robotics",
-      name: "Robotics Club",
+      name: "Snap Society",
       category: "tech",
       subtitle: "Building the Future",
       description:
         "Design, build, and program robots — competitions and hands-on workshops.",
       members: "85+",
       image:
-        "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=1200&q=80",
+        "(campus)/student-activities/clubs-and-societies/snap_society.jpg",
     },
     {
       id: "arts",
-      name: "Fine Arts Club",
-      category: "arts",
+      name: "Science & Tech Club",
+      category: "tech",
       subtitle: "Express Your Creativity",
       description:
         "Painting, digital art, and campus beautification initiatives.",
       members: "95+",
       image:
-        "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=80",
+        "(campus)/student-activities/clubs-and-societies/tech_club.jpeg",
     },
     {
       id: "music",
-      name: "Music & Dance Club",
+      name: "Social Development Club",
       category: "arts",
       subtitle: "Rhythm of Life",
       description:
         "Performances and cultural programs to showcase campus talent.",
       members: "110+",
       image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80",
+        "(campus)/student-activities/clubs-and-societies/social_dev_club.jpg",
     },
     {
       id: "photo",
@@ -83,45 +83,15 @@ export default function ClubsTwoRowGrid() {
         "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=1200&q=80",
     },
     {
-      id: "lit",
-      name: "Literary Club",
+      id: "photo",
+      name: "Sports and Games Club",
       category: "arts",
-      subtitle: "Words That Inspire",
+      subtitle: "Capture Moments",
       description:
-        "Creative writing, debates, poetry slams, and magazine publication.",
-      members: "90+",
+        "Photo walks, editing workshops, and campus event coverage.",
+      members: "75+",
       image:
-        "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      id: "sports",
-      name: "Sports Club",
-      category: "sports",
-      subtitle: "Play Hard, Win Big",
-      description: "Inter-college tournaments, coaching, and fitness programs.",
-      members: "150+",
-      image:
-        "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      id: "social",
-      name: "Social Service Club",
-      category: "social",
-      subtitle: "Serve & Inspire",
-      description: "Community outreach, drives, and environmental initiatives.",
-      members: "80+",
-      image:
-        "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      id: "iec",
-      name: "Innovation & Entrepreneurship",
-      category: "tech",
-      subtitle: "Ideas to Impact",
-      description: "Startup workshops, pitch competitions, and mentorship.",
-      members: "65+",
-      image:
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
+        "(campus)/student-activities/clubs-and-societies/sports_&_games_club.jpg",
     },
   ];
 
@@ -161,7 +131,7 @@ export default function ClubsTwoRowGrid() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1800&q=80"
+            src="(campus)/student-activities/clubs-and-societies/banner.png"
             alt="Campus clubs hero"
             fill
             className="h-80 w-full object-cover md:h-[460px]"
