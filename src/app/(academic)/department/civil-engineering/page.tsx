@@ -2,7 +2,7 @@ import DepartmentPage from "@/components/department-page";
 
 export default function Page() {
   const hod = {
-    name: "Mr. Subhasis Jana",
+    name: "Mrs. Sangita Debnath",
     image: "(academic)/department/CE/HOD.JPG",
     message: `Welcome to the Department of Civil Engineering at IIE Kalyani. Our program focuses on preparing students to tackle real-world infrastructure challenges through practical labs, field visits, and industry internships. We emphasize sustainable, resilient design and hands-on problem solving.`,
   };

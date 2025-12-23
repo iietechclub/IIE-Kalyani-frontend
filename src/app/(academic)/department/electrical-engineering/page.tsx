@@ -2,8 +2,8 @@ import DepartmentPage from "@/components/department-page";
 
 export default function Page() {
   const hod = {
-    name: "Mr. Subhasis Jana",
-    image: "(academic)/department/EE/ee-hod.jpg",
+    name: "Mr. Buswajit Manna",
+    image: "(academic)/department/EE/stock-hod.png",
     message: `Welcome to the Department of Electrical Engineering at IIE Kalyani. Our curriculum, labs and industry partnerships prepare students to tackle power system challenges and drive the renewable energy transition. We emphasize practical skills, research and ethical engineering.`,
   };
 

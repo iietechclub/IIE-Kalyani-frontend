@@ -2,8 +2,8 @@ import DepartmentPage from "@/components/department-page";
 
 export default function Page() {
   const hod = {
-    name: "Mr. Subhasis Jana",
-    image: "(academic)/department/ECE/hod.JPG",
+    name: "Mrs. Mousumi Das",
+    image: "(academic)/department/EE/stock-hod.png",
     message: `Welcome to the Department of Electronics & Communication Engineering at IIE Kalyani. We emphasize hands-on labs, industry-aligned curriculum, and active research in signal processing, communications and embedded systems. Join us to build impactful solutions.`,
   };
 

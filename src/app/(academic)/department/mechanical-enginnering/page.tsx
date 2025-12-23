@@ -2,7 +2,7 @@ import DepartmentPage from "@/components/department-page";
 
 export default function Page() {
   const hod = {
-    name: "Mr. Subhasis Jana",
+    name: "Mr. Rajsekhar Mondal",
     image: "(academic)/department/ME/me-hod.jpg",
     message: `Welcome to the Department of Mechanical Engineering at IIE Kalyani. Our program emphasizes hands-on projects, modern lab exposure and strong industry collaboration so graduates can succeed in sectors like automotive, manufacturing, energy and aerospace.`,
   };

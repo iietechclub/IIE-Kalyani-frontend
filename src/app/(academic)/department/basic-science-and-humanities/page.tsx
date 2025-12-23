@@ -2,7 +2,7 @@ import DepartmentPage from "@/components/department-page";
 
 export default function Page() {
   const hod = {
-    name: "Mr. Subhasis Jana",
+    name: "Mr. Ayan Mandal",
     image: "(academic)/department/BSH/HOD.JPG",
     message: `Welcome to the Department of Basic Science & Humanities at IIE Kalyani. We provide strong fundamentals in physics, chemistry, mathematics and communication — the building blocks of engineering excellence. Our approach blends theory, lab work and soft-skills training to produce thoughtful, technically-capable graduates.`,
   };
