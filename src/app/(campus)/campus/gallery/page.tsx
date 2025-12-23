@@ -1,8 +1,8 @@
 "use client";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import { LuCamera } from "react-icons/lu";
 import { MotionDiv, MotionFigure } from "@/components/animated/motion";
+import GithubImage from "@/components/GithubImage";
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<
@@ -242,7 +242,7 @@ export default function GalleryPage() {
               }
             >
               {/* IMAGE */}
-              <Image
+              <GithubImage
                 src={img.src}
                 alt={img.title}
                 loading={idx < 6 ? "eager" : "lazy"}
