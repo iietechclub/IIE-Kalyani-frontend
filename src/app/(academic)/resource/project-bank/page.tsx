@@ -375,6 +375,7 @@ export default function ProjectBank() {
             const Icon = project.icon || LuBookOpen;
             return (
               <MotionDiv
+                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
                 key={project.title + i}
                 whileHover={{
                   translateY: -6,
@@ -460,6 +461,7 @@ export default function ProjectBank() {
               {getPageRange().map((p, idx) =>
                 p === "..." ? (
                   <span
+                    // biome-ignore lint/suspicious/noArrayIndexKey: not needed
                     key={`ellipsis-${idx}`}
                     className="px-3 py-1 text-gray-500 text-sm"
                   >

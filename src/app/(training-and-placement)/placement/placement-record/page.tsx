@@ -92,6 +92,7 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
           {gridVals.map((gv, idx) => {
             const y = chartHeight - (gv / 100) * chartHeight;
             return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: not needed
               <g key={idx}>
                 <line
                   x1={-padding.left}
@@ -191,7 +192,7 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
                   fill="#374151"
                   textAnchor="middle"
                 >
-                  {d.dept.length > 20 ? d.dept.slice(0, 20) + "…" : d.dept}
+                  {d.dept.length > 20 ? `${d.dept.slice(0, 20)}…` : d.dept}
                 </text>
               </g>
             );

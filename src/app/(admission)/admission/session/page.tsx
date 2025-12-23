@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { LuAward, LuCalendar, LuGlobe, LuGraduationCap } from "react-icons/lu";

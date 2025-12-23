@@ -294,6 +294,7 @@ function TestimonialsCarousel() {
       <div className="mt-6 flex justify-center gap-3">
         {Array.from({ length: totalViews }).map((_, i) => (
           <button
+            // biome-ignore lint/suspicious/noArrayIndexKey: not needed
             key={i}
             type="button"
             onClick={() => handleDot(i)}

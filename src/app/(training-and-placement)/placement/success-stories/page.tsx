@@ -117,6 +117,7 @@ export default function SuccessStories() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
           {initialStories.map((s, i) => (
             <MotionArticle
+              // biome-ignore lint/suspicious/noArrayIndexKey: not needed
               key={i}
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
