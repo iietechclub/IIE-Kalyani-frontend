@@ -17,13 +17,14 @@ import { cn } from "@/lib/utils";
 type Props = { tagline: string; departments: Department[] };
 export default function Departments({ tagline, departments }: Props) {
   const departmentColors = [
-    "from-blue-500 to-cyan-500",
-    "from-orange-500 to-red-500",
-    "from-yellow-500 to-orange-500",
-    "from-green-500 to-emerald-500",
-    "from-purple-500 to-pink-500",
-    "from-teal-500 to-cyan-500",
-    "from-indigo-500 to-blue-500",
+    "from-black/50 to-white/10",
+    // "from-blue-500 to-cyan-500",
+    // "from-orange-500 to-red-500",
+    // "from-yellow-500 to-orange-500",
+    // "from-green-500 to-emerald-500",
+    // "from-purple-500 to-pink-500",
+    // "from-teal-500 to-cyan-500",
+    // "from-indigo-500 to-blue-500",
   ];
 
   return (
@@ -97,7 +98,7 @@ export default function Departments({ tagline, departments }: Props) {
                         <div className="absolute bottom-4 left-4">
                           <div
                             className={cn(
-                              "flex size-9 items-center justify-center rounded-xl bg-linear-to-br shadow-lg sm:size-12",
+                              "flex size-9 items-center justify-center rounded-xl bg-linear-to-br shadow-lg backdrop-blur-lg sm:size-12",
                               color,
                             )}
                           >
