@@ -22,8 +22,8 @@ export default function GalleryPage() {
       id: 1,
       title: "Annual Convocation 2024",
       category: "events",
-      src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80",
-      date: "Dec 2024",
+      src: "(campus)/campus/gallery/Annual_convocation.JPG",
+      date: "Nov 2025",
     },
     {
       id: 2,
@@ -43,63 +43,63 @@ export default function GalleryPage() {
       id: 4,
       title: "Computer Lab Session",
       category: "academics",
-      src: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Computer_lab.JPG",
       date: "Sep 2024",
     },
     {
       id: 5,
       title: "Cricket Championship",
       category: "sports",
-      src: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Cricket_Tournament.jpg",
       date: "Aug 2024",
     },
     {
       id: 6,
       title: "Cultural Night",
       category: "events",
-      src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Cultural_Night.jpg",
       date: "Aug 2024",
     },
     {
       id: 7,
       title: "Central Library",
       category: "campus",
-      src: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Library.JPG",
       date: "Jul 2024",
     },
     {
       id: 8,
       title: "Engineering Workshop",
       category: "academics",
-      src: "https://images.unsplash.com/photo-1581093458791-9d42e1bbf0c5?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Tata_Social_Enterprise.jpg",
       date: "Jun 2024",
     },
     {
       id: 9,
       title: "Football Tournament",
       category: "sports",
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Football_Tournament.jpg",
       date: "May 2024",
     },
     {
       id: 10,
       title: "Independence Day Celebration",
       category: "events",
-      src: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Independence.jpg",
       date: "Aug 2024",
     },
     {
       id: 11,
       title: "Student Lounge Area",
       category: "campus",
-      src: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Canteen_Lounge.jpg",
       date: "Apr 2024",
     },
     {
       id: 12,
       title: "Science Exhibition",
       category: "academics",
-      src: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Science_exhibition.jpg",
       date: "Mar 2024",
     },
   ] as const;
@@ -134,7 +134,7 @@ export default function GalleryPage() {
           className="/* responsive height */ relative h-48 w-full bg-center bg-cover bg-no-repeat sm:h-64 md:h-80 lg:h-96"
           style={{
             backgroundImage:
-              "url('https://iiekalyani.com/wp-content/uploads/2025/04/outDoor4.jpg')",
+              "(campus)/campus/gallery/Banner_image.JPG",
           }}
         >
           {/* dark overlay for contrast */}
