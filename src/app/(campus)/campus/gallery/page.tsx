@@ -29,14 +29,14 @@ export default function GalleryPage() {
       id: 2,
       title: "Campus Infrastructure",
       category: "campus",
-      src: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80",
+      src: "(home)/why-choose-iie/vibrant-campus.jpg",
       date: "Nov 2024",
     },
     {
       id: 3,
       title: "Tech Fest 2024",
       category: "events",
-      src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80",
+      src: "(campus)/campus/gallery/Cultural_Night.jpg",
       date: "Oct 2024",
     },
     {
@@ -130,14 +130,14 @@ export default function GalleryPage() {
     <div className="min-h-screen bg-linear-to-br from-white via-indigo-50/30 to-white text-black">
       {/* HERO BANNER */}
       <header className="relative">
-        <div
-          className="/* responsive height */ relative h-48 w-full bg-center bg-cover bg-no-repeat sm:h-64 md:h-80 lg:h-96"
-          style={{
-            backgroundImage:
-              "(campus)/campus/gallery/Banner_image.JPG",
-          }}
-        >
+        <div className="relative h-48 w-full bg-center bg-cover bg-no-repeat sm:h-64 md:h-80 lg:h-96">
           {/* dark overlay for contrast */}
+          <GithubImage
+            src="(campus)/campus/gallery/Banner_image.JPG"
+            alt="Campus Gallery Banner"
+            fill
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-black/50"></div>
 
           {/* subtle decorative shapes (hidden on very small screens) */}

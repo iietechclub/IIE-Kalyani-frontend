@@ -117,7 +117,7 @@ export default function TechnicalEventsPage() {
         "Intensive 3-day bootcamp covering modern web technologies and hands-on projects.",
       highlights: ["100+ trained", "Live projects", "Certificate"],
       image:
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1400&q=80",
+        "(campus)/student-activities/clubs-and-societies/webdev-bootcamp.avif",
     },
     {
       title: "IoT & Embedded Systems Workshop",

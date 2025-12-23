@@ -1,9 +1,9 @@
 "use client";
-import GithubImage from "@/components/GithubImage";
 import { useMemo, useState } from "react";
 import { LuUsers } from "react-icons/lu";
 
 import { MotionDiv } from "@/components/animated/motion";
+import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
 
 // import { Button } from "@/components/ui/button";
@@ -28,6 +28,16 @@ type Club = {
 export default function ClubsTwoRowGrid() {
   const clubs: Club[] = [
     {
+      id: "arts",
+      name: "Science & Tech Club",
+      category: "tech",
+      subtitle: "Express Your Creativity",
+      description:
+        "Painting, digital art, and campus beautification initiatives.",
+      members: "95+",
+      image: "(campus)/student-activities/clubs-and-societies/tech_club.jpeg",
+    },
+    {
       id: "coding",
       name: "Cultural Club",
       category: "tech",
@@ -35,10 +45,8 @@ export default function ClubsTwoRowGrid() {
       description:
         "A community exploring new technologies, hackathons, and practical projects.",
       members: "120+",
-      image:
-        "(campus)/student-activities/clubs-and-societies/cultural.JPG",
+      image: "(campus)/student-activities/clubs-and-societies/cultural.JPG",
     },
-
     {
       id: "robotics",
       name: "Snap Society",
@@ -47,20 +55,9 @@ export default function ClubsTwoRowGrid() {
       description:
         "Design, build, and program robots — competitions and hands-on workshops.",
       members: "85+",
-      image:
-        "(campus)/student-activities/clubs-and-societies/snap_society.jpg",
+      image: "(campus)/student-activities/clubs-and-societies/snap_society.jpg",
     },
-    {
-      id: "arts",
-      name: "Science & Tech Club",
-      category: "tech",
-      subtitle: "Express Your Creativity",
-      description:
-        "Painting, digital art, and campus beautification initiatives.",
-      members: "95+",
-      image:
-        "(campus)/student-activities/clubs-and-societies/tech_club.jpeg",
-    },
+
     {
       id: "music",
       name: "Social Development Club",
@@ -80,15 +77,14 @@ export default function ClubsTwoRowGrid() {
       description: "Photo walks, editing workshops, and campus event coverage.",
       members: "75+",
       image:
-        "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=1200&q=80",
+        "(campus)/student-activities/clubs-and-societies/photography-club.avif",
     },
     {
       id: "photo",
       name: "Sports and Games Club",
       category: "arts",
       subtitle: "Capture Moments",
-      description:
-        "Photo walks, editing workshops, and campus event coverage.",
+      description: "Photo walks, editing workshops, and campus event coverage.",
       members: "75+",
       image:
         "(campus)/student-activities/clubs-and-societies/sports_&_games_club.jpg",
@@ -168,9 +164,10 @@ export default function ClubsTwoRowGrid() {
         {/* 4-column Grid */}
         <section className="mx-auto mb-12 max-w-7xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((c) => (
+            {filtered.map((c, idx) => (
               <MotionDiv
-                key={c.id}
+                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
+                key={idx}
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.03, y: -6 }}
@@ -193,7 +190,7 @@ export default function ClubsTwoRowGrid() {
                 </div>
 
                 {/* Card content */}
-                <div className="flex h-52 flex-col justify-between p-4">
+                <div className="flex flex-col justify-between p-4">
                   <div>
                     <h3 className="mb-1 font-semibold text-lg">{c.name}</h3>
                     <p className="mb-2 text-muted-foreground text-sm">
