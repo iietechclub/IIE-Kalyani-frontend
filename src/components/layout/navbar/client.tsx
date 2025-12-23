@@ -137,8 +137,8 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
                       <button
                         type="button"
                         className={cn(
-                          "relative flex items-center gap-1 rounded-lg py-1.5 text-primary text-sm transition-colors hover:bg-white/5 lg:px-2 xl:px-3 xl:text-base 2xl:px-4",
-                          bgTransparent && "text-white",
+                          "relative flex items-center gap-1 rounded-lg py-1.5 text-primary text-sm transition-colors  group-hover/menu:bg-muted/70 lg:px-2 xl:px-3 xl:text-base 2xl:px-4",
+                          bgTransparent && "text-white group-hover/menu:bg-white/5",
                         )}
                       >
                         {menu.title}
@@ -176,8 +176,8 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
 
                           menu.link.variant === "Ghost" &&
                             cn(
-                              "ml-0 font-normal hover:bg-white/5",
-                              bgTransparent && "text-white",
+                              "ml-0 font-normal hover:bg-muted/55",
+                              bgTransparent && "text-white hover:bg-white/5",
                             ),
                         )}
                       >
