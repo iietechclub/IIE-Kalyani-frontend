@@ -161,6 +161,7 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
                       <Link
                         href={menu.link.url?.url ?? "#"}
                         target={menu.link.url?.newTab ? "_blank" : undefined}
+                        rel={menu.link.url?.newTab ? "noopener noreferrer" : undefined}
                         className={cn(
                           "mx-4 flex items-center gap-1 rounded-lg px-1.5 py-2 font-medium text-primary text-sm transition-colors lg:px-2 xl:px-3 xl:text-base 2xl:px-4",
                           idx + 1 === data.menus.length && "mr-0",
@@ -228,6 +229,8 @@ const Dropdown = ({ submenus, image, context, columns = 2 }: DropdownProps) => (
                       <li key={id}>
                         <Link
                           href={url?.url ?? "#"}
+                          target={url?.newTab ? "_blank" : undefined}
+                          rel={url?.newTab ? "noopener noreferrer" : undefined}
                           className="flex items-center gap-3.5 rounded-md px-4 py-3 text-gray-600 transition-colors duration-150 hover:bg-red-50 hover:text-red-700"
                         >
                           {icon && (
