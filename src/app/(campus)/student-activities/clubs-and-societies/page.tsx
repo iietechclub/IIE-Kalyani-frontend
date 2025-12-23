@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import GithubImage from "@/components/GithubImage";
 import { useMemo, useState } from "react";
 import { LuUsers } from "react-icons/lu";
 
@@ -130,7 +130,7 @@ export default function ClubsTwoRowGrid() {
       {/* Hero Section */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <Image
+          <GithubImage
             src="(campus)/student-activities/clubs-and-societies/banner.png"
             alt="Campus clubs hero"
             fill
@@ -179,7 +179,7 @@ export default function ClubsTwoRowGrid() {
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <Image
+                  <GithubImage
                     src={c.image}
                     alt={c.name}
                     fill
@@ -240,7 +240,7 @@ export default function ClubsTwoRowGrid() {
           >
             <div className="flex gap-4">
               <div className="h-28 w-28 shrink-0 overflow-hidden rounded-md">
-                <Image
+                <GithubImage
                   src={activeClub.image}
                   alt={activeClub.name}
                   fill
