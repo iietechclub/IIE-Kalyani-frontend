@@ -46,7 +46,7 @@ const WhyChooseUs = ({ why_choose_cards: contentItems }: Props) => {
     const scrollInterval = setInterval(() => {
       const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-      if (container.scrollLeft >= maxScrollLeft) {
+      if (container.scrollLeft + 5 >= maxScrollLeft) {
         container.scrollTo({ left: 0, behavior: "smooth" });
       } else {
         const cardWidth = container.querySelector("div")?.offsetWidth || 288;
