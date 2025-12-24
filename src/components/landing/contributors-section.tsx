@@ -54,7 +54,7 @@ export default function ContributorsSection({
       <div className="mx-auto max-w-7xl px-4- sm:px-6 lg:px-8">
         {/* Students Section - Single Row */}
         <div className="mb-12">
-          <ScrollReveal direction="up" delay={0.3}>
+          {/* <ScrollReveal direction="up" delay={0.3}>
             <div className="mt-3 mb-7 flex items-center justify-center gap-2">
               <span className="text-base text-primary">👨‍💻</span>
               <h3 className="text-base text-foreground sm:text-lg">
@@ -62,7 +62,7 @@ export default function ContributorsSection({
               </h3>
               <span className="text-base text-primary">👩‍💻</span>
             </div>
-          </ScrollReveal>
+          </ScrollReveal> */}
           <StaggerContainer
             staggerDelay={0.1}
             className="mx-auto flex max-w-6xl flex-wrap items-start justify-center gap-4 sm:gap-6"
