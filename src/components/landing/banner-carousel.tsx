@@ -36,7 +36,7 @@ export default function BannerCarousel({ slides }: Props) {
   return (
     // biome-ignore lint/a11y/noStaticElementInteractions: must be interactive
     <div
-      className="relative h-[650px] overflow-hidden sm:h-[500px] md:h-[600px] lg:h-[700px]"
+      className="relative h-108 overflow-hidden sm:h-[500px] md:h-[600px] lg:h-[700px]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -93,7 +93,7 @@ export default function BannerCarousel({ slides }: Props) {
                   </p>
 
                   {/* Call-to-Action Buttons */}
-                  <div className="flex flex-col gap-2 pt-2 sm:flex-row sm:gap-3 sm:pt-4 md:gap-4">
+                  <div className="flex gap-2 pt-4 sm:gap-3 md:gap-4">
                     {ctaButtons.map((ctaButton) => (
                       <CTAButton {...ctaButton} key={ctaButton.id} />
                     ))}
@@ -130,14 +130,14 @@ const CTAButton = ({ name, variant, url }: CTAButton) => (
   <Link href={url?.url ?? "#"}>
     {variant === "Primary" ? (
       <Button
-        size="lg"
+        size="res"
         className="cursor-pointer bg-primary text-sm text-white shadow-lg shadow-primary/50 backdrop-blur-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-primary/60 hover:shadow-xl sm:text-base"
       >
         {name}
       </Button>
     ) : (
       <Button
-        size="lg"
+        size="res"
         variant="outline"
         className="cursor-pointer border-white/40 bg-white/20 text-sm text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:border-white/60 hover:bg-white/30 hover:text-white sm:text-base"
       >

@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       new URL("http://localhost:1337/uploads/**"),
 
       // remote servers
+      new URL(
+        "https://raw.githubusercontent.com/iietechclub/college_images/main/**",
+      ),
       new URL("https://images.shiksha.com/mediadata/images/articles/*"),
       new URL("https://content.jdmagicbox.com/v2/comp/delhi/**"),
       {
