@@ -18,8 +18,8 @@ export default function AcademicCalendar() {
       style={{ ["--iie-primary" as any]: "#c53030" }}
     >
       {/* Main Layout: Header (left) + PDF Viewer (right) */}
-      <main className="mx-auto flex h-full max-w-7xl items-start gap-6 px-4 py-12">
-        {/* --- LEFT: Hero Section --- */}
+      <main className="max-w-7xl mx-auto h-full px-4 py-12 space-y-8">
+        {/* --- LEFT: Hero Section ---
         <section className="flex h-full w-1/2 flex-col justify-center rounded-xl bg-white p-6 shadow-sm">
           <div className="mb-4 inline-flex items-center justify-center gap-3 self-start rounded-full bg-(--iie-primary)/10 px-3 py-1.5 text-(--iie-primary)">
             <LuCalendar className="h-5 w-5" />
@@ -46,13 +46,45 @@ export default function AcademicCalendar() {
               <LuDownload className="h-4 w-4" /> Download Calendar
             </a>
           </div>
-        </section>
+        </section> */}
+          <section className="flex items-center justify-between gap-6 rounded-xl bg-white p-6 shadow-sm">
+        {/* Left content */}
+        <div className="max-w-3xl">
+          <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-(--iie-primary)/10 px-3 py-1.5 text-(--iie-primary)">
+            <LuCalendar className="h-5 w-5" />
+            <span className="font-medium text-sm">Official Documents</span>
+          </div>
+
+          <h1 className="mb-3 font-bold text-3xl md:text-4xl">
+            Academic Calendar{" "}
+            <span className="text-(--iie-primary)">2024-25</span>
+          </h1>
+
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Stay updated with all important academic events and examination schedules.
+            You can preview or download the official academic calendar for 2024-25 directly.
+          </p>
+        </div>
+
+  {/* Right: Download button */}
+  <a
+    href={pdfHref}
+    download
+    className="shrink-0 inline-flex items-center gap-2 rounded-md bg-(--iie-primary) px-5 py-2.5 text-white shadow hover:bg-(--iie-primary)/90"
+  >
+    <LuDownload className="h-4 w-4" />
+    Download Calendar
+  </a>
+</section>
 
         {/* --- RIGHT: PDF Viewer --- */}
-        <div className="h-24 grow overflow-hidden rounded-xl border bg-white shadow">
+        <div className="bg-white grow h-[80vh] border rounded-xl overflow-hidden shadow">
           {/* Toolbar */}
-          <div className="flex items-center justify-between border-b px-4 py-3">
-            <div className="text-gray-600 text-sm">Inline Preview</div>
+          <div className="flex items-center justify-between px-4 py-3">
+            <div className="text-sm text-black dark:text-black">
+              Inline Preview
+            </div>
+
             {/* <a
               href={openPreview ?? pdfHref}
               download
@@ -63,11 +95,12 @@ export default function AcademicCalendar() {
           </div>
 
           {/* PDF iframe */}
-          <div className="h-full w-full">
+          <div className="w-full h-full">
             <iframe
-              src={openPreview ?? pdfHref}
+              src="https://drive.google.com/file/d/1UNN_KvTfI79JkTDvR6HQdJyzPG9UP3yz/preview"
               title="Academic Calendar PDF"
-              className="h-full w-full"
+              className="w-full h-full border-0"
+              allow="autoplay; fullscreen"
             />
           </div>
         </div>
