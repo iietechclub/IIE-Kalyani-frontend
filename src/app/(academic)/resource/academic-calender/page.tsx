@@ -5,8 +5,7 @@ import { LuCalendar, LuDownload } from "react-icons/lu";
 
 export default function AcademicCalendar() {
   // const pdfHref = "/assets/academic-calendar-2024-25.pdf";
-  const pdfHref =
-    "https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf";
+  const pdfHref = "/pdfs/Academic-Calendar-IIE-Kalyani-2025-26.pdf";
   const [openPreview, setOpenPreview] = useState<string | null>(null);
 
   useEffect(() => {
