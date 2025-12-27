@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { LuCalendar, LuDownload } from "react-icons/lu";
 
 export default function AcademicCalendar() {
-  // const pdfHref = "/assets/academic-calendar-2024-25.pdf";
-  const pdfHref = "/pdfs/Academic-Calendar-IIE-Kalyani-2025-26.pdf";
+  // const pdfHref = "/pdfs/Academic-Calendar-IIE-Kalyani-2025-26.pdf";
+  const pdfHref =
+    "https://drive.google.com/file/d/1n1KNIHUhXr1ar_Ww8ROO-gwFk1fcZhR_/preview?usp=sharing";
   const [openPreview, setOpenPreview] = useState<string | null>(null);
 
   useEffect(() => {
@@ -52,11 +53,26 @@ export default function AcademicCalendar() {
         </section>
 
         {/* --- RIGHT: PDF Viewer iframe --- */}
-        <div className="mx-auto aspect-[8.27/11.69] h-130- h-160- h-300- max-w-3xl overflow-hidden rounded-xl border bg-white shadow">
+        <div className="mx-auto h-130- h-160- h-300- max-w-3xl overflow-hidden rounded-xl border bg-white shadow">
+          {/* Toolbar */}
+          <div className="flex items-center justify-between border-b px-4 py-3">
+            <div className="text-gray-600 text-sm">
+              <span className="font-bold text-primary">Academic Calendar</span>{" "}
+              Preview
+            </div>
+            {/* <a
+              href={openPreview ?? pdfHref}
+              download
+              className="text-sm inline-flex items-center gap-2 bg-[var(--iie-primary)]/90 text-white px-3 py-1.5 rounded-md"
+            >
+              <Download className="w-4 h-4" /> Download
+            </a> */}
+          </div>
+
           <iframe
             src={openPreview ?? pdfHref}
             title="Academic Calendar PDF"
-            className="h-full w-full"
+            className="aspect-[8.27/11.69] w-full"
           />
         </div>
       </main>
