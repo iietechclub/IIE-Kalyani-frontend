@@ -5,7 +5,7 @@ type HomePageData = {
   why_choose_cards: WhyChoose[];
 
   departments_tagline: string;
-  departments: Department[];
+  departments: DepartmentShort[];
 
   facilities_tagline: string;
   facilities: Facility[];

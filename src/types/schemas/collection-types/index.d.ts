@@ -24,16 +24,31 @@ type Company = prettify<
 type CompanyWithoutName = Omits<Company, "name">;
 
 type DepartmentShortNameOnly = { short_name: string };
-type Department = prettify<
+type DepartmentShort = prettify<
   CollectionType &
     DepartmentShortNameOnly & {
       name: string;
       slug: string;
       tagline: string;
       previewImage: Media;
-      bannerImage: Media;
       icon?: IconField;
     }
+>;
+type Department = prettify<
+  DepartmentShort & {
+    bannerImage: Media;
+    hod: Faculty;
+    hod_message: string;
+    oneline_vision: string;
+    oneline_mission: string;
+
+    about: RichTextBlocks;
+    about_image: Media;
+    vision: RichTextBlocks;
+    mission: RichTextBlocks;
+
+    labs: GalleryItem[];
+  }
 >;
 
 type Facility = prettify<
@@ -43,6 +58,14 @@ type Facility = prettify<
     tag?: string;
     icon?: IconField;
     description: string;
+  }
+>;
+
+type Faculty = prettify<
+  CollectionType & {
+    name: string;
+    image: Media;
+    department?: DepartmentShortNameOnly;
   }
 >;
 
@@ -64,6 +87,7 @@ type GalleryItem = prettify<
     youtubeUrl?: string;
   }
 >;
+type GalleryItemWithoutTag = Omits<GalleryItem, "tag">;
 
 type Leadership = prettify<
   CollectionType & {
