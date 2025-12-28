@@ -46,7 +46,6 @@ export default function Page() {
       subtitle="Powering the future with innovation in power systems, smart grids and renewable energy."
       banner="(academic)/department/EE/ee-banner.JPG"
       hod={hod}
-      labsStrip="Power, Control & Machines"
       vision="To lead in power systems education and renewable research."
       mission="Hands-on training, innovation and industry collaboration."
       aboutImage="(academic)/department/EE/ee-about.JPG"

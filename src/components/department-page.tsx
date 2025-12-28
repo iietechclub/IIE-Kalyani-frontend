@@ -44,7 +44,6 @@ type Props = {
   banner: string;
 
   hod: Hod;
-  labsStrip: string;
   vision: string;
   mission: string;
 
@@ -60,7 +59,6 @@ export default function DepartmentPage({
   subtitle,
   banner,
   hod,
-  labsStrip,
   vision,
   mission,
   aboutImage,
@@ -276,7 +274,7 @@ export default function DepartmentPage({
                     <div className="text-muted-foreground text-sm">
                       State-of-the-art Labs
                     </div>
-                    <div className="font-semibold">{labsStrip}</div>
+                    <div className="font-semibold">Advanced Laboratories</div>
                   </div>
                 </Card>
 
@@ -302,7 +300,7 @@ export default function DepartmentPage({
                     <div className="text-muted-foreground text-sm">
                       Student Success
                     </div>
-                    <div className="font-semibold">86% placement record</div>
+                    <div className="font-semibold">96% placement record</div>
                   </div>
                 </Card>
               </div>

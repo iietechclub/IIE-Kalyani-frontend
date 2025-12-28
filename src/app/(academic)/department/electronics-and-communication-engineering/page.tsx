@@ -47,7 +47,6 @@ export default function Page() {
       subtitle="Pioneering innovations in electronics, telecommunications, and embedded systems."
       banner="(academic)/department/ECE/LAB-01(BANNER).JPG"
       hod={hod}
-      labsStrip="VLSI, RF & Embedded"
       vision="To be leaders in ECE education and research."
       mission="Hands-on training, research and industry collaboration."
       aboutImage="(academic)/department/ECE/about-e.jpg"

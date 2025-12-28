@@ -54,7 +54,6 @@ export default function Page() {
       subtitle="Empowering future technology leaders through cutting-edge education, multi-disciplinary research, and strong industry collaboration."
       banner="(academic)/department/CSE/banner.avif"
       hod={hod}
-      labsStrip="AI, DS & Programming Labs"
       vision="To nurture innovators and leaders in computing."
       mission="Practical learning, research and industry-ready graduates."
       aboutImage="(academic)/department/CSE/data-scince_lab(about).JPG"

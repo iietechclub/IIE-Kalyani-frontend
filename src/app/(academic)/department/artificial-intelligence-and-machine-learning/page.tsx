@@ -50,7 +50,6 @@ export default function Page() {
       subtitle="Shaping the future with intelligent systems, deep learning research and industry-aligned education."
       banner="(academic)/department/AI&ML/Banner.jpeg"
       hod={hod}
-      labsStrip="Deep Learning & AI Research"
       vision="To become a leader in AI research and education."
       mission="Teach, research, and deploy AI responsibly for societal impact."
       aboutImage="(academic)/department/AI&ML/aiml-about.jpg"

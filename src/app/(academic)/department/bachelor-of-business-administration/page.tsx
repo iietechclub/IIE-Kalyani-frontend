@@ -48,7 +48,6 @@ export default function Page() {
       subtitle="Nurturing future business leaders and entrepreneurs with practical exposure and academic rigour."
       banner="(academic)/department/bba/banner.jpeg"
       hod={hod}
-      labsStrip="AI, DS & Programming Labs"
       vision="To produce ethical, entrepreneurial business professionals."
       mission="Practical learning, industry linkages and leadership development."
       aboutImage="(academic)/department/bba/bba-about-2.avif"

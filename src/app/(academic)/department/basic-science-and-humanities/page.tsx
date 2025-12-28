@@ -50,7 +50,6 @@ export default function Page() {
       subtitle="Building strong foundations for excellence in engineering education."
       banner="(academic)/department/BSH/banner.jpg"
       hod={hod}
-      labsStrip="Physics, Chemistry, Language"
       vision="To build strong scientific foundations for future engineers."
       mission="Deliver rigorous fundamentals + communication skills for all programs."
       aboutImage="(academic)/department/BSH/about.jpg"

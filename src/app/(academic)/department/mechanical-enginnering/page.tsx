@@ -47,7 +47,6 @@ export default function Page() {
       subtitle="Engineering excellence in design, manufacturing and energy — preparing innovators for industry and research."
       banner="(academic)/department/ME/me-banner.JPG"
       hod={hod}
-      labsStrip="Manufacturing, Thermal & CAD/CAM"
       vision="To lead in design, manufacturing and sustainable solutions."
       mission="Hands-on learning, research and industry partnerships."
       aboutImage="(academic)/department/ME/me-about.JPG"

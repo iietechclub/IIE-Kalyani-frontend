@@ -47,7 +47,6 @@ export default function Page() {
       subtitle="Shaping infrastructure and building sustainable communities for tomorrow."
       banner="(academic)/department/CE/banner.JPG"
       hod={hod}
-      labsStrip="Concrete, Soil & Surveying"
       vision="To create civil engineers who build safe, sustainable infrastructure."
       mission="Hands-on learning, research, and industry collaboration for societal impact."
       aboutImage="(academic)/department/CE/about.jpeg"
