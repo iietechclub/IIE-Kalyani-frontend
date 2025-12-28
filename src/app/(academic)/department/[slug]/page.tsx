@@ -5,14 +5,13 @@ type Props = { params: Promise<{ slug: string }> };
 
 export default async function DepartmentPage({ params }: Props) {
   const { slug } = await params;
-
   const department = await fetchDepartmentData(slug);
-  if (!department) return notFound();
 
-  const { name } = department;
-  return name;
+  if (!department) return notFound();
+  return <Department {...department} />;
 }
 
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import {
   LuFlaskConical,
   LuGraduationCap,
@@ -21,63 +20,47 @@ import {
   LuTarget,
   LuUsers,
 } from "react-icons/lu";
-
 import { MotionDiv } from "@/components/animated/motion";
 import {
   ScrollReveal,
   StaggerContainer,
   StaggerItem,
 } from "@/components/animated/scroll-reveal";
-
 // import { FacultyCard } from "@/components/FacultyCard";
-import GithubImage from "@/components/GithubImage";
+import BackendImage from "@/components/BackendImage";
+import { blocks } from "@/components/blocks";
 import { Card, CardContent } from "@/components/ui/card";
 
-type Faculty = {
-  name: string;
-  designation: string;
-  department: string;
-  specialization: string;
-  tags: string[];
-  image: string;
-};
+// type Faculty = {
+//   name: string;
+//   designation: string;
+//   department: string;
+//   specialization: string;
+//   tags: string[];
+//   image: string;
+// };
 
-type Lab = {
-  name: string;
-  image: string;
-};
+// type Lab = {
+//   name: string;
+//   image: string;
+// };
 
-type Hod = {
-  name?: string;
-  image?: string;
-  message: string;
-};
-
-type DepartmentProps = {
-  name: string;
-  subtitle: string;
-  banner: string;
-
-  hod: Hod;
-  vision: string;
-  mission: string;
-
-  aboutImage: string;
-  aboutContent: React.ReactNode;
-
-  labs: Lab[];
+type DepartmentProps = Department & {
   faculties?: Faculty[];
 };
 
-function _Department({
+function Department({
   name,
-  subtitle,
-  banner,
+  tagline,
+  bannerImage,
   hod,
+  hod_message,
+  about_image,
+  about,
+  oneline_mission,
+  oneline_vision,
   vision,
   mission,
-  aboutImage,
-  aboutContent,
   labs,
   faculties = [],
 }: DepartmentProps) {
@@ -85,9 +68,9 @@ function _Department({
     <main className="min-h-screen bg-[#f8f9fa] text-gray-900">
       {/* Hero */}
       <section className="relative z-0 h-[360px] overflow-hidden md:h-[460px]">
-        <GithubImage
+        <BackendImage
           fill
-          src={banner}
+          src={bannerImage.url}
           alt={name}
           className="-z-2 object-cover"
         />
@@ -112,7 +95,7 @@ function _Department({
               className="max-w-2xl text-white/90"
               style={{ fontFamily: "Nunito, sans-serif" }}
             >
-              {subtitle}
+              {tagline}
             </p>
           </MotionDiv>
         </div>
@@ -135,9 +118,9 @@ function _Department({
                   <div className="relative">
                     {/* HOD photo */}
                     <div className="relative aspect-4/3 w-full overflow-hidden">
-                      <GithubImage
+                      <BackendImage
                         fill
-                        src={hod.image}
+                        src={hod.image.url}
                         alt={`HOD - ${hod.name}`}
                         className="object-cover object-top"
                         style={{ objectPosition: "50% 10%" }}
@@ -179,7 +162,7 @@ function _Department({
                         Message from the Head
                       </h4>
                       <p className="mb-4 text-muted-foreground leading-relaxed">
-                        {hod.message}
+                        {hod_message}
                       </p>
 
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -192,21 +175,21 @@ function _Department({
                               Our Vision
                             </div>
                             <div className="text-muted-foreground text-sm">
-                              {vision}
+                              {oneline_vision}
                             </div>
                           </div>
                         </div>
 
                         <div className="flex items-start gap-3">
                           <div className="rounded-lg bg-rose-50 p-2">
-                            <LuLightbulb className="h-5 w-5 text-rose-600" />
+                            <LuLightbulb className="size-5 text-rose-600" />
                           </div>
                           <div>
                             <div className="font-medium text-sm">
                               Our Mission
                             </div>
                             <div className="text-muted-foreground text-sm">
-                              {mission}
+                              {oneline_mission}
                             </div>
                           </div>
                         </div>
@@ -275,15 +258,17 @@ function _Department({
 
           <div className="grid items-center gap-12 md:grid-cols-2">
             <ScrollReveal direction="left">
-              <div className="prose max-w-none">{aboutContent}</div>
+              <div className="prose max-w-none">
+                <BlocksRenderer content={about} />
+              </div>
             </ScrollReveal>
 
             <ScrollReveal direction="right">
               <div className="relative h-[380px] overflow-hidden rounded-2xl shadow-2xl">
-                <GithubImage
-                  src={aboutImage}
+                <BackendImage
+                  src={about_image.url}
                   fill
-                  alt="CSE Department"
+                  alt={`${name} Department`}
                   className="object-cover"
                 />
               </div>
@@ -344,7 +329,7 @@ function _Department({
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.6 }}
                 whileHover={{ translateY: -6, scale: 1.01 }}
-                className="relative"
+                className="relative h-full"
               >
                 {/* floating accent */}
                 <div className="-top-6 -left-6 pointer-events-none absolute h-20 w-20 rounded-full bg-rose-200/30 blur-2xl" />
@@ -359,35 +344,36 @@ function _Department({
                         <h3 className="font-semibold text-2xl text-foreground">
                           Vision
                         </h3>
-                        <p className="mt-1 text-muted-foreground text-sm">
+                        {/* <p className="mt-1 text-muted-foreground text-sm">
                           To be a center of excellence in computer science
                           education, fostering innovation, research, and
                           holistic development of students to become globally
                           competent professionals and ethical leaders in the
                           field of technology.
-                        </p>
+                        </p> */}
                       </div>
                     </div>
 
                     <div className="mt-2 text-gray-600 text-sm leading-relaxed">
-                      <p className="mb-3">
+                      {/* <p className="mb-3">
                         We aim to equip students with a strong theoretical
                         foundation and practical skills in algorithms, systems,
                         and AI — prepared to solve real-world problems
                         responsibly and creatively.
-                      </p>
-
-                      <div className="mt-3 flex flex-wrap gap-2">
+                        </p>
+                        
+                        <div className="mt-3 flex flex-wrap gap-2">
                         <span className="inline-block rounded-full border border-rose-100 bg-rose-50 px-3 py-1 text-rose-600 text-xs">
-                          Algorithms
+                        Algorithms
                         </span>
                         <span className="inline-block rounded-full border border-amber-100 bg-amber-50 px-3 py-1 text-amber-700 text-xs">
-                          AI & ML
+                        AI & ML
                         </span>
                         <span className="inline-block rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-indigo-700 text-xs">
-                          Systems
+                        Systems
                         </span>
-                      </div>
+                        </div> */}
+                      <BlocksRenderer blocks={blocks} content={vision} />
                     </div>
                   </CardContent>
                 </Card>
@@ -401,7 +387,7 @@ function _Department({
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.6, delay: 0.06 }}
                 whileHover={{ translateY: -6, scale: 1.01 }}
-                className="relative"
+                className="relative h-full"
               >
                 {/* floating accent */}
                 <div className="-right-6 -top-6 pointer-events-none absolute h-24 w-24 rounded-full bg-yellow-200/20 blur-2xl" />
@@ -416,15 +402,15 @@ function _Department({
                         <h3 className="font-semibold text-2xl text-foreground">
                           Mission
                         </h3>
-                        <p className="mt-1 text-muted-foreground text-sm">
+                        {/* <p className="mt-1 text-muted-foreground text-sm">
                           Educate, research and empower students with a strong
                           theoretical and practical foundation in computing,
                           preparing them for industry and research careers.
-                        </p>
+                        </p> */}
                       </div>
                     </div>
 
-                    <ul className="mt-2 space-y-3 text-gray-600 text-sm">
+                    {/* <ul className="mt-2 space-y-3 text-gray-600 text-sm">
                       <li className="flex items-start gap-3">
                         <span className="mt-1 text-rose-500">•</span>
                         <span>
@@ -452,7 +438,11 @@ function _Department({
                           professionals.
                         </span>
                       </li>
-                    </ul>
+                    </ul> */}
+
+                    <div className="mt-2 text-gray-600 text-sm leading-relaxed">
+                      <BlocksRenderer blocks={blocks} content={mission} />
+                    </div>
                   </CardContent>
                 </Card>
               </MotionDiv>
@@ -504,28 +494,31 @@ function _Department({
               staggerDelay={0.12}
               className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
             >
-              {labs.map((lab) => (
-                <StaggerItem key={lab.name}>
-                  <MotionDiv
-                    whileHover={{ y: -8 }}
-                    className="group relative h-64 cursor-pointer overflow-hidden rounded-2xl shadow-xl"
-                  >
-                    <GithubImage
-                      fill
-                      src={lab.image}
-                      alt={lab.name}
-                      className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent"></div>
-                    <div className="absolute right-4 bottom-4 left-4">
-                      <div className="flex items-center gap-2 text-white">
-                        <LuFlaskConical className="h-5 w-5" />
-                        <h3 className="text-xl">{lab.name}</h3>
-                      </div>
-                    </div>
-                  </MotionDiv>
-                </StaggerItem>
-              ))}
+              {labs.map(
+                (lab) =>
+                  !!lab.image?.url && (
+                    <StaggerItem key={lab.documentId}>
+                      <MotionDiv
+                        whileHover={{ y: -8 }}
+                        className="group relative h-64 cursor-pointer overflow-hidden rounded-2xl shadow-xl"
+                      >
+                        <BackendImage
+                          fill
+                          src={lab.image.url}
+                          alt={lab.title}
+                          className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent"></div>
+                        <div className="absolute right-4 bottom-4 left-4">
+                          <div className="flex items-center gap-2 text-white">
+                            <LuFlaskConical className="size-5" />
+                            <h3 className="text-xl">{lab.title}</h3>
+                          </div>
+                        </div>
+                      </MotionDiv>
+                    </StaggerItem>
+                  ),
+              )}
             </StaggerContainer>
           </div>
         </section>
