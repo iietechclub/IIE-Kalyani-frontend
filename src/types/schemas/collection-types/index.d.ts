@@ -44,6 +44,8 @@ type Department = prettify<
 
     about: RichTextBlocks;
     about_image: Media;
+
+    vision_mission_tagline: string;
     vision: RichTextBlocks;
     mission: RichTextBlocks;
 

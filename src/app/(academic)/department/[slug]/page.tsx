@@ -55,10 +55,11 @@ function Department({
   bannerImage,
   hod,
   hod_message,
-  about_image,
-  about,
   oneline_mission,
   oneline_vision,
+  about_image,
+  about,
+  vision_mission_tagline,
   vision,
   mission,
   labs,
@@ -112,28 +113,29 @@ function Department({
         >
           <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
             {/* HOD Card */}
-            <div className="lg:col-span-1">
-              {hod.name && hod.image && (
-                <Card className="overflow-hidden shadow-xl ring-1 ring-black/5">
-                  <div className="relative">
-                    {/* HOD photo */}
-                    <div className="relative aspect-4/3 w-full overflow-hidden">
-                      <BackendImage
-                        fill
-                        src={hod.image.url}
-                        alt={`HOD - ${hod.name}`}
-                        className="object-cover object-top"
-                        style={{ objectPosition: "50% 10%" }}
-                      />
-                    </div>
+            {hod && (
+              <div className="lg:col-span-1">
+                {hod.name && hod.image && (
+                  <Card className="overflow-hidden shadow-xl ring-1 ring-black/5">
+                    <div className="relative">
+                      {/* HOD photo */}
+                      <div className="relative aspect-4/3 w-full overflow-hidden">
+                        <BackendImage
+                          fill
+                          src={hod.image.url}
+                          alt={`HOD - ${hod.name}`}
+                          className="object-cover object-top"
+                          style={{ objectPosition: "50% 10%" }}
+                        />
+                      </div>
 
-                    <div className="p-6">
-                      <h3 className="font-semibold text-xl">{hod.name}</h3>
-                      <p className="mb-3 text-muted-foreground text-sm">
-                        Professor & Head of Department — {name}
-                      </p>
+                      <div className="p-6">
+                        <h3 className="font-semibold text-xl">{hod.name}</h3>
+                        <p className="mb-3 text-muted-foreground text-sm">
+                          Professor & Head of Department — {name}
+                        </p>
 
-                      {/* <div className="mb-4 flex items-center gap-3 text-sm">
+                        {/* <div className="mb-4 flex items-center gap-3 text-sm">
                       <div className="ml-auto flex items-center gap-2">
                         <LuMail className="h-4 w-4 text-rose-600" />
                         <a
@@ -145,12 +147,13 @@ function Department({
                       </div>
                     </div> */}
 
-                      <div className="flex gap-3"></div>
+                        <div className="flex gap-3"></div>
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              )}
-            </div>
+                  </Card>
+                )}
+              </div>
+            )}
 
             {/* Long message / highlights */}
             <div className="space-y-6 lg:col-span-2">
@@ -309,8 +312,7 @@ function Department({
               </h2>
 
               <p className="mx-auto mt-3 max-w-2xl text-base text-gray-600">
-                Guiding principles that shape our Computer Science program —
-                innovation, practical skills and ethical computing.
+                {vision_mission_tagline}
               </p>
 
               {/* decorative underline */}

@@ -16,7 +16,7 @@ export const fetchDepartmentData = cache(async (slug: string) => {
       hod_message oneline_vision oneline_mission
 
       about about_image { url alternativeText }
-      vision mission
+      vision_mission_tagline vision mission
 
       labs {
         documentId title
