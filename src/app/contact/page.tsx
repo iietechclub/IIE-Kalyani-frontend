@@ -1,25 +1,41 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import {
+  ScrollReveal,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/animated/scroll-reveal";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
 import { LuClock, LuMapPin, LuPhone } from "react-icons/lu";
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animated/scroll-reveal';
 
 export default function ContactPage() {
   const addressDetails = [
-    'Opposite to Kalyani Shilpanchal Railway Station, P.O.: Kalyani, Dist: Nadia, West Bengal:741235'
+    "Opposite to Kalyani Shilpanchal Railway Station, P.O.: Kalyani, Dist: Nadia, West Bengal:741235",
   ];
 
-  const phoneDetails = ['(33) 2502 5629 / 5630', '+91 7449522271', '+91 7449334888'];
-  const emailDetails = ['principal.iiekalyani@gmail.com', 'admission@iiekalyani.com'];
+  const phoneDetails = [
+    "(33) 2502 5629 / 5630",
+    "+91 7449522271",
+    "+91 7449334888",
+  ];
+  const emailDetails = [
+    "principal.iiekalyani@gmail.com",
+    "admission@iiekalyani.com",
+  ];
 
   const officeHours = [
-    'Monday - Friday: 9:00 AM - 6:00 PM',
-    'Saturday: 9:00 AM - 1:00 PM'
+    "Monday - Friday: 9:00 AM - 6:00 PM",
+    "Saturday: 9:00 AM - 1:00 PM",
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+    <section
+      id="contact"
+      className="py-20 bg-linear-to-br from-gray-50 to-gray-100"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <ScrollReveal direction="up">
@@ -29,10 +45,10 @@ export default function ContactPage() {
             </h2>
 
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-              Have questions about our programs or admissions? We're here to help. 
-              Reach out to us and take the first step towards your educational journey.
+              Have questions about our programs or admissions? We're here to
+              help. Reach out to us and take the first step towards your
+              educational journey.
             </p>
-
           </div>
         </ScrollReveal>
 
@@ -51,13 +67,19 @@ export default function ContactPage() {
                     <Card className="bg-white/70 backdrop-blur-lg border border-white/20 hover:shadow-xl transition-all">
                       <CardContent className="p-6">
                         <div className="flex items-start space-x-4">
-                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                             <LuMapPin className="h-5 w-5 text-primary" />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-foreground">Address</h4>
+                            <h4 className="font-semibold text-foreground">
+                              Address
+                            </h4>
                             {addressDetails.map((line, idx) => (
-                              <p key={idx} className="text-sm text-muted-foreground">
+                              <p
+                                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
+                                key={idx}
+                                className="text-sm text-muted-foreground"
+                              >
                                 {line}
                               </p>
                             ))}
@@ -69,27 +91,38 @@ export default function ContactPage() {
                 </StaggerContainer>
 
                 {/* Phone + Email (combined) and Office Hours side-by-side */}
-                <StaggerContainer staggerDelay={0.1} className="grid sm:grid-cols-2 gap-6">
+                <StaggerContainer
+                  staggerDelay={0.1}
+                  className="grid sm:grid-cols-2 gap-6"
+                >
                   {/* Combined Phone + Email */}
                   <StaggerItem>
                     <Card className="bg-white/70 backdrop-blur-lg border border-white/20 hover:shadow-xl transition-all h-full">
                       <CardContent className="p-6">
                         <div className="flex items-start space-x-4">
-                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                             <div className="flex flex-col items-center justify-center">
                               <LuPhone className="h-4 w-4 text-primary" />
                               {/* <Mail className="h-4 w-4 text-primary mt-1" /> */}
                             </div>
                           </div>
                           <div className="space-y-1">
-                            <h4 className="font-semibold text-foreground">Phone & Email</h4>
+                            <h4 className="font-semibold text-foreground">
+                              Phone & Email
+                            </h4>
                             {phoneDetails.map((p, i) => (
-                              <p key={`p-${i}`} className="text-sm text-muted-foreground">
+                              <p
+                                key={`p-${i}`}
+                                className="text-sm text-muted-foreground"
+                              >
                                 {p}
                               </p>
                             ))}
                             {emailDetails.map((e, i) => (
-                              <p key={`e-${i}`} className="text-sm text-muted-foreground">
+                              <p
+                                key={`e-${i}`}
+                                className="text-sm text-muted-foreground"
+                              >
                                 {e}
                               </p>
                             ))}
@@ -104,13 +137,19 @@ export default function ContactPage() {
                     <Card className="bg-white/70 backdrop-blur-lg border border-white/20 hover:shadow-xl transition-all h-full">
                       <CardContent className="p-6">
                         <div className="flex items-start space-x-4">
-                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                             <LuClock className="h-5 w-5 text-primary" />
                           </div>
                           <div className="space-y-1">
-                            <h4 className="font-semibold text-foreground">Office Hours</h4>
+                            <h4 className="font-semibold text-foreground">
+                              Office Hours
+                            </h4>
                             {officeHours.map((oh, idx) => (
-                              <p key={idx} className="text-sm text-muted-foreground">
+                              <p
+                                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
+                                key={idx}
+                                className="text-sm text-muted-foreground"
+                              >
                                 {oh}
                               </p>
                             ))}
@@ -138,12 +177,15 @@ export default function ContactPage() {
           </div>
 
           {/* Right column: Contact Form (unchanged) */}
-                    <ScrollReveal direction="right">
+          <ScrollReveal direction="right">
             <Card className="bg-white/70 backdrop-blur-xl border border-white/20 shadow-2xl">
               <CardHeader>
-                <h3 className="text-2xl font-bold text-foreground">Send us a Message</h3>
+                <h3 className="text-2xl font-bold text-foreground">
+                  Send us a Message
+                </h3>
                 <p className="text-muted-foreground">
-                  Fill out the form below and we'll get back to you as soon as possible.
+                  Fill out the form below and we'll get back to you as soon as
+                  possible.
                 </p>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -166,7 +208,11 @@ export default function ContactPage() {
                   <label className="text-sm font-medium text-foreground">
                     Email
                   </label>
-                  <Input type="email" placeholder="Enter your email address" required />
+                  <Input
+                    type="email"
+                    placeholder="Enter your email address"
+                    required
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -187,19 +233,23 @@ export default function ContactPage() {
                   <label className="text-sm font-medium text-foreground">
                     Message
                   </label>
-                  <Textarea 
+                  <Textarea
                     placeholder="Tell us how we can help you..."
                     required
                     className="min-h-[120px]"
                   />
                 </div>
 
-                <Button className="w-full bg-primary hover:bg-primary/90 shadow-lg" size="lg">
+                <Button
+                  className="w-full bg-primary hover:bg-primary/90 shadow-lg"
+                  size="lg"
+                >
                   Send Message
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  By submitting this form, you agree to our privacy policy and terms of service.
+                  By submitting this form, you agree to our privacy policy and
+                  terms of service.
                 </p>
               </CardContent>
             </Card>
