@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { LuTrophy, LuDumbbell } from "react-icons/lu";
-import { MotionArticle, MotionDiv } from "@/components/animated/motion";
 import GithubImage from "@/components/GithubImage";
+import { MotionArticle, MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+
+import { useEffect, useState } from "react";
+import { LuDumbbell, LuTrophy } from "react-icons/lu";
 
 /**
  * Redesigned SportsPage
@@ -21,107 +22,114 @@ export default function SportsPageRedesign() {
   // data (kept from your original)
   const outdoorSports = [
     {
-      name: 'Cricket',
+      name: "Cricket",
       image:
-        'https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=80',
-      facilities: ['Full-size pitch', 'Practice nets', 'Coaching available'],
+        "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=80",
+      facilities: ["Full-size pitch", "Practice nets", "Coaching available"],
       teams: "Men's & Women's",
     },
     {
-      name: 'Football',
+      name: "Football",
       image:
-        'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80',
-      facilities: ['FIFA standard ground', 'Floodlights', 'Training sessions'],
+        "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80",
+      facilities: ["FIFA standard ground", "Floodlights", "Training sessions"],
       teams: "Men's & Women's",
     },
     {
-      name: 'Basketball',
+      name: "Basketball",
       image:
-        'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80',
-      facilities: ['2 outdoor courts', 'Training equipment', 'Regular tournaments'],
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
+      facilities: [
+        "2 outdoor courts",
+        "Training equipment",
+        "Regular tournaments",
+      ],
       teams: "Men's & Women's",
     },
     {
-      name: 'Volleyball',
+      name: "Volleyball",
       image:
-        'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=1200&q=80',
-      facilities: ['Sand court', 'Hard court', 'Professional coaching'],
+        "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=1200&q=80",
+      facilities: ["Sand court", "Hard court", "Professional coaching"],
       teams: "Men's & Women's",
     },
   ];
 
   const indoorSports = [
     {
-      name: 'Table Tennis',
+      name: "Table Tennis",
       image:
-        'https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=1200&q=80',
-      facilities: ['8 tables', 'Air-conditioned hall', 'Equipment provided'],
+        "https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=1200&q=80",
+      facilities: ["8 tables", "Air-conditioned hall", "Equipment provided"],
     },
     {
-      name: 'Badminton',
+      name: "Badminton",
       image:
-        'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1200&q=80',
-      facilities: ['4 courts', 'Synthetic flooring', 'Rackets & shuttles'],
+        "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1200&q=80",
+      facilities: ["4 courts", "Synthetic flooring", "Rackets & shuttles"],
     },
     {
-      name: 'Chess',
+      name: "Chess",
       image:
-        'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=1200&q=80',
-      facilities: ['Dedicated hall', 'Chess sets', 'Coaching sessions'],
+        "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=1200&q=80",
+      facilities: ["Dedicated hall", "Chess sets", "Coaching sessions"],
     },
     {
-      name: 'Carrom',
-      image:
-        'https://urli.info/1eu5-',
-      facilities: ['Multiple boards', 'Tournament grade', 'Open all day'],
+      name: "Carrom",
+      image: "https://urli.info/1eu5-",
+      facilities: ["Multiple boards", "Tournament grade", "Open all day"],
     },
   ];
 
   const gymFeatures = [
-    'Modern cardio equipment',
-    'Free weights section',
-    'Strength training machines',
-    'Qualified fitness trainer',
-    'Personal training sessions',
-    'Yoga & aerobics classes',
+    "Modern cardio equipment",
+    "Free weights section",
+    "Strength training machines",
+    "Qualified fitness trainer",
+    "Personal training sessions",
+    "Yoga & aerobics classes",
   ];
   const swimmingFeatures = [
-  'Olympic-sized swimming pool',
-  'Separate beginner and advanced lanes',
-  'Certified lifeguards on duty',
-  'Changing rooms with lockers and showers',
-  'Aqua aerobics and fitness classes',
-  'Regular water quality maintenance',
-  'Swimming coaching for all levels',
-  'Poolside seating and rest area',
-];
-
+    "Olympic-sized swimming pool",
+    "Separate beginner and advanced lanes",
+    "Certified lifeguards on duty",
+    "Changing rooms with lockers and showers",
+    "Aqua aerobics and fitness classes",
+    "Regular water quality maintenance",
+    "Swimming coaching for all levels",
+    "Poolside seating and rest area",
+  ];
 
   const upcomingEvents = [
     {
-      name: 'Annual Sports Meet 2025',
-      date: 'March 1-3, 2025',
-      description: 'Three-day sports extravaganza with multiple events and competitions',
-      participants: 'All students',
+      name: "Annual Sports Meet 2025",
+      date: "March 1-3, 2025",
+      description:
+        "Three-day sports extravaganza with multiple events and competitions",
+      participants: "All students",
     },
     {
-      name: 'Inter-Department Cricket Tournament',
-      date: 'February 15-20, 2025',
-      description: 'Departmental teams compete for the championship trophy',
-      participants: 'Department teams',
+      name: "Inter-Department Cricket Tournament",
+      date: "February 15-20, 2025",
+      description: "Departmental teams compete for the championship trophy",
+      participants: "Department teams",
     },
     {
-      name: 'Badminton Championship',
-      date: 'February 25-26, 2025',
-      description: 'Singles and doubles events for men and women',
-      participants: 'Individual registration',
+      name: "Badminton Championship",
+      date: "February 25-26, 2025",
+      description: "Singles and doubles events for men and women",
+      participants: "Individual registration",
     },
   ];
 
   // quick counters animation (simple)
-  const [counters, setCounters] = useState({ sports: 0, players: 0, trophies: 0 });
+  const [counters, setCounters] = useState({
+    sports: 0,
+    players: 0,
+    trophies: 0,
+  });
   useEffect(() => {
-    let start = performance.now();
+    const start = performance.now();
     const dur = 800;
     let raf = 0;
     function step(t: number) {
@@ -169,7 +177,8 @@ export default function SportsPageRedesign() {
               Sports & Fitness — Play. Train. Excel.
             </h1>
             <p className="max-w-2xl mx-auto text-sm md:text-lg opacity-90">
-              World-class outdoor & indoor facilities, professional coaching, and regular competitions to bring out the best in every student.
+              World-class outdoor & indoor facilities, professional coaching,
+              and regular competitions to bring out the best in every student.
             </p>
 
             {/* <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
@@ -178,8 +187,6 @@ export default function SportsPageRedesign() {
                 View Timetable
               </Button>
             </div> */}
-
-            
           </MotionDiv>
         </div>
       </header>
@@ -199,7 +206,9 @@ export default function SportsPageRedesign() {
         <section id="outdoor" className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold">Outdoor Sports</h2>
-            <p className="text-sm text-muted-foreground">Professionally maintained outdoor grounds</p>
+            <p className="text-sm text-muted-foreground">
+              Professionally maintained outdoor grounds
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -219,18 +228,23 @@ export default function SportsPageRedesign() {
                     fill
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <div className="absolute left-4 bottom-4">
-                    <h3 className="text-white text-lg font-semibold">{s.name}</h3>
-                    <Badge className="bg-white/20 text-white border-white/10 mt-2">{s.teams}</Badge>
+                    <h3 className="text-white text-lg font-semibold">
+                      {s.name}
+                    </h3>
+                    <Badge className="bg-white/20 text-white border-white/10 mt-2">
+                      {s.teams}
+                    </Badge>
                   </div>
                 </div>
 
                 <CardContent className="p-4">
                   <ul className="text-sm space-y-2">
                     {s.facilities.map((f, idx) => (
+                      // biome-ignore lint/suspicious/noArrayIndexKey: not needed
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-green-600 mt-2 flex-shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-green-600 mt-2 shrink-0" />
                         <span>{f}</span>
                       </li>
                     ))}
@@ -245,7 +259,9 @@ export default function SportsPageRedesign() {
         <section id="indoor" className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold">Indoor Sports</h2>
-            <p className="text-sm text-muted-foreground">Air-conditioned halls & coaching</p>
+            <p className="text-sm text-muted-foreground">
+              Air-conditioned halls & coaching
+            </p>
           </div>
 
           <div className="space-y-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
@@ -259,14 +275,18 @@ export default function SportsPageRedesign() {
                 className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm"
               >
                 <div className="md:col-span-1 h-56 md:h-40 overflow-hidden">
-                  <GithubImage src={s.image} alt={s.name} fill className="w-full h-full object-cover" />
+                  <GithubImage
+                    src={s.image}
+                    alt={s.name}
+                    fill
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="md:col-span-2 p-6">
                   <h3 className="text-lg font-semibold mb-2">{s.name}</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    {s.facilities.slice(0, 3).join(' • ')}
+                    {s.facilities.slice(0, 3).join(" • ")}
                   </p>
-                  
                 </div>
               </MotionDiv>
             ))}
@@ -276,7 +296,12 @@ export default function SportsPageRedesign() {
         {/* Gym */}
         <section id="gym" className="mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-            <MotionDiv initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-1">
+            <MotionDiv
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-1"
+            >
               <Card className="h-full overflow-hidden">
                 <div className="relative h-64 overflow-hidden">
                   <GithubImage
@@ -289,15 +314,27 @@ export default function SportsPageRedesign() {
               </Card>
             </MotionDiv>
 
-            <MotionDiv initial={{ opacity: 0, x: 10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2">
-              <h2 className="text-2xl font-semibold mb-3">Gymnasium & Fitness</h2>
+            <MotionDiv
+              initial={{ opacity: 0, x: 10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-2"
+            >
+              <h2 className="text-2xl font-semibold mb-3">
+                Gymnasium & Fitness
+              </h2>
               <p className="text-sm text-muted-foreground mb-4">
-                Fully equipped fitness center with structured classes and certified trainers for students and staff.
+                Fully equipped fitness center with structured classes and
+                certified trainers for students and staff.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-3 mb-4">
                 {gymFeatures.map((g, i) => (
-                  <div key={i} className="flex items-start gap-3 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                  <div
+                    // biome-ignore lint/suspicious/noArrayIndexKey: not needed
+                    key={i}
+                    className="flex items-start gap-3 bg-white dark:bg-gray-800 p-3 rounded-lg"
+                  >
                     <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center">
                       <LuDumbbell className="w-4 h-4" />
                     </div>
@@ -305,14 +342,18 @@ export default function SportsPageRedesign() {
                   </div>
                 ))}
               </div>
-
             </MotionDiv>
           </div>
         </section>
         {/* swimming */}
         <section id="swimming" className="mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-            <MotionDiv initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-1">
+            <MotionDiv
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-1"
+            >
               <Card className="h-full overflow-hidden">
                 <div className="relative h-64 overflow-hidden">
                   <GithubImage
@@ -325,15 +366,25 @@ export default function SportsPageRedesign() {
               </Card>
             </MotionDiv>
 
-            <MotionDiv initial={{ opacity: 0, x: 10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2">
+            <MotionDiv
+              initial={{ opacity: 0, x: 10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-2"
+            >
               <h2 className="text-2xl font-semibold mb-3">Swimming</h2>
               <p className="text-sm text-muted-foreground mb-4">
-                Fully equipped fitness center with structured classes and certified trainers for students and staff.
+                Fully equipped fitness center with structured classes and
+                certified trainers for students and staff.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-3 mb-4">
                 {swimmingFeatures.map((g, i) => (
-                  <div key={i} className="flex items-start gap-3 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                  <div
+                    // biome-ignore lint/suspicious/noArrayIndexKey: not needed
+                    key={i}
+                    className="flex items-start gap-3 bg-white dark:bg-gray-800 p-3 rounded-lg"
+                  >
                     <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center">
                       <LuDumbbell className="w-4 h-4" />
                     </div>
@@ -341,7 +392,6 @@ export default function SportsPageRedesign() {
                   </div>
                 ))}
               </div>
-
             </MotionDiv>
           </div>
         </section>
@@ -350,25 +400,39 @@ export default function SportsPageRedesign() {
         <section className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold">Gallery Highlights</h2>
-            <a href="/gallery" className="text-sm text-green-700">View full gallery →</a>
+            <a href="/gallery" className="text-sm text-green-700">
+              View full gallery →
+            </a>
           </div>
 
           <div className="columns-2 sm:columns-3 lg:columns-4 gap-4 space-y-4">
             {/* sample images mixed from data */}
             {[
-              ...outdoorSports.map(s => s.image),
-              ...indoorSports.map(s => s.image),
-              'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
-              'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=80',
+              ...outdoorSports.map((s) => s.image),
+              ...indoorSports.map((s) => s.image),
+              "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+              "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=80",
             ].map((src, idx) => (
-              <MotionDiv key={idx} initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.03 }} className="break-inside-avoid">
-                <GithubImage src={src} alt={`gallery-${idx}`} fill className="w-full rounded-lg object-cover mb-3" style={{ height: idx % 3 === 0 ? 220 : 160 }} />
+              <MotionDiv
+                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
+                key={idx}
+                initial={{ opacity: 0, scale: 0.98 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.03 }}
+                className="break-inside-avoid"
+              >
+                <GithubImage
+                  src={src}
+                  alt={`gallery-${idx}`}
+                  fill
+                  className="w-full rounded-lg object-cover mb-3"
+                  style={{ height: idx % 3 === 0 ? 220 : 160 }}
+                />
               </MotionDiv>
             ))}
           </div>
         </section>
-
-        
       </div>
     </main>
   );
