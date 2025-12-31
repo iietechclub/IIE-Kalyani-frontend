@@ -258,7 +258,7 @@ function Department({
 
           <div className="grid items-center gap-12 md:grid-cols-2">
             <ScrollReveal direction="left">
-              <div className="prose max-w-none">
+              <div className="prose max-w-none space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <BlocksRenderer content={about} />
               </div>
             </ScrollReveal>
@@ -494,31 +494,31 @@ function Department({
               staggerDelay={0.12}
               className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
             >
-              {labs.map(
-                (lab) =>
-                  !!lab.image?.url && (
-                    <StaggerItem key={lab.documentId}>
-                      <MotionDiv
-                        whileHover={{ y: -8 }}
-                        className="group relative h-64 cursor-pointer overflow-hidden rounded-2xl shadow-xl"
-                      >
-                        <BackendImage
-                          fill
-                          src={lab.image.url}
-                          alt={lab.title}
-                          className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent"></div>
-                        <div className="absolute right-4 bottom-4 left-4">
-                          <div className="flex items-center gap-2 text-white">
-                            <LuFlaskConical className="size-5" />
-                            <h3 className="text-xl">{lab.title}</h3>
-                          </div>
+              {labs
+                .filter((lab) => !!lab.image?.url)
+                .map((lab) => (
+                  <StaggerItem key={lab.documentId}>
+                    <MotionDiv
+                      whileHover={{ y: -8 }}
+                      className="group relative h-64 cursor-pointer overflow-hidden rounded-2xl shadow-xl"
+                    >
+                      <BackendImage
+                        fill
+                        // biome-ignore lint/style/noNonNullAssertion: not needed
+                        src={lab.image!.url}
+                        alt={lab.title}
+                        className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent"></div>
+                      <div className="absolute right-4 bottom-4 left-4">
+                        <div className="flex items-center gap-2 text-white">
+                          <LuFlaskConical className="size-5" />
+                          <h3 className="text-xl">{lab.title}</h3>
                         </div>
-                      </MotionDiv>
-                    </StaggerItem>
-                  ),
-              )}
+                      </div>
+                    </MotionDiv>
+                  </StaggerItem>
+                ))}
             </StaggerContainer>
           </div>
         </section>
