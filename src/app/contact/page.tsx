@@ -1,15 +1,14 @@
+/** biome-ignore-all lint/a11y/noLabelWithoutControl: already is */
+import { LuClock, LuMapPin, LuPhone } from "react-icons/lu";
 import {
   ScrollReveal,
   StaggerContainer,
   StaggerItem,
 } from "@/components/animated/scroll-reveal";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
-import { LuClock, LuMapPin, LuPhone } from "react-icons/lu";
 
 export default function ContactPage() {
   const addressDetails = [
@@ -34,17 +33,17 @@ export default function ContactPage() {
   return (
     <section
       id="contact"
-      className="py-20 bg-linear-to-br from-gray-50 to-gray-100"
+      className="bg-linear-to-br from-gray-50 to-gray-100 py-20"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <ScrollReveal direction="up">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
+          <div className="mb-16 text-center">
+            <h2 className="mb-3 font-bold text-2xl text-foreground sm:mb-4 sm:text-3xl md:text-4xl">
               Get in Touch
             </h2>
 
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="mx-auto max-w-3xl text-muted-foreground text-sm sm:text-base md:text-lg">
               Have questions about our programs or admissions? We're here to
               help. Reach out to us and take the first step towards your
               educational journey.
@@ -52,22 +51,22 @@ export default function ContactPage() {
           </div>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid gap-12 lg:grid-cols-2">
           {/* Left column: Contact Information + Map */}
           <div className="space-y-8">
             <ScrollReveal direction="left">
               <div>
-                <h3 className="text-2xl font-bold text-foreground mb-6">
+                <h3 className="mb-6 font-bold text-2xl text-foreground">
                   Contact Information
                 </h3>
 
                 {/* Address (single full-width row) */}
                 <StaggerContainer staggerDelay={0.08} className="mb-6">
                   <StaggerItem>
-                    <Card className="bg-white/70 backdrop-blur-lg border border-white/20 hover:shadow-xl transition-all">
+                    <Card className="border border-white/20 bg-white/70 backdrop-blur-lg transition-all hover:shadow-xl">
                       <CardContent className="p-6">
                         <div className="flex items-start space-x-4">
-                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                             <LuMapPin className="h-5 w-5 text-primary" />
                           </div>
                           <div>
@@ -78,7 +77,7 @@ export default function ContactPage() {
                               <p
                                 // biome-ignore lint/suspicious/noArrayIndexKey: not needed
                                 key={idx}
-                                className="text-sm text-muted-foreground"
+                                className="text-muted-foreground text-sm"
                               >
                                 {line}
                               </p>
@@ -93,14 +92,14 @@ export default function ContactPage() {
                 {/* Phone + Email (combined) and Office Hours side-by-side */}
                 <StaggerContainer
                   staggerDelay={0.1}
-                  className="grid sm:grid-cols-2 gap-6"
+                  className="grid gap-6 sm:grid-cols-2"
                 >
                   {/* Combined Phone + Email */}
                   <StaggerItem>
-                    <Card className="bg-white/70 backdrop-blur-lg border border-white/20 hover:shadow-xl transition-all h-full">
+                    <Card className="h-full border border-white/20 bg-white/70 backdrop-blur-lg transition-all hover:shadow-xl">
                       <CardContent className="p-6">
                         <div className="flex items-start space-x-4">
-                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                             <div className="flex flex-col items-center justify-center">
                               <LuPhone className="h-4 w-4 text-primary" />
                               {/* <Mail className="h-4 w-4 text-primary mt-1" /> */}
@@ -112,16 +111,18 @@ export default function ContactPage() {
                             </h4>
                             {phoneDetails.map((p, i) => (
                               <p
+                                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
                                 key={`p-${i}`}
-                                className="text-sm text-muted-foreground"
+                                className="text-muted-foreground text-sm"
                               >
                                 {p}
                               </p>
                             ))}
                             {emailDetails.map((e, i) => (
                               <p
+                                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
                                 key={`e-${i}`}
-                                className="text-sm text-muted-foreground"
+                                className="text-muted-foreground text-sm"
                               >
                                 {e}
                               </p>
@@ -134,10 +135,10 @@ export default function ContactPage() {
 
                   {/* Office Hours */}
                   <StaggerItem>
-                    <Card className="bg-white/70 backdrop-blur-lg border border-white/20 hover:shadow-xl transition-all h-full">
+                    <Card className="h-full border border-white/20 bg-white/70 backdrop-blur-lg transition-all hover:shadow-xl">
                       <CardContent className="p-6">
                         <div className="flex items-start space-x-4">
-                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                             <LuClock className="h-5 w-5 text-primary" />
                           </div>
                           <div className="space-y-1">
@@ -148,7 +149,7 @@ export default function ContactPage() {
                               <p
                                 // biome-ignore lint/suspicious/noArrayIndexKey: not needed
                                 key={idx}
-                                className="text-sm text-muted-foreground"
+                                className="text-muted-foreground text-sm"
                               >
                                 {oh}
                               </p>
@@ -164,11 +165,11 @@ export default function ContactPage() {
 
             {/* Map placeholder (unchanged) */}
             <ScrollReveal direction="left" delay={0.2}>
-              <div className="bg-white/60 backdrop-blur-lg rounded-lg h-64 flex border border-white/20 shadow-lg">
+              <div className="flex h-64 rounded-lg border border-white/20 bg-white/60 shadow-lg backdrop-blur-lg">
                 <iframe
                   title="Ideal Institute of Engineering - Map"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.2464781122567!2d88.451197296381!3d22.977962175663183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x83441321d4d1741d%3A0x94e5318316a55d40!2sIdeal%20Institute%20of%20Engineering!5e0!3m2!1sen!2sin!4v1763480056835!5m2!1sen!2sin"
-                  className="w-full h-full"
+                  className="h-full w-full"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
@@ -178,9 +179,9 @@ export default function ContactPage() {
 
           {/* Right column: Contact Form (unchanged) */}
           <ScrollReveal direction="right">
-            <Card className="bg-white/70 backdrop-blur-xl border border-white/20 shadow-2xl">
+            <Card className="border border-white/20 bg-white/70 shadow-2xl backdrop-blur-xl">
               <CardHeader>
-                <h3 className="text-2xl font-bold text-foreground">
+                <h3 className="font-bold text-2xl text-foreground">
                   Send us a Message
                 </h3>
                 <p className="text-muted-foreground">
@@ -189,15 +190,15 @@ export default function ContactPage() {
                 </p>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
+                    <label className="font-medium text-foreground text-sm">
                       First Name
                     </label>
                     <Input placeholder="Enter your first name" required />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
+                    <label className="font-medium text-foreground text-sm">
                       Last Name
                     </label>
                     <Input placeholder="Enter your last name" required />
@@ -205,7 +206,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="font-medium text-foreground text-sm">
                     Email
                   </label>
                   <Input
@@ -216,21 +217,21 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="font-medium text-foreground text-sm">
                     Phone Number
                   </label>
                   <Input placeholder="Enter your phone number" required />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="font-medium text-foreground text-sm">
                     Subject
                   </label>
                   <Input placeholder="What is this regarding?" required />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="font-medium text-foreground text-sm">
                     Message
                   </label>
                   <Textarea
@@ -241,13 +242,13 @@ export default function ContactPage() {
                 </div>
 
                 <Button
-                  className="w-full bg-primary hover:bg-primary/90 shadow-lg"
+                  className="w-full bg-primary shadow-lg hover:bg-primary/90"
                   size="lg"
                 >
                   Send Message
                 </Button>
 
-                <p className="text-xs text-muted-foreground text-center">
+                <p className="text-center text-muted-foreground text-xs">
                   By submitting this form, you agree to our privacy policy and
                   terms of service.
                 </p>
