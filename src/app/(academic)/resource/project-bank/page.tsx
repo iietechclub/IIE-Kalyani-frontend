@@ -322,10 +322,10 @@ export default function ProjectBank() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="h-80 w-full bg-center bg-cover opacity-40"
+            className="h-80 w-full bg-center bg-cover"
             style={{ backgroundImage: `url('${heroImage}')` }}
           ></div>
-          <div className="absolute inset-0 bg-linear-to-r from-red-700/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent"></div>
         </div>
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
