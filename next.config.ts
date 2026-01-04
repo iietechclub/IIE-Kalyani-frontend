@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       ),
       new URL("https://images.shiksha.com/mediadata/images/articles/*"),
       new URL("https://content.jdmagicbox.com/v2/comp/delhi/**"),
+      new URL("https://urli.info/**"),
       {
         protocol: "https",
         hostname: "images.unsplash.com",

@@ -34,6 +34,13 @@ type DepartmentShort = prettify<
       icon?: IconField;
     }
 >;
+type DepartmentFaculty = prettify<
+  CollectionType & {
+    name: string;
+    hod: CollectionType;
+    faculties: Faculty[];
+  }
+>;
 type Department = prettify<
   DepartmentShort & {
     bannerImage: Media;
@@ -67,7 +74,9 @@ type Faculty = prettify<
   CollectionType & {
     name: string;
     image: Media;
-    department?: DepartmentShortNameOnly;
+    designation: string;
+    departments: DepartmentShortNameOnly[];
+    qualifications: ShortText[];
   }
 >;
 
@@ -115,6 +124,19 @@ type Menu = prettify<
   }
 >;
 
+type ProjectBankItem = prettify<
+  CollectionType & {
+    title: string;
+    department: DepartmentShortNameOnly;
+    field: string;
+    year: string;
+    icon: IconField;
+    description: string;
+    guides: ShortText[];
+    students: ShortText[];
+  }
+>;
+
 type SocialPlatform =
   | "GitHub"
   | "Facebook"
@@ -128,6 +150,16 @@ type SocialLink = prettify<
   CollectionType & {
     platform: SocialPlatform;
     url?: Url;
+  }
+>;
+
+type StudentAchievement = prettify<
+  CollectionType & {
+    image: Media;
+    title: string;
+    winner: string;
+    description: string;
+    date: string;
   }
 >;
 

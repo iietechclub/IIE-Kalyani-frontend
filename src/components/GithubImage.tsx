@@ -1,17 +1,11 @@
 "use client";
 
 import Image, { type ImageProps } from "next/image";
-
-const githubURL =
-  "https://raw.githubusercontent.com/iietechclub/college_images/main/";
-
-export const urlFromGithub = (path: string) => {
-  return `${githubURL}${path}`;
-};
+import { urlFromGithub } from "@/lib/utils";
 
 type GithubImageProps = prettify<Omits<ImageProps, "src"> & { src: string }>;
 const GithubImage = (props: GithubImageProps) => (
-  <Image {...props} src={`${githubURL}${props.src}`} />
+  <Image {...props} src={urlFromGithub(props.src)} />
 );
 
 export default GithubImage;
