@@ -13,7 +13,7 @@ export const fetchLibraryPageData = cache(async () => {
         documentId image { url alternativeText }
       }
       resources {
-        id title description url { url }
+        id title description url { url newTab }
         image { url alternativeText }
       }
     }

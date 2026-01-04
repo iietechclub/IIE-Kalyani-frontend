@@ -127,10 +127,10 @@ export default function Research() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="h-80 w-full bg-center bg-cover opacity-40"
+            className="h-80 w-full bg-center bg-cover"
             style={{ backgroundImage: `url('${heroImage}')` }}
           />
-          <div className="absolute inset-0 bg-linear-to-r from-red-700/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
         </div>
 
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
@@ -141,7 +141,7 @@ export default function Research() {
               transition={{ duration: 0.6 }}
             >
               <div className="inline-flex items-center gap-4 rounded-xl p-3">
-                <LuBookOpen className="h-12 w-12 text-white" />
+                <LuBookOpen className="size-12 text-white" />
                 <div>
                   {/* Heading & description kept exactly as-is */}
                   <h1 className="font-bold text-3xl md:text-4xl">

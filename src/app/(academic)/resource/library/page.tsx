@@ -1,4 +1,5 @@
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import Link from "next/link";
 import { LuBookOpen } from "react-icons/lu";
 
 import { MotionDiv } from "@/components/animated/motion";
@@ -104,8 +105,13 @@ export default async function LibraryPage() {
 
           {/* Resources Section (Under Development with gears) */}
           <TabsContent value="resources" className="grid grid-cols-3 gap-3">
-            {resources.map(({ id, title, image, description }) => (
-              <div key={id}>
+            {resources.map(({ id, title, image, description, url }) => (
+              <Link
+                key={id}
+                href={url.url}
+                target={url.newTab ? "_blank" : undefined}
+                rel="noopener noreferrer"
+              >
                 <div className="relative h-48 overflow-hidden rounded-2xl bg-white shadow">
                   <BackendImage
                     fill
@@ -119,7 +125,7 @@ export default async function LibraryPage() {
                   <p className="font-bold text-neutral-900">{title}</p>
                   <p>{description}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </TabsContent>
         </Tabs>

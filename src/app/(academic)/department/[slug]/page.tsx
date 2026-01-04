@@ -46,7 +46,7 @@ import { Card, CardContent } from "@/components/ui/card";
 // };
 
 type DepartmentProps = Department & {
-  faculties?: Faculty[];
+  faculties: Faculty[];
 };
 
 function Department({
