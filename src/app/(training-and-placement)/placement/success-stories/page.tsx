@@ -1,7 +1,5 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { LuClipboardCheck, LuExternalLink } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
 
@@ -70,7 +68,6 @@ export default function SuccessStories() {
     },
   ];
 
-  const [active, setActive] = useState<(typeof initialStories)[0] | null>(null);
   const demoLeftImage =
     "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80";
   const heroImage =
@@ -82,10 +79,10 @@ export default function SuccessStories() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="h-[260px] w-full bg-center bg-cover opacity-70 md:h-80 lg:h-[360px]"
+            className="h-[260px] w-full bg-center bg-cover md:h-80 lg:h-[360px]"
             style={{ backgroundImage: `url(${heroImage})` }}
           />
-          <div className="absolute inset-0 bg-linear-to-b from-rose-700/70 to-black/40" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
         </div>
 
         <div className="relative mx-auto mt-16 flex max-w-7xl flex-col items-center gap-8 px-4 py-16 lg:flex-row">
@@ -96,7 +93,7 @@ export default function SuccessStories() {
               transition={{ duration: 0.6 }}
             >
               <div className="mb-6 inline-flex items-center gap-4 rounded-xl p-3">
-                <LuClipboardCheck className="h-12 w-12 text-white" />
+                <LuClipboardCheck className="size-12 text-white" />
                 <div className="text-left">
                   <h1 className="font-bold text-3xl md:text-4xl">
                     Success Stories
@@ -171,61 +168,6 @@ export default function SuccessStories() {
           ))}
         </div>
       </section>
-
-      {/* Modal */}
-      {active && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          {/** biome-ignore lint/a11y/noStaticElementInteractions: not needed */}
-          {/** biome-ignore lint/a11y/useKeyWithClickEvents: not needed */}
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setActive(null)}
-          />
-          <MotionDiv
-            initial={{ scale: 0.96, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.2 }}
-            className="relative z-10 w-full max-w-2xl rounded-2xl bg-white p-6 shadow-2xl"
-          >
-            <div className="flex items-start gap-4">
-              <div className="relative h-16 w-16 overflow-hidden rounded-full">
-                <Image
-                  fill
-                  src={active.avatar || demoLeftImage}
-                  alt={active.name}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-gray-900">{active.name}</h3>
-                <div className="text-gray-500 text-xs">
-                  {active.branch} • Batch {active.batch}
-                </div>
-                <div className="mt-1 text-rose-600 text-xs">
-                  {active.company} • {active.package}
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => setActive(null)}
-                className="text-gray-500 text-sm"
-              >
-                Close
-              </button>
-            </div>
-            <hr className="my-4" />
-            <p className="text-gray-700 text-sm">{active.story}</p>
-            <div className="mt-4 text-right">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 text-rose-600 text-sm hover:underline"
-              >
-                Contact Placement Cell
-              </a>
-            </div>
-          </MotionDiv>
-        </div>
-      )}
     </div>
   );
 }

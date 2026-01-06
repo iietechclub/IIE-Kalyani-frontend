@@ -9,8 +9,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       // local development
-      new URL("http://localhost:1339/uploads/**"),
-      new URL("http://localhost:1337/uploads/**"),
+      new URL(`${env.NEXT_PUBLIC_BACKEND_URL}/uploads/**`),
 
       // remote servers
       new URL(
