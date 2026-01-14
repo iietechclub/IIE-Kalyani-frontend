@@ -159,7 +159,7 @@ export default function InternshipsFocused() {
             >
               <div className="relative">
                 <Image
-                  src={heroImage}
+                  src="https://github.com/iietechclub/college_images/blob/main/(training-and-placement)/training/internships/internship-banner.jpg?raw=true"
                   alt="Students collaborating in a professional workplace environment"
                   width={1200}
                   height={600}
