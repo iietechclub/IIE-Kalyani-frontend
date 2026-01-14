@@ -152,7 +152,7 @@ export default function Aicte() {
               <div className="h-48 w-full sm:h-64 md:h-72 lg:h-80">
                 <Image
                   fill
-                  src="https://content.jdmagicbox.com/v2/comp/delhi/l2/011pxx11.xx11.170919220015.u9l2/catalogue/aicte-office-vasant-vihar-delhi-schools-2mpw1ridwr.jpg"
+                  src="https://github.com/iietechclub/college_images/blob/main/(about)/about/aicte/aicte.webp?raw=true"
                   alt="AICTE Approved Institution"
                   className="object-cover"
                   loading="lazy"
