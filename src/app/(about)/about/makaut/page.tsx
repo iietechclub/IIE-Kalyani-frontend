@@ -180,7 +180,7 @@ export default function Makaut() {
               <div className="h-56 w-full sm:h-64 md:h-72 lg:h-80">
                 <Image
                   fill
-                  src="https://images.shiksha.com/mediadata/images/articles/1661339417phpsZb9hC.jpeg"
+                  src="https://github.com/iietechclub/college_images/blob/main/(about)/about/makaut/makaut.webp?raw=true"
                   alt="MAKAUT University"
                   className="object-cover"
                   loading="lazy"
