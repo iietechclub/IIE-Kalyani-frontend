@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,180 +11,32 @@ import {
   LuUsers,
   LuZap,
 } from "react-icons/lu";
+
 import { MotionArticle } from "@/components/animated/motion";
 import { Card } from "@/components/ui/card";
+import DynamicIcon from "@/components/ui/dynamic-icon";
+
+import { fetchCoursesOfferedPageData } from "@/dal/courses-offered";
 import { cn } from "@/lib/utils";
 
 /**
  * CoursesOffered — modern & responsive (uses `font-nanito` class, no font imports)
  */
 
-export default function CoursesOffered() {
-  const courses = [
-    {
-      title: "B.Tech in Computer Science & Engineering",
-      duration: "4 Years",
-      seats: "60",
-      affiliation: "MAKAUT",
-      icon: LuGraduationCap,
-      description:
-        "Comprehensive program covering software development, data structures, algorithms, AI, and emerging technologies.",
-      highlights: [
-        "Industry-oriented curriculum",
-        "Hands-on projects",
-        "Industry partnerships",
-        "Research opportunities",
-      ],
-      badge: "Popular",
-      accent: "from-rose-500 to-red-500",
-      link: "/academic/departments/cse",
-    },
-    {
-      title: "B.Tech in Electronics & Communication Engineering",
-      duration: "4 Years",
-      seats: "60",
-      affiliation: "MAKAUT",
-      icon: LuBookOpen,
-      description:
-        "Focus on electronics, communication systems, signal processing, and embedded systems.",
-      highlights: [
-        "Advanced laboratories",
-        "Industry exposure",
-        "Modern equipment",
-        "Expert faculty",
-      ],
-      badge: "New",
-      accent: "from-indigo-500 to-violet-500",
-      link: "/academic/departments/ece",
-    },
-    {
-      title: "B.Tech in Electrical Engineering",
-      duration: "4 Years",
-      seats: "60",
-      affiliation: "MAKAUT",
-      icon: LuBuilding2,
-      description:
-        "Study of electrical systems, power generation, distribution, and control systems.",
-      highlights: [
-        "Power systems lab",
-        "Control systems",
-        "Industry training",
-        "Placement support",
-      ],
-      badge: null,
-      accent: "from-emerald-500 to-teal-500",
-      link: "/academic/departments/ee",
-    },
-    {
-      title: "Bachelor of Business Administration (BBA)",
-      duration: "3 Years",
-      seats: "60",
-      affiliation: "MAKAUT",
-      icon: LuUsers,
-      description:
-        "Comprehensive business management program focusing on leadership, entrepreneurship, and management skills.",
-      highlights: [
-        "Management skills",
-        "Industry internships",
-        "Entrepreneurship development",
-        "Corporate exposure",
-      ],
-      badge: null,
-      accent: "from-yellow-500 to-orange-500",
-      link: "/academic/departments/bba",
-    },
+export default async function CoursesOffered() {
+  const { courses, achievements_and_milestones } =
+    await fetchCoursesOfferedPageData();
 
-    /* Additional courses you provided (normalized) */
-    {
-      icon: LuLaptop,
-      title: "Computer Science & Engineering (Specialization)",
-      duration: "4 Years",
-      seats: "60",
-      affiliation: "MAKAUT",
-      description:
-        "Leading the way in software development, artificial intelligence, machine learning, and emerging technologies.",
-      highlights: [
-        "Advanced AI & ML labs",
-        "Capstone projects",
-        "Industry mentorship",
-        "Hackathons & workshops",
-      ],
-      badge: "CSE",
-      accent: "from-blue-500 to-cyan-500",
-      link: "/academic/departments/cse",
-    },
-    {
-      icon: LuCog,
-      title: "Mechanical Engineering",
-      duration: "4 Years",
-      seats: "60",
-      affiliation: "MAKAUT",
-      description:
-        "Traditional engineering excellence with modern applications in automation, robotics, and manufacturing.",
-      highlights: [
-        "Robotics & automation lab",
-        "CAD/CAM workshops",
-        "Industry internships",
-        "Manufacturing projects",
-      ],
-      badge: "ME",
-      accent: "from-orange-500 to-red-500",
-      link: "/academic/departments/me",
-    },
-    {
-      icon: LuZap,
-      title: "Electrical Engineering (Power & Control)",
-      duration: "4 Years",
-      seats: "60",
-      affiliation: "MAKAUT",
-      description:
-        "Power the future with expertise in electrical systems, renewable energy, power electronics, and smart grids.",
-      highlights: [
-        "Renewable energy labs",
-        "Power electronics",
-        "Smart-grid projects",
-        "Industry tie-ups",
-      ],
-      badge: "EE",
-      accent: "from-yellow-500 to-orange-500",
-      link: "/academic/departments/ee",
-    },
-    {
-      icon: LuBuilding2,
-      title: "Civil Engineering",
-      duration: "4 Years",
-      seats: "60",
-      affiliation: "MAKAUT",
-      description:
-        "Build sustainable infrastructure and shape the world with innovative design and construction techniques.",
-      highlights: [
-        "Structural design studio",
-        "Site visits & internships",
-        "Sustainable construction",
-        "Project-based learning",
-      ],
-      badge: "CE",
-      accent: "from-green-500 to-emerald-500",
-      link: "/academic/departments/ce",
-    },
-    {
-      icon: LuBrain,
-      title: "Artificial Intelligence & Machine Learning",
-      duration: "4 Years",
-      seats: "40",
-      affiliation: "MAKAUT",
-      description:
-        "Explore the frontiers of AI, deep learning, neural networks, and intelligent systems.",
-      highlights: [
-        "Deep learning lab",
-        "GPU-backed research",
-        "Industry projects",
-        "Interdisciplinary AI electives",
-      ],
-      badge: "AI&ML",
-      accent: "from-purple-500 to-pink-500",
-      link: "/academic/departments/ai-ml",
-    },
+  const course_accents = [
+    "from-rose-500 to-red-500",
+    "from-indigo-500 to-violet-500",
+    "from-emerald-500 to-teal-500",
+    "from-yellow-500 to-orange-500",
+    "from-blue-500 to-cyan-500",
+    "from-orange-500 to-red-500",
+    "from-yellow-500 to-orange-500",
+    "from-green-500 to-emerald-500",
+    "from-purple-500 to-pink-500",
   ];
 
   const _lateralEntry = {
@@ -269,59 +119,59 @@ export default function CoursesOffered() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-            {courses.map((course, idx) => {
-              const Icon = course.icon;
-              return (
-                <MotionArticle
-                  key={course.title}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.06, duration: 0.45 }}
-                  className="relative"
-                >
-                  <Card className="group h-full overflow-visible border border-transparent bg-white/90 p-6 shadow-sm transition-all duration-300 hover:border-white/10 hover:shadow-2xl sm:p-6">
-                    {/* ribbon badge */}
-                    {course.badge && (
+            {courses.map((course, idx) => (
+              <MotionArticle
+                key={course.documentId}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.06, duration: 0.45 }}
+                className="relative"
+              >
+                <Card className="group h-full overflow-visible border border-transparent bg-white/90 p-6 shadow-sm transition-all duration-300 hover:border-white/10 hover:shadow-2xl sm:p-6">
+                  {/* ribbon badge */}
+                  {/* {course.badge && (
                       <div className="absolute top-1.5 right-4 mb-1">
                         <span className="inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1 font-semibold text-rose-600 text-xs shadow">
-                          <LuStar className="h-3 w-3 text-amber-400" />
+                          <LuStar className="size-3 text-amber-400" />
                           {course.badge}
                         </span>
                       </div>
-                    )}
+                    )} */}
 
-                    <div className="mb-4 flex items-start gap-4">
+                  <div className="mb-4 flex items-start gap-4">
+                    {course.icon && (
                       <div
                         className={cn(
                           "transform rounded-lg bg-linear-to-br p-3 text-white shadow-md transition group-hover:scale-105",
-                          course.accent,
+                          course_accents[idx],
                         )}
                         aria-hidden
                       >
-                        <Icon className="h-7 w-7" />
+                        <DynamicIcon name={course.icon} className="size-7" />
                       </div>
+                    )}
 
-                      <div className="min-w-0 flex-1">
-                        <h3 className="font-semibold text-gray-900 text-lg sm:text-xl">
-                          {course.title}
-                        </h3>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-semibold text-gray-900 text-lg sm:text-xl">
+                        {course.name}
+                      </h3>
 
-                        <div className="mt-2 flex flex-row flex-wrap gap-2 text-[12px] text-gray-700 sm:text-sm">
-                          <span>Duration: {course.duration}</span>
-                          <span>•</span>
-                          {/* <span>Seats: {course.seats}</span> */}
-                          {/* <span>•</span> */}
-                          <span>Affiliation: {course.affiliation}</span>
-                        </div>
+                      <div className="mt-2 flex flex-row flex-wrap gap-2 text-[12px] text-gray-700 sm:text-sm">
+                        <span>Duration: {course.duration}</span>
+                        <span>•</span>
+                        {/* <span>Seats: {course.seats}</span> */}
+                        {/* <span>•</span> */}
+                        <span>Affiliation: MAKAUT</span>
                       </div>
                     </div>
+                  </div>
 
-                    <p className="mb-4 text-gray-700 text-sm sm:text-base">
-                      {course.description}
-                    </p>
+                  <p className="mb-4 text-gray-700 text-sm sm:text-base">
+                    {course.tagline}
+                  </p>
 
-                    {/* Highlights: grid on sm+, accordion on xs */}
-                    {/* <div>
+                  {/* Highlights: grid on sm+, accordion on xs */}
+                  {/* <div>
                       <div className="hidden sm:grid sm:grid-cols-2 gap-2">
                         {course.highlights.map((h, i) => (
                           <div
@@ -359,18 +209,17 @@ export default function CoursesOffered() {
                       </div>
                     </div> */}
 
-                    <div className="mt-6 flex items-center justify-end gap-3">
-                      <Link
-                        href="/academic/departments"
-                        className="text-gray-600 text-sm hover:underline"
-                      >
-                        Know More →
-                      </Link>
-                    </div>
-                  </Card>
-                </MotionArticle>
-              );
-            })}
+                  <div className="mt-6 flex items-center justify-end gap-3">
+                    <Link
+                      href={`/department/${course.slug}`}
+                      className="text-gray-600 text-sm hover:underline"
+                    >
+                      Know More →
+                    </Link>
+                  </div>
+                </Card>
+              </MotionArticle>
+            ))}
           </div>
         </section>
 
@@ -395,67 +244,23 @@ export default function CoursesOffered() {
 
             {/* Cards */}
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {/* Card 1 */}
-              <div className="rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl">
-                <Image
-                  width={48}
-                  height={48}
-                  alt="Medal icon"
-                  src="/icons/medal1.png"
-                  className="mx-auto mb-4 w-12"
-                />
-                <h3 className="font-semibold text-gray-900">
-                  Innovation Award
-                </h3>
-                <p className="mt-1 text-gray-500 text-sm">
-                  Acknowledged for innovation and change.
-                </p>
-              </div>
-
-              {/* Card 2 */}
-              <div className="rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl">
-                <Image
-                  width={48}
-                  height={48}
-                  alt="Medal icon"
-                  src="/icons/medal2.png"
-                  className="mx-auto mb-4 w-12"
-                />
-                <h3 className="font-semibold text-gray-900">Customer Award</h3>
-                <p className="mt-1 text-gray-500 text-sm">
-                  Recognized for customer satisfaction.
-                </p>
-              </div>
-
-              {/* Card 3 */}
-              <div className="rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl">
-                <Image
-                  width={48}
-                  height={48}
-                  alt="Medal icon"
-                  src="/icons/medal3.png"
-                  className="mx-auto mb-4 w-12"
-                />
-                <h3 className="font-semibold text-gray-900">Global Award</h3>
-                <p className="mt-1 text-gray-500 text-sm">
-                  Empowering brands worldwide.
-                </p>
-              </div>
-
-              {/* Card 4 */}
-              <div className="rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl">
-                <Image
-                  width={48}
-                  height={48}
-                  alt="Medal icon"
-                  src="/icons/medal4.png"
-                  className="mx-auto mb-4 w-12"
-                />
-                <h3 className="font-semibold text-gray-900">Design Award</h3>
-                <p className="mt-1 text-gray-500 text-sm">
-                  Recognized for design excellence.
-                </p>
-              </div>
+              {achievements_and_milestones.map(
+                ({ id, icon, title, description }) => (
+                  <div
+                    key={id}
+                    className="rounded-xl bg-white p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl"
+                  >
+                    {icon && (
+                      <DynamicIcon
+                        name={icon}
+                        className="mx-auto mb-4 size-12 text-rose-600"
+                      />
+                    )}
+                    <h3 className="font-semibold text-gray-900">{title}</h3>
+                    <p className="mt-1 text-gray-500 text-sm">{description}</p>
+                  </div>
+                ),
+              )}
             </div>
           </div>
         </section>
@@ -576,7 +381,7 @@ export default function CoursesOffered() {
                   </div>
                 </div>
 
-                <div className="pointer-events-none absolute top-2 right-2 h-20 w-20 rounded-full bg-yellow-100/30 blur-2xl"></div>
+                <div className="pointer-events-none absolute top-2 right-2 size-20 rounded-full bg-yellow-100/30 blur-2xl" />
               </div>
             </div>
           </div>

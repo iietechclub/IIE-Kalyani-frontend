@@ -28,14 +28,14 @@ import { MotionDiv } from "@/components/animated/motion";
    Small helpers & sample data
    ------------------------------ */
 
-type Alumni = {
-  id: number;
-  name: string;
-  batch: string;
-  dept: string;
-  city: string;
-  linkedin: string;
-};
+// type Alumni = {
+//   id: number;
+//   name: string;
+//   batch: string;
+//   dept: string;
+//   city: string;
+//   linkedin: string;
+// };
 
 const heroImage = "/assets/alumni-hero.jpg";
 const _pdfHref = "/assets/alumni-brochure.pdf";
@@ -178,7 +178,7 @@ function TestimonialsCarousel() {
   };
 
   return (
-    <section className="relative overflow-hidden rounded-3xl bg-linear-to-b from-white to-rose-500/30 p-6 md:p-10">
+    <section className="relative overflow-hidden rounded-3xl border bg-linear-to-b from-white- to-rose-500/30- p-6 shadow md:p-10">
       {/* Decorative floating blobs */}
       <div className="-right-40 -top-24 pointer-events-none absolute h-80 w-80 rounded-full bg-[#FF6B35]/10 blur-3xl" />
       <div className="-left-40 -bottom-24 pointer-events-none absolute h-72 w-72 rounded-full bg-[#E63946]/8 blur-3xl" />
@@ -199,17 +199,17 @@ function TestimonialsCarousel() {
             type="button"
             onClick={handlePrev}
             aria-label="Previous"
-            className="h-11 w-11 rounded-full bg-white shadow transition-transform hover:scale-105"
+            className="flex size-11 items-center justify-center rounded-full bg-gray-100 shadow transition-transform hover:scale-105"
           >
-            <LuChevronLeft className="h-5 w-5 text-rose-500" />
+            <LuChevronLeft className="size-5 text-rose-500" />
           </button>
           <button
             type="button"
             onClick={handleNext}
             aria-label="Next"
-            className="h-11 w-11 rounded-full bg-white shadow transition-transform hover:scale-105"
+            className="flex size-11 items-center justify-center rounded-full bg-gray-100 shadow transition-transform hover:scale-105"
           >
-            <LuChevronRight className="h-5 w-5 text-rose-500" />
+            <LuChevronRight className="size-5 text-rose-500" />
           </button>
         </div>
       </div>
@@ -240,7 +240,7 @@ function TestimonialsCarousel() {
                   }}
                   className="w-72 shrink-0 md:w-80"
                 >
-                  <article className="group h-full overflow-hidden rounded-2xl bg-white shadow-xl">
+                  <article className="group h-full overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl">
                     <div className="relative h-40 overflow-hidden md:h-44">
                       <Image
                         fill
@@ -317,84 +317,84 @@ function TestimonialsCarousel() {
 
 export default function AlumniRelationPage() {
   // directory + filters (kept simple for demo)
-  const [query, _setQuery] = useState("");
-  const [deptFilter, _setDeptFilter] = useState<string | null>(null);
-  const [batchFilter, _setBatchFilter] = useState<string | null>(null);
-  const [directory] = useState<Alumni[]>([
-    {
-      id: 1,
-      name: "Asha Sen",
-      batch: "2018",
-      dept: "CSE",
-      city: "Bengaluru",
-      linkedin: "#",
-    },
-    {
-      id: 2,
-      name: "Ravi Das",
-      batch: "2017",
-      dept: "ME",
-      city: "Kolkata",
-      linkedin: "#",
-    },
-    {
-      id: 3,
-      name: "Mina Roy",
-      batch: "2019",
-      dept: "CSE",
-      city: "Mumbai",
-      linkedin: "#",
-    },
-    {
-      id: 4,
-      name: "Arjun K",
-      batch: "2016",
-      dept: "CSE",
-      city: "Hyderabad",
-      linkedin: "#",
-    },
-    {
-      id: 5,
-      name: "Sree Banerjee",
-      batch: "2015",
-      dept: "EE",
-      city: "Bengaluru",
-      linkedin: "#",
-    },
-    {
-      id: 6,
-      name: "Nisha Patel",
-      batch: "2014",
-      dept: "CE",
-      city: "Ahmedabad",
-      linkedin: "#",
-    },
-  ]);
-  const _uniqueDepts = useMemo(
-    () => Array.from(new Set(directory.map((d) => d.dept))),
-    [directory],
-  );
-  const _uniqueBatches = useMemo(
-    () =>
-      Array.from(new Set(directory.map((d) => d.batch)))
-        .sort()
-        .reverse(),
-    [directory],
-  );
+  // const [query, _setQuery] = useState("");
+  // const [deptFilter, _setDeptFilter] = useState<string | null>(null);
+  // const [batchFilter, _setBatchFilter] = useState<string | null>(null);
+  // const [directory] = useState<Alumni[]>([
+  //   {
+  //     id: 1,
+  //     name: "Asha Sen",
+  //     batch: "2018",
+  //     dept: "CSE",
+  //     city: "Bengaluru",
+  //     linkedin: "#",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Ravi Das",
+  //     batch: "2017",
+  //     dept: "ME",
+  //     city: "Kolkata",
+  //     linkedin: "#",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Mina Roy",
+  //     batch: "2019",
+  //     dept: "CSE",
+  //     city: "Mumbai",
+  //     linkedin: "#",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Arjun K",
+  //     batch: "2016",
+  //     dept: "CSE",
+  //     city: "Hyderabad",
+  //     linkedin: "#",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Sree Banerjee",
+  //     batch: "2015",
+  //     dept: "EE",
+  //     city: "Bengaluru",
+  //     linkedin: "#",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Nisha Patel",
+  //     batch: "2014",
+  //     dept: "CE",
+  //     city: "Ahmedabad",
+  //     linkedin: "#",
+  //   },
+  // ]);
+  // const _uniqueDepts = useMemo(
+  //   () => Array.from(new Set(directory.map((d) => d.dept))),
+  //   [directory],
+  // );
+  // const _uniqueBatches = useMemo(
+  //   () =>
+  //     Array.from(new Set(directory.map((d) => d.batch)))
+  //       .sort()
+  //       .reverse(),
+  //   [directory],
+  // );
 
-  const filteredDirectory = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return directory.filter((a) => {
-      if (deptFilter && a.dept !== deptFilter) return false;
-      if (batchFilter && a.batch !== batchFilter) return false;
-      if (!q) return true;
-      return (
-        a.name.toLowerCase().includes(q) ||
-        a.city.toLowerCase().includes(q) ||
-        a.dept.toLowerCase().includes(q)
-      );
-    });
-  }, [directory, query, deptFilter, batchFilter]);
+  // const filteredDirectory = useMemo(() => {
+  //   const q = query.trim().toLowerCase();
+  //   return directory.filter((a) => {
+  //     if (deptFilter && a.dept !== deptFilter) return false;
+  //     if (batchFilter && a.batch !== batchFilter) return false;
+  //     if (!q) return true;
+  //     return (
+  //       a.name.toLowerCase().includes(q) ||
+  //       a.city.toLowerCase().includes(q) ||
+  //       a.dept.toLowerCase().includes(q)
+  //     );
+  //   });
+  // }, [directory, query, deptFilter, batchFilter]);
 
   return (
     <main className="min-h-screen bg-neutral-50">
@@ -402,11 +402,11 @@ export default function AlumniRelationPage() {
       <header className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div
-            className="h-80 w-full bg-center bg-cover opacity-90 md:h-[420px]"
+            className="h-80 w-full bg-center bg-cover md:h-[420px]"
             style={{ backgroundImage: `url(${heroImage})` }}
             aria-hidden
           />
-          <div className="absolute inset-0 bg-linear-to-b from-rose-700/60 to-black/30" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
         </div>
 
         <div className="container mx-auto px-4 py-20">
@@ -512,12 +512,12 @@ export default function AlumniRelationPage() {
         </section>
 
         {/* Directory (simple) */}
-        <section id="directory" className="mb-16">
-          <h3 className="mb-4 text-center font-bold text-2xl">
+        {/* <section id="directory" className="mb-16"> */}
+        {/* <h3 className="mb-4 text-center font-bold text-2xl">
             Alumni Directory{" "}
-          </h3>
-          <div className="mx-auto max-w-6xl rounded-2xl border border-gray-100 bg-white p-4 md:p-6">
-            {/* <div className="flex flex-col md:flex-row gap-3 items-center">
+          </h3> */}
+        {/* <div className="mx-auto max-w-6xl rounded-2xl border border-gray-100 bg-white p-4 md:p-6"> */}
+        {/* <div className="flex flex-col md:flex-row gap-3 items-center">
               <div className="flex-1 relative">
                 <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by name, city or dept" className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:border-rose-400" aria-label="Search alumni" />
                 <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"><Search className="w-4 h-4" /></div>
@@ -540,8 +540,8 @@ export default function AlumniRelationPage() {
               </div>
             </div> */}
 
-            {/* simple table */}
-            <div className="mt-4 overflow-x-auto">
+        {/* simple table */}
+        {/* <div className="mt-4 overflow-x-auto">
               <table className="min-w-full text-left">
                 <thead>
                   <tr className="bg-rose-50">
@@ -571,9 +571,9 @@ export default function AlumniRelationPage() {
                   ))}
                 </tbody>
               </table>
-            </div>
-          </div>
-        </section>
+            </div> */}
+        {/* </div> */}
+        {/* </section> */}
 
         {/* Footer CTA */}
         {/* <section className="mb-20">

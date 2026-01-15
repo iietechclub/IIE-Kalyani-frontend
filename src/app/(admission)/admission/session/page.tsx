@@ -1,65 +1,13 @@
-"use client";
-
 import type React from "react";
-import { useEffect, useRef, useState } from "react";
 import { LuAward, LuCalendar, LuGlobe, LuGraduationCap } from "react-icons/lu";
 import { MotionDiv, MotionSection } from "@/components/animated/motion";
 import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
 
 /**
- * Session2025 — responsive, mobile-first
+ * SessionPage — responsive, mobile-first
  */
 
-export default function Session2025() {
-  const TARGET_APPLICANTS = 1240;
-  const TARGET_SEATS = 420;
-
-  const [_applicants, setApplicants] = useState(0);
-  const [_seatsFilled, setSeatsFilled] = useState(0);
-
-  // Removed old state (fixes useEffect warning)
-  // const [countersStarted, setCountersStarted] = useState(false);
-
-  const heroRef = useRef<HTMLElement | null>(null);
-  const countersStartedRef = useRef(false);
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: may not needed
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !countersStartedRef.current) {
-          countersStartedRef.current = true;
-          startCounters();
-          obs.disconnect();
-        }
-      });
-    });
-
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  function startCounters() {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setApplicants(TARGET_APPLICANTS);
-      setSeatsFilled(TARGET_SEATS);
-      return;
-    }
-    const duration = 1400;
-    const start = performance.now();
-    const step = (now: number) => {
-      const t = Math.min(1, (now - start) / duration);
-      const ease = 1 - (1 - t) ** 3;
-      setApplicants(Math.floor(ease * TARGET_APPLICANTS));
-      setSeatsFilled(Math.floor(ease * TARGET_SEATS));
-      if (t < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-
+export default function SessionPage() {
   const importantDates = [
     { event: "Application Form Release", date: "1 Jan 2025" },
     { event: "Last Date for Application", date: "30 Jun 2025" },
@@ -88,7 +36,6 @@ export default function Session2025() {
     <div className="mt-10 min-h-screen bg-linear-to-br from-white via-red-50/20 to-white">
       {/* Hero */}
       <MotionSection
-        ref={heroRef}
         className="relative overflow-hidden"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -98,7 +45,7 @@ export default function Session2025() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-4 inline-flex items-center justify-center gap-3">
               <div className="rounded-xl bg-linear-to-br from-red-600 to-red-700 p-3 shadow-2xl sm:p-4">
-                <LuCalendar className="h-9 w-9 text-white sm:h-10 sm:w-10" />
+                <LuCalendar className="size-9 text-white sm:size-10" />
               </div>
             </div>
 
@@ -119,17 +66,17 @@ export default function Session2025() {
             {/* Accreditation / Stats strip */}
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <StatCard
-                icon={<LuAward className="h-5 w-5 text-yellow-500" />}
+                icon={<LuAward className="size-5 text-yellow-500" />}
                 label="Accreditation"
                 value="AICTE"
               />
               <StatCard
-                icon={<LuGlobe className="h-5 w-5 text-blue-500" />}
+                icon={<LuGlobe className="size-5 text-blue-500" />}
                 label="Affiliation"
                 value="MAKAUT"
               />
               <StatCard
-                icon={<LuAward className="h-5 w-5 text-yellow-600" />}
+                icon={<LuAward className="size-5 text-yellow-600" />}
                 label="Scholarships"
                 value="Merit & Need Based"
               />
@@ -170,9 +117,9 @@ export default function Session2025() {
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className={`inline-flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br sm:h-14 sm:w-14 ${program.color} text-white shadow`}
+                      className={`inline-flex size-12 items-center justify-center rounded-lg bg-linear-to-br sm:size-14 ${program.color} text-white shadow`}
                     >
-                      <LuGraduationCap className="h-5 w-5 sm:h-6 sm:w-6" />
+                      <LuGraduationCap className="size-5 sm:size-6" />
                     </div>
 
                     <div className="min-w-0 flex-1">
@@ -201,7 +148,7 @@ export default function Session2025() {
                             key={b}
                             className="flex items-center gap-2 rounded-md bg-gray-50 p-2 text-gray-700 text-xs sm:text-sm"
                           >
-                            <CheckmarkIcon className="h-4 w-4" />
+                            <CheckmarkIcon className="size-4" />
                             {b}
                           </div>
                         ))}
@@ -250,8 +197,8 @@ export default function Session2025() {
 
                   <div className="relative hidden items-center justify-center md:flex">
                     {/* Circle (front) */}
-                    <div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full border border-red-200 bg-white shadow-sm">
-                      <div className="h-3.5 w-3.5 rounded-full bg-red-600" />
+                    <div className="relative z-10 flex size-9 items-center justify-center rounded-full border border-red-200 bg-white shadow-sm">
+                      <div className="size-3.5 rounded-full bg-red-600" />
                     </div>
                   </div>
 
