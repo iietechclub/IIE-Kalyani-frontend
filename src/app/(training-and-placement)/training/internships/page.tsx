@@ -9,9 +9,7 @@ import {
   LuTrendingUp,
 } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
-
-const heroImage =
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80";
+import { urlFromGithub } from "@/lib/utils";
 
 const benefits = [
   {
@@ -74,8 +72,6 @@ const processSteps = [
 ];
 
 export default function InternshipsFocused() {
-  const uniqueBenefits = useMemo(() => benefits, []);
-
   return (
     <main className="min-h-screen bg-linear-to-b from-neutral-50 to-white">
       {/* Focused Hero */}
@@ -83,14 +79,23 @@ export default function InternshipsFocused() {
         <div className="pointer-events-none absolute inset-0">
           <div
             className="h-[420px] w-full bg-center bg-cover md:h-[520px]"
-            style={{ backgroundImage: `url(${heroImage})` }}
             aria-hidden
-          />
+          >
+            <Image
+              fill
+              src={urlFromGithub(
+                "(training-and-placement)/training/internships/internship-banner.jpg",
+              )}
+              alt="Internships banner image"
+              className="object-cover"
+              priority
+            />
+          </div>
           <div className="absolute inset-0 bg-linear-to-b from-black/60 to-black/20" />
-          <div className="-right-36 -top-28 absolute h-96 w-96 rounded-full bg-[#FF6B35]/8 blur-3xl" />
+          <div className="-right-36 -top-28 absolute size-96 rounded-full bg-[#FF6B35]/8 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 pt-36 pb-5 md:pb-6">
+        <div className="relative mx-auto max-w-7xl px-6 pt-36 pb-20 md:pb-24">
           <MotionDiv
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,7 +128,7 @@ export default function InternshipsFocused() {
               </p>
 
               <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-                {uniqueBenefits.map((b, i) => {
+                {benefits.map((b, i) => {
                   const Icon = b.icon;
                   return (
                     <MotionDiv
@@ -134,8 +139,8 @@ export default function InternshipsFocused() {
                       transition={{ delay: 0.06 * i }}
                       className="flex items-start gap-5 p-5"
                     >
-                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-rose-500 to-rose-600 text-white shadow">
-                        <Icon className="h-6 w-6" />
+                      <div className="flex size-14 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-rose-500 to-rose-600 text-white shadow">
+                        <Icon className="size-6" />
                       </div>
                       <div>
                         <h4 className="font-semibold text-lg">{b.title}</h4>
@@ -159,7 +164,9 @@ export default function InternshipsFocused() {
             >
               <div className="relative">
                 <Image
-                  src={heroImage}
+                  src={urlFromGithub(
+                    "(training-and-placement)/training/internships/internship-banner.jpg",
+                  )}
                   alt="Students collaborating in a professional workplace environment"
                   width={1200}
                   height={600}

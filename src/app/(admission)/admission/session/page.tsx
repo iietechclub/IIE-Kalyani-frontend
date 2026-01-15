@@ -2,12 +2,16 @@ import type React from "react";
 import { LuAward, LuCalendar, LuGlobe, LuGraduationCap } from "react-icons/lu";
 import { MotionDiv, MotionSection } from "@/components/animated/motion";
 import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
+import { fetchAdmissionSessionPageData } from "@/dal/admission-session";
 
 /**
  * SessionPage — responsive, mobile-first
  */
 
-export default function SessionPage() {
+export default async function SessionPage() {
+  const { session, btech_programs, bba_programs } =
+    await fetchAdmissionSessionPageData();
+
   const importantDates = [
     { event: "Application Form Release", date: "1 Jan 2025" },
     { event: "Last Date for Application", date: "30 Jun 2025" },
@@ -21,13 +25,13 @@ export default function SessionPage() {
     {
       name: "B.Tech Programs",
       seats: "Available",
-      branches: ["CSE", "EE", "ME", "CE", "ECE", "AI & ML"],
+      branches: btech_programs.map((dept) => dept.short_name),
       color: "from-red-600 to-red-500",
     },
     {
       name: "BBA Program",
       seats: "Available",
-      branches: ["Business Administration"],
+      branches: bba_programs.map((dept) => dept.short_name),
       color: "from-indigo-600 to-indigo-500",
     },
   ];
@@ -51,7 +55,7 @@ export default function SessionPage() {
 
             <h1 className="mb-1 font-extrabold text-2xl text-black leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
               Admissions Open — Session{" "}
-              <span className="ml-2 text-red-600">2025-2026</span>
+              <span className="ml-2 text-red-600">{session}</span>
             </h1>
 
             <p
@@ -142,13 +146,13 @@ export default function SessionPage() {
                         {program.branches.length > 1 ? "es" : ""} available
                       </div>
 
-                      <div className="mt-1 grid grid-cols-3 gap-2">
+                      <div className="mt-1 flex flex-wrap gap-2">
                         {program.branches.map((b) => (
                           <div
                             key={b}
-                            className="flex items-center gap-2 rounded-md bg-gray-50 p-2 text-gray-700 text-xs sm:text-sm"
+                            className="flex items-center gap-2 rounded-md border border-neutral-200 bg-gray-50 p-2 text-gray-700 text-xs sm:text-sm"
                           >
-                            <CheckmarkIcon className="size-4" />
+                            <CheckmarkIcon className="size-3" />
                             {b}
                           </div>
                         ))}

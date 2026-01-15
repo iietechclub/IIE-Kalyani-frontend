@@ -12,6 +12,17 @@ type Activity = prettify<
   }
 >;
 
+type AlumniMember = prettify<
+  CollectionType & {
+    name: string;
+    position: string;
+    batch: string;
+    company?: CompanyShortNameOnly;
+    image: Media;
+    description: string;
+  }
+>;
+
 type Banner = prettify<
   CollectionType & {
     title: string;
@@ -22,15 +33,15 @@ type Banner = prettify<
   }
 >;
 
+type CompanyShortNameOnly = { short_name: string };
 type Company = prettify<
-  CollectionType & {
-    name: string;
-    short_name: string;
-    image: Media;
-    domain: string;
-  }
+  CollectionType &
+    CompanyShortNameOnly & {
+      name: string;
+      image: Media;
+      domain: string;
+    }
 >;
-
 type CompanyWithoutName = Omits<Company, "name">;
 
 type DepartmentShortNameOnly = { short_name: string };
