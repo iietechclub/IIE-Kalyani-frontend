@@ -1,12 +1,8 @@
-"use client";
-import { useMemo, useState } from "react";
 import { LuUsers } from "react-icons/lu";
-
 import { MotionDiv } from "@/components/animated/motion";
-import GithubImage from "@/components/GithubImage";
-import { Badge } from "@/components/ui/badge";
 
-// import { Button } from "@/components/ui/button";
+import BackendImage from "@/components/BackendImage";
+import { fetchClubsAndSocietiesPageData } from "@/dal/clubs-and-societies";
 
 /**
  * ClubsTwoRowGrid — 4-column modern grid (no glass overlay)
@@ -15,81 +11,83 @@ import { Badge } from "@/components/ui/badge";
  * - Responsive with hover lift & smooth animations
  */
 
-type Club = {
-  id: string;
-  name: string;
-  category: string;
-  subtitle: string;
-  description: string;
-  members: string;
-  image: string;
-};
+// type Club = {
+//   id: string;
+//   name: string;
+//   category: string;
+//   subtitle: string;
+//   description: string;
+//   members: string;
+//   image: string;
+// };
 
-export default function ClubsTwoRowGrid() {
-  const clubs: Club[] = [
-    {
-      id: "arts",
-      name: "Science & Tech Club",
-      category: "tech",
-      subtitle: "Express Your Creativity",
-      description:
-        "Painting, digital art, and campus beautification initiatives.",
-      members: "95+",
-      image: "(campus)/student-activities/clubs-and-societies/tech_club.jpeg",
-    },
-    {
-      id: "coding",
-      name: "Cultural Club",
-      category: "tech",
-      subtitle: "Code, Create, Innovate",
-      description:
-        "A community exploring new technologies, hackathons, and practical projects.",
-      members: "120+",
-      image: "(campus)/student-activities/clubs-and-societies/cultural.JPG",
-    },
-    {
-      id: "robotics",
-      name: "Snap Society",
-      category: "tech",
-      subtitle: "Building the Future",
-      description:
-        "Design, build, and program robots — competitions and hands-on workshops.",
-      members: "85+",
-      image: "(campus)/student-activities/clubs-and-societies/snap_society.jpg",
-    },
+export default async function ClubsTwoRowGrid() {
+  const { banner, clubs } = await fetchClubsAndSocietiesPageData();
 
-    {
-      id: "music",
-      name: "Social Development Club",
-      category: "arts",
-      subtitle: "Rhythm of Life",
-      description:
-        "Performances and cultural programs to showcase campus talent.",
-      members: "110+",
-      image:
-        "(campus)/student-activities/clubs-and-societies/social_dev_club.jpg",
-    },
-    {
-      id: "photo",
-      name: "Photography Club",
-      category: "arts",
-      subtitle: "Capture Moments",
-      description: "Photo walks, editing workshops, and campus event coverage.",
-      members: "75+",
-      image:
-        "(campus)/student-activities/clubs-and-societies/photography-club.avif",
-    },
-    {
-      id: "photo",
-      name: "Sports and Games Club",
-      category: "arts",
-      subtitle: "Capture Moments",
-      description: "Photo walks, editing workshops, and campus event coverage.",
-      members: "75+",
-      image:
-        "(campus)/student-activities/clubs-and-societies/sports_&_games_club.jpg",
-    },
-  ];
+  // const clubs: Club[] = [
+  //   {
+  //     id: "arts",
+  //     name: "Science & Tech Club",
+  //     category: "tech",
+  //     subtitle: "Express Your Creativity",
+  //     description:
+  //       "Painting, digital art, and campus beautification initiatives.",
+  //     members: "95+",
+  //     image: "(campus)/student-activities/clubs-and-societies/tech_club.jpeg",
+  //   },
+  //   {
+  //     id: "coding",
+  //     name: "Cultural Club",
+  //     category: "tech",
+  //     subtitle: "Code, Create, Innovate",
+  //     description:
+  //       "A community exploring new technologies, hackathons, and practical projects.",
+  //     members: "120+",
+  //     image: "(campus)/student-activities/clubs-and-societies/cultural.JPG",
+  //   },
+  //   {
+  //     id: "robotics",
+  //     name: "Snap Society",
+  //     category: "tech",
+  //     subtitle: "Building the Future",
+  //     description:
+  //       "Design, build, and program robots — competitions and hands-on workshops.",
+  //     members: "85+",
+  //     image: "(campus)/student-activities/clubs-and-societies/snap_society.jpg",
+  //   },
+
+  //   {
+  //     id: "music",
+  //     name: "Social Development Club",
+  //     category: "arts",
+  //     subtitle: "Rhythm of Life",
+  //     description:
+  //       "Performances and cultural programs to showcase campus talent.",
+  //     members: "110+",
+  //     image:
+  //       "(campus)/student-activities/clubs-and-societies/social_dev_club.jpg",
+  //   },
+  //   {
+  //     id: "photo",
+  //     name: "Photography Club",
+  //     category: "arts",
+  //     subtitle: "Capture Moments",
+  //     description: "Photo walks, editing workshops, and campus event coverage.",
+  //     members: "75+",
+  //     image:
+  //       "(campus)/student-activities/clubs-and-societies/photography-club.avif",
+  //   },
+  //   {
+  //     id: "photo",
+  //     name: "Sports and Games Club",
+  //     category: "arts",
+  //     subtitle: "Capture Moments",
+  //     description: "Photo walks, editing workshops, and campus event coverage.",
+  //     members: "75+",
+  //     image:
+  //       "(campus)/student-activities/clubs-and-societies/sports_&_games_club.jpg",
+  //   },
+  // ];
 
   // const tabs = [
   //   { key: "all", label: "All" },
@@ -99,37 +97,15 @@ export default function ClubsTwoRowGrid() {
   //   { key: "social", label: "Social" },
   // ];
 
-  const [
-    query,
-    // setQuery
-  ] = useState("");
-  const [
-    tab,
-    // setTab
-  ] = useState("all");
-  const [activeClub, setActiveClub] = useState<Club | null>(null);
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return clubs.filter(
-      (c) =>
-        (tab === "all" ? true : c.category === tab) &&
-        (!q ||
-          c.name.toLowerCase().includes(q) ||
-          c.subtitle.toLowerCase().includes(q) ||
-          c.description.toLowerCase().includes(q)),
-    );
-  }, [tab, query]);
-
   return (
     <main className="min-h-screen bg-linear-to-br from-white via-blue-50/20">
       {/* Hero Section */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <GithubImage
-            src="(campus)/student-activities/clubs-and-societies/banner.png"
-            alt="Campus clubs hero"
+          <BackendImage
             fill
+            src={banner.url}
+            alt="Campus clubs hero"
             className="h-80 w-full object-cover md:h-[460px]"
           />
           <div className="absolute inset-0 bg-linear-to-r from-blue-900/75 via-purple-900/40 to-transparent" />
@@ -164,7 +140,7 @@ export default function ClubsTwoRowGrid() {
         {/* 4-column Grid */}
         <section className="mx-auto mb-12 max-w-7xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((c, idx) => (
+            {clubs.map((c, idx) => (
               <MotionDiv
                 // biome-ignore lint/suspicious/noArrayIndexKey: not needed
                 key={idx}
@@ -176,17 +152,17 @@ export default function ClubsTwoRowGrid() {
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <GithubImage
-                    src={c.image}
-                    alt={c.name}
+                  <BackendImage
                     fill
-                    className="h-full w-full transform object-cover transition-transform duration-500 hover:scale-105"
+                    src={c.preview_image.url}
+                    alt={c.name}
+                    className="size-full transform object-cover transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute top-3 left-3">
+                  {/* <div className="absolute top-3 left-3">
                     <Badge className="bg-blue-600 text-white">
                       {c.category}
                     </Badge>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Card content */}
@@ -194,24 +170,24 @@ export default function ClubsTwoRowGrid() {
                   <div>
                     <h3 className="mb-1 font-semibold text-lg">{c.name}</h3>
                     <p className="mb-2 text-muted-foreground text-sm">
-                      {c.subtitle}
+                      {c.tagline}
                     </p>
                     <p className="line-clamp-3 text-gray-600 text-xs">
-                      {c.description}
+                      {c.subtitle}
                     </p>
                   </div>
 
-                  <div className="mt-3 flex items-center justify-between">
+                  {/* <div className="mt-3 flex items-center justify-between">
                     <div className="text-muted-foreground text-xs">
                       {c.members} Members
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </MotionDiv>
             ))}
           </div>
 
-          {filtered.length === 0 && (
+          {!clubs.length && (
             <div className="py-12 text-center text-muted-foreground">
               No clubs match your filter.
             </div>
@@ -220,7 +196,7 @@ export default function ClubsTwoRowGrid() {
       </div>
 
       {/* Club Modal */}
-      {activeClub && (
+      {/* {activeClub && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <button
             type="button"
@@ -265,7 +241,7 @@ export default function ClubsTwoRowGrid() {
             </div>
           </MotionDiv>
         </div>
-      )}
+      )} */}
     </main>
   );
 }

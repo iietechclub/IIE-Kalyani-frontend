@@ -1,5 +1,6 @@
 // biome-ignore-all lint/correctness/noUnusedVariables: Globally used
 
-type PlacementRecordPageData = {
-  companies: Company[];
+type ClubsAndSocietiesPageData = {
+  banner: Media;
+  clubs: Club[];
 };

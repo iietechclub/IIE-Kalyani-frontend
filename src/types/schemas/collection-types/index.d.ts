@@ -33,6 +33,16 @@ type Banner = prettify<
   }
 >;
 
+type Club = prettify<
+  CollectionType & {
+    name: string;
+    slug: string;
+    preview_image: Media;
+    tagline: string;
+    subtitle: string;
+  }
+>;
+
 type CompanyShortNameOnly = { short_name: string };
 type Company = prettify<
   CollectionType &
