@@ -1,9 +1,13 @@
-"use client";
-
-import { useState } from "react";
-import { LuDollarSign, LuDownload, LuInfo } from "react-icons/lu";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Card } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  LuDollarSign,
+  LuDownload,
+  // LuInfo
+} from "react-icons/lu";
+// import { Alert, AlertDescription } from "@/components/ui/alert";
+import { fetchFeeStructurePageData } from "@/dal/fee-structure";
+import { urlFromBackend } from "@/lib/utils";
+// import { Card } from "@/components/ui/card";
 
 /**
  * Full FeeStructure page
@@ -15,156 +19,19 @@ import { Card } from "@/components/ui/card";
  * - Exports both named and default to avoid import errors
  */
 
-export function FeeStructure() {
-  // toggle view state for sections (desktop shows by default; mobile uses stacked cards)
-  const [open, setOpen] = useState({
-    btech: true,
-    btechLateral: false,
-    makaut: false,
-    bba: false,
-  });
-
-  // --- SAMPLE DATA: adjust numbers to your official values as required ---
-  const btechPrograms = [
-    {
-      name: "COMPUTER SCIENCE & ENGINEERING",
-      s1: "20,000",
-      s2: "20,000",
-      s3: "20,000",
-      s4: "20,000",
-      s5: "20,000",
-      s6: "20,000",
-      s7: "20,000",
-      s8: "20,000",
-      total: "160,000",
-    },
-    {
-      name: "ELECTRONICS & COMMUNICATION",
-      s1: "20,000",
-      s2: "20,000",
-      s3: "20,000",
-      s4: "20,000",
-      s5: "20,000",
-      s6: "20,000",
-      s7: "20,000",
-      s8: "20,000",
-      total: "160,000",
-    },
-    {
-      name: "MECHANICAL ENGINEERING",
-      s1: "20,000",
-      s2: "20,000",
-      s3: "20,000",
-      s4: "20,000",
-      s5: "20,000",
-      s6: "20,000",
-      s7: "20,000",
-      s8: "20,000",
-      total: "160,000",
-    },
-    {
-      name: "CIVIL ENGINEERING",
-      s1: "20,000",
-      s2: "20,000",
-      s3: "20,000",
-      s4: "20,000",
-      s5: "20,000",
-      s6: "20,000",
-      s7: "20,000",
-      s8: "20,000",
-      total: "160,000",
-    },
-    {
-      name: "ELECTRICAL ENGINEERING",
-      s1: "20,000",
-      s2: "20,000",
-      s3: "20,000",
-      s4: "20,000",
-      s5: "20,000",
-      s6: "20,000",
-      s7: "20,000",
-      s8: "20,000",
-      total: "160,000",
-    },
-  ];
-
-  const btechLateralPrograms = [
-    {
-      name: "CSE (Lateral Entry)",
-      s1: "35,000",
-      s2: "35,000",
-      s3: "35,000",
-      s4: "35,000",
-      s5: "35,000",
-      s6: "35,000",
-      total: "210,000",
-    },
-    {
-      name: "ECE (Lateral Entry)",
-      s1: "35,000",
-      s2: "35,000",
-      s3: "35,000",
-      s4: "35,000",
-      s5: "35,000",
-      s6: "35,000",
-      total: "210,000",
-    },
-  ];
-
-  const makautRows = [
-    { title: "MAKAUT Enrollment Fee", fee: "2,000" },
-    { title: "MAKAUT Exam Fee (per term)", fee: "3,500" },
-    { title: "MAKAUT Registration", fee: "1,500" },
-  ];
-
-  const bbaRows = [
-    {
-      title: "Tuition Fee",
-      s1: "15,000",
-      s2: "15,000",
-      s3: "15,000",
-      s4: "15,000",
-      s5: "15,000",
-      s6: "15,000",
-      total: "90,000",
-    },
-    {
-      title: "Admission Fee (one-time)",
-      s1: "10,000",
-      s2: "-",
-      s3: "-",
-      s4: "-",
-      s5: "-",
-      s6: "-",
-      total: "10,000",
-    },
-    {
-      title: "Library & Others",
-      s1: "1,000",
-      s2: "1,000",
-      s3: "1,000",
-      s4: "1,000",
-      s5: "1,000",
-      s6: "1,000",
-      total: "6,000",
-    },
-  ];
-
-  const otherCharges = [
-    { label: "Admission Fee (one-time)", amount: "10,000" },
-    { label: "Caution Money (refundable)", amount: "5,000" },
-    { label: "Library Fee (annual)", amount: "2,000" },
-    { label: "Development Fee (annual)", amount: "5,000" },
-  ];
-
-  // totals at bottom (example)
-  const pageTotal = "266,000";
-
-  const _toggleSection = (key: keyof typeof open) =>
-    setOpen((s) => ({ ...s, [key]: !s[key] }));
+export default async function FeeStructurePage() {
+  const {
+    important_notes,
+    general_fees_btech,
+    general_fees_btech_lateral_entry,
+    makaut_fees_btech_and_btech_lateral_entry,
+    general_fees_bba,
+    total,
+    fees_structure_pdf,
+  } = await fetchFeeStructurePageData();
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900">
+    <main className="min-h-screen bg-white font-sans text-gray-900">
       {/* Header (keep unchanged) */}
       <header className="relative bg-linear-to-r from-red-600 to-rose-600 py-12 text-white sm:py-20">
         <div className="pointer-events-none absolute inset-0 bg-black/8" />
@@ -186,21 +53,23 @@ export function FeeStructure() {
             </div>
 
             <div className="flex items-center gap-3">
-              <a
-                href="/assets/IIE-Kalyani-Fee-Brochure.pdf"
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href={urlFromBackend(fees_structure_pdf.url)}
                 className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-rose-600 shadow transition hover:shadow-lg"
                 aria-label="Download Fee Brochure"
               >
-                <LuDownload className="h-4 w-4" />
+                <LuDownload className="size-4" />
                 View &amp; Download Fees
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </header>
 
       {/* Important notes */}
-      <div className="mx-auto mt-8 max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* <div className="mx-auto mt-8 max-w-6xl px-4 sm:px-6 lg:px-8">
         <Alert className="border border-gray-200 bg-gray-50">
           <LuInfo className="h-5 w-5 text-red-600" />
           <AlertDescription className="text-gray-700 text-sm">
@@ -210,12 +79,84 @@ export function FeeStructure() {
             to change as per Govt/University directives.
           </AlertDescription>
         </Alert>
-      </div>
+      </div> */}
 
-      {/* Page content */}
-      <main className="mx-auto max-w-6xl space-y-8 px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl space-y-8 px-4 py-8 sm:px-6 lg:px-8">
+        <div className="rounded-xl border bg-[rgb(255,255,255)] p-4 px-[50px] py-4">
+          <h3 className="mb-2 font-semibold text-[20px] text-[rgb(0,0,0)]">
+            Important Notes
+          </h3>
+          <ul className="list-disc space-y-2 pl-5 text-sm marker:text-red-500">
+            {important_notes.map((note) => (
+              <li key={note.id}>{note.text}</li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Page content */}
+        <p className="mb-3 text-center font-semibold text-base">
+          GENERAL STUDENT FEES STRUCTURE — THE ACADEMIC YEAR : (2025 - 2026)
+        </p>
+
         {/* === B.Tech (1st sem .. 8th sem) === */}
         <section>
+          <h2 className="mb-3 font-semibold text-base">B.TECH</h2>
+
+          <div className="overflow-x-auto rounded-md border border-gray-200">
+            <table className="min-w-full table-fixed text-sm">
+              <thead className="bg-red-600 text-white">
+                <tr>
+                  <th className="w-1/3 p-3 text-left">COURSES</th>
+                  <th className="p-3 text-center">1ST SEM</th>
+                  <th className="p-3 text-center">2ND SEM</th>
+                  <th className="p-3 text-center">3RD SEM</th>
+                  <th className="p-3 text-center">4TH SEM</th>
+                  <th className="p-3 text-center">5TH SEM</th>
+                  <th className="p-3 text-center">6TH SEM</th>
+                  <th className="p-3 text-center">7TH SEM</th>
+                  <th className="p-3 text-center">8TH SEM</th>
+                  <th className="p-3 text-center">TOTAL</th>
+                </tr>
+              </thead>
+
+              <tbody className="bg-white">
+                {general_fees_btech.rows.map((cols, idx) => (
+                  <tr
+                    key={cols[0]}
+                    className={idx % 2 === 0 ? "" : "bg-gray-50"}
+                  >
+                    <td className="p-3 align-top">{cols[0]}</td>
+                    <td className="p-3 text-center">{cols[1]}</td>
+                    <td className="p-3 text-center">{cols[2]}</td>
+                    <td className="p-3 text-center">{cols[3]}</td>
+                    <td className="p-3 text-center">{cols[4]}</td>
+                    <td className="p-3 text-center">{cols[5]}</td>
+                    <td className="p-3 text-center">{cols[6]}</td>
+                    <td className="p-3 text-center">{cols[7]}</td>
+                    <td className="p-3 text-center">{cols[8]}</td>
+                    <td className="p-3 text-center font-semibold">{cols[9]}</td>
+                  </tr>
+                ))}
+
+                {/* <tr className="bg-red-100">
+                  <td className="p-3 font-semibold">TOTAL</td>
+                  <td className="p-3 text-center">—</td>
+                  <td className="p-3 text-center">—</td>
+                  <td className="p-3 text-center">—</td>
+                  <td className="p-3 text-center">—</td>
+                  <td className="p-3 text-center">—</td>
+                  <td className="p-3 text-center">—</td>
+                  <td className="p-3 text-center">—</td>
+                  <td className="p-3 text-center">—</td>
+                  <td className="p-3 text-center font-bold">266,000</td>
+                </tr> */}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* === B.Tech (1st sem .. 8th sem) === */}
+        {/* <section>
           <h2 className="mb-3 font-semibold text-base">
             GENERAL STUDENT FEES STRUCTURE — THE ACADEMIC YEAR : (2025 - 2026)
           </h2>
@@ -272,7 +213,7 @@ export function FeeStructure() {
             </table>
           </div>
 
-          {/* mobile stacked view */}
+          {/* mobile stacked view * /}
           <div className="mt-4 space-y-3 lg:hidden">
             {btechPrograms.map((p) => (
               <Card key={p.name} className="p-3">
@@ -321,7 +262,7 @@ export function FeeStructure() {
               TOTAL: {pageTotal}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* === B.Tech Lateral Entry (example: uses 1..6 sem + total) === */}
         <section>
@@ -338,20 +279,24 @@ export function FeeStructure() {
                   <th className="p-3 text-center">4TH SEM</th>
                   <th className="p-3 text-center">5TH SEM</th>
                   <th className="p-3 text-center">6TH SEM</th>
+                  <th className="p-3 text-center">7TH SEM</th>
+                  <th className="p-3 text-center">8TH SEM</th>
                   <th className="p-3 text-center">TOTAL</th>
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {btechLateralPrograms.map((r, i) => (
-                  <tr key={r.name} className={i % 2 === 0 ? "" : "bg-gray-50"}>
-                    <td className="p-3">{r.name}</td>
-                    <td className="p-3 text-center">{r.s1}</td>
-                    <td className="p-3 text-center">{r.s2}</td>
-                    <td className="p-3 text-center">{r.s3}</td>
-                    <td className="p-3 text-center">{r.s4}</td>
-                    <td className="p-3 text-center">{r.s5}</td>
-                    <td className="p-3 text-center">{r.s6}</td>
-                    <td className="p-3 text-center font-semibold">{r.total}</td>
+                {general_fees_btech_lateral_entry.rows.map((cols, i) => (
+                  <tr key={cols[0]} className={i % 2 === 0 ? "" : "bg-gray-50"}>
+                    <td className="p-3">{cols[0]}</td>
+                    <td className="p-3 text-center">{cols[1]}</td>
+                    <td className="p-3 text-center">{cols[2]}</td>
+                    <td className="p-3 text-center">{cols[3]}</td>
+                    <td className="p-3 text-center">{cols[4]}</td>
+                    <td className="p-3 text-center">{cols[5]}</td>
+                    <td className="p-3 text-center">{cols[6]}</td>
+                    <td className="p-3 text-center">{cols[7]}</td>
+                    <td className="p-3 text-center">{cols[8]}</td>
+                    <td className="p-3 text-center font-semibold">{cols[9]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -361,24 +306,48 @@ export function FeeStructure() {
 
         {/* === MAKAUT FEES === */}
         <section>
-          <h3 className="mb-3 font-semibold text-sm">
+          <p className="mb-3 text-center font-semibold text-base">
             MAKAUT UNIVERSITY FEES - 2025 - 2026
+          </p>
+          <h3 className="mb-3 font-semibold text-sm">
+            B.TECH & B. TECH LATERAL ENTRY
           </h3>
           <div className="overflow-x-auto rounded-md border border-gray-200">
             <table className="min-w-full text-sm">
               <thead className="bg-red-600 text-white">
                 <tr>
                   <th className="p-3 text-left">PARTICULARS</th>
-                  <th className="p-3 text-center">FEES (INR)</th>
+                  <th className="p-3 text-center">3RD SEM</th>
+                  <th className="p-3 text-center">4TH SEM</th>
+                  <th className="p-3 text-center">5TH SEM</th>
+                  <th className="p-3 text-center">6TH SEM</th>
+                  <th className="p-3 text-center">7TH SEM</th>
+                  <th className="p-3 text-center">8TH SEM</th>
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {makautRows.map((m, i) => (
+                {/* {makautRows.map((m, i) => (
                   <tr key={m.title} className={i % 2 === 0 ? "" : "bg-gray-50"}>
                     <td className="p-3">{m.title}</td>
                     <td className="p-3 text-center font-medium">{m.fee}</td>
                   </tr>
-                ))}
+                ))} */}
+                {makaut_fees_btech_and_btech_lateral_entry.rows.map(
+                  (cols, i) => (
+                    <tr
+                      key={`${cols[0]}-${i}`}
+                      className={i % 2 === 0 ? "" : "bg-gray-50"}
+                    >
+                      <td className="p-3 align-top">{cols[0]}</td>
+                      <td className="p-3 text-center">{cols[1]}</td>
+                      <td className="p-3 text-center">{cols[2]}</td>
+                      <td className="p-3 text-center">{cols[3]}</td>
+                      <td className="p-3 text-center">{cols[4]}</td>
+                      <td className="p-3 text-center">{cols[5]}</td>
+                      <td className="p-3 text-center">{cols[6]}</td>
+                    </tr>
+                  ),
+                )}
               </tbody>
             </table>
           </div>
@@ -387,7 +356,7 @@ export function FeeStructure() {
         {/* === BBA (6 semesters) === */}
         <section>
           <h3 className="mb-3 font-semibold text-sm">
-            GENERAL STUDENT FEES STRUCTURE — BBA
+            GENERAL STUDENT FEES STRUCTURE: (2025 - 2026) — BBA
           </h3>
 
           <div className="overflow-x-auto rounded-md border border-gray-200">
@@ -395,30 +364,54 @@ export function FeeStructure() {
               <thead className="bg-red-600 text-white">
                 <tr>
                   <th className="p-3 text-left">PARTICULARS</th>
-                  <th className="p-3 text-center">1ST SEM</th>
-                  <th className="p-3 text-center">2ND SEM</th>
-                  <th className="p-3 text-center">3RD SEM</th>
-                  <th className="p-3 text-center">4TH SEM</th>
-                  <th className="p-3 text-center">5TH SEM</th>
-                  <th className="p-3 text-center">6TH SEM</th>
-                  <th className="p-3 text-center">TOTAL</th>
+                  <th className="p-3 text-center" colSpan={8}>
+                    SEMESTER WISE FEES
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {bbaRows.map((r, i) => (
-                  <tr key={r.title} className={i % 2 === 0 ? "" : "bg-gray-50"}>
-                    <td className="p-3">{r.title}</td>
-                    <td className="p-3 text-center">{r.s1}</td>
-                    <td className="p-3 text-center">{r.s2}</td>
-                    <td className="p-3 text-center">{r.s3}</td>
-                    <td className="p-3 text-center">{r.s4}</td>
-                    <td className="p-3 text-center">{r.s5}</td>
-                    <td className="p-3 text-center">{r.s6}</td>
-                    <td className="p-3 text-center font-semibold">{r.total}</td>
+                <tr className="divide-x divide-neutral-200">
+                  <th className="p-3 text-left">Year</th>
+                  <td className="p-3 text-center" colSpan={2}>
+                    1ST YEAR
+                  </td>
+                  <td className="p-3 text-center" colSpan={2}>
+                    2ND YEAR
+                  </td>
+                  <td className="p-3 text-center" colSpan={2}>
+                    3RD YEAR
+                  </td>
+                  <td className="p-3 text-center" colSpan={2}>
+                    4TH YEAR
+                  </td>
+                </tr>
+                <tr className="divide-x divide-neutral-200 border-neutral-200 border-y bg-gray-50">
+                  <th className="p-3 text-left">SEMESTER</th>
+                  <td className="p-3 text-center">1ST SEM</td>
+                  <td className="p-3 text-center">2ND SEM</td>
+                  <td className="p-3 text-center">3RD SEM</td>
+                  <td className="p-3 text-center">4TH SEM</td>
+                  <td className="p-3 text-center">5TH SEM</td>
+                  <td className="p-3 text-center">6TH SEM</td>
+                  <td className="p-3 text-center">7TH SEM</td>
+                  <td className="p-3 text-center">8TH SEM</td>
+                </tr>
+
+                {general_fees_bba.rows.map((cols, i) => (
+                  <tr key={cols[0]} className={i % 2 === 0 ? "" : "bg-gray-50"}>
+                    <td className="p-3">{cols[0]}</td>
+                    <td className="p-3 text-center">{cols[1]}</td>
+                    <td className="p-3 text-center">{cols[2]}</td>
+                    <td className="p-3 text-center">{cols[3]}</td>
+                    <td className="p-3 text-center">{cols[4]}</td>
+                    <td className="p-3 text-center">{cols[5]}</td>
+                    <td className="p-3 text-center">{cols[6]}</td>
+                    <td className="p-3 text-center">{cols[7]}</td>
+                    <td className="p-3 text-center">{cols[8]}</td>
                   </tr>
                 ))}
 
-                <tr className="bg-red-100">
+                {/* <tr className="bg-red-100">
                   <td className="p-3 font-semibold">TOTAL</td>
                   <td className="p-3 text-center">—</td>
                   <td className="p-3 text-center">—</td>
@@ -427,14 +420,14 @@ export function FeeStructure() {
                   <td className="p-3 text-center">—</td>
                   <td className="p-3 text-center">—</td>
                   <td className="p-3 text-center font-bold">{pageTotal}</td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
           </div>
         </section>
 
         {/* === Other Charges & Important Points === */}
-        <section className="grid gap-4 md:grid-cols-2">
+        {/* <section className="grid gap-4 md:grid-cols-2">
           <div className="rounded-md border bg-white p-4">
             <h4 className="mb-2 font-semibold">Other Charges</h4>
             <ul className="space-y-2 text-sm">
@@ -452,18 +445,20 @@ export function FeeStructure() {
               Important Points
             </h4>
             <ul className="list-disc space-y-2 pl-5 text-sm marker:text-red-500">
-              <li>Fees once paid will not be refunded except as per policy.</li>
-              <li>Hostel and transport charges are extra.</li>
-              <li>Institute reserves the right to revise fee structure.</li>
+              {importantNotes.map((note, idx) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: not important here
+                <li key={`${note}_${idx}`}>{note}</li>
+              ))}
             </ul>
           </div>
-        </section>
+        </section> */}
 
         {/* === Bottom total band === */}
         <div className="rounded-md bg-red-600 p-4 text-center font-semibold text-white">
-          TOTAL: <span className="ml-2">{pageTotal}</span>
+          TOTAL:{" "}
+          <span className="ml-2">{Number(total).toLocaleString("en-IN")}</span>
         </div>
-      </main>
+      </div>
 
       {/* Print helpers */}
       <style>{`
@@ -472,8 +467,6 @@ export function FeeStructure() {
           header { display: none; }
         }
       `}</style>
-    </div>
+    </main>
   );
 }
-
-export default FeeStructure;
