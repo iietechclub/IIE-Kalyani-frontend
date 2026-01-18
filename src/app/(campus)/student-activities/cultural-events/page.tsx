@@ -1,15 +1,15 @@
 import Image from "next/image";
 import {
   // LuCalendar,
-  LuCamera,
+  // LuCamera,
   // LuChevronLeft,
   // LuChevronRight,
-  LuMic,
-  LuMusic,
-  LuPalette,
+  // LuMic,
+  // LuMusic,
+  // LuPalette,
   LuSparkles,
-  LuTheater,
-  LuTrophy,
+  // LuTheater,
+  // LuTrophy,
   // LuUsers,
 } from "react-icons/lu";
 

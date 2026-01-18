@@ -16,7 +16,7 @@ import {
   LuFlaskConical,
   LuGraduationCap,
   LuLightbulb,
-  LuMail,
+  // LuMail,
   LuTarget,
   LuUsers,
 } from "react-icons/lu";
@@ -45,9 +45,7 @@ import { Card, CardContent } from "@/components/ui/card";
 //   image: string;
 // };
 
-type DepartmentProps = Department & {
-  faculties: Faculty[];
-};
+type DepartmentProps = Department; // & {faculties: Faculty[];};
 
 function Department({
   name,
@@ -63,7 +61,7 @@ function Department({
   vision,
   mission,
   labs,
-  faculties = [],
+  // faculties = [],
 }: DepartmentProps) {
   return (
     <main className="min-h-screen bg-[#f8f9fa] text-gray-900">

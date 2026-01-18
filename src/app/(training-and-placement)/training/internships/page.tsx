@@ -1,11 +1,10 @@
 "use client";
 import Image from "next/image";
-import { useMemo } from "react";
 import {
   LuBriefcase,
   LuBuilding,
   LuClipboardCheck,
-  LuExternalLink,
+  // LuExternalLink,
   LuTrendingUp,
 } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";

@@ -92,180 +92,180 @@ export default function PlacementRecordPageClient({
   companies,
 }: PlacementRecordPageData) {
   // Data: yearly stats + per-department placement rows (sample records)
-  const yearlyStats = [
-    {
-      year: "2024",
-      stats: {
-        totalStudents: 450,
-        studentsPlaced: 405,
-        placementPercentage: 90,
-        highestPackage: "18 LPA",
-        averagePackage: "6.5 LPA",
-        companiesVisited: 85,
-        medianSalary: "6.0 LPA",
-      },
-      departments: {
-        "Computer Science & Engineering": {
-          rows: [
-            {
-              sl: 1,
-              name: "Rahidul Khan",
-              position: "Software developer",
-              company: "Intern at Google, SDE",
-            },
-            {
-              sl: 2,
-              name: "Rahidul Khan",
-              position: "CEO",
-              company: "Google",
-            },
-            {
-              sl: 3,
-              name: "Rahul Mondal",
-              position: "Proud Student",
-              company: "IIE",
-            },
-            {
-              sl: 4,
-              name: "Ria Sarkar",
-              position: "Senior Developer",
-              company: "Deloitte",
-            },
-            {
-              sl: 5,
-              name: "Supriyo Pal",
-              position: "HR Manager",
-              company: "Accenture",
-            },
-            {
-              sl: 6,
-              name: "Tapas Manna",
-              position: "CEO",
-              company: "TCS",
-            },
-          ],
-        },
-        "Electrical Engineering": {
-          rows: [
-            {
-              sl: 1,
-              name: "Suman Roy",
-              position: "CEO",
-              company: "Siemens",
-            },
-            {
-              sl: 2,
-              name: "Megha Paul",
-              position: "CEO",
-              company: "Bosch",
-            },
-            {
-              sl: 3,
-              name: "Rajat Sen",
-              position: "CEO",
-              company: "L&T",
-            },
-            {
-              sl: 4,
-              name: "Anita Sharma",
-              position: "CEO",
-              company: "Toshiba",
-            },
-          ],
-        },
-        "Mechanical Engineering": {
-          rows: [
-            {
-              sl: 1,
-              name: "Rohit Kumar",
-              position: "CEO",
-              company: "Mahindra",
-            },
-            {
-              sl: 2,
-              name: "Kunal Das",
-              position: "CEO",
-              company: "Bajaj",
-            },
-            {
-              sl: 3,
-              name: "Pooja Dutta",
-              position: "CEO",
-              company: "TVS",
-            },
-            {
-              sl: 4,
-              name: "Nilesh Kumar",
-              position: "CEO",
-              company: "Tata Motors",
-            },
-            {
-              sl: 5,
-              name: "Sana Roy",
-              position: "CEO",
-              company: "Maruti",
-            },
-          ],
-        },
+  // const yearlyStats = [
+  //   {
+  //     year: "2024",
+  //     stats: {
+  //       totalStudents: 450,
+  //       studentsPlaced: 405,
+  //       placementPercentage: 90,
+  //       highestPackage: "18 LPA",
+  //       averagePackage: "6.5 LPA",
+  //       companiesVisited: 85,
+  //       medianSalary: "6.0 LPA",
+  //     },
+  //     departments: {
+  //       "Computer Science & Engineering": {
+  //         rows: [
+  //           {
+  //             sl: 1,
+  //             name: "Rahidul Khan",
+  //             position: "Software developer",
+  //             company: "Intern at Google, SDE",
+  //           },
+  //           {
+  //             sl: 2,
+  //             name: "Rahidul Khan",
+  //             position: "CEO",
+  //             company: "Google",
+  //           },
+  //           {
+  //             sl: 3,
+  //             name: "Rahul Mondal",
+  //             position: "Proud Student",
+  //             company: "IIE",
+  //           },
+  //           {
+  //             sl: 4,
+  //             name: "Ria Sarkar",
+  //             position: "Senior Developer",
+  //             company: "Deloitte",
+  //           },
+  //           {
+  //             sl: 5,
+  //             name: "Supriyo Pal",
+  //             position: "HR Manager",
+  //             company: "Accenture",
+  //           },
+  //           {
+  //             sl: 6,
+  //             name: "Tapas Manna",
+  //             position: "CEO",
+  //             company: "TCS",
+  //           },
+  //         ],
+  //       },
+  //       "Electrical Engineering": {
+  //         rows: [
+  //           {
+  //             sl: 1,
+  //             name: "Suman Roy",
+  //             position: "CEO",
+  //             company: "Siemens",
+  //           },
+  //           {
+  //             sl: 2,
+  //             name: "Megha Paul",
+  //             position: "CEO",
+  //             company: "Bosch",
+  //           },
+  //           {
+  //             sl: 3,
+  //             name: "Rajat Sen",
+  //             position: "CEO",
+  //             company: "L&T",
+  //           },
+  //           {
+  //             sl: 4,
+  //             name: "Anita Sharma",
+  //             position: "CEO",
+  //             company: "Toshiba",
+  //           },
+  //         ],
+  //       },
+  //       "Mechanical Engineering": {
+  //         rows: [
+  //           {
+  //             sl: 1,
+  //             name: "Rohit Kumar",
+  //             position: "CEO",
+  //             company: "Mahindra",
+  //           },
+  //           {
+  //             sl: 2,
+  //             name: "Kunal Das",
+  //             position: "CEO",
+  //             company: "Bajaj",
+  //           },
+  //           {
+  //             sl: 3,
+  //             name: "Pooja Dutta",
+  //             position: "CEO",
+  //             company: "TVS",
+  //           },
+  //           {
+  //             sl: 4,
+  //             name: "Nilesh Kumar",
+  //             position: "CEO",
+  //             company: "Tata Motors",
+  //           },
+  //           {
+  //             sl: 5,
+  //             name: "Sana Roy",
+  //             position: "CEO",
+  //             company: "Maruti",
+  //           },
+  //         ],
+  //       },
 
-        "Artificial Intelligence & Machine Learning": {
-          rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
-        },
-        "Electronics & Communication": {
-          rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
-        },
-        "Civil Engineering": {
-          rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
-        },
-      },
-    },
-  ];
+  //       "Artificial Intelligence & Machine Learning": {
+  //         rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
+  //       },
+  //       "Electronics & Communication": {
+  //         rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
+  //       },
+  //       "Civil Engineering": {
+  //         rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
+  //       },
+  //     },
+  //   },
+  // ];
 
   // Department stats for bar chart (percentage)
-  const departmentStats = [
-    {
-      dept: "Computer Science & Engineering",
-      placed: 95,
-      total: 100,
-      percentage: 95,
-    },
-    {
-      dept: "Electrical Engineering",
-      placed: 85,
-      total: 95,
-      percentage: 89,
-    },
-    {
-      dept: "Mechanical Engineering",
-      placed: 80,
-      total: 92,
-      percentage: 87,
-    },
-    {
-      dept: "Civil Engineering",
-      placed: 70,
-      total: 85,
-      percentage: 82,
-    },
-    {
-      dept: "Electronics & Communication",
-      placed: 88,
-      total: 98,
-      percentage: 90,
-    },
-    {
-      dept: "Production & Industrial",
-      placed: 42,
-      total: 50,
-      percentage: 84,
-    },
-    {
-      dept: "Architecture",
-      placed: 26,
-      total: 30,
-      percentage: 87,
-    },
-  ];
+  // const departmentStats = [
+  //   {
+  //     dept: "Computer Science & Engineering",
+  //     placed: 95,
+  //     total: 100,
+  //     percentage: 95,
+  //   },
+  //   {
+  //     dept: "Electrical Engineering",
+  //     placed: 85,
+  //     total: 95,
+  //     percentage: 89,
+  //   },
+  //   {
+  //     dept: "Mechanical Engineering",
+  //     placed: 80,
+  //     total: 92,
+  //     percentage: 87,
+  //   },
+  //   {
+  //     dept: "Civil Engineering",
+  //     placed: 70,
+  //     total: 85,
+  //     percentage: 82,
+  //   },
+  //   {
+  //     dept: "Electronics & Communication",
+  //     placed: 88,
+  //     total: 98,
+  //     percentage: 90,
+  //   },
+  //   {
+  //     dept: "Production & Industrial",
+  //     placed: 42,
+  //     total: 50,
+  //     percentage: 84,
+  //   },
+  //   {
+  //     dept: "Architecture",
+  //     placed: 26,
+  //     total: 30,
+  //     percentage: 87,
+  //   },
+  // ];
 
   // Recruiters data
   // const companies = [
@@ -594,6 +594,7 @@ export default function PlacementRecordPageClient({
 
   // Helpers to access current data
   const departmentsMap: Record<string, DepartmentPlacement> =
+    // biome-ignore lint/performance/noAccumulatingSpread: needed
     departments.reduce((o, d) => ({ ...o, [d.documentId]: d }), {});
 
   // Render table rows matching the image style

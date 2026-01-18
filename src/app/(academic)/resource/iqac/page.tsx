@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
 
@@ -9,9 +8,6 @@ import { Badge } from "@/components/ui/badge";
  * - Renders arrays (already present in your project) as clean lists/sections
  * - Replace placeholder links (pdfLink, docLink, etc.) with exact URLs from main site
  */
-
-const heroImage =
-  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1920";
 
 // --- example content arrays (kept from your earlier code) ---
 const objectives = [

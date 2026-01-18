@@ -4,12 +4,12 @@ import { AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
-  LuCalendar,
+  // LuCalendar,
   LuChevronLeft,
   LuChevronRight,
-  LuHandshake,
+  // LuHandshake,
   // LuLinkedin,
-  LuTrendingUp,
+  // LuTrendingUp,
   LuUsers,
 } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
@@ -44,85 +44,85 @@ const heroImage = urlFromGithub(
   "(training-and-placement)/placement/alumni/banner.JPG",
 );
 
-const _objectives = [
-  {
-    icon: LuUsers,
-    title: "Network Building",
-    description:
-      "Create a strong alumni network to foster connections and professional relationships.",
-  },
-  {
-    icon: LuTrendingUp,
-    title: "Career Guidance",
-    description:
-      "Provide mentorship and career guidance to current students from successful alumni.",
-  },
-  {
-    icon: LuHandshake,
-    title: "Industry Connect",
-    description:
-      "Bridge academia and industry through alumni expertise, internships and hiring.",
-  },
-  {
-    icon: LuCalendar,
-    title: "Events & Reunions",
-    description:
-      "Organize alumni meets, reunions and knowledge-sharing events.",
-  },
-];
+// const objectives = [
+//   {
+//     icon: LuUsers,
+//     title: "Network Building",
+//     description:
+//       "Create a strong alumni network to foster connections and professional relationships.",
+//   },
+//   {
+//     icon: LuTrendingUp,
+//     title: "Career Guidance",
+//     description:
+//       "Provide mentorship and career guidance to current students from successful alumni.",
+//   },
+//   {
+//     icon: LuHandshake,
+//     title: "Industry Connect",
+//     description:
+//       "Bridge academia and industry through alumni expertise, internships and hiring.",
+//   },
+//   {
+//     icon: LuCalendar,
+//     title: "Events & Reunions",
+//     description:
+//       "Organize alumni meets, reunions and knowledge-sharing events.",
+//   },
+// ];
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Asha Sen",
-    batch: "2018",
-    role: "Software Engineer — Google",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80",
-    quote:
-      "IIE Kalyani prepared me for industry — the alumni network helped me land my first role at Google.",
-  },
-  {
-    id: 2,
-    name: "Ravi Das",
-    batch: "2017",
-    role: "Senior Manager — TCS",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80",
-    quote:
-      "Mentoring students is a great way to give back. The placement office is responsive and organized.",
-  },
-  {
-    id: 3,
-    name: "Mina Roy",
-    batch: "2019",
-    role: "Founder — Healthtech",
-    image:
-      "https://images.unsplash.com/photo-1545996124-1b7b9d3f9b1b?w=800&q=80",
-    quote:
-      "I found cofounders and first hires through alumni meetups — real value in these events.",
-  },
-  {
-    id: 4,
-    name: "Arjun K",
-    batch: "2016",
-    role: "Project Manager — Infosys",
-    image:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=800&q=80",
-    quote:
-      "Events and meetups helped me build a strong professional network across cities.",
-  },
-  {
-    id: 5,
-    name: "Sree Banerjee",
-    batch: "2015",
-    role: "Hardware Architect — Startup",
-    image:
-      "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=800&q=80",
-    quote:
-      "The alumni community is active, supportive and always willing to help students and fellow alumni.",
-  },
-];
+// const testimonials = [
+//   {
+//     id: 1,
+//     name: "Asha Sen",
+//     batch: "2018",
+//     role: "Software Engineer — Google",
+//     image:
+//       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80",
+//     quote:
+//       "IIE Kalyani prepared me for industry — the alumni network helped me land my first role at Google.",
+//   },
+//   {
+//     id: 2,
+//     name: "Ravi Das",
+//     batch: "2017",
+//     role: "Senior Manager — TCS",
+//     image:
+//       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80",
+//     quote:
+//       "Mentoring students is a great way to give back. The placement office is responsive and organized.",
+//   },
+//   {
+//     id: 3,
+//     name: "Mina Roy",
+//     batch: "2019",
+//     role: "Founder — Healthtech",
+//     image:
+//       "https://images.unsplash.com/photo-1545996124-1b7b9d3f9b1b?w=800&q=80",
+//     quote:
+//       "I found cofounders and first hires through alumni meetups — real value in these events.",
+//   },
+//   {
+//     id: 4,
+//     name: "Arjun K",
+//     batch: "2016",
+//     role: "Project Manager — Infosys",
+//     image:
+//       "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=800&q=80",
+//     quote:
+//       "Events and meetups helped me build a strong professional network across cities.",
+//   },
+//   {
+//     id: 5,
+//     name: "Sree Banerjee",
+//     batch: "2015",
+//     role: "Hardware Architect — Startup",
+//     image:
+//       "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=800&q=80",
+//     quote:
+//       "The alumni community is active, supportive and always willing to help students and fellow alumni.",
+//   },
+// ];
 
 /* CSV export from earlier */
 function _exportToCsv(filename: string, rows: Record<string, unknown>[]) {

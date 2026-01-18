@@ -1,14 +1,14 @@
 import Link from "next/link";
 import {
   LuBookOpen,
-  LuBrain,
+  // LuBrain,
   LuBuilding2,
-  LuCog,
+  // LuCog,
   LuGraduationCap,
-  LuLaptop,
-  LuStar,
-  LuUsers,
-  LuZap,
+  // LuLaptop,
+  // LuStar,
+  // LuUsers,
+  // LuZap,
 } from "react-icons/lu";
 import { MotionArticle } from "@/components/animated/motion";
 import { Card } from "@/components/ui/card";

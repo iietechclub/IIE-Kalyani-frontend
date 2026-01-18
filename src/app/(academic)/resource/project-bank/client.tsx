@@ -1,13 +1,12 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import type { IconType } from "react-icons";
 import {
   LuBookOpen,
-  LuCode,
-  LuCpu,
-  LuDatabase,
-  LuNetwork,
-  LuSmartphone,
+  // LuCode,
+  // LuCpu,
+  // LuDatabase,
+  // LuNetwork,
+  // LuSmartphone,
   LuX,
 } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
