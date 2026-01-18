@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { LuClipboardCheck } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
 import BackendImage from "@/components/BackendImage";
+import { cn } from "@/lib/utils";
 
 // -------------------------
 // DepartmentBarChart
@@ -240,6 +241,7 @@ function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
 // Main PlacementRecordPageClient
 // -------------------------
 export default function PlacementRecordPageClient({
+  departments,
   companies,
 }: PlacementRecordPageData) {
   // Data: yearly stats + per-department placement rows (sample records)
@@ -257,7 +259,6 @@ export default function PlacementRecordPageClient({
       },
       departments: {
         "Computer Science & Engineering": {
-          count: 6,
           rows: [
             {
               sl: 1,
@@ -298,7 +299,6 @@ export default function PlacementRecordPageClient({
           ],
         },
         "Electrical Engineering": {
-          count: 4,
           rows: [
             {
               sl: 1,
@@ -327,7 +327,6 @@ export default function PlacementRecordPageClient({
           ],
         },
         "Mechanical Engineering": {
-          count: 5,
           rows: [
             {
               sl: 1,
@@ -363,77 +362,13 @@ export default function PlacementRecordPageClient({
         },
 
         "Artificial Intelligence & Machine Learning": {
-          count: 8,
           rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
         },
         "Electronics & Communication": {
-          count: 6,
           rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
         },
         "Civil Engineering": {
-          count: 6,
           rows: [{ sl: 1, name: "Nil", position: "CEO", company: "-" }],
-        },
-      },
-    },
-    {
-      year: "2023",
-      stats: {
-        totalStudents: 420,
-        studentsPlaced: 370,
-        placementPercentage: 88,
-        highestPackage: "16 LPA",
-        averagePackage: "6.2 LPA",
-        companiesVisited: 78,
-        medianSalary: "6.0 LPA",
-      },
-      departments: {
-        "Computer Science & Engineering": {
-          count: 5,
-          rows: [
-            {
-              sl: 1,
-              name: "A. Example",
-              stream: "CSE",
-              company: "Example Co",
-            },
-          ],
-        },
-        "Electrical Engineering": {
-          count: 3,
-          rows: [
-            {
-              sl: 1,
-              name: "B. Example",
-              stream: "EE",
-              company: "Example Co",
-            },
-          ],
-        },
-      },
-    },
-    {
-      year: "2022",
-      stats: {
-        totalStudents: 400,
-        studentsPlaced: 340,
-        placementPercentage: 85,
-        highestPackage: "15 LPA",
-        averagePackage: "5.8 LPA",
-        companiesVisited: 72,
-        medianSalary: "5.6 LPA",
-      },
-      departments: {
-        "Computer Science & Engineering": {
-          count: 4,
-          rows: [
-            {
-              sl: 1,
-              name: "X Y",
-              stream: "CSE",
-              company: "CoX",
-            },
-          ],
         },
       },
     },
@@ -749,24 +684,15 @@ export default function PlacementRecordPageClient({
     "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1800&q=80";
 
   // UI state
-  const [activeYear, setActiveYear] = useState(yearlyStats[0].year);
-  const [activeDeptByYear, setActiveDeptByYear] = useState<
-    Record<string, string | null>
-  >(() => {
-    const map: Record<string, string | null> = {};
-    yearlyStats.forEach((y) => {
-      const firstDept = Object.keys(y.departments)[0] ?? null;
-      map[y.year] = firstDept;
-    });
-    return map;
-  });
+  const [activeDept, setActiveDept] = useState<string | null>(
+    departments[0].documentId ?? null,
+  );
 
   const [query, _setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [showOnlyTop, _setShowOnlyTop] = useState(false);
   const [cols, setCols] = useState(4);
   const [showAll, setShowAll] = useState(false);
-  const [badImgs, setBadImgs] = useState(() => new Map());
 
   // Responsive columns
   useEffect(() => {
@@ -819,50 +745,32 @@ export default function PlacementRecordPageClient({
   const itemsPerPage = cols * 3;
   const visibleItems = showAll ? filtered : filtered.slice(0, itemsPerPage);
 
-  // Initials fallback generator
-  const initials = (name: string) => {
-    if (!name) return "";
-    const parts = name.split(" ").filter(Boolean);
-    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-    return (parts[0][0] + (parts[1] ? parts[1][0] : "")).toUpperCase();
-  };
-
-  function handleImgError(name: string) {
-    setBadImgs((m: Map<string, boolean>) => {
-      const nm = new Map(m);
-      nm.set(name, true);
-      return nm;
-    });
-  }
-
   // Helpers to access current data
-  const currentYearObj =
-    yearlyStats.find((y) => y.year === activeYear) ?? yearlyStats[0];
-  const departmentsForActiveYear = Object.entries(
-    currentYearObj.departments,
-  ).map(([dept, info]) => ({ dept, ...info }));
+  const departmentsMap: Record<string, DepartmentPlacement> =
+    departments.reduce((o, d) => ({ ...o, [d.documentId]: d }), {});
 
   // Render table rows matching the image style
-  function DepartmentTable({ deptKey }: { deptKey: string | null }) {
-    if (!deptKey) {
+  function DepartmentTable({
+    deptData,
+  }: {
+    deptData: DepartmentPlacement | null;
+  }) {
+    if (!deptData) {
       return (
         <div className="p-6 text-muted-foreground text-sm">
           No department selected.
         </div>
       );
     }
-    const deptData =
-      currentYearObj.departments[
-        deptKey as keyof typeof currentYearObj.departments
-      ];
-    if (!deptData) {
+
+    if (!deptData.placement_data) {
       return (
         <div className="p-6 text-muted-foreground text-sm">
-          No records available for {deptKey} in {activeYear}.
+          No records available for {deptData.name}.
         </div>
       );
     }
-    const rows = deptData.rows || [];
+    const rows = deptData.placement_data.table.rows;
 
     return (
       <div className="overflow-x-auto">
@@ -894,16 +802,12 @@ export default function PlacementRecordPageClient({
                 </td>
               </tr>
             ) : (
-              // biome-ignore lint/suspicious/noExplicitAny: needed
-              rows.map((r: any) => (
-                <tr key={r.sl} className="odd:bg-white even:bg-rose-50">
-                  <td className="border-t px-4 py-3">{r.sl}</td>
-                  <td className="border-t px-4 py-3">{r.name}</td>
-                  <td className="border-t px-4 py-3">
-                    {/** biome-ignore lint/suspicious/noExplicitAny: needed */}
-                    {(r as any).position || (r as any).stream || "-"}
-                  </td>
-                  <td className="border-t px-4 py-3">{r.company}</td>
+              rows.map((cols) => (
+                <tr key={cols[0]} className="odd:bg-white even:bg-rose-50">
+                  <td className="border-t px-4 py-3">{cols[0]}</td>
+                  <td className="border-t px-4 py-3">{cols[1]}</td>
+                  <td className="border-t px-4 py-3">{cols[2] || "-"}</td>
+                  <td className="border-t px-4 py-3">{cols[3]}</td>
                 </tr>
               ))
             )}
@@ -913,22 +817,20 @@ export default function PlacementRecordPageClient({
     );
   }
 
-  console.log(companies);
-
   return (
-    <div className="min-h-screen bg-neutral-50 text-slate-900">
+    <main className="min-h-screen bg-neutral-50 text-slate-900">
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="h-[360px] w-full bg-center bg-cover opacity-75 md:h-[420px]"
+            className="h-[360px] w-full bg-center bg-cover md:h-[420px]"
             style={{ backgroundImage: `url(${heroImage})` }}
             aria-hidden
           />
-          <div className="absolute inset-0 bg-linear-to-b from-rose-600/70 to-black/10" />
+          <div className="absolute inset-0 bg-linear-to-r from-primary to-transparent" />
         </div>
 
-        <div className="relative mx-auto mt-20 flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
+        <div className="relative mx-auto mt-12 mb-6 flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
           <div className="z-10 flex-1 text-center text-white lg:text-left">
             <MotionDiv
               initial={{ y: 8, opacity: 0 }}
@@ -936,12 +838,11 @@ export default function PlacementRecordPageClient({
               transition={{ duration: 0.6 }}
             >
               <div className="mb-6 inline-flex items-center gap-4 rounded-xl p-3">
-                <LuClipboardCheck className="h-12 w-12 text-white" />
+                <LuClipboardCheck className="size-12 text-white" />
                 <div className="text-left">
                   <h1 className="text-3xl md:text-4xl">Placement Statistics</h1>
                   <p className="text-sm text-white/90 md:text-base">
-                    Year-wise records, department performance and placement
-                    highlights
+                    Department performance and placement highlights
                   </p>
                 </div>
               </div>
@@ -950,82 +851,65 @@ export default function PlacementRecordPageClient({
         </div>
       </header>
 
-      {/* Year tabs + department pills + table */}
+      {/* Department pills + table */}
       <section className="container mx-auto px-4 py-8">
         <div className="mx-auto max-w-6xl">
           <h2 className="mb-6 text-center font-bold text-[48px] text-[rgba(255,0,0,0.8)] text-xl">
-            Year-wise Placement Records
+            Placement Records
           </h2>
-
-          {/* Year selectors (tabs look) */}
-          <div className="mb-6 flex items-center justify-center gap-3">
-            {yearlyStats.map((y: (typeof yearlyStats)[0]) => (
-              <button
-                type="button"
-                key={y.year}
-                onClick={() => setActiveYear(y.year)}
-                className={`rounded-lg px-4 py-2 text-sm ${activeYear === y.year ? "bg-white text-rose-600 shadow" : "bg-rose-50 text-rose-700/80"}`}
-              >
-                {y.year}
-              </button>
-            ))}
-          </div>
 
           {/* Department pills row */}
           <div className="mb-6 w-full py-3">
             <div className="flex w-full flex-wrap items-center gap-3">
-              {departmentsForActiveYear.map(
-                (d: (typeof departmentsForActiveYear)[0]) => {
-                  const selected = activeDeptByYear[activeYear] === d.dept;
-                  return (
-                    <button
-                      type="button"
-                      key={d.dept}
-                      onClick={() =>
-                        setActiveDeptByYear(
-                          (prev: Record<string, string | null>) => ({
-                            ...prev,
-                            [activeYear]: d.dept,
-                          }),
-                        )
-                      }
-                      className={`flex max-w-full items-center gap-3 rounded-full px-4 py-2 text-sm transition ${
-                        selected
-                          ? "bg-white text-rose-600 shadow-sm ring-1 ring-rose-200"
-                          : "bg-rose-50 text-rose-700/90"
-                      }`}
-                    >
-                      <span className="max-w-40 truncate">{d.dept}</span>
-                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-rose-100 bg-white/90 text-rose-600 text-xs">
-                        {d.count}
-                      </span>
-                    </button>
-                  );
-                },
-              )}
+              {departments.map((d) => {
+                const selected = activeDept === d.documentId;
+                return (
+                  <button
+                    type="button"
+                    key={d.documentId}
+                    onClick={() => setActiveDept(d.documentId)}
+                    className={cn(
+                      "flex max-w-full items-center gap-3 rounded-full px-4 py-2 text-sm shadow-xs transition",
+                      selected
+                        ? "bg-white text-rose-600 shadow-sm ring-1 ring-rose-200"
+                        : "bg-rose-50 text-rose-700/90 ring ring-neutral-200/70",
+                    )}
+                  >
+                    <span className="truncate- max-w-40- shrink-0">
+                      {d.name}
+                    </span>
+                    {/* <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-rose-100 bg-white/90 text-rose-600 text-xs">
+                      {d.rows.length}
+                    </span> */}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Department table area */}
-          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <div className="mb-4">
+          <div className="p-6">
+            {/* <div className="mb-4">
               <div className="text-slate-600 text-sm">
-                Department: <strong>{activeDeptByYear[activeYear]}</strong>
+                Department: <strong>{activeDept}</strong>
               </div>
               <div className="text-slate-500 text-xs">
-                Batch: {activeYear} • Median Salary:{" "}
-                {currentYearObj.stats.medianSalary} • Offers:{" "}
-                {currentYearObj.stats.studentsPlaced}
+                Median Salary: {currentData.stats.medianSalary} • Offers:{" "}
+                {currentData.stats.studentsPlaced}
               </div>
-            </div>
+            </div> */}
 
-            <DepartmentTable deptKey={activeDeptByYear[activeYear]} />
+            <div className="rounded-2xl border border-gray-100 bg-white shadow-sm">
+              <DepartmentTable
+                deptData={activeDept ? departmentsMap[activeDept] : null}
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Department-wide chart */}
-      <section className="container mx-auto px-4 py-8">
+      {/* <section className="container mx-auto px-4 py-8">
         <div className="mx-auto max-w-7xl">
           <h2 className="mb-6 text-center font-bold text-[36px] text-[rgba(255,0,0,0.81)] text-xl">
             Department Wise Placement Graph
@@ -1034,7 +918,7 @@ export default function PlacementRecordPageClient({
             <DepartmentBarChart data={departmentStats} />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Recruiters section */}
       <section className="container mx-auto mt-6 px-4 pb-12">
@@ -1082,24 +966,14 @@ export default function PlacementRecordPageClient({
               >
                 {/* logo area */}
                 <div className="flex w-full items-center justify-center rounded-md border border-neutral-200/75 bg-white p-2 shadow-2xs transition hover:shadow">
-                  {badImgs.get(c.name) ? (
-                    <div className="flex h-20 w-28 items-center justify-center rounded-md border border-gray-200 bg-transparent">
-                      <span className="text-lg text-slate-700">
-                        {initials(c.name)}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="relative h-20 w-full p-4">
-                      <BackendImage
-                        fill
-                        src={c.image.url}
-                        alt={c.name}
-                        // onError={() => handleImgError(c.name)}
-                        // className="object-contain"
-                        // style={{ background: "transparent" }}
-                      />
-                    </div>
-                  )}
+                  <div className="relative h-20 w-full p-4">
+                    <BackendImage
+                      fill
+                      src={c.image.url}
+                      alt={c.name}
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
 
                 {/* Visit button */}
@@ -1136,6 +1010,6 @@ export default function PlacementRecordPageClient({
           )}
         </div>
       </section>
-    </div>
+    </main>
   );
 }

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { DiEnvato } from "react-icons/di";
 import {
   LuBookOpen,
   LuBrain,
@@ -11,11 +11,9 @@ import {
   LuUsers,
   LuZap,
 } from "react-icons/lu";
-
 import { MotionArticle } from "@/components/animated/motion";
 import { Card } from "@/components/ui/card";
 import DynamicIcon from "@/components/ui/dynamic-icon";
-
 import { fetchCoursesOfferedPageData } from "@/dal/courses-offered";
 import { cn } from "@/lib/utils";
 
@@ -51,7 +49,7 @@ export default async function CoursesOffered() {
   // const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-rose-50/30 font-nanito">
+    <main className="min-h-screen bg-linear-to-br from-gray-50 to-rose-50/30 font-nanito">
       {/* HERO */}
       <header className="relative bg-linear-to-r from-rose-600 to-red-600 py-14 text-white sm:py-18">
         <div className="pointer-events-none absolute inset-0 bg-black/6" />
@@ -99,7 +97,7 @@ export default async function CoursesOffered() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <DiEnvato className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* intro */}
         <section className="mb-10 text-center">
           <p className="mx-auto max-w-4xl text-gray-700 text-sm sm:text-base">
@@ -294,6 +292,36 @@ export default async function CoursesOffered() {
             {/* Cards grid */}
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {/* Card A */}
+              <div className="hover:-translate-y-3 relative transform-gpu transition-all duration-300 hover:rotate-1">
+                <div className="rounded-2xl border border-gray-100 bg-white/90 p-6 shadow-md backdrop-blur-md hover:shadow-xl">
+                  <div className="mb-4 flex items-center justify-center">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-indigo-500 to-rose-500 text-white shadow-inner">
+                      <LuBookOpen className="size-6" />
+                    </div>
+                  </div>
+
+                  <h3 className="text-center font-semibold text-gray-900 text-lg">
+                    MAKAUT Affiliated
+                  </h3>
+                  <p className="mt-2 text-center text-gray-600 text-sm">
+                    Degrees recognized across India with strong university
+                    collaboration.
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                    <span className="rounded-full border border-indigo-100 bg-indigo-50 px-2 py-1 text-[11px] text-indigo-700">
+                      Recognized
+                    </span>
+                    <span className="rounded-full border border-indigo-100 bg-indigo-50 px-2 py-1 text-[11px] text-indigo-700">
+                      Trusted
+                    </span>
+                  </div>
+                </div>
+
+                <div className="-left-6 -bottom-6 pointer-events-none absolute h-24 w-24 rounded-full bg-indigo-100/20 blur-3xl"></div>
+              </div>
+
+              {/* Card B */}
               <div className="hover:-translate-y-3 relative transform-gpu transition-all duration-300 hover:scale-[1.02]">
                 <div className="rounded-2xl border border-gray-100 bg-white/90 p-6 shadow-md backdrop-blur-md hover:shadow-xl">
                   <div className="mb-4 flex items-center justify-center">
@@ -322,36 +350,6 @@ export default async function CoursesOffered() {
 
                 {/* soft floating accent */}
                 <div className="-right-6 -top-6 pointer-events-none absolute h-20 w-20 rounded-full bg-rose-200/30 blur-2xl"></div>
-              </div>
-
-              {/* Card B */}
-              <div className="hover:-translate-y-3 relative transform-gpu transition-all duration-300 hover:rotate-1">
-                <div className="rounded-2xl border border-gray-100 bg-white/90 p-6 shadow-md backdrop-blur-md hover:shadow-xl">
-                  <div className="mb-4 flex items-center justify-center">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-indigo-500 to-rose-500 text-white shadow-inner">
-                      <LuBookOpen className="size-6" />
-                    </div>
-                  </div>
-
-                  <h3 className="text-center font-semibold text-gray-900 text-lg">
-                    MAKAUT Affiliated
-                  </h3>
-                  <p className="mt-2 text-center text-gray-600 text-sm">
-                    Degrees recognized across India with strong university
-                    collaboration.
-                  </p>
-
-                  <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                    <span className="rounded-full border border-indigo-100 bg-indigo-50 px-2 py-1 text-[11px] text-indigo-700">
-                      Recognized
-                    </span>
-                    <span className="rounded-full border border-indigo-100 bg-indigo-50 px-2 py-1 text-[11px] text-indigo-700">
-                      Trusted
-                    </span>
-                  </div>
-                </div>
-
-                <div className="-left-6 -bottom-6 pointer-events-none absolute h-24 w-24 rounded-full bg-indigo-100/20 blur-3xl"></div>
               </div>
 
               {/* Card C */}
@@ -386,8 +384,8 @@ export default async function CoursesOffered() {
             </div>
           </div>
         </section>
-      </main>
-    </div>
+      </DiEnvato>
+    </main>
   );
 }
 

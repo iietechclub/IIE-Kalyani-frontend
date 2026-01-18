@@ -65,6 +65,16 @@ type DepartmentCourse = prettify<
       tagline: string;
     }
 >;
+type DepartmentFaculty = prettify<
+  CollectionType &
+    DepartmentNameOnly & {
+      hod: CollectionType;
+      faculties: Faculty[];
+    }
+>;
+type DepartmentPlacement = prettify<
+  CollectionType & DepartmentNameOnly & { placement_data: PlacementData }
+>;
 type DepartmentShort = prettify<
   CollectionType &
     DepartmentNameOnly &
@@ -73,13 +83,6 @@ type DepartmentShort = prettify<
       tagline: string;
       previewImage: Media;
       icon?: IconField;
-    }
->;
-type DepartmentFaculty = prettify<
-  CollectionType &
-    DepartmentNameOnly & {
-      hod: CollectionType;
-      faculties: Faculty[];
     }
 >;
 type Department = prettify<
@@ -176,6 +179,13 @@ type Menu = prettify<
     image?: Media;
     image_title?: string;
     image_subtitle?: string;
+  }
+>;
+
+type PlacementData = prettify<
+  CollectionType & {
+    table: TableData;
+    student_placement_percentage: number;
   }
 >;
 

@@ -265,7 +265,8 @@ function TestimonialsCarousel({ members }: { members: AlumniMember[] }) {
                             {t.name}
                           </div>
                           <div className="text-slate-700 text-xs">
-                            {t.position} • Batch {t.batch}
+                            {t.company?.short_name} — {t.position} • Batch{" "}
+                            {t.batch}
                           </div>
                         </div>
                       </div>
