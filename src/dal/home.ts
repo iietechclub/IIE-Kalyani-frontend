@@ -44,6 +44,7 @@ export const fetchHomePageData = cache(async () => {
       }
 
       our_recruiters_tagline
+      our_recruiters_apply_now { url newTab }
       our_recruiters_avg_offers
       our_recruiters_internship_offers
       our_recruiters_avg_ctc

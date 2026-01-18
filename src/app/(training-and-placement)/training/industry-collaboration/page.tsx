@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import {
   LuAward,
-  LuChevronDown,
+  // LuChevronDown,
   LuClipboardCheck,
   LuLightbulb,
   LuRocket,
@@ -10,7 +10,12 @@ import {
   LuUsers,
 } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
-import { cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 // IndustryCollaboration.jsx — Examination-style hero + existing content
 export default function IndustryCollaboration() {
@@ -144,7 +149,7 @@ export default function IndustryCollaboration() {
 
   // UI state
   const [query, _setQuery] = useState("");
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  // const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [_partnerFilter, _setPartnerFilter] = useState("All");
   const _partnerCategories = useMemo(() => ["All", ...partners], []);
 
@@ -164,7 +169,7 @@ export default function IndustryCollaboration() {
   const _pdfHref = "/assets/industry-partners-brochure.pdf"; // change to your MoU/partners pdf
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-black">
+    <main className="min-h-screen bg-neutral-50 text-black">
       {/* Hero*/}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
@@ -286,7 +291,7 @@ export default function IndustryCollaboration() {
           <h2 className="mb-6 text-center font-semibold text-xl">
             Collaboration Initiatives
           </h2>
-          <div className="space-y-3">
+          <Accordion type="single" className="space-y-1" collapsible>
             {initiatives.map((it, i) => (
               <MotionDiv
                 key={it.title}
@@ -294,9 +299,19 @@ export default function IndustryCollaboration() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.04 * i }}
-                className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm"
+                className={
+                  "overflow-hidden rounded-lg border border-gray-100 bg-white px-5 shadow-sm"
+                }
               >
-                <button
+                <AccordionItem value={`item-${i}`}>
+                  <AccordionTrigger className="text-base hover:no-underline">
+                    {it.title}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-neutral-700">
+                    {it.description}
+                  </AccordionContent>
+                </AccordionItem>
+                {/* <button
                   type="button"
                   onClick={() => setOpenIdx(openIdx === i ? null : i)}
                   className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
@@ -305,29 +320,29 @@ export default function IndustryCollaboration() {
                     <div className="font-semibold">{it.title}</div>
                     <div className="mt-1 text-slate-500 text-xs">
                       {it.description.slice(0, 80)}...
-                    </div>
+                      </div>
                   </div>
                   <LuChevronDown
                     className={cn(
                       "size-5 text-slate-500 transition-transform",
                       openIdx === i && "rotate-180",
-                    )}
+                      )}
                   />
                 </button>
-
+                
                 <div
                   className={cn(
                     openIdx === i ? "max-h-screen p-5" : "max-h-0 p-0",
                     "bg-white/50 text-slate-700 text-sm transition-[max-height] duration-300",
-                  )}
-                >
-                  <p>{it.description}</p>
-                </div>
+                    )}
+                    >
+                    <p>{it.description}</p>
+                    </div> */}
               </MotionDiv>
             ))}
-          </div>
+          </Accordion>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

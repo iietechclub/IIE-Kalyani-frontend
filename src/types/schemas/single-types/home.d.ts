@@ -14,6 +14,7 @@ type HomePageData = {
   gallery_items: GalleryItem[];
 
   our_recruiters_tagline: string;
+  our_recruiters_apply_now?: Url;
   our_recruiters_avg_offers: number;
   our_recruiters_internship_offers: number;
   our_recruiters_avg_ctc: number;
