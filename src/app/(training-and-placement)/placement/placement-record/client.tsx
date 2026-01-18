@@ -1,239 +1,86 @@
 "use client";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { LuClipboardCheck } from "react-icons/lu";
+import {
+  Bar,
+  BarChart,
+  Cell,
+  LabelList,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+} from "recharts";
 import { MotionDiv } from "@/components/animated/motion";
 import BackendImage from "@/components/BackendImage";
 import { cn } from "@/lib/utils";
 
 // -------------------------
-// DepartmentBarChart
+// DepartmentBarChart (Recharts)
 // -------------------------
 interface DepartmentData {
   dept: string;
-  placed: number;
-  total: number;
   percentage: number;
 }
 
-function DepartmentBarChart({ data }: { data: DepartmentData[] }) {
-  const padding = { top: 20, right: 24, bottom: 80, left: 56 };
-  const svgHeight = 380;
-  const svgWidth = 1100;
-  const chartHeight = svgHeight - padding.top - padding.bottom;
-  const barGap = 22;
-  const barCount = data.length;
-  const fullWidth = svgWidth - padding.left - padding.right;
-  const barWidth = Math.max(
-    34,
-    Math.floor((fullWidth - (barCount - 1) * barGap) / barCount),
-  );
-  const [progress, setProgress] = useState(0);
-  const rafRef = useRef<number | null>(null);
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: needed
-  useEffect(() => {
-    let start: number | null = null;
-    const duration = 900;
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const t = Math.min(1, (timestamp - start) / duration);
-      const eased = 1 - (1 - t) ** 3;
-      setProgress(eased);
-      if (t < 1) rafRef.current = requestAnimationFrame(step);
-    };
-    rafRef.current = requestAnimationFrame(step);
-    return () => {
-      if (rafRef.current !== null) {
-        cancelAnimationFrame(rafRef.current);
-      }
-    };
-  }, [data]);
-
-  const [hover, setHover] = useState({
-    idx: -1,
-    x: 0,
-    y: 0,
-    visible: false,
-  });
-  const steps = 5;
-  const gridVals = Array.from({ length: steps + 1 }, (_, i) =>
-    Math.round((100 * i) / steps),
-  );
-  const gradientId = "deptBarGrad";
+function DepartmentBarChart({ data }: { data: DepartmentPlacement[] }) {
+  const chartData: DepartmentData[] = data
+    .filter((dept) => !!dept.placement_data)
+    .map((dept) => ({
+      dept: dept.name,
+      percentage: dept.placement_data?.students_placement_percentage ?? 0,
+    }));
 
   return (
-    <div className="relative">
-      <svg
-        viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        preserveAspectRatio="xMidYMid meet"
-        className="h-[380px] w-full md:h-[420px]"
-        role="img"
-        aria-label="Department placement percentage chart"
+    <ResponsiveContainer width="100%" height={420}>
+      <BarChart
+        data={chartData}
+        margin={{ top: 30, right: 20, left: 20, bottom: 20 }}
+        barCategoryGap="15%"
       >
         <defs>
-          <linearGradient id={gradientId} x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#fb7185" stopOpacity="1" />
-            <stop offset="70%" stopColor="#f43f5e" stopOpacity="1" />
-            <stop offset="100%" stopColor="#ef4444" stopOpacity="1" />
+          <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#fb7185" />
+            <stop offset="100%" stopColor="#f43f5e" />
           </linearGradient>
-
-          <filter id="barShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow
-              dx="0"
-              dy="6"
-              stdDeviation="12"
-              floodColor="#f43f5e"
-              floodOpacity="0.12"
-            />
-          </filter>
         </defs>
-
-        {/* grid and left axis */}
-        <g transform={`translate(${padding.left}, ${padding.top})`}>
-          {gridVals.map((gv, idx) => {
-            const y = chartHeight - (gv / 100) * chartHeight;
-            return (
-              // biome-ignore lint/suspicious/noArrayIndexKey: not needed
-              <g key={idx}>
-                <line
-                  x1={-padding.left}
-                  x2={svgWidth - padding.right - padding.left}
-                  y1={y}
-                  y2={y}
-                  stroke="#e6e6f0"
-                  strokeDasharray="4 6"
-                />
-                <text
-                  x={-12 - padding.left}
-                  y={y + 4}
-                  fontSize="12"
-                  fill="#6b7280"
-                  textAnchor="end"
-                >
-                  {gv}%
-                </text>
-              </g>
-            );
-          })}
-        </g>
-
-        {/* bars */}
-        <g transform={`translate(${padding.left}, ${padding.top})`}>
-          {data.map((d: DepartmentData, i: number) => {
-            const x = i * (barWidth + barGap);
-            const targetHeight = (d.percentage / 100) * chartHeight;
-            const barHeight = Math.max(3, targetHeight * progress);
-            const y = chartHeight - barHeight;
-            const rx = 8;
-
-            return (
-              <g key={d.dept} transform={`translate(${x}, 0)`}>
-                {/** biome-ignore lint/a11y/noStaticElementInteractions: needed */}
-                <rect
-                  x={-8}
-                  y={0}
-                  width={barWidth + 16}
-                  height={chartHeight}
-                  fill="transparent"
-                  onMouseEnter={() =>
-                    setHover({
-                      idx: i,
-                      x: x + barWidth / 2 + padding.left,
-                      y: y + padding.top,
-                      visible: true,
-                    })
-                  }
-                  onMouseMove={(e) =>
-                    setHover({
-                      idx: i,
-                      x: e.clientX,
-                      y: e.clientY,
-                      visible: true,
-                    })
-                  }
-                  onMouseLeave={() =>
-                    setHover({
-                      idx: -1,
-                      x: 0,
-                      y: 0,
-                      visible: false,
-                    })
-                  }
-                  style={{ cursor: "pointer" }}
-                />
-
-                <rect
-                  x={0}
-                  y={y}
-                  width={barWidth}
-                  height={barHeight}
-                  rx={rx}
-                  fill={`url(#${gradientId})`}
-                  filter="url(#barShadow)"
-                  style={{
-                    transition: "height 350ms ease, y 350ms ease",
-                  }}
-                />
-
-                <text
-                  x={barWidth / 2}
-                  y={Math.max(14, y - 10)}
-                  fontSize="12"
-                  fill="#374151"
-                  fontWeight="600"
-                  textAnchor="middle"
-                >
-                  {Math.round(d.percentage)}%
-                </text>
-
-                <text
-                  x={barWidth / 2}
-                  y={chartHeight + 20}
-                  fontSize="12"
-                  fill="#374151"
-                  textAnchor="middle"
-                >
-                  {d.dept.length > 20 ? `${d.dept.slice(0, 20)}…` : d.dept}
-                </text>
-              </g>
-            );
-          })}
-        </g>
-
-        <line
-          x1={padding.left - 6}
-          x2={svgWidth - padding.right}
-          y1={svgHeight - padding.bottom + 8}
-          y2={svgHeight - padding.bottom + 8}
-          stroke="#d1d5db"
+        <XAxis
+          dataKey="dept"
+          tick={{ fill: "#374151", fontSize: 12 }}
+          tickLine={false}
+          axisLine={false}
+          interval={0}
+          tickFormatter={(value) =>
+            value.length > 20 ? `${value.slice(0, 18)}...` : value
+          }
         />
-      </svg>
-
-      {hover.visible && hover.idx >= 0 && (
-        <div
-          className="pointer-events-none absolute z-50"
-          style={{
-            left: hover.x,
-            top: Math.max(hover.y - 24, 40),
-            transform: "translate(-50%, -100%)",
-            transition: "top 120ms ease",
+        <Tooltip
+          cursor={{ fill: "rgba(244, 63, 94, 0.08)" }}
+          contentStyle={{
+            backgroundColor: "white",
+            border: "1px solid #e5e7eb",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
           }}
+          formatter={(value) => [`${value}% placed`, ""]}
+          labelStyle={{ fontWeight: 600, color: "#374151" }}
+        />
+        <Bar
+          dataKey="percentage"
+          radius={[8, 8, 0, 0]}
+          fill="url(#barGradient)"
         >
-          <div
-            style={{ minWidth: 140 }}
-            className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-gray-800 text-sm shadow-lg"
-          >
-            <div className="font-semibold">{data[hover.idx].dept}</div>
-            <div className="font-medium text-rose-600">
-              {data[hover.idx].percentage}% placed
-            </div>
-            <div className="mt-1 text-gray-500 text-xs">
-              Placed: {data[hover.idx].placed} / {data[hover.idx].total}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+          <LabelList
+            dataKey="percentage"
+            position="top"
+            formatter={(value) => `${value}%`}
+            style={{ fill: "#374151", fontWeight: 600, fontSize: 13 }}
+          />
+          {data.map((entry) => (
+            <Cell key={entry.name} fill="url(#barGradient)" />
+          ))}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
 
@@ -909,16 +756,16 @@ export default function PlacementRecordPageClient({
       </section>
 
       {/* Department-wide chart */}
-      {/* <section className="container mx-auto px-4 py-8">
-        <div className="mx-auto max-w-7xl">
+      <section className="container mx-auto px-4 py-8">
+        <div className="mx-auto max-w-5xl">
           <h2 className="mb-6 text-center font-bold text-[36px] text-[rgba(255,0,0,0.81)] text-xl">
             Department Wise Placement Graph
           </h2>
           <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <DepartmentBarChart data={departmentStats} />
+            <DepartmentBarChart data={departments} />
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Recruiters section */}
       <section className="container mx-auto mt-6 px-4 pb-12">

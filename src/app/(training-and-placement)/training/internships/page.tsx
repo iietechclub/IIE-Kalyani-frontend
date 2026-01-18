@@ -71,7 +71,7 @@ const processSteps = [
   },
 ];
 
-export default function InternshipsFocused() {
+export default function InternshipsPage() {
   return (
     <main className="min-h-screen bg-linear-to-b from-neutral-50 to-white">
       {/* Focused Hero */}
@@ -114,7 +114,7 @@ export default function InternshipsFocused() {
         </div>
       </header>
 
-      <div className="mx-auto mt-12 max-w-7xl px-6">
+      <div className="mx-auto mt-12 mb-24 max-w-7xl px-6">
         {/* Value proposition / Benefits */}
         <section className="-mt-8 p-8 md:p-12">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
@@ -227,7 +227,7 @@ export default function InternshipsFocused() {
         </section>
 
         {/* CTA Strip */}
-        <section id="apply" className="mt-16 mb-24">
+        {/* <section id="apply" className="mt-16">
           <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-gray-100 bg-linear-to-r from-rose-50 to-white p-6 shadow-xl md:flex-row md:p-8">
             <div className="max-w-xl">
               <h3 className="font-bold text-xl md:text-2xl">
@@ -248,7 +248,7 @@ export default function InternshipsFocused() {
               </a>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
     </main>
   );

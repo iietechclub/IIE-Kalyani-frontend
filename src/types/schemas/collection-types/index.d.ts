@@ -73,7 +73,7 @@ type DepartmentFaculty = prettify<
     }
 >;
 type DepartmentPlacement = prettify<
-  CollectionType & DepartmentNameOnly & { placement_data: PlacementData }
+  CollectionType & DepartmentNameOnly & { placement_data?: PlacementData }
 >;
 type DepartmentShort = prettify<
   CollectionType &
@@ -185,7 +185,7 @@ type Menu = prettify<
 type PlacementData = prettify<
   CollectionType & {
     table: TableData;
-    student_placement_percentage: number;
+    students_placement_percentage: number;
   }
 >;
 

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { DiEnvato } from "react-icons/di";
 import {
   LuBookOpen,
   LuBrain,
@@ -97,7 +96,7 @@ export default async function CoursesOffered() {
         </div>
       </header>
 
-      <DiEnvato className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* intro */}
         <section className="mb-10 text-center">
           <p className="mx-auto max-w-4xl text-gray-700 text-sm sm:text-base">
@@ -384,7 +383,7 @@ export default async function CoursesOffered() {
             </div>
           </div>
         </section>
-      </DiEnvato>
+      </div>
     </main>
   );
 }
