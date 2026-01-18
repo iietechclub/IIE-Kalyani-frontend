@@ -182,6 +182,14 @@ type Menu = prettify<
   }
 >;
 
+type Notice = prettify<
+  CollectionType & {
+    title: string;
+    document: Media;
+    posted_on: string;
+  }
+>;
+
 type PlacementData = prettify<
   CollectionType & {
     table: TableData;
@@ -218,6 +226,7 @@ type SocialLink = prettify<
   }
 >;
 
+type StudentAchievementImageOnly = prettify<CollectionType & { image: Media }>;
 type StudentAchievement = prettify<
   CollectionType & {
     image: Media;
