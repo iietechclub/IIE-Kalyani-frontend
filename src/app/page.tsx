@@ -44,6 +44,7 @@ export default async function Home() {
             avg_ctc: home.our_recruiters_avg_ctc,
             recruiting_sectors: home.our_recruiters_recruiting_sectors,
             companies: placementRecord.companies,
+            apply_now: home.our_recruiters_apply_now,
           }}
         />
         {/* <EventScheduleNotices /> */}

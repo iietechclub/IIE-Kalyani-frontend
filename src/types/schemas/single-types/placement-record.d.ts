@@ -1,5 +1,6 @@
 // biome-ignore-all lint/correctness/noUnusedVariables: Globally used
 
-type PlacementRecord = {
+type PlacementRecordPageData = {
+  departments: DepartmentPlacement[];
   companies: Company[];
 };

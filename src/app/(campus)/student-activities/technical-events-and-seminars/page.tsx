@@ -1,23 +1,21 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import { LuCalendar, LuCpu } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
+import BackendImage from "@/components/BackendImage";
 import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { fetchTechnicalEventsAndSeminarsPageData } from "@/dal/technical-events-and-seminars";
 
-type EventType = {
-  id?: string;
-  title: string;
-  image: string;
-  date?: string;
-  dateLabel?: string;
-  description?: string;
-  venue?: string;
-  tags?: string[];
-};
+// type EventType = {
+//   id?: string;
+//   title: string;
+//   image: string;
+//   date?: string;
+//   dateLabel?: string;
+//   description?: string;
+//   venue?: string;
+//   tags?: string[];
+// };
 /**
  * TechnicalEventsPage.jsx
  * - Hero preserved
@@ -27,133 +25,130 @@ type EventType = {
  * - Event details modal
  */
 
-export default function TechnicalEventsPage() {
-  const upcomingEvents = [
-    {
-      id: "techfest-2025",
-      title: "Hands-on Workshop at Webel Technology Limited (WTL)",
-      date: "April 19, 2024",
-      dateLabel: "19 April 2024",
-      description:
-        "A 3-day technical extravaganza featuring paper presentations, workshops and industry panels. Students and professionals come together to showcase innovations, attend hands-on workshops and participate in competitions.",
-      category: "Symposium",
-      image:
-        "(campus)/student-activities/technical-events-and-seminars/event_card1.jpg",
-      participants: "500+",
-      tags: ["Paper Presentations", "Workshops", "Competitions"],
-      venue: "Main Auditorium",
-      speakers: ["Dr. A. Expert", "Ms. Industry Lead"],
-    },
-    {
-      id: "ml-ai-2025",
-      title: "Global Entrepreneurship Summit ’25 at IIT Kharagpur",
-      date: "February 7-9, 2025",
-      dateLabel: "7-9 February 2025",
-      description:
-        "Applied workshop on ML & AI fundamentals with hands-on model-building, evaluation and deployment. Work on real datasets with industry mentors.",
-      category: "Workshop",
-      image:
-        "(campus)/student-activities/technical-events-and-seminars/event_card2.jpeg",
-      participants: "120",
-      tags: ["Hands-on", "ML", "Deep Learning"],
-      venue: "Computer Lab 1",
-      speakers: ["AI Specialist"],
-    },
-    {
-      id: "web-bootcamp-2025",
-      title: "Tata Social Enterprise Challenge 2025 | IIM Calcutta",
-      date: "May 10-12, 2025",
-      dateLabel: "10-12 May 2025",
-      description:
-        "3-day intensive bootcamp covering modern frontend & backend stacks, deployment pipelines and performance best practices.",
-      category: "Workshop",
-      image:
-        "(campus)/student-activities/technical-events-and-seminars/event_card5.jpg",
-      participants: "150",
-      tags: ["Full-stack", "React", "Node.js"],
-      venue: "Computer Lab 2",
-      speakers: ["Fullstack Dev"],
-    },
-    {
-      id: "iot-2025",
-      title: "IoT & Embedded Systems Intensive",
-      date: "June 5-7, 2025",
-      dateLabel: "5-7 June 2025",
-      description:
-        "Hands-on sessions covering sensors, microcontrollers (Arduino/RPi), and cloud integration. Build a prototype during the workshop.",
-      category: "Workshop",
-      image:
-        "(campus)/student-activities/technical-events-and-seminars/event_card4.jpg",
-      participants: "80",
-      tags: ["IoT", "Embedded", "Hardware"],
-      venue: "Electronics Lab",
-      speakers: ["IoT Specialist"],
-    },
-  ];
+export default async function TechnicalEventsPage() {
+  // const upcomingEvents = [
+  //   {
+  //     id: "techfest-2025",
+  //     title: "Hands-on Workshop at Webel Technology Limited (WTL)",
+  //     date: "April 19, 2024",
+  //     dateLabel: "19 April 2024",
+  //     description:
+  //       "A 3-day technical extravaganza featuring paper presentations, workshops and industry panels. Students and professionals come together to showcase innovations, attend hands-on workshops and participate in competitions.",
+  //     category: "Symposium",
+  //     image:
+  //       "(campus)/student-activities/technical-events-and-seminars/event_card1.jpg",
+  //     participants: "500+",
+  //     tags: ["Paper Presentations", "Workshops", "Competitions"],
+  //     venue: "Main Auditorium",
+  //     speakers: ["Dr. A. Expert", "Ms. Industry Lead"],
+  //   },
+  //   {
+  //     id: "ml-ai-2025",
+  //     title: "Global Entrepreneurship Summit ’25 at IIT Kharagpur",
+  //     date: "February 7-9, 2025",
+  //     dateLabel: "7-9 February 2025",
+  //     description:
+  //       "Applied workshop on ML & AI fundamentals with hands-on model-building, evaluation and deployment. Work on real datasets with industry mentors.",
+  //     category: "Workshop",
+  //     image:
+  //       "(campus)/student-activities/technical-events-and-seminars/event_card2.jpeg",
+  //     participants: "120",
+  //     tags: ["Hands-on", "ML", "Deep Learning"],
+  //     venue: "Computer Lab 1",
+  //     speakers: ["AI Specialist"],
+  //   },
+  //   {
+  //     id: "web-bootcamp-2025",
+  //     title: "Tata Social Enterprise Challenge 2025 | IIM Calcutta",
+  //     date: "May 10-12, 2025",
+  //     dateLabel: "10-12 May 2025",
+  //     description:
+  //       "3-day intensive bootcamp covering modern frontend & backend stacks, deployment pipelines and performance best practices.",
+  //     category: "Workshop",
+  //     image:
+  //       "(campus)/student-activities/technical-events-and-seminars/event_card5.jpg",
+  //     participants: "150",
+  //     tags: ["Full-stack", "React", "Node.js"],
+  //     venue: "Computer Lab 2",
+  //     speakers: ["Fullstack Dev"],
+  //   },
+  //   {
+  //     id: "iot-2025",
+  //     title: "IoT & Embedded Systems Intensive",
+  //     date: "June 5-7, 2025",
+  //     dateLabel: "5-7 June 2025",
+  //     description:
+  //       "Hands-on sessions covering sensors, microcontrollers (Arduino/RPi), and cloud integration. Build a prototype during the workshop.",
+  //     category: "Workshop",
+  //     image:
+  //       "(campus)/student-activities/technical-events-and-seminars/event_card4.jpg",
+  //     participants: "80",
+  //     tags: ["IoT", "Embedded", "Hardware"],
+  //     venue: "Electronics Lab",
+  //     speakers: ["IoT Specialist"],
+  //   },
+  // ];
 
-  const pastEvents = [
-    {
-      title: "Hands-on Workshop at Webel Technology Limited (WTL)",
-      date: "April 19, 2024",
-      description:
-        "24-hour coding challenge with teams building innovative solutions across tracks.",
-      highlights: ["50+ teams", "3 winners", "Industry mentorship"],
-      image:
-        "(campus)/student-activities/technical-events-and-seminars/event_card1.jpg",
-    },
-    {
-      title: "Global Entrepreneurship Summit ’25 at IIT Kharagpur",
-      date: "February 7-9, 2025",
-      description:
-        "Students designed and built autonomous robots competing on a defined track.",
-      highlights: ["35 teams", "Live demos", "Best innovation award"],
-      image:
-        "(campus)/student-activities/technical-events-and-seminars/event_card2.jpeg",
-    },
-    {
-      title: "Web Development Bootcamp",
-      date: "October 20-22, 2024",
-      description:
-        "Intensive 3-day bootcamp covering modern web technologies and hands-on projects.",
-      highlights: ["100+ trained", "Live projects", "Certificate"],
-      image:
-        "(campus)/student-activities/clubs-and-societies/webdev-bootcamp.avif",
-    },
-    {
-      title: "IoT & Embedded Systems Workshop",
-      date: "September 10-11, 2024",
-      description:
-        "Practical session on sensors, microcontrollers and cloud integration.",
-      highlights: ["30+ projects", "Hardware kits provided"],
-      image:
-        "(campus)/student-activities/technical-events-and-seminars/event_card4.jpg",
-    },
-  ];
+  // const pastEvents = [
+  //   {
+  //     title: "Hands-on Workshop at Webel Technology Limited (WTL)",
+  //     date: "April 19, 2024",
+  //     description:
+  //       "24-hour coding challenge with teams building innovative solutions across tracks.",
+  //     highlights: ["50+ teams", "3 winners", "Industry mentorship"],
+  //     image:
+  //       "(campus)/student-activities/technical-events-and-seminars/event_card1.jpg",
+  //   },
+  //   {
+  //     title: "Global Entrepreneurship Summit ’25 at IIT Kharagpur",
+  //     date: "February 7-9, 2025",
+  //     description:
+  //       "Students designed and built autonomous robots competing on a defined track.",
+  //     highlights: ["35 teams", "Live demos", "Best innovation award"],
+  //     image:
+  //       "(campus)/student-activities/technical-events-and-seminars/event_card2.jpeg",
+  //   },
+  //   {
+  //     title: "Web Development Bootcamp",
+  //     date: "October 20-22, 2024",
+  //     description:
+  //       "Intensive 3-day bootcamp covering modern web technologies and hands-on projects.",
+  //     highlights: ["100+ trained", "Live projects", "Certificate"],
+  //     image:
+  //       "(campus)/student-activities/clubs-and-societies/webdev-bootcamp.avif",
+  //   },
+  //   {
+  //     title: "IoT & Embedded Systems Workshop",
+  //     date: "September 10-11, 2024",
+  //     description:
+  //       "Practical session on sensors, microcontrollers and cloud integration.",
+  //     highlights: ["30+ projects", "Hardware kits provided"],
+  //     image:
+  //       "(campus)/student-activities/technical-events-and-seminars/event_card4.jpg",
+  //   },
+  // ];
 
-  const [
-    query,
-    // setQuery
-  ] = useState("");
-  const [
-    activeCategory,
-    // setActiveCategory
-  ] = useState("All");
-  const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null);
+  // const [query, setQuery] = useState("");
+  // const [activeCategory, setActiveCategory] = useState("All");
+  // const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null);
 
-  const filteredUpcoming = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return upcomingEvents.filter((e) => {
-      const matchesCat =
-        activeCategory === "All" || e.category === activeCategory;
-      const matchesQ =
-        !q ||
-        e.title.toLowerCase().includes(q) ||
-        e.description.toLowerCase().includes(q) ||
-        e.date.toLowerCase().includes(q) ||
-        e.tags?.join(" ").toLowerCase().includes(q);
-      return matchesCat && matchesQ;
-    });
-  }, [query, activeCategory]);
+  // const filteredUpcoming = useMemo(() => {
+  //   const q = query.trim().toLowerCase();
+  //   return upcomingEvents.filter((e) => {
+  //     const matchesCat =
+  //       activeCategory === "All" || e.category === activeCategory;
+  //     const matchesQ =
+  //       !q ||
+  //       e.title.toLowerCase().includes(q) ||
+  //       e.description.toLowerCase().includes(q) ||
+  //       e.date.toLowerCase().includes(q) ||
+  //       e.tags?.join(" ").toLowerCase().includes(q);
+  //     return matchesCat && matchesQ;
+  //   });
+  // }, [query, activeCategory]);
+
+  const { upcoming_events, past_events } =
+    await fetchTechnicalEventsAndSeminarsPageData();
 
   const excerpt = (text: string, n: number = 120) =>
     text.length > n ? `${text.slice(0, n).trim()}…` : text;
@@ -183,7 +178,7 @@ export default function TechnicalEventsPage() {
             className="mx-auto max-w-4xl pt-24 pb-12 text-center text-white"
           >
             <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-2">
-              <LuCpu className="h-5 w-5 text-white" />
+              <LuCpu className="size-5 text-white" />
               <span className="text-sm">Campus Life</span>
             </div>
             <h1 className="mb-3 font-bold text-3xl leading-tight md:text-4xl">
@@ -224,12 +219,12 @@ export default function TechnicalEventsPage() {
               Upcoming Technical Events
             </h2>
             <div className="text-muted-foreground text-sm">
-              {filteredUpcoming.length} result
-              {filteredUpcoming.length !== 1 ? "s" : ""}
+              {upcoming_events.length} result
+              {upcoming_events.length !== 1 && "s"}
             </div>
           </div>
 
-          {filteredUpcoming.length === 0 ? (
+          {upcoming_events.length === 0 ? (
             <div className="rounded-2xl bg-white p-6 text-center">
               <div className="mb-2 font-medium text-lg">
                 No upcoming events found
@@ -248,9 +243,9 @@ export default function TechnicalEventsPage() {
                 gap: "1rem",
               }}
             >
-              {filteredUpcoming.map((ev, idx) => (
+              {upcoming_events.map((ev, idx) => (
                 <MotionArticle
-                  key={ev.id}
+                  key={ev.documentId}
                   initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -259,20 +254,20 @@ export default function TechnicalEventsPage() {
                   style={{ width: "100%", maxWidth: 360 }}
                 >
                   <div className="relative h-44 overflow-hidden">
-                    <GithubImage
-                      src={ev.image}
+                    <BackendImage
+                      src={ev.image.url}
                       alt={ev.title}
                       fill
                       className="h-full w-full object-cover"
                     />
 
-                    <div className="absolute top-3 left-3">
+                    {/* <div className="absolute top-3 left-3">
                       <Badge className="bg-blue-600 text-white">
                         {ev.category}
                       </Badge>
-                    </div>
+                    </div> */}
                     <div className="absolute top-3 right-3 rounded-md bg-white/80 px-2 py-1 text-slate-700 text-xs">
-                      {ev.dateLabel}
+                      {ev.start} {ev.end && `- ${ev.end}`}
                     </div>
                   </div>
 
@@ -286,12 +281,12 @@ export default function TechnicalEventsPage() {
                           {excerpt(ev.description, 120)}
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {ev.tags?.map((t) => (
+                          {ev.tags.map(({ id, text }) => (
                             <Badge
-                              key={t}
+                              key={id}
                               className="bg-gray-100 text-gray-700"
                             >
-                              {t}
+                              {text}
                             </Badge>
                           ))}
                         </div>
@@ -311,7 +306,7 @@ export default function TechnicalEventsPage() {
           </h2>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {pastEvents.map((pe, i) => (
+            {past_events.map((pe, i) => (
               <MotionDiv
                 key={pe.title}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -16 : 16 }}
@@ -322,11 +317,11 @@ export default function TechnicalEventsPage() {
                 <Card className="overflow-hidden transition-shadow hover:shadow-lg">
                   <div className="grid items-stretch gap-6 md:grid-cols-3">
                     <div className="relative h-56 w-full overflow-hidden rounded-md md:col-span-1 md:h-64">
-                      <GithubImage
-                        src={pe.image}
-                        alt={pe.title}
+                      <BackendImage
                         fill
-                        className="h-full w-full object-cover"
+                        src={pe.image.url}
+                        alt={pe.title}
+                        className="size-full object-cover"
                       />
                     </div>
 
@@ -334,7 +329,9 @@ export default function TechnicalEventsPage() {
                       <div>
                         <div className="mb-2 flex items-center gap-3 text-muted-foreground text-sm">
                           <LuCalendar className="h-4 w-4 text-blue-600" />
-                          <span>{pe.date}</span>
+                          <span>
+                            {pe.start} {pe.end && `- ${pe.end}`}
+                          </span>
                         </div>
 
                         <h3 className="mb-2 font-semibold text-lg">
@@ -345,12 +342,12 @@ export default function TechnicalEventsPage() {
                         </p>
 
                         <div className="flex flex-wrap gap-2">
-                          {pe.highlights.map((h) => (
+                          {pe.tags.map(({ id, text }) => (
                             <Badge
-                              key={h}
+                              key={id}
                               className="bg-gray-100 text-gray-700"
                             >
-                              {h}
+                              {text}
                             </Badge>
                           ))}
                         </div>
@@ -365,7 +362,7 @@ export default function TechnicalEventsPage() {
       </div>
 
       {/* Event Details Modal */}
-      {selectedEvent && (
+      {/* {selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <button
             type="button"
@@ -434,7 +431,7 @@ export default function TechnicalEventsPage() {
             </div>
           </MotionDiv>
         </div>
-      )}
+      )} */}
     </main>
   );
 }

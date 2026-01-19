@@ -1,12 +1,14 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 import { LuDumbbell, LuTrophy } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
+
+import BackendImage from "@/components/BackendImage";
 import GithubImage from "@/components/GithubImage";
+
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { fetchSportsPageData } from "@/dal/sports";
 
 /**
  * Redesigned SportsPage
@@ -18,7 +20,9 @@ import { Card, CardContent } from "@/components/ui/card";
  * Paste into your project and adjust image paths / component imports if necessary.
  */
 
-export default function SportsPageRedesign() {
+export default async function SportsPage() {
+  const { gallery_highlights } = await fetchSportsPageData();
+
   // data (kept from your original)
   const outdoorSports = [
     {
@@ -99,51 +103,6 @@ export default function SportsPageRedesign() {
     "Swimming coaching for all levels",
     "Poolside seating and rest area",
   ];
-
-  const _upcomingEvents = [
-    {
-      name: "Annual Sports Meet 2025",
-      date: "March 1-3, 2025",
-      description:
-        "Three-day sports extravaganza with multiple events and competitions",
-      participants: "All students",
-    },
-    {
-      name: "Inter-Department Cricket Tournament",
-      date: "February 15-20, 2025",
-      description: "Departmental teams compete for the championship trophy",
-      participants: "Department teams",
-    },
-    {
-      name: "Badminton Championship",
-      date: "February 25-26, 2025",
-      description: "Singles and doubles events for men and women",
-      participants: "Individual registration",
-    },
-  ];
-
-  // quick counters animation (simple)
-  const [_counters, setCounters] = useState({
-    sports: 0,
-    players: 0,
-    trophies: 0,
-  });
-  useEffect(() => {
-    const start = performance.now();
-    const dur = 800;
-    let raf = 0;
-    function step(t: number) {
-      const p = Math.min(1, (t - start) / dur);
-      setCounters({
-        sports: Math.round(12 * p),
-        players: Math.round(1200 * p),
-        trophies: Math.round(24 * p),
-      });
-      if (p < 1) raf = requestAnimationFrame(step);
-    }
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, []);
 
   return (
     <main className="min-h-screen bg-linear-to-br from-white via-green-50/30 to-white">
@@ -400,41 +359,38 @@ export default function SportsPageRedesign() {
         <section className="mb-12">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="font-semibold text-2xl">Gallery Highlights</h2>
-            <a href="/gallery" className="text-green-700 text-sm">
+            <Link href="/campus/gallery" className="text-green-700 text-sm">
               View full gallery →
-            </a>
+            </Link>
           </div>
 
           <div className="columns-2 gap-4 space-y-4 sm:columns-3 lg:columns-4">
             {/* sample images mixed from data */}
-            {[
-              ...outdoorSports.map((s) => s.image),
-              ...indoorSports.map((s) => s.image),
-              "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
-              "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=80",
-            ].map((src, idx) => (
-              <MotionDiv
-                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
-                key={idx}
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.03 }}
-                className="break-inside-avoid"
-              >
-                <div
-                  className="relative mb-3 w-full rounded-lg"
-                  style={{ height: idx % 3 === 0 ? 220 : 160 }}
-                >
-                  <Image
-                    fill
-                    src={src}
-                    alt={`gallery-${idx}`}
-                    className="object-cover"
-                  />
-                </div>
-              </MotionDiv>
-            ))}
+            {gallery_highlights.map(
+              (src, idx) =>
+                !!src.image && (
+                  <MotionDiv
+                    key={src.documentId}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.03 }}
+                    className="break-inside-avoid"
+                  >
+                    <div
+                      className="relative mb-3 w-full rounded-lg"
+                      style={{ height: idx % 3 === 0 ? 220 : 160 }}
+                    >
+                      <BackendImage
+                        fill
+                        src={src.image.url}
+                        alt={src.image.alternativeText}
+                        className="object-cover"
+                      />
+                    </div>
+                  </MotionDiv>
+                ),
+            )}
           </div>
         </section>
       </div>

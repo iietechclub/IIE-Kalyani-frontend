@@ -36,6 +36,7 @@ type Props = {
   avg_ctc: number;
   recruiting_sectors: IconBadge[];
   companies: CompanyWithoutName[];
+  apply_now?: Url;
 };
 
 export default function Recruiters({
@@ -45,6 +46,7 @@ export default function Recruiters({
   avg_ctc,
   recruiting_sectors,
   companies,
+  apply_now,
 }: Props) {
   const trackRef = useRef<HTMLUListElement | null>(null);
   const SPEED = 80; // pixels per second
@@ -217,13 +219,15 @@ export default function Recruiters({
                 </p>
                 <div className="flex flex-col justify-center gap-3 px-4 sm:flex-row sm:gap-4">
                   <Link
-                    href="/admission/apply"
+                    href={apply_now?.url ?? "#"}
+                    target={apply_now?.newTab ? "_blank" : undefined}
+                    rel={apply_now?.newTab ? "noopener noreferrer" : undefined}
                     className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-2.5 text-primary text-sm shadow transition-colors hover:bg-gray-100 sm:px-8 sm:py-3 sm:text-base"
                   >
                     Apply Now
                   </Link>
                   <Link
-                    href="/training/placement"
+                    href="/placement/placement-record"
                     className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 bg-white/10 px-5 py-2.5 text-sm text-white backdrop-blur-sm transition-colors hover:bg-white/20 sm:px-8 sm:py-3 sm:text-base"
                   >
                     View Placement Details

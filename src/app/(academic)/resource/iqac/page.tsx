@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
 
@@ -9,9 +8,6 @@ import { Badge } from "@/components/ui/badge";
  * - Renders arrays (already present in your project) as clean lists/sections
  * - Replace placeholder links (pdfLink, docLink, etc.) with exact URLs from main site
  */
-
-const heroImage =
-  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1920";
 
 // --- example content arrays (kept from your earlier code) ---
 const objectives = [
@@ -76,10 +72,6 @@ const minutesAgenda = [
 
 export default function IQACLite() {
   // Replace these placeholders with exact URLs from the live site if you want direct PDF links preserved:
-  const pdfAqar = "https://iiekalyani.com/wp-content/uploads/.../AQAR.pdf"; // <- replace
-  const pdfBrochure =
-    "https://iiekalyani.com/wp-content/uploads/.../IQAC-brochure.pdf"; // <- replace
-
   return (
     <main className="min-h-screen bg-linear-to-br from-white via-red-50/30 to-white">
       {/* Breadcrumb - Removed due to component not available */}
@@ -93,14 +85,14 @@ export default function IQACLite() {
             transition={{ duration: 1 }}
             className="absolute inset-0"
           >
-            <Image
+            {/* <Image
               src={heroImage}
               alt="IQAC hero"
               fill
               className="object-cover"
               priority
-            />
-            <div className="absolute inset-0 bg-linear-to-r from-rose-700/70 to-black/40" />
+            /> */}
+            <div className="absolute inset-0 bg-linear-to-r from-primary via-red-500 to-black/30" />
           </MotionDiv>
 
           <div className="container relative z-10 mx-auto flex h-full items-center px-4">
@@ -118,7 +110,7 @@ export default function IQACLite() {
                 quality culture.
               </p>
 
-              <div className="mt-6 flex gap-3">
+              {/* <div className="mt-6 flex gap-3">
                 <a
                   href={pdfAqar}
                   className="inline-flex items-center rounded-md border border-white/20 bg-white px-4 py-2 text-rose-700 hover:bg-gray-100"
@@ -132,7 +124,7 @@ export default function IQACLite() {
                 >
                   IQAC Brochure
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -225,7 +217,7 @@ export default function IQACLite() {
         </section>
 
         {/* Footer link area: preserve links / PDFs */}
-        <section className="border-gray-100 border-t pt-6">
+        {/* <section className="border-gray-100 border-t pt-6">
           <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
             <div>
               <strong>Important documents:</strong>
@@ -266,7 +258,7 @@ export default function IQACLite() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
     </main>
   );

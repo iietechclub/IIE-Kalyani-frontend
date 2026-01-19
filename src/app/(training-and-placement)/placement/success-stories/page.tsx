@@ -1,75 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 import { LuClipboardCheck, LuExternalLink } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
+import BackendImage from "@/components/BackendImage";
+import { fetchSuccessStoriesPageData } from "@/dal/success-stories";
 
 // White background - 3 column responsive layout
-export default function SuccessStories() {
-  const initialStories = [
-    {
-      name: "Rahidul Khan",
-      branch: "Computer Science & Engineering",
-      batch: "2027",
-      company: "TATA Consultancy",
-      package: "0000 LPA",
-      story:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s. It has survived not only five centuries, but also the leap into electronic typesetting.",
-      avatar: "",
-    },
-    {
-      name: "Rohit Sen",
-      branch: "Computer Science & Engineering",
-      batch: "2024",
-      company: "TCS",
-      package: "7.5 LPA",
-      story:
-        "My journey at IIE Kalyani was transformative. The placement cell provided excellent training and guidance that helped me secure a position at TCS. The mock interviews and technical sessions were particularly helpful.",
-      avatar: "",
-    },
-    {
-      name: "Nisha Roy",
-      branch: "Electrical Engineering",
-      batch: "2024",
-      company: "Larsen & Toubro",
-      package: "8.2 LPA",
-      story:
-        "The faculty support and industry exposure I received at IIE Kalyani prepared me well for corporate life. The placement process was smooth and well-organized.",
-      avatar: "",
-    },
-    {
-      name: "Aman Gupta",
-      branch: "Mechanical Engineering",
-      batch: "2023",
-      company: "Tata Motors",
-      package: "9.0 LPA",
-      story:
-        "IIE Kalyani gave me a strong foundation in both technical and soft skills. The training programs conducted by the placement cell helped me understand industry expectations.",
-      avatar: "",
-    },
-    {
-      name: "Sonal Verma",
-      branch: "Computer Science & Engineering",
-      batch: "2023",
-      company: "Infosys",
-      package: "6.5 LPA",
-      story:
-        "The placement cell's dedication and support made all the difference. From resume building to interview preparation, every aspect was covered. I'm now part of a great team at Infosys.",
-      avatar: "",
-    },
-    {
-      name: "Pooja Singh",
-      branch: "Civil Engineering",
-      batch: "2024",
-      company: "JSW Steel",
-      package: "7.8 LPA",
-      story:
-        "My experience at IIE Kalyani was enriching. The practical approach to education and regular industry interactions gave me real-world insights.",
-      avatar: "",
-    },
-  ];
+export default async function SuccessStories() {
+  const { success_stories } = await fetchSuccessStoriesPageData();
 
-  const demoLeftImage =
-    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80";
   const heroImage =
     "https://github.com/Anjel-cmd/college_images123/blob/main/White%20Minimalist%20Corporate%20Personal%20Profile%20LinkedIn%20Banner.png?raw=true";
 
@@ -113,7 +51,7 @@ export default function SuccessStories() {
       {/* 3-column Stories Grid */}
       <section className="container mx-auto px-4 py-12">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
-          {initialStories.map((s, i) => (
+          {success_stories.map((s, i) => (
             <MotionArticle
               // biome-ignore lint/suspicious/noArrayIndexKey: not needed
               key={i}
@@ -126,15 +64,17 @@ export default function SuccessStories() {
               <div className="flex h-full flex-col md:flex-row">
                 {/* LEFT visual */}
                 <div className="relative h-48 w-full bg-gray-200 md:h-auto md:w-1/2">
-                  <Image
+                  <BackendImage
                     fill
-                    src={s.avatar || demoLeftImage}
+                    src={s.image.url}
                     alt={`${s.name} visual`}
-                    className="absolute inset-0 h-full w-full object-cover brightness-95"
+                    className="absolute inset-0 size-full object-cover brightness-95"
                   />
                   <div className="absolute bottom-4 left-13">
                     <Link
-                      href="#"
+                      target="_blank"
+                      href={s.youtube_url}
+                      // rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white/80 px-3 py-1.5 text-gray-700 text-xs transition hover:bg-white"
                     >
                       Watch YouTube Video <LuExternalLink className="h-5 w-3" />
@@ -149,19 +89,19 @@ export default function SuccessStories() {
                       {s.name}
                     </h2>
                     <p className="mt-1 text-gray-500 text-xs">
-                      {s.branch} • {s.batch}
+                      {s.department.name} • {s.passout_year}
                     </p>
                   </div>
 
                   <div className="mt-3 mb-4 flex items-center justify-between">
                     <div className="font-semibold text-rose-600 text-sm">
-                      {s.company}
+                      {s.employer}
                     </div>
-                    <div className="text-gray-500 text-xs">{s.package}</div>
+                    <div className="text-gray-500 text-xs">{s.salary}</div>
                   </div>
 
                   <p className="line-clamp-6 text-gray-700 text-sm leading-relaxed">
-                    {s.story}
+                    {s.description}
                   </p>
                 </div>
               </div>
