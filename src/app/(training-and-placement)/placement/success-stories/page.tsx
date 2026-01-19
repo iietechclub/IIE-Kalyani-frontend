@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LuClipboardCheck, LuExternalLink } from "react-icons/lu";
 import { MotionArticle, MotionDiv } from "@/components/animated/motion";
@@ -16,10 +17,15 @@ export default async function SuccessStories() {
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div
-            className="h-[260px] w-full bg-center bg-cover md:h-80 lg:h-[360px]"
-            style={{ backgroundImage: `url(${heroImage})` }}
-          />
+          <div className="h-[260px] w-full bg-center bg-cover md:h-80 lg:h-[360px]">
+            <Image
+              fill
+              src={heroImage}
+              alt="Success Stories Hero Image"
+              className="object-cover object-center brightness-90"
+              priority
+            />
+          </div>
           <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
         </div>
 

@@ -109,7 +109,7 @@ export default function Makaut() {
               <h1 className="mb-1 font-semibold text-2xl leading-tight sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="block">MAKAUT Affiliation</span>
               </h1>
-              <p className="truncate text-sm text-white/90 sm:text-base md:text-lg">
+              <p className="text-sm text-white/90 sm:text-base md:text-lg">
                 Maulana Abul Kalam Azad University of Technology, West Bengal
               </p>
             </div>

@@ -158,14 +158,12 @@ export default async function TechnicalEventsPage() {
       {/* Hero (kept as-is) */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="h-[500px] w-full scale-105 object-center md:h-[520px]">
-            <GithubImage
-              fill
-              src="(campus)/student-activities/technical-events-and-seminars/banner.png"
-              alt="Technical events hero"
-              className="object-cover"
-            />
-          </div>
+          <GithubImage
+            fill
+            src="(campus)/student-activities/technical-events-and-seminars/banner.png"
+            alt="Technical events hero"
+            className="object-cover"
+          />
 
           <div className="absolute inset-0 bg-linear-to-r from-blue-900/80 via-purple-900/50 to-transparent" />
         </div>

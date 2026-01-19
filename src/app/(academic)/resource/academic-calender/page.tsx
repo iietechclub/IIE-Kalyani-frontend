@@ -35,7 +35,8 @@ export default async function AcademicCalendar() {
         <div>
           <a
             href={pdfHref}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex w-fit items-center gap-2 rounded-md bg-(--iie-primary) px-4 py-2 text-white shadow hover:bg-(--iie-primary)/90"
           >
             <LuDownload className="size-4" /> Download Calendar
