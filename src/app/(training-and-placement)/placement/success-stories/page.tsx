@@ -71,21 +71,22 @@ export default function SuccessStories() {
   const demoLeftImage =
     "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80";
   const heroImage =
-    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1800&q=80";
+    "https://github.com/Anjel-cmd/college_images123/blob/main/White%20Minimalist%20Corporate%20Personal%20Profile%20LinkedIn%20Banner.png?raw=true";
 
   return (
     <div className="min-h-screen bg-gray-50 text-slate-900">
       {/* Hero */}
-      <header className="relative overflow-hidden">
+      <header className="relative overflow-hidden h-[180px] sm:h-[220px] md:h-[260px] lg:h-[300px]">
         <div className="absolute inset-0">
           <div
-            className="h-[260px] w-full bg-center bg-cover md:h-80 lg:h-[360px]"
+            className="absolute inset-0 bg-center bg-cover"
             style={{ backgroundImage: `url(${heroImage})` }}
           />
-          <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
         </div>
 
-        <div className="relative mx-auto mt-16 flex max-w-7xl flex-col items-center gap-8 px-4 py-16 lg:flex-row">
+
+        <div className="relative mx-auto flex h-full max-w-7xl items-center gap-8 px-4 lg:flex-row">
           <div className="z-10 flex-1 text-center text-white lg:text-left">
             <MotionDiv
               initial={{ y: 8, opacity: 0 }}

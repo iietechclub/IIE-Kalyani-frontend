@@ -28,7 +28,7 @@ export default async function AcademicCalendar() {
           <p className="mb-5 text-gray-600 text-sm leading-relaxed">
             Stay updated with all important academic events and examination
             schedules. You can preview or download the official academic
-            calendar for 2024-25 directly.
+            calendar for {session} directly.
           </p>
         </div>
 
