@@ -106,7 +106,7 @@ export default async function ClubsTwoRowGrid() {
             fill
             src={banner.url}
             alt="Campus clubs hero"
-            className="h-80 w-full object-cover md:h-[460px]"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-linear-to-r from-blue-900/75 via-purple-900/40 to-transparent" />
         </div>

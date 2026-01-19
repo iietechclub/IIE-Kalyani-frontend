@@ -161,7 +161,7 @@ export default async function CulturalEventsPage() {
             fill
             src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=2000&q=80"
             alt="Cultural Events Hero"
-            className="size-full object-cover"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-linear-to-r from-orange-900/70 via-pink-700/40 to-transparent" />
         </div>

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
   LuAward,
@@ -173,10 +174,15 @@ export default function IndustryCollaboration() {
       {/* Hero*/}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div
-            className="h-[360px] w-full bg-center bg-cover"
-            style={{ backgroundImage: `url(${heroImage})` }}
-          />
+          <div className="h-[360px] w-full bg-center bg-cover">
+            <Image
+              fill
+              src={heroImage}
+              alt="Industry Collaboration Hero"
+              className="object-cover"
+              priority
+            />
+          </div>
           <div className="absolute inset-0 bg-linear-to-b from-gray-600 to-black/30" />
         </div>
 

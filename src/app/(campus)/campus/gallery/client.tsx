@@ -4,6 +4,7 @@ import { LuCamera } from "react-icons/lu";
 import { MotionDiv, MotionFigure } from "@/components/animated/motion";
 import BackendImage from "@/components/BackendImage";
 import GithubImage from "@/components/GithubImage";
+import { urlFromBackend } from "@/lib/utils";
 
 export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("All");
@@ -137,11 +138,11 @@ export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-black/50" />
 
           {/* subtle decorative shapes (hidden on very small screens) */}
-          <div className="-left-10 -top-10 pointer-events-none absolute hidden h-36 w-36 rounded-full bg-white/8 blur-2xl sm:block"></div>
-          <div className="pointer-events-none absolute right-8 bottom-4 hidden h-44 w-44 rounded-full bg-pink-400/15 blur-2xl sm:block"></div>
+          <div className="-left-10 -top-10 pointer-events-none absolute hidden h-36 w-36 rounded-full bg-white/8 blur-2xl sm:block" />
+          <div className="pointer-events-none absolute right-8 bottom-4 hidden h-44 w-44 rounded-full bg-pink-400/15 blur-2xl sm:block" />
 
           <div className="container relative z-10 mx-auto flex h-full items-center px-3 sm:px-4">
             <MotionDiv
@@ -241,8 +242,9 @@ export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
                     transition={{ delay: idx * 0.04 }}
                     style={{ cursor: "pointer" }}
                     onClick={() =>
+                      img.image &&
                       window.open(
-                        img.image?.url,
+                        urlFromBackend(img.image?.url),
                         "_blank",
                         "noopener,noreferrer",
                       )

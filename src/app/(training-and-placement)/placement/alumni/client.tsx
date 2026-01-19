@@ -426,8 +426,8 @@ export default function AlumniRelationPageClient(data: AlumniRelationPageData) {
             <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 lg:flex-row">
               <div className="z-10 flex-1 text-center lg:text-left">
                 <div className="mb-4 inline-flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-linear-to-br from-rose-500 to-rose-600 text-white shadow">
-                    <LuUsers className="h-7 w-7" />
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-rose-500 to-rose-600 text-white shadow">
+                    <LuUsers className="size-6" />
                   </div>
                   <div className="text-white">
                     <h1 className="font-bold text-3xl leading-tight md:text-4xl">
@@ -480,7 +480,9 @@ export default function AlumniRelationPageClient(data: AlumniRelationPageData) {
         {/* About */}
         <section className="mt-10 mb-8">
           <div className="s mx-auto max-w-7xl p-6 md:p-8">
-            <h2 className="font-bold text-4xl">About the Alumni Cell</h2>
+            <h2 className="font-bold text-3xl md:text-4xl">
+              About the Alumni Cell
+            </h2>
             <div className="mt-3 text-slate-600">
               <BlocksRenderer content={data.about} />
             </div>

@@ -23,6 +23,7 @@ export default async function SuccessStories() {
               src={heroImage}
               alt="Success Stories Banner"
               className="size-full object-cover"
+              preload
             />
           </div>
           <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent" />

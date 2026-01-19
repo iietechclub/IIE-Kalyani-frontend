@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { LuPlay } from "react-icons/lu";
 import { cn } from "@/lib/utils";
@@ -132,13 +133,13 @@ export default function CampusGallery({ tagline, galleryItems }: Props) {
                         transition={{ duration: 0.3 }}
                         className="hidden md:block"
                       >
-                        <button
-                          type="button"
+                        <Link
+                          href="/campus/gallery"
                           className="flex items-center gap-2 text-white transition-colors hover:text-[#FCBF49]"
                         >
                           <LuPlay className="size-4" />
                           <span className="text-sm">View Gallery</span>
-                        </button>
+                        </Link>
                       </MotionDiv>
                     </div>
 

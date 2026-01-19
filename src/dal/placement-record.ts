@@ -9,7 +9,7 @@ export const fetchPlacementRecordPageData = cache(async () => {
   const query = gql`{
     placementRecord {
       departments {
-        documentId name
+        documentId name short_name
         placement_data {
           documentId table
           students_placement_percentage
