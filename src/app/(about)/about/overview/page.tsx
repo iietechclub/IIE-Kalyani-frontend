@@ -78,7 +78,7 @@ export default async function Overview() {
           />
           <KeyPoint
             icon="LuTrendingUp"
-            title={`${data.alumni}% Placement`}
+            title={`${data.placement_percentage}% Placement`}
             description="Excellent placement record with top companies"
             bgColor="bg-orange-500/10"
             color="text-orange-500"
