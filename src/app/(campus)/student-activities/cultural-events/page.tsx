@@ -1,48 +1,38 @@
-"use client";
 import Image from "next/image";
 import {
   // LuCalendar,
-  LuCamera,
+  // LuCamera,
   // LuChevronLeft,
   // LuChevronRight,
-  LuMic,
-  LuMusic,
-  LuPalette,
+  // LuMic,
+  // LuMusic,
+  // LuPalette,
   LuSparkles,
-  LuTheater,
-  LuTrophy,
+  // LuTheater,
+  // LuTrophy,
   // LuUsers,
 } from "react-icons/lu";
 
 import { MotionDiv } from "@/components/animated/motion";
+import BackendImage from "@/components/BackendImage";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import DynamicIcon from "@/components/ui/dynamic-icon";
+
+import { fetchCulturalEventsPageData } from "@/dal/cultural-events";
+import { cn } from "@/lib/utils";
 
 function BentoGallery({
-  gallery = [],
+  gallery,
   removeMiddleSmall = true,
 }: {
-  gallery?: string[];
+  gallery: GalleryItemWithoutTag[];
   removeMiddleSmall?: boolean;
 }) {
-  const defaults = [
-    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80",
-    "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1400&q=80",
-    "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1400&q=80",
-    "https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=1400&q=80",
-    "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=80",
-    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80",
-    "https://images.unsplash.com/photo-1529245019870-59a4c8c2b72d?auto=format&fit=crop&w=1400&q=80",
-    "https://images.unsplash.com/photo-1526318472351-c75fcf0700b6?auto=format&fit=crop&w=1400&q=80",
-  ];
-
-  const imgs = gallery?.length ? [...gallery] : [...defaults];
-
   // optionally remove a lonely mid tile (prevents odd gap)
-  if (removeMiddleSmall && imgs.length > 5) {
-    const mid = Math.floor(imgs.length / 2);
-    imgs.splice(mid, 1);
+  if (removeMiddleSmall && gallery.length > 5) {
+    const mid = Math.floor(gallery.length / 2);
+    gallery.splice(mid, 1);
   }
 
   // desktop bento pattern (repeats)
@@ -85,7 +75,7 @@ function BentoGallery({
           className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-flow-dense lg:grid-cols-6"
           style={{ gridAutoRows: "minmax(72px, auto)" }}
         >
-          {imgs.map((src, idx) => {
+          {gallery.map((entry, idx) => {
             const pat = pattern[idx % pattern.length];
 
             const lgCol = colClassMap[pat.col] ?? colClassMap[1];
@@ -117,18 +107,18 @@ function BentoGallery({
 
             return (
               <MotionDiv
-                key={src}
+                key={entry.documentId}
                 initial={{ opacity: 0, y: 8, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.36, delay: 0.03 * idx }}
                 className={classes}
                 style={style}
               >
-                {src ? (
-                  <Image
+                {entry.image ? (
+                  <BackendImage
                     fill
-                    src={src}
-                    alt={`gallery-${idx}`}
+                    src={entry.image.url}
+                    alt={`gallery: ${entry.image.alternativeText}`}
                     className={imgClass}
                   />
                 ) : (
@@ -146,131 +136,21 @@ function BentoGallery({
 }
 
 /* -------------------- CulturalEventsPage -------------------- */
-export default function CulturalEventsPage() {
-  const culturalActivities = [
-    {
-      title: "Music & Dance Performances",
-      icon: LuMusic,
-      description:
-        "Regular performances featuring classical, folk, and contemporary music and dance forms.",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1400&q=80",
-      frequency: "Monthly",
-      color: "bg-purple-50 text-purple-600",
-    },
-    {
-      title: "Drama & Theater",
-      icon: LuTheater,
-      description:
-        "Stage plays, street plays, and dramatic performances on social themes and classics.",
-      image:
-        "https://images.unsplash.com/photo-1507924538820-ede94a04019d?auto=format&fit=crop&w=1400&q=80",
-      frequency: "Quarterly",
-      color: "bg-pink-50 text-pink-600",
-    },
-    {
-      title: "Art Exhibitions",
-      icon: LuPalette,
-      description:
-        "Showcasing student artwork including paintings, sculptures, and digital art.",
-      image:
-        "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1400&q=80",
-      frequency: "Bi-annually",
-      color: "bg-orange-50 text-orange-600",
-    },
-    {
-      title: "Cultural Nights",
-      icon: LuSparkles,
-      description:
-        "Evening celebrations with diverse cultural programs and performances.",
-      image:
-        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1400&q=80",
-      frequency: "Seasonal",
-      color: "bg-blue-50 text-blue-600",
-    },
-    {
-      title: "Film Screenings",
-      icon: LuCamera,
-      description:
-        "Screening of classic films, documentaries, and student short films with discussions.",
-      image:
-        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=80",
-      frequency: "Monthly",
-      color: "bg-indigo-50 text-indigo-600",
-    },
-    {
-      title: "Open Mic & Poetry",
-      icon: LuMic,
-      description:
-        "Platform for comedians, poets, and performers to showcase creative expressions.",
-      image:
-        "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=1400&q=80",
-      frequency: "Bi-monthly",
-      color: "bg-teal-50 text-teal-600",
-    },
-  ];
+export default async function CulturalEventsPage() {
+  const { activities, gallery_images, upcoming_events } =
+    await fetchCulturalEventsPageData();
 
-  const upcomingEvents = [
-    {
-      title: "Saraswati Puja Cultural Celebration",
-      date: "February 2, 2025",
-      time: "10:00 AM - 6:00 PM",
-      venue: "Main Auditorium",
-      description:
-        "Traditional worship followed by music, dance and drama performances by students and invited artists.",
-      image:
-        "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      title: "Spring Cultural Festival",
-      date: "March 12-13, 2025",
-      time: "9:00 AM - 8:00 PM",
-      venue: "Campus Grounds",
-      description:
-        "Two-day celebration of arts, music and dance with inter-college participation and cultural contests.",
-      image:
-        "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80",
-    },
-  ];
-
-  const _achievements = [
-    {
-      title: "First Prize - State Level Dance",
-      description:
-        "Our dance troupe won first prize at West Bengal State Cultural Festival 2024.",
-      icon: LuTrophy,
-      date: "Dec 2024",
-    },
-    {
-      title: "Best Drama Performance",
-      description:
-        "Drama club's production received critical acclaim and awards at regional fest.",
-      icon: LuTheater,
-      date: "Nov 2024",
-    },
-    {
-      title: "Inter-College Music Winners",
-      description:
-        "Our band topped the inter-college music competition with original compositions.",
-      icon: LuMusic,
-      date: "Oct 2024",
-    },
-  ];
-
-  const gallery = [
-    "/images/cultural/1.jpg",
-    "/images/cultural/2.jpg",
-    "/images/cultural/3.jpg",
-    "/images/cultural/4.jpg",
-    "/images/cultural/5.jpg",
-    "/images/cultural/6.jpg",
-    "/images/cultural/7.jpg",
-    "/images/cultural/8.jpg",
+  const activity_colors = [
+    "bg-teal-50 text-teal-600",
+    "bg-indigo-50 text-indigo-600",
+    "bg-blue-50 text-blue-600",
+    "bg-orange-50 text-orange-600",
+    "bg-pink-50 text-pink-600",
+    "bg-purple-50 text-purple-600",
   ];
 
   // ensure small gallery arrays are handled without awkward gaps
   // const galleryImgs = useMemo(() => gallery, [gallery]);
-  <BentoGallery gallery={gallery} removeMiddleSmall />;
 
   return (
     <main className="min-h-screen bg-linear-to-br from-white via-orange-50/30 to-white">
@@ -281,9 +161,9 @@ export default function CulturalEventsPage() {
             fill
             src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=2000&q=80"
             alt="Cultural Events Hero"
-            className="h-full w-full object-cover"
+            className="size-full object-cover"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-orange-900/70 via-pink-700/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-orange-900/70 via-pink-700/40 to-transparent" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 py-20">
@@ -308,7 +188,7 @@ export default function CulturalEventsPage() {
                 — offering students a stage to shine, learn and collaborate.
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              {/* <div className="flex flex-wrap gap-3">
                 <a href="pages/academic/AcademicCalendar">
                   <Button
                     size="lg"
@@ -323,10 +203,10 @@ export default function CulturalEventsPage() {
                 >
                   See Upcoming →
                 </a>
-              </div>
+              </div> */}
             </MotionDiv>
 
-            <MotionDiv
+            {/* <MotionDiv
               initial={{ opacity: 0, x: 8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -368,7 +248,7 @@ export default function CulturalEventsPage() {
                   </div>
                 </div>
               </div>
-            </MotionDiv>
+            </MotionDiv> */}
           </div>
         </div>
       </header>
@@ -385,50 +265,52 @@ export default function CulturalEventsPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {culturalActivities.map((a) => {
-              const Icon = a.icon;
-              return (
-                <MotionDiv
-                  key={a.title}
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="overflow-hidden transition-all hover:shadow-xl">
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        fill
-                        src={a.image}
-                        alt={a.title}
-                        className="h-full w-full object-cover transition-transform duration-400 hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+            {activities.map((a, idx) => (
+              <MotionDiv
+                key={a.documentId}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <Card className="overflow-hidden transition-all hover:shadow-xl">
+                  <div className="relative h-48 overflow-hidden">
+                    <BackendImage
+                      fill
+                      src={a.image.url}
+                      alt={a.title}
+                      className="size-full object-cover transition-transform duration-400 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                    {a.icon && (
                       <div className="absolute top-4 left-4">
                         <div
-                          className={`h-12 w-12 rounded-lg ${a.color} flex items-center justify-center`}
+                          className={cn(
+                            `flex size-12 items-center justify-center rounded-lg`,
+                            activity_colors[idx],
+                          )}
                         >
-                          <Icon className="h-5 w-5" />
+                          <DynamicIcon name={a.icon} className="size-5" />
                         </div>
                       </div>
-                      <div className="absolute right-4 bottom-4 left-4 text-white">
-                        <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-lg">{a.title}</h3>
-                          <Badge className="border-white/30 bg-white/20 text-white">
-                            {a.frequency}
-                          </Badge>
-                        </div>
+                    )}
+                    <div className="absolute right-4 bottom-4 left-4 text-white">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-semibold text-lg">{a.title}</h3>
+                        <Badge className="border-white/30 bg-white/20 text-white">
+                          {a.timing}
+                        </Badge>
                       </div>
                     </div>
+                  </div>
 
-                    <CardContent className="p-6">
-                      <p className="text-muted-foreground text-sm">
-                        {a.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </MotionDiv>
-              );
-            })}
+                  <CardContent className="p-6">
+                    <p className="text-muted-foreground text-sm">
+                      {a.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </MotionDiv>
+            ))}
           </div>
         </div>
       </section>
@@ -438,7 +320,7 @@ export default function CulturalEventsPage() {
         <div className="container mx-auto items-start gap-8 px-4">
           <div>
             {/* BentoGallery with compact images */}
-            <BentoGallery gallery={gallery} removeMiddleSmall={true} />
+            <BentoGallery gallery={gallery_images} removeMiddleSmall={true} />
           </div>
         </div>
       </section>
@@ -457,24 +339,24 @@ export default function CulturalEventsPage() {
           <div className="mx-auto">
             {/* grid: 1 col mobile, 2 col md, 3 col lg */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {upcomingEvents.map((ev) => (
+              {upcoming_events.map((ev) => (
                 <MotionDiv
-                  key={ev.title}
+                  key={ev.documentId}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4 }}
                   className="overflow-hidden rounded-2xl bg-white shadow transition hover:shadow-lg"
                 >
-                  <div className="grid h-full grid-cols-4 items-stretch gap-0">
+                  <div className="grid h-full grid-cols-5 items-stretch gap-0">
                     {/* thumbnail */}
-                    <div className="col-span-1">
-                      <div className="relative h-full w-full">
-                        <Image
+                    <div className="col-span-2">
+                      <div className="relative size-full">
+                        <BackendImage
                           fill
-                          src={ev.image}
+                          src={ev.image.url}
                           alt={ev.title}
-                          className="h-full w-full rounded-l-2xl object-cover"
+                          className="size-full rounded-l-2xl object-cover"
                         />
                       </div>
                     </div>
@@ -487,9 +369,9 @@ export default function CulturalEventsPage() {
                             <h3 className="font-semibold text-lg leading-snug">
                               {ev.title}
                             </h3>
-                            <div className="mt-1 text-muted-foreground text-sm">
+                            {/* <div className="mt-1 text-muted-foreground text-sm">
                               {ev.venue}
-                            </div>
+                            </div> */}
                           </div>
 
                           {/* date badge */}
@@ -508,11 +390,12 @@ export default function CulturalEventsPage() {
                         </p>
                       </div>
 
-                      <div className="mt-4 flex items-center justify-between gap-3">
+                      {/* Venue */}
+                      {/* <div className="mt-4 flex items-center justify-between gap-3">
                         <div className="text-muted-foreground text-sm">
-                          {/* <div>{ev.venue}</div> */}
+                          <div>{ev.venue}</div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
@@ -527,7 +410,7 @@ export default function CulturalEventsPage() {
             </div>
 
             {/* fallback when empty */}
-            {upcomingEvents.length === 0 && (
+            {upcoming_events.length === 0 && (
               <div className="py-12 text-center text-muted-foreground">
                 No upcoming events — check back later.
               </div>

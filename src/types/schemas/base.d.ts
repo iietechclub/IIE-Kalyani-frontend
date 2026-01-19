@@ -4,3 +4,5 @@ type Media = { url: string; alternativeText: string };
 type IconField = string;
 
 type RichTextBlocks = import("@strapi/blocks-react-renderer").BlocksContent;
+
+type TableData = { rows: string[][]; columns: { label: string }[] };

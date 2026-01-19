@@ -137,8 +137,9 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
                       <button
                         type="button"
                         className={cn(
-                          "relative flex items-center gap-1 rounded-lg py-1.5 text-primary text-sm transition-colors  group-hover/menu:bg-muted/70 lg:px-2 xl:px-3 xl:text-base 2xl:px-4",
-                          bgTransparent && "text-white group-hover/menu:bg-white/5",
+                          "relative flex items-center gap-1 rounded-lg py-1.5 text-primary text-sm transition-colors group-hover/menu:bg-muted/70 lg:px-2 xl:px-3 xl:text-base 2xl:px-4",
+                          bgTransparent &&
+                            "text-white group-hover/menu:bg-white/5",
                         )}
                       >
                         {menu.title}
@@ -161,7 +162,11 @@ export default function NavbarClient({ data }: { data: GlobalPageData }) {
                       <Link
                         href={menu.link.url?.url ?? "#"}
                         target={menu.link.url?.newTab ? "_blank" : undefined}
-                        rel={menu.link.url?.newTab ? "noopener noreferrer" : undefined}
+                        rel={
+                          menu.link.url?.newTab
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                         className={cn(
                           "mx-4 flex items-center gap-1 rounded-lg px-1.5 py-2 font-medium text-primary text-sm transition-colors lg:px-2 xl:px-3 xl:text-base 2xl:px-4",
                           idx + 1 === data.menus.length && "mr-0",

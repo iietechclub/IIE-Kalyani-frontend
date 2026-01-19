@@ -5,7 +5,7 @@ type HomePageData = {
   why_choose_cards: WhyChoose[];
 
   departments_tagline: string;
-  departments: Department[];
+  departments: DepartmentShort[];
 
   facilities_tagline: string;
   facilities: Facility[];
@@ -14,6 +14,7 @@ type HomePageData = {
   gallery_items: GalleryItem[];
 
   our_recruiters_tagline: string;
+  our_recruiters_apply_now?: Url;
   our_recruiters_avg_offers: number;
   our_recruiters_internship_offers: number;
   our_recruiters_avg_ctc: number;

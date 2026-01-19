@@ -23,6 +23,15 @@ type IconBadge = prettify<
   }
 >;
 
+type LinkImageCard = prettify<
+  ComponentType & {
+    title: string;
+    description: string;
+    image: Media;
+    url: Url;
+  }
+>;
+
 type QuickCard = prettify<
   ComponentType & {
     title: string;

@@ -14,7 +14,7 @@ import DynamicIcon from "@/components/ui/dynamic-icon";
 
 import { cn } from "@/lib/utils";
 
-type Props = { tagline: string; departments: Department[] };
+type Props = { tagline: string; departments: DepartmentShort[] };
 export default function Departments({ tagline, departments }: Props) {
   const departmentColors = [
     "from-black/50 to-white/10",
