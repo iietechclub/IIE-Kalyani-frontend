@@ -80,51 +80,49 @@ export default function Makaut() {
   ];
 
   const affiliationKeyPoints = [
-  {
-    title: "Updated Curriculum",
-    desc: "MAKAUT regularly updates the syllabus to match current industry and academic standards.",
-    icon: LuFileText,
-  },
-  {
-    title: "Recognized Degrees",
-    desc: "Degrees issued under MAKAUT affiliation are accepted nationally for jobs and higher studies.",
-    icon: LuAward,
-  },
-  {
-    title: "Quality Assurance",
-    desc: "Strict academic frameworks ensure consistent quality across all affiliated institutions.",
-    icon: LuTrendingUp,
-  },
-];
-
+    {
+      title: "Updated Curriculum",
+      desc: "MAKAUT regularly updates the syllabus to match current industry and academic standards.",
+      icon: LuFileText,
+    },
+    {
+      title: "Recognized Degrees",
+      desc: "Degrees issued under MAKAUT affiliation are accepted nationally for jobs and higher studies.",
+      icon: LuAward,
+    },
+    {
+      title: "Quality Assurance",
+      desc: "Strict academic frameworks ensure consistent quality across all affiliated institutions.",
+      icon: LuTrendingUp,
+    },
+  ];
 
   const affiliationBenefits = [
-  {
-    title: "National Recognition",
-    desc: "Degrees affiliated with MAKAUT are recognized across India, ensuring wide academic and professional acceptance.",
-  },
-  {
-    title: "Standardized Education",
-    desc: "MAKAUT follows a structured curriculum that maintains uniform quality across all affiliated institutions.",
-  },
-  {
-    title: "Research Opportunities",
-    desc: "Students gain exposure to research projects, innovation programs, and academic collaborations.",
-  },
-  {
-    title: "Higher Education",
-    desc: "MAKAUT credentials support smooth admission into postgraduate and doctoral programs nationwide.",
-  },
-  {
-    title: "Enhanced Employability",
-    desc: "Industry-aligned syllabus and evaluation systems improve job readiness and career prospects.",
-  },
-  {
-    title: "Network & Resources",
-    desc: "Affiliation provides access to academic networks, learning resources, and institutional partnerships.",
-  },
-];
-
+    {
+      title: "National Recognition",
+      desc: "Degrees affiliated with MAKAUT are recognized across India, ensuring wide academic and professional acceptance.",
+    },
+    {
+      title: "Standardized Education",
+      desc: "MAKAUT follows a structured curriculum that maintains uniform quality across all affiliated institutions.",
+    },
+    {
+      title: "Research Opportunities",
+      desc: "Students gain exposure to research projects, innovation programs, and academic collaborations.",
+    },
+    {
+      title: "Higher Education",
+      desc: "MAKAUT credentials support smooth admission into postgraduate and doctoral programs nationwide.",
+    },
+    {
+      title: "Enhanced Employability",
+      desc: "Industry-aligned syllabus and evaluation systems improve job readiness and career prospects.",
+    },
+    {
+      title: "Network & Resources",
+      desc: "Affiliation provides access to academic networks, learning resources, and institutional partnerships.",
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
@@ -350,9 +348,7 @@ export default function Makaut() {
                 <h3 className="mb-1 font-semibold text-gray-900 text-sm sm:text-base">
                   {title}
                 </h3>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  {desc}
-                </p>
+                <p className="text-gray-600 text-xs sm:text-sm">{desc}</p>
               </div>
             ))}
           </div>
@@ -366,20 +362,18 @@ export default function Makaut() {
 
           <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
             {affiliationBenefits.map(({ title, desc }) => (
-            <div key={title} className="flex items-start gap-3 sm:gap-4">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-100 sm:h-10 sm:w-10">
-                <LuCheck className="size-4 text-green-600 sm:h-5 sm:w-5" />
+              <div key={title} className="flex items-start gap-3 sm:gap-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-100 sm:h-10 sm:w-10">
+                  <LuCheck className="size-4 text-green-600 sm:h-5 sm:w-5" />
+                </div>
+                <div>
+                  <h3 className="mb-1 font-semibold text-gray-900 text-sm sm:text-base md:text-lg">
+                    {title}
+                  </h3>
+                  <p className="text-gray-600 text-xs sm:text-sm">{desc}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="mb-1 font-semibold text-gray-900 text-sm sm:text-base md:text-lg">
-                  {title}
-                </h3>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  {desc}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
           </div>
         </div>
       </div>

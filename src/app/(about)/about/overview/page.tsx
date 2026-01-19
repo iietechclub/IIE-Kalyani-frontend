@@ -64,7 +64,7 @@ export default async function Overview() {
           />
           <KeyPoint
             icon="LuGraduationCap"
-            title="10+ Years of Excellence"
+            title="15+ Years of Excellence"
             description="Proven track record in engineering education"
             bgColor="bg-green-500/10"
             color="text-green-500"
@@ -78,7 +78,7 @@ export default async function Overview() {
           />
           <KeyPoint
             icon="LuTrendingUp"
-            title={`100% Placement`}
+            title={`${data.placement_percentage}% Placement`}
             description="Excellent placement record with top companies"
             bgColor="bg-orange-500/10"
             color="text-orange-500"
