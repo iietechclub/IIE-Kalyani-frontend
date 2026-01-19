@@ -64,7 +64,7 @@ function Department({
   // faculties = [],
 }: DepartmentProps) {
   return (
-    <main className="min-h-screen bg-[#f8f9fa] text-gray-900">
+    <main className="min-h-screen overflow-hidden bg-[#f8f9fa] text-gray-900">
       {/* Hero */}
       <section className="relative z-0 h-[360px] overflow-hidden md:h-[460px]">
         <BackendImage

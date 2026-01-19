@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LuX } from "react-icons/lu";
 
@@ -22,7 +23,10 @@ export default function NoticeBar() {
   if (!isVisible) return null;
 
   return (
-    <div className="relative bg-linear-to-r from-red-900 via-red-800 to-red-900 py-2 text-white backdrop-blur-sm">
+    <Link
+      href="/students"
+      className="relative bg-linear-to-r from-red-900 via-red-800 to-red-900 py-2 text-white backdrop-blur-sm"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex-1 text-center">
@@ -39,6 +43,6 @@ export default function NoticeBar() {
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

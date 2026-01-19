@@ -77,14 +77,14 @@ export default function EligibilityBBA() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
             <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">
-              <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
+              <LuGraduationCap className="size-9 text-white sm:size-11" />
             </div>
 
             <div className="min-w-0">
               <h1 className="mb-1 font-semibold text-2xl leading-tight sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="block">BBA Eligibility Criteria</span>
               </h1>
-              <p className="truncate text-sm text-white/90 sm:text-base md:text-lg">
+              <p className="text-sm text-white/90 sm:text-base md:text-lg">
                 Bachelor of Business Administration at IIE Kalyani —
                 eligibility, documents and career scope.
               </p>

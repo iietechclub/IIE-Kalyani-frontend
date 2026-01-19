@@ -93,7 +93,12 @@ export default function BannerCarousel({ slides }: Props) {
                   </p>
 
                   {/* Call-to-Action Buttons */}
-                  <div className="flex gap-2 pt-4 sm:gap-3 md:gap-4">
+                  <div
+                    className={cn(
+                      "flex gap-2 pt-4 sm:gap-3 md:gap-4",
+                      idx !== currentSlide && "pointer-events-none",
+                    )}
+                  >
                     {ctaButtons.map((ctaButton) => (
                       <CTAButton {...ctaButton} key={ctaButton.id} />
                     ))}

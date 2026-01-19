@@ -69,7 +69,7 @@ export default function EligibilityBTechLateral() {
       {/* Hero Section */}
       <header className="relative bg-linear-to-r from-red-600 to-red-700 py-12 text-white sm:py-16 md:py-20">
         <div className="absolute inset-0 bg-black/8" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl- px-4 sm:px-6 lg:px-8">
           <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
             <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">
               <LuGraduationCap className="size-9 text-white sm:size-11" />
@@ -79,7 +79,7 @@ export default function EligibilityBTechLateral() {
               <h1 className="mb-1 font-semibold text-2xl leading-tight sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="block">B.Tech Lateral Entry</span>
               </h1>
-              <p className="truncate text-sm text-white/90 sm:text-base md:text-lg">
+              <p className="text-sm text-white/90 sm:text-base md:text-lg">
                 Direct 2nd-year admission for Diploma and B.Sc. graduates as per
                 JELET / MAKAUT norms.
               </p>
