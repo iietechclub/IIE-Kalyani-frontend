@@ -16,7 +16,7 @@ export const fetchVisionAndMissionPageData = cache(async () => {
         id title icon
         description
       }
-      objectives { id text }
+      objectives (pagination: { pageSize: 6 }) { id text }
       quote
     }
   }

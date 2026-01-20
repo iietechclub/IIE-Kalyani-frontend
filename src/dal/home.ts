@@ -18,7 +18,7 @@ export const fetchHomePageData = cache(async () => {
         }
       }
 
-      why_choose_cards {
+      why_choose_cards (pagination: { pageSize: 5 }) {
         documentId title description
         image { url alternativeText }
       }
