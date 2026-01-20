@@ -11,7 +11,7 @@ export const fetchOurFacultyPageData = cache(async () => {
       departments {
         documentId name
         hod { documentId }
-        faculties {
+        faculties (pagination: { pageSize: 40 }) {
           documentId name designation
           image { url alternativeText }
           qualifications { id text }

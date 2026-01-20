@@ -12,7 +12,7 @@ export const fetchCoursesOfferedPageData = cache(async () => {
         documentId icon name
         duration slug tagline
       }
-      achievements_and_milestones {
+      achievements_and_milestones (pagination: { pageSize: 4 }) {
         id title icon
         description
       }

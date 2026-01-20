@@ -8,7 +8,7 @@ export const fetchProjectBankPageData = cache(async () => {
 
   const query = gql`{
     projectBank {
-      projects {
+      projects (pagination: { pageSize: 200 }) {
         documentId
         title department { short_name }
         field year icon description
