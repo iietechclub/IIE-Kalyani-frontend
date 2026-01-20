@@ -11,7 +11,7 @@ import {
   LuTrendingUp,
   LuUsers,
 } from "react-icons/lu";
-
+import GithubImage from "@/components/GithubImage";
 import { cn } from "@/lib/utils";
 
 export default function Makaut() {
@@ -208,9 +208,9 @@ export default function Makaut() {
           <div className="space-y-6 sm:space-y-8">
             <div className="relative overflow-hidden rounded-2xl shadow-lg">
               <div className="h-56 w-full sm:h-64 md:h-72 lg:h-80">
-                <Image
+                <GithubImage
                   fill
-                  src="https://images.shiksha.com/mediadata/images/articles/1661339417phpsZb9hC.jpeg"
+                  src="(about)/about/makaut/makaut.webp"
                   alt="MAKAUT University"
                   className="object-cover"
                   loading="lazy"

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   LuBookOpen,
   LuBuilding2,
@@ -11,7 +10,7 @@ import {
   LuTarget,
   LuUsers,
 } from "react-icons/lu";
-
+import GithubImage from "@/components/GithubImage";
 import { cn } from "@/lib/utils";
 
 export default function Aicte() {
@@ -67,7 +66,7 @@ export default function Aicte() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-3 flex flex-col items-start gap-3 sm:mb-4 sm:flex-row sm:items-center sm:gap-4">
             <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-3">
-              <LuShield className="h-9 w-9 text-white sm:h-11 sm:w-11" />
+              <LuShield className="size-9 text-white sm:h-11 sm:w-11" />
             </div>
             <div className="min-w-0">
               <h1 className="font-semibold text-xl leading-tight sm:text-2xl md:text-3xl lg:text-4xl">
@@ -150,9 +149,9 @@ export default function Aicte() {
           <aside className="space-y-5">
             <div className="relative overflow-hidden rounded-2xl shadow-sm">
               <div className="h-48 w-full sm:h-64 md:h-72 lg:h-80">
-                <Image
+                <GithubImage
                   fill
-                  src="https://content.jdmagicbox.com/v2/comp/delhi/l2/011pxx11.xx11.170919220015.u9l2/catalogue/aicte-office-vasant-vihar-delhi-schools-2mpw1ridwr.jpg"
+                  src="(about)/about/aicte/aicte.webp"
                   alt="AICTE Approved Institution"
                   className="object-cover"
                   loading="lazy"

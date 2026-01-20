@@ -8,7 +8,7 @@ export const fetchSuccessStoriesPageData = cache(async () => {
 
   const query = gql`{
     successStoriesPage {
-      success_stories {
+      success_stories (pagination: { pageSize: 6 }) {
         documentId name employer salary
         department { name } image { url alternativeText }
         youtube_url passout_year description

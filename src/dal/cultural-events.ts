@@ -18,7 +18,7 @@ export const fetchCulturalEventsPageData = cache(async () => {
         documentId image { url alternativeText }
       }
 
-      upcoming_events {
+      upcoming_events (pagination: { pageSize: 6 }) {
         documentId title description
         multiple_days start end
         image { url alternativeText }

@@ -37,7 +37,7 @@ export const fetchHomePageData = cache(async () => {
       }
 
       gallery_tagline
-      gallery_items {
+      gallery_items (pagination: { pageSize: 5 }) {
         documentId title tag type
         image { url alternativeText }
         youtubeUrl videoPreview { url alternativeText }
