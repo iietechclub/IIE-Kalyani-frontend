@@ -127,7 +127,7 @@ export default function Makaut() {
   return (
     <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <div className="relative bg-linear-to-r from-red-600 to-red-700 py-12 text-white sm:py-16 md:py-20">
+      <div className="relative bg-linear-to-r from-indigo-800 via-blue-700 to-sky-600 py-10 text-white sm:py-14 md:py-18">
         <div className="absolute inset-0 bg-black/8" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
