@@ -97,7 +97,7 @@ export default function ProjectBankClient({ projects }: ProjectBankPageData) {
 
   // --- HEADER: replaced with LibraryPage header design (copied) ---
   const heroImage =
-    "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80";
+    "https://images.unsplash.com/photo-1664382953647-5c6c76dd63b9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   return (
     <main className="min-h-screen bg-linear-to-br from-gray-50 to-white">
@@ -105,7 +105,7 @@ export default function ProjectBankClient({ projects }: ProjectBankPageData) {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="h-80 w-full bg-center bg-cover"
+            className="h-80 w-full bg-center bg-cover blur-[4px] md:h-[420px]"
             style={{ backgroundImage: `url('${heroImage}')` }}
           ></div>
           <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent"></div>
