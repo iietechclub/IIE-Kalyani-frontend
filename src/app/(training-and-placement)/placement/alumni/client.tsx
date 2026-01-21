@@ -40,9 +40,7 @@ import { urlFromGithub } from "@/lib/utils";
 //   linkedin: string;
 // };
 
-const heroImage = urlFromGithub(
-  "(training-and-placement)/placement/alumni/banner.JPG",
-);
+const heroImage = "https://images.unsplash.com/photo-1658235081452-c2ded30b8d9f?q=80&w=1114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 // const objectives = [
 //   {
@@ -410,7 +408,7 @@ export default function AlumniRelationPageClient(data: AlumniRelationPageData) {
               fill
               src={heroImage}
               alt="Alumni Relations Banner"
-              className="object-cover"
+              className="object-cover blur-[4px]"
               priority
             />
           </div>

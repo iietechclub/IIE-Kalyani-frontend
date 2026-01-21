@@ -22,7 +22,7 @@ export default async function SuccessStories() {
               fill
               src={heroImage}
               alt="Success Stories Banner"
-              className="size-full object-cover"
+              className="size-full object-cover blur-[4px]"
             />
           </div>
           <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent" />
