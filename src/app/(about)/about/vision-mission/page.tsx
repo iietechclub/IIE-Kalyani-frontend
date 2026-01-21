@@ -24,7 +24,7 @@ export default async function VisionMission() {
       <div className="relative mb-6 overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="size-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80')] bg-center bg-cover"
+            className="size-full bg-[url('https://plus.unsplash.com/premium_photo-1753346515178-78cf1456b166?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-center bg-cover blur-[4px]"
             aria-hidden
           />
           <div className="absolute inset-0 bg-linear-to-r from-black/60 to-transparent" />
