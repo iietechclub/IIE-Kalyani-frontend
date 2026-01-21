@@ -7,6 +7,7 @@ import {
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 import { fetchFeeStructurePageData } from "@/dal/fee-structure";
 import { urlFromBackend } from "@/lib/utils";
+import { urlFromGithub } from "@/lib/utils";
 // import { Card } from "@/components/ui/card";
 
 /**
@@ -33,40 +34,52 @@ export default async function FeeStructurePage() {
   return (
     <main className="min-h-screen bg-white font-sans text-gray-900">
       {/* Header (keep unchanged) */}
-      <header className="relative bg-linear-to-r from-red-600 to-rose-600 py-12 text-white sm:py-20">
-        <div className="pointer-events-none absolute inset-0 bg-black/8" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <div className="flex items-center gap-4">
-              <div className="rounded-2xl bg-white/10 p-3">
-                <LuDollarSign className="h-10 w-10" />
-              </div>
-              <div>
-                <h1 className="font-extrabold text-2xl tracking-tight sm:text-3xl">
-                  Fee Structure
-                </h1>
-                <p className="mt-1 max-w-xl text-rose-100 text-sm sm:text-base">
-                  As per Govt. of West Bengal norms — fee schedule & components
-                  for the academic year.
-                </p>
-              </div>
-            </div>
+      <header
+  className="relative py-12 text-white sm:py-20 overflow-hidden"
+  style={{
+    backgroundImage: `url(${urlFromGithub("%28admission%29/admission/fee-structure/banner.jpg")})`,
 
-            <div className="flex items-center gap-3">
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href={urlFromBackend(fees_structure_pdf.url)}
-                className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-rose-600 shadow transition hover:shadow-lg"
-                aria-label="Download Fee Brochure"
-              >
-                <LuDownload className="size-4" />
-                View &amp; Download Fees
-              </Link>
-            </div>
-          </div>
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+
+  {/* Blur + Dark Overlay */}
+  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+
+  <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+      <div className="flex items-center gap-4">
+        <div className="rounded-2xl bg-white/10 p-3 backdrop-blur-sm">
+          <LuDollarSign className="h-10 w-10" />
         </div>
-      </header>
+        <div>
+          <h1 className="font-extrabold text-2xl tracking-tight sm:text-3xl">
+            Fee Structure
+          </h1>
+          <p className="mt-1 max-w-xl text-rose-100 text-sm sm:text-base">
+            As per Govt. of West Bengal norms — fee schedule & components
+            for the academic year.
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href={urlFromBackend(fees_structure_pdf.url)}
+          className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-rose-600 shadow transition hover:shadow-lg"
+          aria-label="Download Fee Brochure"
+        >
+          <LuDownload className="size-4" />
+          View &amp; Download Fees
+        </Link>
+      </div>
+    </div>
+  </div>
+</header>
+
 
       {/* Important notes */}
       {/* <div className="mx-auto mt-8 max-w-6xl px-4 sm:px-6 lg:px-8">

@@ -1,6 +1,9 @@
 "use client";
 import { MotionDiv } from "@/components/animated/motion";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import { urlFromGithub } from "@/lib/utils";
+
 
 /**
  * IQACLite
@@ -73,7 +76,7 @@ const minutesAgenda = [
 export default function IQACLite() {
   // Replace these placeholders with exact URLs from the live site if you want direct PDF links preserved:
   return (
-    <main className="min-h-screen bg-linear-to-br from-white via-red-50/30 to-white">
+    <main className="min-h-screen bg-gradient-to-br from-white via-red-50/30 to-white">
       {/* Breadcrumb - Removed due to component not available */}
 
       {/* Hero - uses same sizes & spacing you've insisted on; retains badge and CTA */}
@@ -85,17 +88,17 @@ export default function IQACLite() {
             transition={{ duration: 1 }}
             className="absolute inset-0"
           >
-            {/* <Image
-              src={heroImage}
+            <Image
+              src={urlFromGithub("(admission)/eligibility/btech/banner.jpg")}
               alt="IQAC hero"
               fill
               className="object-cover"
               priority
-            /> */}
-            <div className="absolute inset-0 bg-linear-to-r from-primary via-red-500 to-black/30" />
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary via-red-500 to-black/30" />
           </MotionDiv>
 
-          <div className="container relative z-10 mx-auto flex h-full items-center px-4">
+          <div className="container relative z-10 mx-auto flex h-full items-center px-6 md:px-20">
             <div className="max-w-3xl text-white">
               <Badge className="mb-3 border-white/30 bg-white/20 text-white">
                 IQAC — Quality Assurance Cell

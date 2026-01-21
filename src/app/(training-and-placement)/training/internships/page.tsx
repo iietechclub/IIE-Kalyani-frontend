@@ -81,14 +81,13 @@ export default function InternshipsPage() {
             aria-hidden
           >
             <Image
-              fill
-              src={urlFromGithub(
-                "(training-and-placement)/training/internships/internship-banner.jpg",
-              )}
-              alt="Internships banner image"
-              className="object-cover"
-              priority
-            />
+            fill
+            src={urlFromGithub("(training-and-placement)/training/internships/banner.jpg")}
+            alt="Internships banner image"
+            className="object-cover blur-sm"
+            priority
+          />
+
           </div>
           <div className="absolute inset-0 bg-linear-to-b from-black/60 to-black/20" />
           <div className="-right-36 -top-28 absolute size-96 rounded-full bg-[#FF6B35]/8 blur-3xl" />

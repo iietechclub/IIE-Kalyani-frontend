@@ -4,6 +4,8 @@ import { LuCamera } from "react-icons/lu";
 import { MotionDiv, MotionFigure } from "@/components/animated/motion";
 import BackendImage from "@/components/BackendImage";
 import GithubImage from "@/components/GithubImage";
+import Image from "next/image";
+import { urlFromGithub } from "@/lib/utils";
 
 export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("All");
@@ -131,19 +133,21 @@ export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
       <header className="relative">
         <div className="relative h-48 w-full bg-center bg-cover bg-no-repeat sm:h-64 md:h-80 lg:h-96">
           {/* dark overlay for contrast */}
-          <GithubImage
-            src="(campus)/campus/gallery/Banner_image.JPG"
+          <Image
+            src={urlFromGithub("(campus)/campus/gallery/banner.JPG")}
             alt="Campus Gallery Banner"
             fill
-            className="object-cover"
+            className="object-cover blur-[4px]"
+            priority
           />
+
           <div className="absolute inset-0 bg-black/50"></div>
 
           {/* subtle decorative shapes (hidden on very small screens) */}
           <div className="-left-10 -top-10 pointer-events-none absolute hidden h-36 w-36 rounded-full bg-white/8 blur-2xl sm:block"></div>
           <div className="pointer-events-none absolute right-8 bottom-4 hidden h-44 w-44 rounded-full bg-pink-400/15 blur-2xl sm:block"></div>
 
-          <div className="container relative z-10 mx-auto flex h-full items-center px-3 sm:px-4">
+          <div className="container relative z-10 mx-auto flex h-full items-center px-3 pl-16 sm:px-4 sm:pl-32">
             <MotionDiv
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}

@@ -15,6 +15,7 @@ import { Card } from "@/components/ui/card";
 import DynamicIcon from "@/components/ui/dynamic-icon";
 import { fetchCoursesOfferedPageData } from "@/dal/courses-offered";
 import { cn } from "@/lib/utils";
+import { urlFromGithub } from "@/lib/utils";
 
 /**
  * CoursesOffered — modern & responsive (uses `font-nanito` class, no font imports)
@@ -50,51 +51,39 @@ export default async function CoursesOffered() {
   return (
     <main className="min-h-screen bg-linear-to-br from-gray-50 to-rose-50/30 font-nanito">
       {/* HERO */}
-      <header className="relative bg-linear-to-r from-rose-600 to-red-600 py-14 text-white sm:py-18">
-        <div className="pointer-events-none absolute inset-0 bg-black/6" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="mb-4 inline-flex items-center justify-center">
-              <div className="transform-gpu rounded-2xl bg-white/10 px-3 py-2 backdrop-blur">
-                <LuGraduationCap className="h-12 w-12 text-white" />
-              </div>
-            </div>
+      <header className="relative py-14 text-white sm:py-18 overflow-hidden bg-linear-to-r from-rose-600 to-red-600">
+  {/* Background Image Layer */}
+  <div
+  className="absolute inset-0 scale-105 blur-sm"
+  style={{
+    backgroundImage: `url(${urlFromGithub("%28admission%29/admission/courses/banner.jpg")})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+/>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/40" />
 
-            <h1 className="font-extrabold text-2xl leading-tight sm:text-3xl md:text-4xl">
-              Courses Offered
-            </h1>
-
-            <p className="mx-auto mt-3 max-w-3xl text-rose-50 text-sm sm:text-base">
-              AICTE-approved & MAKAUT-affiliated undergraduate programs —
-              designed for industry readiness and future careers.
-            </p>
-
-            {/* small hero stats */}
-            {/* <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
-              <MiniStat icon={<Users className="w-4 h-4" />} label="Applicants" value="1,240+" accent="text-rose-500" />
-              <MiniStat icon={<GraduationCap className="w-4 h-4" />} label="Seats" value="420" accent="text-green-500" />
-              <MiniStat icon={<Sparkles className="w-4 h-4" />} label="Scholarships" value="Merit & Need" accent="text-yellow-500" />
-            </div> */}
-
-            {/* <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                to="/admission/apply"
-                className="inline-flex items-center gap-3 bg-white text-rose-600 px-5 py-2.5 rounded-lg shadow hover:scale-[1.02] transition"
-                aria-label="Apply Now"
-              >
-                Apply Now
-              </Link>
-              <Link
-                to="/admission/courses"
-                className="inline-flex items-center gap-3 border border-white/30 text-white px-5 py-2.5 rounded-lg hover:bg-white/10 transition"
-                aria-label="Program Details"
-              >
-                Program Details
-              </Link>
-            </div> */}
-          </div>
+  <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="text-center">
+      <div className="mb-4 inline-flex items-center justify-center">
+        <div className="transform-gpu rounded-2xl bg-white/10 px-3 py-2 backdrop-blur">
+          <LuGraduationCap className="h-12 w-12 text-white" />
         </div>
-      </header>
+      </div>
+
+      <h1 className="font-extrabold text-2xl leading-tight sm:text-3xl md:text-4xl">
+        Courses Offered
+      </h1>
+
+      <p className="mx-auto mt-3 max-w-3xl text-rose-50 text-sm sm:text-base">
+        AICTE-approved & MAKAUT-affiliated undergraduate programs —
+        designed for industry readiness and future careers.
+      </p>
+    </div>
+  </div>
+</header>
+
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* intro */}

@@ -1,4 +1,5 @@
 import { LuCheck, LuFileText, LuGraduationCap } from "react-icons/lu";
+import { urlFromGithub } from "@/lib/utils";
 
 export default function EligibilityBTechLateral() {
   const eligibilityCriteria = [
@@ -67,32 +68,41 @@ export default function EligibilityBTechLateral() {
   return (
     <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <header className="relative bg-linear-to-r from-red-600 to-red-700 py-12 text-white sm:py-16 md:py-20">
-        <div className="absolute inset-0 bg-black/8" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
-            <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">
-              <LuGraduationCap className="size-9 text-white sm:size-11" />
-            </div>
+      <header
+  className="relative bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20 overflow-hidden"
+  style={{
+    backgroundImage: `url(${urlFromGithub("%28admission%29/eligibility/btech-lateral/banner.jpg")})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/50" />
 
-            <div className="min-w-0">
-              <h1 className="mb-1 font-semibold text-2xl leading-tight sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl">
-                <span className="block">B.Tech Lateral Entry</span>
-              </h1>
-              <p className="truncate text-sm text-white/90 sm:text-base md:text-lg">
-                Direct 2nd-year admission for Diploma and B.Sc. graduates as per
+  <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+      <div className="shrink-0 rounded-2xl bg-white/10 p-3 backdrop-blur-sm sm:p-4">
+        <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
+      </div>
+      <div className="min-w-0">
+        <h1 className="mb-1 font-semibold text-2xl leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
+          B.Tech Lateral Entry
+        </h1>
+        <p className="text-sm text-white/90 sm:text-base md:text-lg">
+          Direct 2nd-year admission for Diploma and B.Sc. graduates as per
                 JELET / MAKAUT norms.
-              </p>
-            </div>
-          </div>
+        </p>
+      </div>
+    </div>
 
-          <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
-            Candidates seeking lateral entry admission to B.Tech at IIE Kalyani
+    <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
+      Candidates seeking lateral entry admission to B.Tech at IIE Kalyani
             must fulfil the academic, entrance and documentation requirements
             laid down by MAKAUT and WBJEEB.
-          </p>
-        </div>
-      </header>
+    </p>
+  </div>
+</header>
+
 
       {/* Content Section */}
       <div className="border-red-100/60 border-t">

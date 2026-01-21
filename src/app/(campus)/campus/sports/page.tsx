@@ -9,6 +9,7 @@ import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { fetchSportsPageData } from "@/dal/sports";
+import { urlFromGithub } from "@/lib/utils";
 
 /**
  * Redesigned SportsPage
@@ -21,7 +22,9 @@ import { fetchSportsPageData } from "@/dal/sports";
  */
 
 export default async function SportsPage() {
-  const { gallery_highlights } = await fetchSportsPageData();
+  const data = await fetchSportsPageData();
+const gallery_highlights = data?.gallery_highlights ?? [];
+
 
   // data (kept from your original)
   const outdoorSports = [
@@ -110,12 +113,15 @@ export default async function SportsPage() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="relative h-[500px] w-full scale-105 object-center md:h-[520px]">
-            <GithubImage
+            <Image
               fill
-              src="(campus)/campus/sports/banner.jpg"
+              src={urlFromGithub("(campus)/campus/sports/banner.jpg")}
               alt="Sports facilities hero"
-              className="object-cover"
+              className="object-cover blur-[4px]"
+              priority
             />
+
+
           </div>
           <div className="absolute inset-0 bg-linear-to-r from-green-900/80 via-blue-900/50 to-transparent" />
         </div>

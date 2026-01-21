@@ -1,5 +1,6 @@
 import { LuFileText, LuGraduationCap } from "react-icons/lu";
 import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
+import { urlFromGithub } from "@/lib/utils";
 
 export default function EligibilityBBA() {
   const eligibilityCriteria = [
@@ -72,32 +73,41 @@ export default function EligibilityBBA() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       {/* HEADER – same pattern as your MAKAUT header */}
-      <header className="relative bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20">
-        <div className="absolute inset-0 bg-black/8" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
-            <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">
-              <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
-            </div>
+      <header
+  className="relative bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20 overflow-hidden"
+  style={{
+     backgroundImage: `url(${urlFromGithub("%28admission%29/eligibility/bba/banner.jpg")})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/50" />
 
-            <div className="min-w-0">
-              <h1 className="mb-1 font-semibold text-2xl leading-tight sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl">
-                <span className="block">BBA Eligibility Criteria</span>
-              </h1>
-              <p className="truncate text-sm text-white/90 sm:text-base md:text-lg">
-                Bachelor of Business Administration at IIE Kalyani —
+  <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+      <div className="shrink-0 rounded-2xl bg-white/10 p-3 backdrop-blur-sm sm:p-4">
+        <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
+      </div>
+      <div className="min-w-0">
+        <h1 className="mb-1 font-semibold text-2xl leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
+          BBA Eligibility Criteria
+        </h1>
+        <p className="text-sm text-white/90 sm:text-base md:text-lg">
+          Bachelor of Business Administration at IIE Kalyani —
                 eligibility, documents and career scope.
-              </p>
-            </div>
-          </div>
+        </p>
+      </div>
+    </div>
 
-          <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
-            Check whether you meet the academic and documentation requirements
+    <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
+      Check whether you meet the academic and documentation requirements
             for admission to the BBA programme, as per the institute and
             university norms.
-          </p>
-        </div>
-      </header>
+    </p>
+  </div>
+</header>
+
 
       {/* MAIN CONTENT */}
       <div className="border-red-100/60 border-t">

@@ -5,6 +5,8 @@ import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { fetchTechnicalEventsAndSeminarsPageData } from "@/dal/technical-events-and-seminars";
+import Image from "next/image";
+import { urlFromGithub } from "@/lib/utils";
 
 // type EventType = {
 //   id?: string;
@@ -156,18 +158,18 @@ export default async function TechnicalEventsPage() {
   return (
     <main className="min-h-screen bg-linear-to-br from-white via-blue-50/30 to-white">
       {/* Hero (kept as-is) */}
-      <header className="relative overflow-hidden">
+      <header className="relative h-[420px] overflow-hidden">
         <div className="absolute inset-0">
-          <div className="h-[500px] w-full scale-105 object-center md:h-[520px]">
-            <GithubImage
+          <div className="relative h-[500px] w-full scale-105 object-center md:h-[520px]">
+            <Image
               fill
-              src="(campus)/student-activities/technical-events-and-seminars/banner.png"
+              src={urlFromGithub("(campus)/student-activities/technical-events-and-seminars/banner.jpg")}
               alt="Technical events hero"
-              className="object-cover"
+              className="object-cover blur-[4px]"
+              priority
             />
           </div>
-
-          <div className="absolute inset-0 bg-linear-to-r from-blue-900/80 via-purple-900/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-purple-900/50 to-transparent" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4">

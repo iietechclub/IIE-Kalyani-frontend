@@ -1,5 +1,6 @@
 import { LuFileText, LuGraduationCap } from "react-icons/lu";
 import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
+import { urlFromGithub } from "@/lib/utils";
 
 export default function EligibilityBTech() {
   const eligibilityCriteria = [
@@ -60,31 +61,41 @@ export default function EligibilityBTech() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       {/* ===== HERO (full width, your style) ===== */}
-      <header className="relative bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20">
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
-            <div className="shrink-0 rounded-2xl bg-white/10 p-3 backdrop-blur-sm sm:p-4">
-              <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
-            </div>
-            <div className="min-w-0">
-              <h1 className="mb-1 font-semibold text-2xl leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
-                B.Tech Eligibility Criteria
-              </h1>
-              <p className="text-sm text-white/90 sm:text-base md:text-lg">
-                Requirements for admission to undergraduate engineering programs
-                at IIE Kalyani.
-              </p>
-            </div>
-          </div>
+     <header
+  className="relative bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20 overflow-hidden"
+  style={{
+    backgroundImage: `url(${urlFromGithub("%28admission%29/eligibility/btech/banner.jpg")})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/50" />
 
-          <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
-            Carefully read the academic qualification, entrance exam
-            requirements, branches offered, and mandatory documents before
-            applying through WBJEE / JEE or as per MAKAUT guidelines.
-          </p>
-        </div>
-      </header>
+  <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+      <div className="shrink-0 rounded-2xl bg-white/10 p-3 backdrop-blur-sm sm:p-4">
+        <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
+      </div>
+      <div className="min-w-0">
+        <h1 className="mb-1 font-semibold text-2xl leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
+          B.Tech Eligibility Criteria
+        </h1>
+        <p className="text-sm text-white/90 sm:text-base md:text-lg">
+          Requirements for admission to undergraduate engineering programs
+          at IIE Kalyani.
+        </p>
+      </div>
+    </div>
+
+    <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
+      Carefully read the academic qualification, entrance exam
+      requirements, branches offered, and mandatory documents before
+      applying through WBJEE / JEE or as per MAKAUT guidelines.
+    </p>
+  </div>
+</header>
+
 
       {/* ===== MAIN CONTENT (full-page feel, simple & modern) ===== */}
       <div className="border-red-100/60 border-t">
