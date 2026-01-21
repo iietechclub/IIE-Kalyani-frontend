@@ -18,22 +18,34 @@ export default async function LeadershipMessage({
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-white">
       {/* Hero Section */}
-      <div className="relative bg-linear-to-r from-red-600 to-red-700 py-16 text-white sm:py-20">
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative mx-auto flex max-w-7xl gap-4 px-4 sm:px-6 lg:px-8">
-          <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-white/20 backdrop-blur-sm">
-            <LuUser className="size-6" />
-          </div>
-          <div className="mb-3 space-y-3">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl">
-              {leadershipType}&apos;s Message
-            </h1>
-            <p className="max-w-3xl text-lg text-white/90 sm:text-xl">
-              {subtitle}
-            </p>
-          </div>
-        </div>
-      </div>
+      <div
+  className="relative py-16 text-white sm:py-20 bg-cover bg-center"
+  style={{
+  backgroundImage: `
+    linear-gradient(to right, rgba(248,113,113,0.7), rgba(239,68,68,0.7)),
+    url('https://raw.githubusercontent.com/Anjel-cmd/college_images123/main/about_collage_3c7957b5b1.webp')
+  `,
+}}
+
+>
+  <div className="absolute inset-0 bg-black/10" />
+
+  <div className="relative mx-auto flex max-w-7xl gap-4 px-4 sm:px-6 lg:px-8">
+    <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-white/20 backdrop-blur-sm">
+      <LuUser className="size-6" />
+    </div>
+
+    <div className="mb-3 space-y-3">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl">
+        {leadershipType}&apos;s Message
+      </h1>
+      <p className="max-w-3xl text-lg text-white/90 sm:text-xl">
+        {subtitle}
+      </p>
+    </div>
+  </div>
+</div>
+
 
       {/* Content Section */}
       <div className="mx-auto max-w-7xl space-y-20 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
