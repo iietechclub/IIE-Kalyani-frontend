@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { LuClipboardCheck } from "react-icons/lu";
 import {
@@ -670,12 +671,15 @@ export default function PlacementRecordPageClient({
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div
-            className="h-[360px] w-full bg-center bg-cover md:h-[420px] blur-[4px]"
-            style={{ backgroundImage: `url(${heroImage})` }}
-            aria-hidden
+          <Image
+            fill
+            src={heroImage}
+            alt="Training And Placement Banner"
+            className="object-cover blur-xs"
+            preload
           />
-          <div className="absolute inset-0 bg-linear-to-r from-primary to-transparent" />
+
+          <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
         </div>
 
         <div className="relative mx-auto mt-12 mb-6 flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">

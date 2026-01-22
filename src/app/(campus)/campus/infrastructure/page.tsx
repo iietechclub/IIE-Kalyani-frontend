@@ -10,7 +10,7 @@ import {
   LuWind,
   LuZap,
 } from "react-icons/lu";
-import { urlFromGithub } from "@/lib/utils";
+import GithubImage from "@/components/GithubImage";
 
 export default function InfrastructurePage() {
   const facilities = [
@@ -129,44 +129,42 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
     <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <header className="relative overflow-hidden py-12 text-white sm:py-16 md:py-20">
-  {/* Background Image */}
-  <div className="absolute inset-0 z-0">
-    <Image
-      fill
-      src={urlFromGithub("%28campus%29/campus/infrastructure/banner.jpg")}
-      className="object-cover blur-[4px] brightness-120 contrast-105 saturate-110"
-      priority
-    />
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-black/50" />
-  </div>
+        {/* Background Image */}
+        <GithubImage
+          fill
+          src="(campus)/campus/infrastructure/banner.jpg"
+          alt="Infrastructure Banner"
+          className="object-cover blur-xs brightness-120 contrast-105 saturate-110"
+          preload
+        />
 
-  {/* Content */}
-  <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
-      <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">
-        <LuBuilding2 className="size-9 text-white sm:size-11" />
-      </div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
 
-      <div className="min-w-0">
-        <h1 className="mb-1 font-semibold text-2xl leading-tight sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl">
-          <span className="block">Campus Infrastructure</span>
-        </h1>
-        <p className="truncate text-sm text-white/90 sm:text-base md:text-lg">
-          World-class facilities for learning, innovation and growth
-        </p>
-      </div>
-    </div>
+        {/* Content */}
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
+            <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">
+              <LuBuilding2 className="size-9 text-white sm:size-11" />
+            </div>
 
-    <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
-      Experience modern classrooms, advanced labs, a comprehensive library and
-      student-first amenities — all designed to support your academic journey at
-      IIE Kalyani.
-    </p>
-  </div>
-</header>
+            <div className="min-w-0">
+              <h1 className="mb-1 font-semibold text-2xl leading-tight sm:mb-2 sm:text-3xl md:text-4xl lg:text-5xl">
+                <span className="block">Campus Infrastructure</span>
+              </h1>
+              <p className="truncate text-sm text-white/90 sm:text-base md:text-lg">
+                World-class facilities for learning, innovation and growth
+              </p>
+            </div>
+          </div>
 
-
+          <p className="max-w-3xl text-white/85 text-xs leading-relaxed sm:text-sm md:text-base">
+            Experience modern classrooms, advanced labs, a comprehensive library
+            and student-first amenities — all designed to support your academic
+            journey at IIE Kalyani.
+          </p>
+        </div>
+      </header>
 
       {/* Content Section */}
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 md:py-12 lg:px-8">

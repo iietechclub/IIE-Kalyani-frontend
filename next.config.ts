@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "plus.unsplash.com",
+        pathname: "/**",
+      },
     ],
     dangerouslyAllowLocalIP: env.NODE_ENV === "development",
   },

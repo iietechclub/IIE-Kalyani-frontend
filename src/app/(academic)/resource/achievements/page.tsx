@@ -1,9 +1,8 @@
-import Image from "next/image";
 import { MotionDiv, MotionH2 } from "@/components/animated/motion";
 import BackendImage from "@/components/BackendImage";
+import GithubImage from "@/components/GithubImage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { fetchAchievementsPageData } from "@/dal/achievements";
-import { urlFromGithub } from "@/lib/utils";
 
 export default async function Achievements() {
   const { student_achievements } = await fetchAchievementsPageData();
@@ -66,32 +65,32 @@ export default async function Achievements() {
     >
       {/* Hero Section */}
       <section className="relative flex h-80 items-center justify-center overflow-hidden text-center md:h-[420px]">
-  <div className="absolute inset-0">
-    <Image
-      fill
-      src={urlFromGithub("(academic)/resource/achievements/banner.jpg")}
-      alt="Achievement Hero"
-      className="h-full w-full object-cover opacity-40"
-      priority
-    />
-    <div className="absolute inset-0 bg-linear-to-b from-(--iie-primary)/70 to-black/80" />
-  </div>
+        <div className="absolute inset-0">
+          <GithubImage
+            fill
+            src="(academic)/resource/achievements/banner.jpg"
+            alt="Achievement Hero"
+            className="size-full object-cover opacity-40"
+            preload
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-(--iie-primary)/70 to-black/80" />
+        </div>
 
-  <MotionDiv
-    initial={{ opacity: 0, y: 25 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    className="relative z-10 px-4"
-  >
-    <h1 className="mb-4 font-bold text-4xl text-white md:text-5xl">
-      Achievements & Excellence
-    </h1>
-    <p className="mx-auto max-w-2xl text-white/90">
-      Celebrating the triumphs of our students, faculty, and the institution
-      that make IIE Kalyani proud.
-    </p>
-  </MotionDiv>
-</section>
+        <MotionDiv
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 px-4"
+        >
+          <h1 className="mb-4 font-bold text-4xl text-white md:text-5xl">
+            Achievements & Excellence
+          </h1>
+          <p className="mx-auto max-w-2xl text-white/90">
+            Celebrating the triumphs of our students, faculty, and the
+            institution that make IIE Kalyani proud.
+          </p>
+        </MotionDiv>
+      </section>
 
       {/* Main Content */}
       <div className="mx-auto max-w-7xl space-y-20 px-4 py-16 sm:px-6 lg:px-8">

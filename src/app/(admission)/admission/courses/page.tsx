@@ -11,11 +11,11 @@ import {
   // LuZap,
 } from "react-icons/lu";
 import { MotionArticle } from "@/components/animated/motion";
+import GithubImage from "@/components/GithubImage";
 import { Card } from "@/components/ui/card";
 import DynamicIcon from "@/components/ui/dynamic-icon";
 import { fetchCoursesOfferedPageData } from "@/dal/courses-offered";
 import { cn } from "@/lib/utils";
-import { urlFromGithub } from "@/lib/utils";
 
 /**
  * CoursesOffered — modern & responsive (uses `font-nanito` class, no font imports)
@@ -51,39 +51,39 @@ export default async function CoursesOffered() {
   return (
     <main className="min-h-screen bg-linear-to-br from-gray-50 to-rose-50/30 font-nanito">
       {/* HERO */}
-      <header className="relative py-14 text-white sm:py-18 overflow-hidden bg-linear-to-r from-rose-600 to-red-600">
-  {/* Background Image Layer */}
-  <div
-  className="absolute inset-0 scale-105 blur-sm"
-  style={{
-    backgroundImage: `url(${urlFromGithub("%28admission%29/admission/courses/banner.jpg")})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
-/>
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/40" />
-
-  <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div className="text-center">
-      <div className="mb-4 inline-flex items-center justify-center">
-        <div className="transform-gpu rounded-2xl bg-white/10 px-3 py-2 backdrop-blur">
-          <LuGraduationCap className="h-12 w-12 text-white" />
+      <header className="relative overflow-hidden bg-linear-to-r from-rose-600 to-red-600 py-14 text-white sm:py-18">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 blur-sm">
+          <GithubImage
+            fill
+            src="(admission)/admission/courses/banner.jpg"
+            alt="Courses Offered Hero"
+            className="object-cover"
+            preload
+          />
         </div>
-      </div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
 
-      <h1 className="font-extrabold text-2xl leading-tight sm:text-3xl md:text-4xl">
-        Courses Offered
-      </h1>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="mb-4 inline-flex items-center justify-center">
+              <div className="transform-gpu rounded-2xl bg-white/10 px-3 py-2 backdrop-blur">
+                <LuGraduationCap className="size-12 text-white" />
+              </div>
+            </div>
 
-      <p className="mx-auto mt-3 max-w-3xl text-rose-50 text-sm sm:text-base">
-        AICTE-approved & MAKAUT-affiliated undergraduate programs —
-        designed for industry readiness and future careers.
-      </p>
-    </div>
-  </div>
-</header>
+            <h1 className="font-extrabold text-2xl leading-tight sm:text-3xl md:text-4xl">
+              Courses Offered
+            </h1>
 
+            <p className="mx-auto mt-3 max-w-3xl text-rose-50 text-sm sm:text-base">
+              AICTE-approved & MAKAUT-affiliated undergraduate programs —
+              designed for industry readiness and future careers.
+            </p>
+          </div>
+        </div>
+      </header>
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* intro */}

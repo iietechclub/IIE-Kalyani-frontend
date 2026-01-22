@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { LuAward, LuBookOpen, LuTrendingUp, LuUsers } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
@@ -126,9 +127,12 @@ export default function Research() {
       {/* Hero (library design) */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div
-            className="h-80 w-full bg-center bg-cover"
-            style={{ backgroundImage: `url('${heroImage}')` }}
+          <Image
+            fill
+            src={heroImage}
+            alt="Research Hero"
+            className="object-cover"
+            preload
           />
           <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
         </div>

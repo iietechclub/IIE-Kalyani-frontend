@@ -9,7 +9,6 @@ import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { fetchSportsPageData } from "@/dal/sports";
-import { urlFromGithub } from "@/lib/utils";
 
 /**
  * Redesigned SportsPage
@@ -22,9 +21,7 @@ import { urlFromGithub } from "@/lib/utils";
  */
 
 export default async function SportsPage() {
-  const data = await fetchSportsPageData();
-const gallery_highlights = data?.gallery_highlights ?? [];
-
+  const { gallery_highlights } = await fetchSportsPageData();
 
   // data (kept from your original)
   const outdoorSports = [
@@ -112,17 +109,13 @@ const gallery_highlights = data?.gallery_highlights ?? [];
       {/* HERO */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="relative h-[500px] w-full scale-105 object-center md:h-[520px]">
-            <Image
-              fill
-              src={urlFromGithub("(campus)/campus/sports/banner.jpg")}
-              alt="Sports facilities hero"
-              className="object-cover blur-[4px]"
-              priority
-            />
-
-
-          </div>
+          <GithubImage
+            fill
+            src="(campus)/campus/sports/banner.jpg"
+            alt="Sports facilities hero"
+            className="object-cover blur-xs"
+            preload
+          />
           <div className="absolute inset-0 bg-linear-to-r from-green-900/80 via-blue-900/50 to-transparent" />
         </div>
 
@@ -134,7 +127,7 @@ const gallery_highlights = data?.gallery_highlights ?? [];
             className="mx-auto max-w-5xl pt-24 pb-12 text-center text-white"
           >
             <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-2">
-              <LuTrophy className="h-5 w-5 text-white" />
+              <LuTrophy className="size-5 text-white" />
               <span className="text-sm">Campus Life</span>
             </div>
 

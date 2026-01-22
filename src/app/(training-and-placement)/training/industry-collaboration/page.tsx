@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
   LuAward,
@@ -165,7 +166,8 @@ export default function IndustryCollaboration() {
   }, [query]);
 
   // hero assets — replace with real paths
-  const heroImage = "https://images.unsplash.com/photo-1761195696590-3490ea770aa1?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // change to your hero image url
+  const heroImage =
+    "https://images.unsplash.com/photo-1761195696590-3490ea770aa1?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // change to your hero image url
   const _pdfHref = "/assets/industry-partners-brochure.pdf"; // change to your MoU/partners pdf
 
   return (
@@ -173,9 +175,12 @@ export default function IndustryCollaboration() {
       {/* Hero*/}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div
-            className="h-[360px] w-full bg-center bg-cover blur-[4px]"
-            style={{ backgroundImage: `url(${heroImage})` }}
+          <Image
+            fill
+            src={heroImage}
+            alt="Industry Collaboration Banner"
+            className="object-cover blur-xs"
+            preload
           />
           <div className="absolute inset-0 bg-linear-to-b from-gray-600 to-black/30" />
         </div>
