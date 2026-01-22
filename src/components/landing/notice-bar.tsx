@@ -23,24 +23,23 @@ export default function NoticeBar() {
   if (!isVisible) return null;
 
   return (
-    <Link
-      href="/students"
-      className="relative bg-linear-to-r from-red-900 via-red-800 to-red-900 py-2 text-white backdrop-blur-sm"
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div className="flex-1 text-center">
-            <p className="animate-pulse text-sm sm:text-base">
-              {notices[currentNotice]}
-            </p>
+    <Link href="/students">
+      <div className="relative bg-linear-to-r from-red-900 via-red-800 to-red-900 py-2 text-white backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            <div className="flex-1 text-center">
+              <p className="animate-pulse text-sm sm:text-base">
+                {notices[currentNotice]}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsVisible(false)}
+              className="text-white transition-colors hover:text-gray-200"
+            >
+              <LuX className="size-4" />
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => setIsVisible(false)}
-            className="text-white transition-colors hover:text-gray-200"
-          >
-            <LuX className="size-4" />
-          </button>
         </div>
       </div>
     </Link>

@@ -46,8 +46,8 @@ export default function BannerCarousel({ slides }: Props) {
           <div
             key={documentId}
             className={cn(
-              "absolute inset-0 opacity-0 transition-opacity duration-1000",
-              idx === currentSlide && "opacity-100",
+              "absolute inset-0 hidden opacity-0 transition-opacity duration-1000",
+              idx === currentSlide && "block opacity-100",
             )}
           >
             {/* Background Image */}
@@ -93,12 +93,7 @@ export default function BannerCarousel({ slides }: Props) {
                   </p>
 
                   {/* Call-to-Action Buttons */}
-                  <div
-                    className={cn(
-                      "flex gap-2 pt-4 sm:gap-3 md:gap-4",
-                      idx !== currentSlide && "pointer-events-none",
-                    )}
-                  >
+                  <div className="flex gap-2 pt-4 sm:gap-3 md:gap-4">
                     {ctaButtons.map((ctaButton) => (
                       <CTAButton {...ctaButton} key={ctaButton.id} />
                     ))}
