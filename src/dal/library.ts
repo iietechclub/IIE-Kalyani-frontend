@@ -9,7 +9,7 @@ export const fetchLibraryPageData = cache(async () => {
   const query = gql`{
     library {
       introduction
-      gallery_images {
+      gallery_images (pagination: { pageSize: 6 }) {
         documentId image { url alternativeText }
       }
       resources {

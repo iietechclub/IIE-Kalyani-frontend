@@ -55,6 +55,7 @@ export default async function LeadershipMessage({
               <div className="relative mb-6 aspect-video overflow-hidden rounded-lg ring-2 ring-primary/30">
                 <BackendImage
                   fill
+                  preload
                   alt="Principal"
                   src={data.image.url}
                   className="object-cover"

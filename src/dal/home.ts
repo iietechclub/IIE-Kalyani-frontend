@@ -18,7 +18,7 @@ export const fetchHomePageData = cache(async () => {
         }
       }
 
-      why_choose_cards {
+      why_choose_cards (pagination: { pageSize: 5 }) {
         documentId title description
         image { url alternativeText }
       }
@@ -37,7 +37,7 @@ export const fetchHomePageData = cache(async () => {
       }
 
       gallery_tagline
-      gallery_items {
+      gallery_items (pagination: { pageSize: 5 }) {
         documentId title tag type
         image { url alternativeText }
         youtubeUrl videoPreview { url alternativeText }

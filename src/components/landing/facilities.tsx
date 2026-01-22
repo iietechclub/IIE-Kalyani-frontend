@@ -44,9 +44,7 @@ export default function Facilities({ tagline, facilities }: Props) {
           <div className="mb-16 text-center">
             <h2
               className="mb-3 text-[#E63946] md:mb-4"
-              style={{
-                fontSize: "clamp(1.75rem, 4vw, 3.5rem)",
-              }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 3.5rem)" }}
             >
               Our <span className="text-[#FF6B35]">Facilities</span>
             </h2>
@@ -59,16 +57,16 @@ export default function Facilities({ tagline, facilities }: Props) {
         {/* Main Facilities Grid */}
         <StaggerContainer
           staggerDelay={0.1}
-          className="mb-16 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
+          className="mb-16 grid grid-cols-2 gap-2 gap-y-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
         >
           {facilities.map((facility) => (
             <StaggerItem
               key={facility.documentId}
               className="mx-auto max-w-xs bg-white sm:max-w-none"
             >
-              <Card className="group hover:-translate-y-2 h-full overflow-hidden border border-white/20 bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
+              <Card className="group hover:-translate-y-2 h-full gap-3 overflow-hidden border border-white/20 bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl sm:gap-6 [@media(27rem<width<=40rem)]:gap-5">
                 {/* Image */}
-                <div className="relative h-32 overflow-hidden sm:h-40 md:h-48">
+                <div className="relative h-26 overflow-hidden sm:h-40 md:h-48 [@media(27rem<width<=40rem)]:h-32">
                   <BackendImage
                     fill
                     src={facility.image.url}
@@ -82,16 +80,16 @@ export default function Facilities({ tagline, facilities }: Props) {
                       </Badge>
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
                 </div>
 
-                <CardContent className="space-y-3 px-4 pb-4 sm:px-6 sm:pb-6">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20 sm:size-10">
+                <CardContent className="p space-y-3 px-3 last:pb-3 sm:px-6 sm:pb-6 [@media(27rem<width<=40rem)]:px-4.5 [@media(27rem<width<=40rem)]:last:pb-5">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <div className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20 sm:size-10 [@media(27rem<width<=40rem)]:size-8">
                       {facility.icon && (
                         <DynamicIcon
                           name={facility.icon}
-                          className="size-4 text-primary sm:size-5"
+                          className="size-3 text-primary sm:size-5 [@media(27rem<width<=40rem)]:size-4"
                         />
                       )}
                     </div>

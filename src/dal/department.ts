@@ -18,7 +18,7 @@ export const fetchDepartmentData = cache(async (slug: string) => {
       about about_image { url alternativeText }
       vision_mission_tagline vision mission
 
-      labs {
+      labs (pagination: { pageSize: 8 }) {
         documentId title
         image { url alternativeText }
       }

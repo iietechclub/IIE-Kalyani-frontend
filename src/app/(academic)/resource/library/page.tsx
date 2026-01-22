@@ -104,7 +104,10 @@ export default async function LibraryPage() {
           </TabsContent>
 
           {/* Resources Section (Under Development with gears) */}
-          <TabsContent value="resources" className="grid grid-cols-3 gap-3">
+          <TabsContent
+            value="resources"
+            className="grid grid-cols-2 gap-3 sm:grid-cols-3"
+          >
             {resources.map(({ id, title, image, description, url }) => (
               <Link
                 key={id}

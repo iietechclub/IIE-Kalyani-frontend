@@ -8,13 +8,13 @@ export const fetchTechnicalEventsAndSeminarsPageData = cache(async () => {
 
   const query = gql`{
     technicalEventsAndSeminars {
-      upcoming_events {
+      upcoming_events (pagination: { pageSize: 6 }) {
         documentId title description
         multiple_days start end
         image { url alternativeText }
         tags { id text }
       }
-      past_events {
+      past_events (pagination: { pageSize: 6 }) {
         documentId title description
         multiple_days start end
         image { url alternativeText }

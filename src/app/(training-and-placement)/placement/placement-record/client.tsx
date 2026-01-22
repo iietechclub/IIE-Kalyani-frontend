@@ -23,11 +23,15 @@ interface DepartmentData {
   percentage: number;
 }
 
-function DepartmentBarChart({ data }: { data: DepartmentPlacement[] }) {
-  const chartData: DepartmentData[] = data
+type DepartmentBarChartProps = {
+  departmentsMap: Record<string, DepartmentPlacement>;
+};
+
+function DepartmentBarChart({ departmentsMap }: DepartmentBarChartProps) {
+  const chartData: DepartmentData[] = Object.values(departmentsMap)
     .filter((dept) => !!dept.placement_data)
     .map((dept) => ({
-      dept: dept.name,
+      dept: dept.documentId,
       percentage: dept.placement_data?.students_placement_percentage ?? 0,
     }));
 
@@ -50,9 +54,7 @@ function DepartmentBarChart({ data }: { data: DepartmentPlacement[] }) {
           tickLine={false}
           axisLine={false}
           interval={0}
-          tickFormatter={(value) =>
-            value.length > 20 ? `${value.slice(0, 18)}...` : value
-          }
+          tickFormatter={(value) => departmentsMap[value].short_name}
         />
         <Tooltip
           cursor={{ fill: "rgba(244, 63, 94, 0.08)" }}
@@ -62,7 +64,13 @@ function DepartmentBarChart({ data }: { data: DepartmentPlacement[] }) {
             borderRadius: "8px",
             boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
           }}
-          formatter={(value) => [`${value}% placed`, ""]}
+          formatter={(value) => [
+            <span
+              key="value-1"
+              className="font-medium text-rose-600"
+            >{`${value}% placed`}</span>,
+          ]}
+          labelFormatter={(value) => departmentsMap[value].name}
           labelStyle={{ fontWeight: 600, color: "#374151" }}
         />
         <Bar
@@ -76,8 +84,8 @@ function DepartmentBarChart({ data }: { data: DepartmentPlacement[] }) {
             formatter={(value) => `${value}%`}
             style={{ fill: "#374151", fontWeight: 600, fontSize: 13 }}
           />
-          {data.map((entry) => (
-            <Cell key={entry.name} fill="url(#barGradient)" />
+          {chartData.map((entry) => (
+            <Cell key={entry.dept} fill="url(#barGradient)" />
           ))}
         </Bar>
       </BarChart>
@@ -674,7 +682,7 @@ export default function PlacementRecordPageClient({
           <Image
             fill
             src={heroImage}
-            alt="Training And Placement Banner"
+            alt="Placement Statistics Banner"
             className="object-cover blur-xs"
             preload
           />
@@ -682,17 +690,19 @@ export default function PlacementRecordPageClient({
           <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
         </div>
 
-        <div className="relative mx-auto mt-12 mb-6 flex max-w-7xl flex-col items-center gap-8 px-4 py-20 lg:flex-row">
+        <div className="relative mx-auto my-5 flex max-w-7xl flex-col items-center gap-8 px-4 py-20 sm:my-8 md:my-12 lg:flex-row">
           <div className="z-10 flex-1 text-center text-white lg:text-left">
             <MotionDiv
               initial={{ y: 8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="mb-6 inline-flex items-center gap-4 rounded-xl p-3">
+              <div className="inline-flex items-center gap-4 rounded-xl p-3">
                 <LuClipboardCheck className="size-12 text-white" />
                 <div className="text-left">
-                  <h1 className="text-3xl md:text-4xl">Placement Statistics</h1>
+                  <h1 className="mb-2 text-3xl md:text-4xl">
+                    Placement Statistics
+                  </h1>
                   <p className="text-sm text-white/90 md:text-base">
                     Department performance and placement highlights
                   </p>
@@ -706,7 +716,7 @@ export default function PlacementRecordPageClient({
       {/* Department pills + table */}
       <section className="container mx-auto px-4 py-8">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-6 text-center font-bold text-[48px] text-[rgba(255,0,0,0.8)] text-xl">
+          <h2 className="mt-2 mb-4 text-center font-bold text-3xl text-[48px]- text-[rgba(255,0,0,0.8)] md:text-4xl">
             Placement Records
           </h2>
 
@@ -763,11 +773,11 @@ export default function PlacementRecordPageClient({
       {/* Department-wide chart */}
       <section className="container mx-auto px-4 py-8">
         <div className="mx-auto max-w-5xl">
-          <h2 className="mb-6 text-center font-bold text-[36px] text-[rgba(255,0,0,0.81)] text-xl">
+          <h2 className="mb-6 text-pretty text-center font-bold text-2xl text-[36px]- text-[rgba(255,0,0,0.81)] md:text-3xl">
             Department Wise Placement Graph
           </h2>
           <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <DepartmentBarChart data={departments} />
+            <DepartmentBarChart departmentsMap={departmentsMap} />
           </div>
         </div>
       </section>

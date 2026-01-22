@@ -12,11 +12,11 @@ export const fetchVisionAndMissionPageData = cache(async () => {
       subtitle
       vision
       missions { id text }
-      core_values {
+      core_values (pagination: { pageSize: 6 }) {
         id title icon
         description
       }
-      objectives { id text }
+      objectives (pagination: { pageSize: 4 }) { id text }
       quote
     }
   }

@@ -9,7 +9,7 @@ export const fetchAlumniRelationPageData = cache(async () => {
   const query = gql`{
     alumniRelation {
       about
-      alumni_members {
+      alumni_members (pagination: { pageSize: 16 }) {
         documentId name description
         position batch company { short_name }
         image { url alternativeText }

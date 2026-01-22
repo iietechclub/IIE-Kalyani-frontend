@@ -1,6 +1,5 @@
 import { LuCheck, LuFileText, LuGraduationCap } from "react-icons/lu";
 import GithubImage from "@/components/GithubImage";
-import { urlFromGithub } from "@/lib/utils";
 
 export default function EligibilityBTechLateral() {
   const eligibilityCriteria = [

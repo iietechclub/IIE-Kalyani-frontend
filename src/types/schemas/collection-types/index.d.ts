@@ -73,7 +73,9 @@ type DepartmentFaculty = prettify<
     }
 >;
 type DepartmentPlacement = prettify<
-  CollectionType & DepartmentNameOnly & { placement_data?: PlacementData }
+  CollectionType &
+    DepartmentNameOnly &
+    DepartmentShortNameOnly & { placement_data?: PlacementData }
 >;
 type DepartmentShort = prettify<
   CollectionType &

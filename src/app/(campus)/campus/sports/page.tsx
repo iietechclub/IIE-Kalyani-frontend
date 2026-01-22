@@ -162,7 +162,7 @@ export default async function SportsPage() {
 
         {/* Outdoor sports grid (masonry-like with cards) */}
         <section id="outdoor" className="mb-12">
-          <div className="mb-6 flex items-center justify-between">
+          <div className="mb-6 flex flex-wrap items-center justify-between">
             <h2 className="font-semibold text-2xl">Outdoor Sports</h2>
             <p className="text-muted-foreground text-sm">
               Professionally maintained outdoor grounds
@@ -215,7 +215,7 @@ export default async function SportsPage() {
 
         {/* Indoor sports with alternating large cards */}
         <section id="indoor" className="mb-12">
-          <div className="mb-6 flex items-center justify-between">
+          <div className="mb-6 flex flex-wrap items-center justify-between">
             <h2 className="font-semibold text-2xl">Indoor Sports</h2>
             <p className="text-muted-foreground text-sm">
               Air-conditioned halls & coaching

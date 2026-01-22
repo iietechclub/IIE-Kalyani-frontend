@@ -57,7 +57,7 @@ export default function Departments({ tagline, departments }: Props) {
         {/* Departments Grid */}
         <StaggerContainer
           staggerDelay={0.1}
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
+          className="grid grid-cols-2 gap-2 gap-y-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 [@media(30rem<width<=40rem)]:grid-cols-2"
         >
           {departments.map((department, idx) => {
             const color = departmentColors[idx % departmentColors.length];
@@ -67,9 +67,9 @@ export default function Departments({ tagline, departments }: Props) {
                 className="mx-auto max-w-xs sm:max-w-none"
               >
                 <Link href={`/department/${department.slug}`}>
-                  <Card className="group hover:-translate-y-2 h-full cursor-pointer overflow-hidden border border-accent bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
+                  <Card className="group hover:-translate-y-2 h-full cursor-pointer gap-3 overflow-hidden border border-accent bg-white/70 shadow-sm backdrop-blur-lg transition-all duration-300 hover:shadow-2xl sm:gap-6 [@media(27rem<width<=40rem)]:gap-5">
                     {/* Image Section */}
-                    <div className="relative h-36 overflow-hidden sm:h-48">
+                    <div className="relative h-30 overflow-hidden sm:h-48 [@media(27rem<width<=40rem)]:h-36">
                       <div className="size-full transition-transform duration-500 group-hover:scale-110">
                         <BackendImage
                           className="object-cover"
@@ -84,7 +84,7 @@ export default function Departments({ tagline, departments }: Props) {
                           color,
                         )}
                       ></div>
-                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
 
                       {/* Badge */}
                       <div className="absolute top-4 right-4">
@@ -112,8 +112,8 @@ export default function Departments({ tagline, departments }: Props) {
                     </div>
 
                     {/* Content Section */}
-                    <CardContent className="space-y-3 p-6 pt-0">
-                      <h3 className="font-bold text-base text-foreground transition-colors group-hover:text-primary sm:text-lg md:text-xl">
+                    <CardContent className="space-y-3 px-3.5 pt-0 last:pb-3 md:p-6 [@media(27rem<width<=40rem)]:px-4.5 [@media(27rem<width<=40rem)]:last:pb-5">
+                      <h3 className="mb-2 line-clamp-1 font-bold text-base- text-foreground text-sm transition-colors group-hover:text-primary sm:mb-3 sm:line-clamp-none sm:text-lg md:text-xl">
                         {department.name}
                       </h3>
                       <p className="line-clamp-2 text-muted-foreground text-xs leading-relaxed sm:line-clamp-3 sm:text-sm md:text-base">

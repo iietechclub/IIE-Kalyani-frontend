@@ -4,6 +4,7 @@ import { LuCamera } from "react-icons/lu";
 import { MotionDiv, MotionFigure } from "@/components/animated/motion";
 import BackendImage from "@/components/BackendImage";
 import GithubImage from "@/components/GithubImage";
+import { urlFromBackend } from "@/lib/utils";
 
 export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("All");
@@ -130,7 +131,6 @@ export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
       {/* HERO BANNER */}
       <header className="relative">
         <div className="relative h-48 w-full bg-center bg-cover bg-no-repeat sm:h-64 md:h-80 lg:h-96">
-          {/* dark overlay for contrast */}
           <GithubImage
             fill
             src="(campus)/campus/gallery/banner.JPG"
@@ -139,6 +139,7 @@ export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
             preload
           />
 
+          {/* dark overlay for contrast */}
           <div className="absolute inset-0 bg-black/50" />
 
           {/* subtle decorative shapes (hidden on very small screens) */}
@@ -243,8 +244,9 @@ export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
                     transition={{ delay: idx * 0.04 }}
                     style={{ cursor: "pointer" }}
                     onClick={() =>
+                      img.image &&
                       window.open(
-                        img.image?.url,
+                        urlFromBackend(img.image?.url),
                         "_blank",
                         "noopener,noreferrer",
                       )

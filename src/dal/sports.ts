@@ -8,7 +8,7 @@ export const fetchSportsPageData = cache(async () => {
 
   const query = gql`{
     sports {
-      gallery_highlights {
+      gallery_highlights (pagination: { pageSize: 12 }) {
         documentId image {
           url alternativeText
         }

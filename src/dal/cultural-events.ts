@@ -14,11 +14,11 @@ export const fetchCulturalEventsPageData = cache(async () => {
         image { url alternativeText }
       }
 
-      gallery_images {
+      gallery_images (pagination: { pageSize: 8 }) {
         documentId image { url alternativeText }
       }
 
-      upcoming_events {
+      upcoming_events (pagination: { pageSize: 6 }) {
         documentId title description
         multiple_days start end
         image { url alternativeText }

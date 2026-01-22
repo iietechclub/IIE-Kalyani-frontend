@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { LuPlay } from "react-icons/lu";
 import { cn } from "@/lib/utils";
@@ -69,88 +70,90 @@ export default function CampusGallery({ tagline, galleryItems }: Props) {
                   transition={{ duration: 0.3 }}
                 >
                   {/* Image */}
-                  <div
-                    className={cn(
-                      "relative overflow-hidden",
-                      idx === 0 ? "h-full" : "h-35 md:h-70",
-                    )}
-                  >
-                    <MotionDiv
-                      className="size-full"
-                      animate={{ scale: hoveredIndex === idx ? 1.1 : 1 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {item.type === "Image" && item.image?.url && (
-                        <BackendImage
-                          fill
-                          src={item.image?.url}
-                          alt={item.title}
-                          className="size-full object-cover"
-                        />
+                  <Link href="/campus/gallery">
+                    <div
+                      className={cn(
+                        "relative overflow-hidden",
+                        idx === 0 ? "h-full" : "h-35 md:h-70",
                       )}
-                    </MotionDiv>
-
-                    {/* Overlay */}
-                    <MotionDiv
-                      className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"
-                      initial={{ opacity: 0.5 }}
-                      animate={{ opacity: hoveredIndex === idx ? 0.8 : 0.5 }}
-                      transition={{ duration: 0.3 }}
-                    />
-
-                    {/* Category badge */}
-                    <MotionDiv
-                      className="absolute top-2 right-2 rounded-full px-2 py-0.5 text-white text-xs backdrop-blur-sm md:top-4 md:right-4 md:px-3 md:py-1 md:text-sm"
-                      style={{ backgroundColor: `${color}CC` }}
-                      initial={{ y: -10, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: idx * 0.1 + 0.3 }}
                     >
-                      {item.tag}
-                    </MotionDiv>
-
-                    {/* Content */}
-                    <div className="absolute right-0 bottom-0 left-0 p-2 md:p-6">
-                      <MotionH3
-                        className="mb-1 text-white text-xs md:mb-2 md:text-base"
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{
-                          y: hoveredIndex === idx ? 0 : 10,
-                          opacity: hoveredIndex === idx ? 1 : 0.9,
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {item.title}
-                      </MotionH3>
-
                       <MotionDiv
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{
-                          y: hoveredIndex === idx ? 0 : 20,
-                          opacity: hoveredIndex === idx ? 1 : 0,
-                        }}
-                        transition={{ duration: 0.3 }}
-                        className="hidden md:block"
+                        className="size-full"
+                        animate={{ scale: hoveredIndex === idx ? 1.1 : 1 }}
+                        transition={{ duration: 0.6 }}
                       >
-                        <button
-                          type="button"
-                          className="flex items-center gap-2 text-white transition-colors hover:text-[#FCBF49]"
-                        >
-                          <LuPlay className="size-4" />
-                          <span className="text-sm">View Gallery</span>
-                        </button>
+                        {item.type === "Image" && item.image?.url && (
+                          <BackendImage
+                            fill
+                            src={item.image?.url}
+                            alt={item.title}
+                            className="size-full object-cover"
+                          />
+                        )}
                       </MotionDiv>
-                    </div>
 
-                    {/* Accent border on hover */}
-                    <MotionDiv
-                      className="pointer-events-none absolute inset-0 rounded-lg border-2 md:rounded-2xl md:border-4"
-                      style={{ borderColor: color }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: hoveredIndex === idx ? 0.5 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </div>
+                      {/* Overlay */}
+                      <MotionDiv
+                        className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"
+                        initial={{ opacity: 0.5 }}
+                        animate={{ opacity: hoveredIndex === idx ? 0.8 : 0.5 }}
+                        transition={{ duration: 0.3 }}
+                      />
+
+                      {/* Category badge */}
+                      <MotionDiv
+                        className="absolute top-2 right-2 rounded-full px-2 py-0.5 text-white text-xs backdrop-blur-sm md:top-4 md:right-4 md:px-3 md:py-1 md:text-sm"
+                        style={{ backgroundColor: `${color}CC` }}
+                        initial={{ y: -10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: idx * 0.1 + 0.3 }}
+                      >
+                        {item.tag}
+                      </MotionDiv>
+
+                      {/* Content */}
+                      <div className="absolute right-0 bottom-0 left-0 p-2 md:p-6">
+                        <MotionH3
+                          className="mb-1 text-white text-xs md:mb-2 md:text-base"
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{
+                            y: hoveredIndex === idx ? 0 : 10,
+                            opacity: hoveredIndex === idx ? 1 : 0.9,
+                          }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {item.title}
+                        </MotionH3>
+
+                        <MotionDiv
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{
+                            y: hoveredIndex === idx ? 0 : 20,
+                            opacity: hoveredIndex === idx ? 1 : 0,
+                          }}
+                          transition={{ duration: 0.3 }}
+                          className="hidden md:block"
+                        >
+                          <button
+                            type="button"
+                            className="flex cursor-pointer items-center gap-2 text-white transition-colors hover:text-[#FCBF49]"
+                          >
+                            <LuPlay className="size-4" />
+                            <span className="text-sm">View Gallery</span>
+                          </button>
+                        </MotionDiv>
+                      </div>
+
+                      {/* Accent border on hover */}
+                      <MotionDiv
+                        className="pointer-events-none absolute inset-0 rounded-lg border-2 md:rounded-2xl md:border-4"
+                        style={{ borderColor: color }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: hoveredIndex === idx ? 0.5 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </div>
+                  </Link>
                 </MotionDiv>
               </MotionDiv>
             );
