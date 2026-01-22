@@ -1,8 +1,8 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
 import { MotionDiv } from "@/components/animated/motion";
 import BackendImage from "@/components/BackendImage";
+import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -26,8 +26,7 @@ export default function FacultyClient({ departments }: OurFacultyPageData) {
 
   // Hero image placeholder
 
-  const heroImage =
-    "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1920";
+  const heroImage = "(admission)/eligibility/btech/banner.jpg";
 
   return (
     <div className="min-h-screen bg-linear-to-br from-white via-red-50/30 to-white">
@@ -40,17 +39,17 @@ export default function FacultyClient({ departments }: OurFacultyPageData) {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="absolute inset-0"
           >
-            <Image
+            <GithubImage
+              fill
               src={heroImage}
               alt="IIE Kalyani Campus"
-              fill
-              className="object-cover"
-              priority
+              className="object-cover blur-xs"
+              preload
             />
             <div className="absolute inset-0 bg-linear-to-r from-blue-900/80 via-transparent to-black/30" />
           </MotionDiv>
 
-          <div className="container relative z-10 mx-auto flex h-full items-center px-4">
+          <div className="container relative z-10 mx-auto flex h-full items-center px-4 sm:pl-22">
             <MotionDiv
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}

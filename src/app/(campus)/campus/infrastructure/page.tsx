@@ -10,6 +10,7 @@ import {
   LuWind,
   LuZap,
 } from "react-icons/lu";
+import GithubImage from "@/components/GithubImage";
 
 export default function InfrastructurePage() {
   const facilities = [
@@ -127,8 +128,20 @@ Understanding the need for comfortable living spaces, IIE provides off-campus ho
   return (
     <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <header className="relative bg-linear-to-r from-red-600 to-red-700 py-12 text-white sm:py-16 md:py-20">
-        <div className="absolute inset-0 bg-black/8" />
+      <header className="relative overflow-hidden py-12 text-white sm:py-16 md:py-20">
+        {/* Background Image */}
+        <GithubImage
+          fill
+          src="(campus)/campus/infrastructure/banner.jpg"
+          alt="Infrastructure Banner"
+          className="object-cover blur-xs brightness-120 contrast-105 saturate-110"
+          preload
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Content */}
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-4 flex flex-col items-start gap-3 sm:mb-6 sm:flex-row sm:items-center sm:gap-6">
             <div className="shrink-0 rounded-2xl bg-white/10 p-2.5 backdrop-blur-sm sm:p-4">

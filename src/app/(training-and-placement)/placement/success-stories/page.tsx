@@ -17,15 +17,12 @@ export default async function SuccessStories() {
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="h-[260px] w-full bg-center bg-cover md:h-80 lg:h-[360px]">
-            <GithubImage
-              fill
-              src={heroImage}
-              alt="Success Stories Banner"
-              className="size-full object-cover"
-              preload
-            />
-          </div>
+          <GithubImage
+            fill
+            src={heroImage}
+            alt="Success Stories Banner"
+            className="size-full object-cover blur-xs"
+          />
           <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent" />
         </div>
 

@@ -160,11 +160,11 @@ export default async function TechnicalEventsPage() {
         <div className="absolute inset-0">
           <GithubImage
             fill
-            src="(campus)/student-activities/technical-events-and-seminars/banner.png"
+            src="(campus)/student-activities/technical-events-and-seminars/banner.jpg"
             alt="Technical events hero"
-            className="object-cover"
+            className="object-cover blur-xs"
+            preload
           />
-
           <div className="absolute inset-0 bg-linear-to-r from-blue-900/80 via-purple-900/50 to-transparent" />
         </div>
 

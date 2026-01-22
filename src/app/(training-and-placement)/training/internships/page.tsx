@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import {
   LuBriefcase,
   LuBuilding,
@@ -8,7 +7,7 @@ import {
   LuTrendingUp,
 } from "react-icons/lu";
 import { MotionDiv } from "@/components/animated/motion";
-import { urlFromGithub } from "@/lib/utils";
+import GithubImage from "@/components/GithubImage";
 
 const benefits = [
   {
@@ -76,20 +75,13 @@ export default function InternshipsPage() {
       {/* Focused Hero */}
       <header className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div
-            className="h-[420px] w-full bg-center bg-cover md:h-[520px]"
-            aria-hidden
-          >
-            <Image
-              fill
-              src={urlFromGithub(
-                "(training-and-placement)/training/internships/internship-banner.jpg",
-              )}
-              alt="Internships banner image"
-              className="object-cover"
-              priority
-            />
-          </div>
+          <GithubImage
+            fill
+            src="(training-and-placement)/training/internships/banner.jpg"
+            alt="Internships banner image"
+            className="object-cover blur-sm"
+            preload
+          />
           <div className="absolute inset-0 bg-linear-to-b from-black/60 to-black/20" />
           <div className="-right-36 -top-28 absolute size-96 rounded-full bg-[#FF6B35]/8 blur-3xl" />
         </div>
@@ -162,10 +154,10 @@ export default function InternshipsPage() {
               className="overflow-hidden rounded-2xl border border-gray-100 bg-linear-to-br from-white to-rose-50 shadow-2xl"
             >
               <div className="relative">
-                <Image
-                  src={urlFromGithub(
-                    "(training-and-placement)/training/internships/internship-banner.jpg",
-                  )}
+                <GithubImage
+                  src={
+                    "(training-and-placement)/training/internships/internship-banner.jpg"
+                  }
                   alt="Students collaborating in a professional workplace environment"
                   width={1200}
                   height={600}

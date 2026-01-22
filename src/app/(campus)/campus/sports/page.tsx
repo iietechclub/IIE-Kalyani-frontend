@@ -109,14 +109,13 @@ export default async function SportsPage() {
       {/* HERO */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="relative h-[500px] w-full scale-105 object-center md:h-[520px]">
-            <GithubImage
-              fill
-              src="(campus)/campus/gallery/Football_Tournament.jpg"
-              alt="Sports facilities hero"
-              className="object-cover"
-            />
-          </div>
+          <GithubImage
+            fill
+            src="(campus)/campus/sports/banner.jpg"
+            alt="Sports facilities hero"
+            className="object-cover blur-xs"
+            preload
+          />
           <div className="absolute inset-0 bg-linear-to-r from-green-900/80 via-blue-900/50 to-transparent" />
         </div>
 
@@ -128,7 +127,7 @@ export default async function SportsPage() {
             className="mx-auto max-w-5xl pt-24 pb-12 text-center text-white"
           >
             <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-2">
-              <LuTrophy className="h-5 w-5 text-white" />
+              <LuTrophy className="size-5 text-white" />
               <span className="text-sm">Campus Life</span>
             </div>
 

@@ -1,5 +1,6 @@
 "use client";
 import { MotionDiv } from "@/components/animated/motion";
+import GithubImage from "@/components/GithubImage";
 import { Badge } from "@/components/ui/badge";
 
 /**
@@ -85,17 +86,17 @@ export default function IQACLite() {
             transition={{ duration: 1 }}
             className="absolute inset-0"
           >
-            {/* <Image
-              src={heroImage}
-              alt="IQAC hero"
+            <GithubImage
               fill
+              src="(admission)/eligibility/btech/banner.jpg"
+              alt="IQAC hero"
               className="object-cover"
-              priority
-            /> */}
+              preload
+            />
             <div className="absolute inset-0 bg-linear-to-r from-primary via-red-500 to-black/30" />
           </MotionDiv>
 
-          <div className="container relative z-10 mx-auto flex h-full items-center px-4">
+          <div className="container relative z-10 mx-auto flex h-full items-center px-6 md:px-20">
             <div className="max-w-3xl text-white">
               <Badge className="mb-3 border-white/30 bg-white/20 text-white">
                 IQAC — Quality Assurance Cell

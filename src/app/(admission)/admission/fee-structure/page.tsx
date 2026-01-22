@@ -4,6 +4,7 @@ import {
   LuDownload,
   // LuInfo
 } from "react-icons/lu";
+import GithubImage from "@/components/GithubImage";
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 import { fetchFeeStructurePageData } from "@/dal/fee-structure";
 import { urlFromBackend } from "@/lib/utils";
@@ -33,13 +34,23 @@ export default async function FeeStructurePage() {
   return (
     <main className="min-h-screen bg-white font-sans text-gray-900">
       {/* Header (keep unchanged) */}
-      <header className="relative bg-linear-to-r from-red-600 to-rose-600 py-12 text-white sm:py-20">
-        <div className="pointer-events-none absolute inset-0 bg-black/8" />
+      <header className="relative overflow-hidden py-12 text-white sm:py-20">
+        <GithubImage
+          fill
+          src="(admission)/admission/fee-structure/banner.jpg"
+          alt="Fee Structure Banner"
+          className="object-cover"
+          preload
+        />
+
+        {/* Blur + Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-4">
-              <div className="rounded-2xl bg-white/10 p-3">
-                <LuDollarSign className="h-10 w-10" />
+              <div className="rounded-2xl bg-white/10 p-3 backdrop-blur-sm">
+                <LuDollarSign className="size-10" />
               </div>
               <div>
                 <h1 className="font-extrabold text-2xl tracking-tight sm:text-3xl">

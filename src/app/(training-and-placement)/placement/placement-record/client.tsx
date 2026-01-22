@@ -537,7 +537,7 @@ export default function PlacementRecordPageClient({
   // ];
 
   const heroImage =
-    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1800&q=80";
+    "https://plus.unsplash.com/premium_photo-1688822014591-30d7b089b43c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   // UI state
   const [activeDept, setActiveDept] = useState<string | null>(
@@ -679,18 +679,14 @@ export default function PlacementRecordPageClient({
       {/* Hero */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div
-            className="h-[360px] w-full bg-center bg-cover md:h-[420px]"
-            aria-hidden
-          >
-            <Image
-              fill
-              src={heroImage}
-              alt="Placement Statistics Hero Image"
-              className="object-cover"
-              priority
-            />
-          </div>
+          <Image
+            fill
+            src={heroImage}
+            alt="Placement Statistics Banner"
+            className="object-cover blur-xs"
+            preload
+          />
+
           <div className="absolute inset-0 bg-linear-to-r from-black/50 to-transparent" />
         </div>
 

@@ -131,20 +131,22 @@ export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
       {/* HERO BANNER */}
       <header className="relative">
         <div className="relative h-48 w-full bg-center bg-cover bg-no-repeat sm:h-64 md:h-80 lg:h-96">
-          {/* dark overlay for contrast */}
           <GithubImage
-            src="(campus)/campus/gallery/Banner_image.JPG"
-            alt="Campus Gallery Banner"
             fill
-            className="object-cover"
+            src="(campus)/campus/gallery/banner.JPG"
+            alt="Campus Gallery Banner"
+            className="object-cover blur-xs"
+            preload
           />
+
+          {/* dark overlay for contrast */}
           <div className="absolute inset-0 bg-black/50" />
 
           {/* subtle decorative shapes (hidden on very small screens) */}
-          <div className="-left-10 -top-10 pointer-events-none absolute hidden h-36 w-36 rounded-full bg-white/8 blur-2xl sm:block" />
-          <div className="pointer-events-none absolute right-8 bottom-4 hidden h-44 w-44 rounded-full bg-pink-400/15 blur-2xl sm:block" />
+          <div className="-left-10 -top-10 pointer-events-none absolute hidden size-36 rounded-full bg-white/8 blur-2xl sm:block" />
+          <div className="pointer-events-none absolute right-8 bottom-4 hidden size-44 rounded-full bg-pink-400/15 blur-2xl sm:block" />
 
-          <div className="container relative z-10 mx-auto flex h-full items-center px-3 sm:px-4">
+          <div className="container relative z-10 mx-auto flex h-full items-center px-3 pl-8 sm:px-4 sm:pl-16 md:pl-32">
             <MotionDiv
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -153,7 +155,7 @@ export default function GalleryPageClient({ gallery_items }: GalleryPageData) {
             >
               {/* badge */}
               <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-2 py-0.5 sm:mb-4 sm:px-3 sm:py-1">
-                <LuCamera className="h-4 w-4 text-white sm:h-5 sm:w-5" />
+                <LuCamera className="size-4 text-white sm:size-5" />
                 <span className="text-[0.7rem] sm:text-sm">Campus Gallery</span>
               </div>
 

@@ -1,4 +1,5 @@
 import { LuFileText, LuGraduationCap } from "react-icons/lu";
+import GithubImage from "@/components/GithubImage";
 import { CheckmarkIcon } from "@/components/ui/checkmark-icon";
 
 export default function EligibilityBTech() {
@@ -60,12 +61,22 @@ export default function EligibilityBTech() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       {/* ===== HERO (full width, your style) ===== */}
-      <header className="relative bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20">
-        <div className="absolute inset-0 bg-black/10" />
+      <header className="relative overflow-hidden bg-linear-to-r from-red-600 to-red-400 py-12 text-white sm:py-16 md:py-20">
+        <GithubImage
+          fill
+          src="(admission)/eligibility/btech/banner.jpg"
+          alt="B.Tech Eligibility Banner"
+          className="object-cover"
+          preload
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
             <div className="shrink-0 rounded-2xl bg-white/10 p-3 backdrop-blur-sm sm:p-4">
-              <LuGraduationCap className="h-9 w-9 text-white sm:h-11 sm:w-11" />
+              <LuGraduationCap className="size-9 text-white sm:size-11" />
             </div>
             <div className="min-w-0">
               <h1 className="mb-1 font-semibold text-2xl leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
@@ -93,7 +104,7 @@ export default function EligibilityBTech() {
           <section className="mb-10">
             <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm">
               <span className="inline-flex items-center rounded-full border border-red-100/70 bg-white px-3 py-1">
-                <span className="mr-2 h-2 w-2 rounded-full bg-green-500" />
+                <span className="mr-2 size-2 rounded-full bg-green-500" />
                 MAKAUT, West Bengal – B.Tech
               </span>
               <span className="inline-flex items-center rounded-full border border-gray-200 bg-white/80 px-3 py-1">
