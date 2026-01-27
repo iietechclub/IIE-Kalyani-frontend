@@ -43,6 +43,14 @@ type Club = prettify<
   }
 >;
 
+type ClubFull = prettify<
+  Club & {
+    banner_image: Media;
+    content: RichTextBlocks;
+    gallery_items: GalleryItem[];
+  }
+>;
+
 type CompanyShortNameOnly = { short_name: string };
 type Company = prettify<
   CollectionType &

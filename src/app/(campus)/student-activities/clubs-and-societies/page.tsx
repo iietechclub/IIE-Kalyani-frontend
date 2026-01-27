@@ -3,6 +3,7 @@ import { MotionDiv } from "@/components/animated/motion";
 
 import BackendImage from "@/components/BackendImage";
 import { fetchClubsAndSocietiesPageData } from "@/dal/clubs-and-societies";
+import Link from "next/link";
 
 /**
  * ClubsTwoRowGrid — 4-column modern grid (no glass overlay)
@@ -141,49 +142,50 @@ export default async function ClubsTwoRowGrid() {
         <section className="mx-auto mb-12 max-w-7xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {clubs.map((c, idx) => (
-              <MotionDiv
-                // biome-ignore lint/suspicious/noArrayIndexKey: not needed
-                key={idx}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.03, y: -6 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition-all hover:shadow-xl"
-              >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <BackendImage
-                    fill
-                    src={c.preview_image.url}
-                    alt={c.name}
-                    className="size-full transform object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                  {/* <div className="absolute top-3 left-3">
-                    <Badge className="bg-blue-600 text-white">
+              <Link key={idx} href={`/student-activities/clubs-and-societies/${c.slug}`}>
+                <MotionDiv
+                  // biome-ignore lint/suspicious/noArrayIndexKey: not needed
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.03, y: -6 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition-all hover:shadow-xl"
+                  >
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <BackendImage
+                      fill
+                      src={c.preview_image.url}
+                      alt={c.name}
+                      className="size-full transform object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    {/* <div className="absolute top-3 left-3">
+                      <Badge className="bg-blue-600 text-white">
                       {c.category}
-                    </Badge>
-                  </div> */}
-                </div>
-
-                {/* Card content */}
-                <div className="flex flex-col justify-between p-4">
-                  <div>
-                    <h3 className="mb-1 font-semibold text-lg">{c.name}</h3>
-                    <p className="mb-2 text-muted-foreground text-sm">
-                      {c.tagline}
-                    </p>
-                    <p className="line-clamp-3 text-gray-600 text-xs">
-                      {c.subtitle}
-                    </p>
+                      </Badge>
+                      </div> */}
                   </div>
 
-                  {/* <div className="mt-3 flex items-center justify-between">
-                    <div className="text-muted-foreground text-xs">
-                      {c.members} Members
+                  {/* Card content */}
+                  <div className="flex flex-col justify-between p-4">
+                    <div>
+                      <h3 className="mb-1 font-semibold text-lg">{c.name}</h3>
+                      <p className="mb-2 text-muted-foreground text-sm">
+                        {c.tagline}
+                      </p>
+                      <p className="line-clamp-3 text-gray-600 text-xs">
+                        {c.subtitle}
+                      </p>
                     </div>
-                  </div> */}
-                </div>
-              </MotionDiv>
+
+                    {/* <div className="mt-3 flex items-center justify-between">
+                      <div className="text-muted-foreground text-xs">
+                      {c.members} Members
+                      </div>
+                      </div> */}
+                  </div>
+                </MotionDiv>
+              </Link>
             ))}
           </div>
 

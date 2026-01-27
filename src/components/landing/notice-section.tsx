@@ -154,7 +154,7 @@ const EventScheduleNotices = ({
         </MotionDiv>
 
         {/* Two Column Layout */}
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-5">
           {/* Left Column - Upcoming Events */}
           {/* <UpcomingEvents upcomingEvents={upcomingEvents} /> */}
 
@@ -164,6 +164,7 @@ const EventScheduleNotices = ({
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="col-span-3"
           >
             {/* Column Header */}
             <div className="mb-6 flex items-center justify-between">
@@ -190,15 +191,16 @@ const EventScheduleNotices = ({
                     // viewport={{ once: true }}
                     // transition={{ duration: 0.5, delay: index * 0.05 }}
                   >
-                    <div className="min-w-0 flex-1">
+                    <div className="min-w-0 flex-1 divide-x divide-neutral-900 flex items-center space-x-3">
+                      {/* Notice Date */}
+                      <p className="text-red-500 text-sm italic pr-2.5 shrink-0">
+                        {notice.posted_on}
+                      </p> 
                       {/* Notice Title */}
-                      <h5 className="mb-1 line-clamp-2 text-gray-900 transition-colors group-hover:text-[#E63946]">
+                      <h5 className="mb-1 line-clamp-1 text-gray-900 transition-colors">
+                        {notice.title}
                         {notice.title}
                       </h5>
-                      {/* Notice Date */}
-                      <p className="text-gray-500 text-xs">
-                        {notice.posted_on}
-                      </p>
                     </div>
 
                     {/* Download Button */}
@@ -283,7 +285,7 @@ const AchievementsCarousel = ({
 
   return (
     <MotionDiv
-      className="flex flex-col"
+      className="flex flex-col col-span-2"
       initial={{ opacity: 0, x: 30 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
