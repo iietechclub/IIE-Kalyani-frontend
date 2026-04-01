@@ -4,6 +4,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 
 import { Suspense } from "react";
+import ChatWidget from "@/components/layout/ChatWidget";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/navbar";
 
@@ -36,6 +37,7 @@ export default async function RootLayout({ children }: ReadonlyChildren) {
           <Navbar />
           {children}
           <Footer />
+          <ChatWidget />
         </body>
       </html>
     </Suspense>
