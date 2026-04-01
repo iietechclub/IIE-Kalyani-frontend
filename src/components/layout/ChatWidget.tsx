@@ -55,7 +55,8 @@ export default function ChatWidget() {
 
           {/* Iframe */}
           <iframe
-            src="http://iiekly.com:3939"
+            // src="http://iiekly.com:3939"
+            src="http://localhost:5173"
             title="IIE Chat"
             className="size-full border-none"
             style={{ height: "calc(100% - 48px)" }}
